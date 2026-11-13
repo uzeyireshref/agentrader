@@ -1,0 +1,200 @@
+{
+  "schema": "chart-indicators/3",
+  "api_format_version": 3,
+  "defaults": [
+    {
+      "indicator_id": "ema-fast",
+      "revision": 0,
+      "kind": "EMA",
+      "period": 20,
+      "source": "close",
+      "smoothing": "EMA_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "ema-slow",
+      "revision": 0,
+      "kind": "EMA",
+      "period": 50,
+      "source": "close",
+      "smoothing": "EMA_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "rsi-main",
+      "revision": 0,
+      "kind": "RSI",
+      "period": 14,
+      "source": "close",
+      "smoothing": "WILDER_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "oscillator",
+      "enabled": false,
+      "calculation_version": 2
+    },
+    {
+      "indicator_id": "sma-main",
+      "revision": 0,
+      "kind": "SMA",
+      "period": 20,
+      "source": "close",
+      "smoothing": "ROLLING_SMA",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "atr-main",
+      "revision": 0,
+      "kind": "ATR",
+      "period": 14,
+      "source": "ohlc",
+      "smoothing": "WILDER_TR_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "volatility",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "macd-main",
+      "revision": 0,
+      "kind": "MACD",
+      "period": 26,
+      "source": "close",
+      "smoothing": "MACD_CONFIGURED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "macd",
+      "enabled": false,
+      "calculation_version": 1,
+      "params": {
+        "fast_period": 12,
+        "signal_period": 9,
+        "oscillator_type": "EMA",
+        "signal_type": "EMA"
+      },
+      "style": {
+        "line_width": 1,
+        "colors": {
+          "macd": "#6099ef",
+          "signal": "#e9a252",
+          "positive_rising": "#26a69a",
+          "positive_falling": "#a4d8cf",
+          "negative_rising": "#efb2b7",
+          "negative_falling": "#ef5350"
+        }
+      }
+    },
+    {
+      "indicator_id": "bb-main",
+      "revision": 0,
+      "kind": "BB",
+      "period": 20,
+      "source": "close",
+      "smoothing": "BB_POPULATION",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1,
+      "params": {
+        "basis_type": "SMA",
+        "deviation": 2,
+        "offset": 0
+      },
+      "style": {
+        "line_width": 1,
+        "colors": {
+          "basis": "#d4b462",
+          "upper": "#709ee6",
+          "lower": "#709ee6"
+        }
+      }
+    }
+  ],
+  "sources": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "hl2",
+    "hlc3",
+    "ohlc4"
+  ],
+  "period_bounds": [
+    1,
+    500
+  ],
+  "macd": {
+    "outputs": [
+      "macd",
+      "signal",
+      "histogram"
+    ],
+    "fast_less_than_slow": true,
+    "oscillator_types": [
+      "SMA",
+      "EMA"
+    ],
+    "signal_types": [
+      "SMA",
+      "EMA"
+    ],
+    "ema_seed": "SMA_OF_FIRST_PERIOD",
+    "first_output_indices": {
+      "macd": "slow-1",
+      "signal": "slow+signal-2",
+      "histogram": "slow+signal-2"
+    },
+    "histogram_states": [
+      "positive_rising",
+      "positive_falling",
+      "negative_rising",
+      "negative_falling"
+    ],
+    "equal_value": "RISING",
+    "first_previous_histogram": 0
+  },
+  "bb": {
+    "outputs": [
+      "basis",
+      "upper",
+      "lower"
+    ],
+    "basis_types": [
+      "SMA",
+      "EMA"
+    ],
+    "standard_deviation": "POPULATION_AROUND_ROLLING_SMA",
+    "deviation_bounds": [
+      0.1,
+      10
+    ],
+    "offset_bounds": [
+      -100,
+      100
+    ],
+    "offset_unit": "UTC_INTERVAL_BARS",
+    "offset_scope": "DISPLAY_ONLY",
+    "first_output_index": "period-1"
+  },
+  "style": {
+    "color_encoding": "#RRGGBB",
+    "line_widths": [
+      1,
+      2,
+      3
+    ]
+  },
+  "seed_anchor": "LOADED_HISTORY_START",
+  "grid_policy": "BLOCK_ALL_OUTPUTS_ON_GAP_OR_INVALID_GRID",
+  "open_candle": "PROVISIONAL",
+  "order_authority": false,
+  "canonical_queries": [],
+  "legacy_policy": "Read expands 3/5 records without writes; save v3 preserves old fields/revisions; saved v3 rejects old format1/2 writes"
+}

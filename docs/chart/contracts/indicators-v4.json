@@ -1,0 +1,207 @@
+{
+  "schema": "chart-indicators/4",
+  "api_format_version": 4,
+  "defaults": [
+    {
+      "indicator_id": "ema-fast",
+      "revision": 0,
+      "kind": "EMA",
+      "period": 20,
+      "source": "close",
+      "smoothing": "EMA_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "ema-slow",
+      "revision": 0,
+      "kind": "EMA",
+      "period": 50,
+      "source": "close",
+      "smoothing": "EMA_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "rsi-main",
+      "revision": 0,
+      "kind": "RSI",
+      "period": 14,
+      "source": "close",
+      "smoothing": "WILDER_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "oscillator",
+      "enabled": false,
+      "calculation_version": 2
+    },
+    {
+      "indicator_id": "sma-main",
+      "revision": 0,
+      "kind": "SMA",
+      "period": 20,
+      "source": "close",
+      "smoothing": "ROLLING_SMA",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "atr-main",
+      "revision": 0,
+      "kind": "ATR",
+      "period": 14,
+      "source": "ohlc",
+      "smoothing": "WILDER_TR_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "volatility",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "macd-main",
+      "revision": 0,
+      "kind": "MACD",
+      "period": 26,
+      "source": "close",
+      "smoothing": "MACD_CONFIGURED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "macd",
+      "enabled": false,
+      "calculation_version": 1,
+      "params": {
+        "fast_period": 12,
+        "signal_period": 9,
+        "oscillator_type": "EMA",
+        "signal_type": "EMA"
+      },
+      "style": {
+        "line_width": 1,
+        "colors": {
+          "macd": "#6099ef",
+          "signal": "#e9a252",
+          "positive_rising": "#26a69a",
+          "positive_falling": "#a4d8cf",
+          "negative_rising": "#efb2b7",
+          "negative_falling": "#ef5350"
+        }
+      }
+    },
+    {
+      "indicator_id": "bb-main",
+      "revision": 0,
+      "kind": "BB",
+      "period": 20,
+      "source": "close",
+      "smoothing": "BB_POPULATION",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1,
+      "params": {
+        "basis_type": "SMA",
+        "deviation": 2,
+        "offset": 0
+      },
+      "style": {
+        "line_width": 1,
+        "colors": {
+          "basis": "#d4b462",
+          "upper": "#709ee6",
+          "lower": "#709ee6"
+        }
+      }
+    },
+    {
+      "indicator_id": "session-vwap",
+      "revision": 0,
+      "kind": "SESSION_VWAP",
+      "period": 1,
+      "source": "hlc3",
+      "smoothing": "CUMULATIVE_VOLUME",
+      "anchor": "UTC_SESSION",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1,
+      "params": {
+        "computation_mode": "BAR_PRICE_VOLUME"
+      },
+      "style": {
+        "line_width": 2,
+        "colors": {
+          "value": "#e9be62"
+        }
+      }
+    },
+    {
+      "indicator_id": "anchored-vwap",
+      "revision": 0,
+      "kind": "ANCHORED_VWAP",
+      "period": 1,
+      "source": "hlc3",
+      "smoothing": "CUMULATIVE_VOLUME",
+      "anchor": "SAVED_UTC_ANCHOR",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1,
+      "params": {
+        "computation_mode": "BAR_PRICE_VOLUME",
+        "anchor_time": 0,
+        "anchor_symbol": ""
+      },
+      "style": {
+        "line_width": 2,
+        "colors": {
+          "value": "#c789dc"
+        }
+      }
+    }
+  ],
+  "vwap": {
+    "computation_modes": [
+      "BAR_PRICE_VOLUME",
+      "EXACT_QUOTE_BASE"
+    ],
+    "bar_sources": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "hl2",
+      "hlc3",
+      "ohlc4"
+    ],
+    "bar_formula": "sum(source*raw_base_volume)/sum(raw_base_volume)",
+    "exact_formula": "Fraction(sum(native_decimal_quote_volume))/Fraction(sum(native_decimal_base_volume))",
+    "volume_fields": [
+      "volume",
+      "quote_volume"
+    ],
+    "exact_sidecar": {
+      "schema": "chart-exact-decimal/1",
+      "state": "VERIFIED",
+      "provenance": "UPSTREAM_DECIMAL_TEXT"
+    },
+    "zero_volume": "UNAVAILABLE_IF_TOTAL_ZERO_ELSE_KEEP_PRIOR_MEAN",
+    "session_reset": "UTC_00:00",
+    "partial_session": "UNAVAILABLE_UNTIL_COMPLETE_SESSION_START",
+    "session_intervals": "Divisors of UTC day up to 1d; 1w unsupported",
+    "anchor": {
+      "time_unit": "UTC_SECONDS",
+      "scope": "SAVED_SYMBOL",
+      "requires_loaded_anchor_bar": true,
+      "grid_policy": "EXACT_BAR_OPEN_NO_SNAP"
+    },
+    "missing_bar": "BLOCK_ACCUMULATION_UNTIL_SESSION_RESET_OR_ANCHOR_HISTORY_REPAIR",
+    "render_policy": "WHITESPACE_PLUS_TRANSPARENT_OUTGOING_BRIDGE_ENGINE_5_2",
+    "calculation_interval": "DISPLAY_INTERVAL_NO_RESAMPLE",
+    "trade_vwap_claim": false,
+    "order_authority": false,
+    "canonical_queries": []
+  },
+  "legacy_policy": "Expand 3/5/7 without writes and preserve old settings; old formats cannot overwrite saved v4"
+}

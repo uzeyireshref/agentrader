@@ -1,0 +1,66 @@
+{
+  "schema": "chart-template/1",
+  "profile_schema": "chart-profile/1",
+  "restore_schema": "chart-template-restore/1",
+  "migration": 5,
+  "default_view": {
+    "theme": "dark",
+    "show_volume": true,
+    "pane_preset": "balanced",
+    "price_scale": "LINEAR",
+    "panel": "markets",
+    "pane_weights": {
+      "price": 4,
+      "volume": 1,
+      "rsi": 1.5,
+      "atr": 1.5,
+      "macd": 1.5
+    }
+  },
+  "drawing_kinds": [
+    "horizontal",
+    "zone",
+    "trend",
+    "fibonacci",
+    "ruler",
+    "horizontal_ray",
+    "ray",
+    "extended_line",
+    "parallel_channel",
+    "fibonacci_extension",
+    "long_plan",
+    "short_plan",
+    "text",
+    "note",
+    "price_label"
+  ],
+  "drawing_defaults_fields": [
+    "style.color",
+    "style.line_width",
+    "style.line_style",
+    "options.levels",
+    "options.params"
+  ],
+  "portable_indicator_schema": "chart-indicators/4",
+  "template_indicator_revisions": 0,
+  "template_anchor_policy": "STRIP_ANCHOR_FROM_TEMPLATE_PRESERVE_LIVE_ANCHOR_ON_RESTORE",
+  "restore_context": "CURRENT_SYMBOL_AND_INTERVAL",
+  "existing_drawings": "OPT_IN_STYLE_ONLY_VISIBLE_UNLOCKED_MATCHING_KIND",
+  "geometry_policy": "ANCHORS_LABEL_TEXT_AND_EXISTING_PARAMS_UNCHANGED",
+  "concurrency": [
+    "expected_profile_revision",
+    "expected_indicator_revision",
+    "exact_symbol_drawing_heads",
+    "immutable_template_revision",
+    "idempotent_request_id"
+  ],
+  "atomic_writes": [
+    "profile",
+    "indicator_configuration",
+    "drawing_style_revisions"
+  ],
+  "max_templates": 40,
+  "max_versions": 100,
+  "tracking_activation": false,
+  "order_authority": false
+}

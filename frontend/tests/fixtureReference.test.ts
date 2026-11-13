@@ -1,0 +1,14 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {fixtures,fixtureRows,fixtureDrawings,expectedAt,comparePoint} from '../src/fixtureReference.ts';
+import {ema,rsi} from '../src/indicators.ts';
+import {moveGeometry} from '../src/drag.ts';
+import {projectLogical,timeToLogical} from '../src/drawings.ts';
+import {referenceTime} from '../src/alignment.ts';
+const gap=fixtures.find(f=>f.name==='time_gap')!;
+test('controlled fixture retains a three-missing-bar gap without fabricated candles',()=>{const rows=fixtureRows(gap);assert.equal(rows.length,300);assert.equal(rows[133].time-rows[132].time,3600);assert.equal(rows.some(c=>c.time===rows[132].time+900),false);assert.equal(rows.at(-1)!.closed,false);});
+test('fixture drawings include an in-gap anchor and a reversed Fibonacci',()=>{const drawings=fixtureDrawings(gap);assert.equal(drawings.length,4);const trend=drawings.find(d=>d.geometry.kind==='trend')!;assert.equal(trend.geometry.anchors[0].time,(gap.times[132]+gap.times[133])/2);const fib=drawings.find(d=>d.geometry.kind==='fibonacci')!;assert.ok(fib.geometry.anchors[0].time>fib.geometry.anchors[1].time);});
+test('controlled engine series references include all warmup and numeric values',()=>{for(const f of fixtures){const rows=fixtureRows(f),maps=[ema(rows,20),ema(rows,50),rsi(rows)].map(points=>new Map(points.map(p=>[p.time,p.value])));for(const time of f.times)assert.equal(comparePoint(f,time,{ema20:maps[0].get(time)??null,ema50:maps[1].get(time)??null,rsi14:maps[2].get(time)??null})!.passed,true);}});
+test('wrong or missing rendered value cannot pass fixture comparator',()=>{const time=gap.times[133],expected=expectedAt(gap,time)!;assert.equal(comparePoint(gap,time,{...expected,ema20:expected.ema20!+1})!.passed,false);assert.equal(comparePoint(gap,time,{...expected,rsi14:null})!.passed,false);assert.equal(comparePoint(gap,1,{ema20:null,ema50:null,rsi14:null}),null);});
+test('in-gap anchor agrees with native-time reference before/after history prepend',()=>{const full=fixtureRows(gap),time=(gap.times[132]+gap.times[133])/2;for(const start of [0,100]){const rows=full.slice(start);const native=(i:number)=>Number.isInteger(i)?100+(i+start)*8:0;const byTime=(t:number)=>{const i=rows.findIndex(c=>c.time===t);return i<0?null:native(i);};assert.equal(projectLogical(timeToLogical(rows,time)!,native),referenceTime(rows,time,byTime));assert.equal(projectLogical(timeToLogical(rows,time)!,native),1160);}});
+test('dragging gap anchor by one logical bar follows stored UTC instead of fixed seconds',()=>{const rows=fixtureRows(gap),g=fixtureDrawings(gap).find(d=>d.geometry.kind==='trend')!.geometry;const moved=moveGeometry(g,rows,1,0,.01,900,0)!;assert.equal(moved.anchors[0].time,(gap.times[133]+gap.times[134])/2);assert.notEqual(moved.anchors[0].time,g.anchors[0].time+900);assert.equal(moved.anchors[1].time,g.anchors[1].time);});

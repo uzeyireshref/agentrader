@@ -1,0 +1,11 @@
+{
+  "version": "qa01-acceptance/1",
+  "date": "2026-11-13",
+  "scope": "CONTROLLED_DESKTOP",
+  "workload": {"closed_candles": 1000, "open_candles": 1, "drawings": 200, "repeats": 5, "minimum_seconds": 60, "cleanup_cycles": 20},
+  "budgets": {"raf_p95_ms": 33.34, "wheel_frame_swap_p95_ms": 100, "raster_css_px": 1, "heap_growth_bytes": 2097152},
+  "full_chart_acceptance": false,
+  "physical_b5_completed": false,
+  "live_execution_authorized": false,
+  "report": "docs/chart/QA01-ACCEPTANCE.md"
+}

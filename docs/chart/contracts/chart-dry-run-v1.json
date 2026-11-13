@@ -1,0 +1,830 @@
+{
+  "plan_version": "chart-dry-run/1.0-draft",
+  "status": "DESIGN_ONLY_NOT_IMPLEMENTED",
+  "contract_version": "chart-bot-input/1.0-draft",
+  "contract_sha256": "1f8640335bd6eea1f061a9d217720a99970596b2374e45b67b296100bcb1f684",
+  "runtime_enabled": false,
+  "integration_authorized": false,
+  "external_delivery_authorized": false,
+  "scope": "W4 approach/touch dry-run and delivery acceptance plan; close/pattern examples earmarked W5, not enabled",
+  "synthetic_profile": {
+    "level": "100",
+    "tick_size": "0.1",
+    "direction": "FROM_BELOW",
+    "approach_ticks": 10,
+    "touch_ticks": 1,
+    "rearm_ticks": 20,
+    "cooldown_closed_bars": 2,
+    "evaluation_mode": "CLOSED_CANDLE",
+    "priority": [
+      "TOUCH",
+      "APPROACH"
+    ],
+    "initial_phase": "ARMED",
+    "notification_ttl_seconds": 60,
+    "parameters_are_examples_not_trading_recommendations": true
+  },
+  "phases": [
+    "ARMED",
+    "APPROACH_NOTIFIED",
+    "TOUCH_LATCHED"
+  ],
+  "lifecycle": [
+    "DISABLED",
+    "ACTIVE",
+    "PAUSED_DATA",
+    "PAUSED_REVISION",
+    "DELETED"
+  ],
+  "pipeline": [
+    "validate identity/precision/freshness/quality proofs",
+    "capture immutable input + bound geometry/grid",
+    "evaluate closed-bar rule from persisted state",
+    "compare drawing head and persist semantic event + intent in same application transaction",
+    "idempotent bridge to channel queue outside that transaction",
+    "local sink first; external sender only separately authorized"
+  ],
+  "existing_notification_states": [
+    "PENDING",
+    "SENDING",
+    "RETRY",
+    "DELIVERED",
+    "FAILED"
+  ],
+  "proposed_additional_delivery_states": [
+    "DELIVERY_UNKNOWN",
+    "EXPIRED",
+    "CANCELED_SUPERSEDED",
+    "CHANNEL_UNCONFIGURED"
+  ],
+  "existing_queue_limits": {
+    "attempts": 8,
+    "lease_seconds": 60,
+    "base_backoff_seconds": "min(300,2**attempts), then respect retry_after",
+    "destination_type": "numeric Telegram chat_id; local sink is a separate adapter"
+  },
+  "queue_notes": [
+    "Existing enqueue starts its own BEGIN IMMEDIATE; cannot nest it inside app event transaction as-is.",
+    "Persist event+intent in app DB first, then idempotent bridge by stable event_id/destination. Do not claim cross-DB atomicity.",
+    "Default notification CLI uses execution.sqlite3; chart dry-run must not open/mutate it. Planned app-scoped queue facade requires explicit integration work.",
+    "Unknown outcome/TTL/revision-cancel states are proposed; existing NotificationQueue does not implement them.",
+    "Provider delivery may be at-least-once/uncertain even when enqueue/domain event is idempotent."
+  ],
+  "replay_policy": {
+    "frozen_inputs": true,
+    "live_namespace_writes": false,
+    "external_sends": false,
+    "preserve_domain_event_identity": true,
+    "storage_namespace": "replay:<run_id>",
+    "replay_bootstrap_is_not_live_activation": true
+  },
+  "cases": [
+    {
+      "id": "DR01",
+      "title": "Bugünkü LIVE veri uygunluk ispatı değildir",
+      "category": "eligibility",
+      "given": "Mevcut üretim paketi ve kaydedilmiş çizim; hedef adapter yok.",
+      "steps": [
+        "LIVE paket oku"
+      ],
+      "expected": {
+        "outcome": "BLOCKED",
+        "reason": "NOT_IMPLEMENTED",
+        "semantic_events": 0,
+        "external_messages": 0
+      },
+      "coverage": [
+        "NOT_IMPLEMENTED"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR02",
+      "title": "Yaklaşma bandına giriş",
+      "category": "approach",
+      "given": "Gelecek adapter kanıtları tam; FROM_BELOW, ARMED, L=100,tick=.1; önceki close=98.0.",
+      "steps": [
+        "Kapalı mum close=99.1, high=99.2"
+      ],
+      "expected": {
+        "event": "APPROACH",
+        "semantic_events": 1,
+        "local_intents": 1,
+        "next_phase": "APPROACH_NOTIFIED"
+      },
+      "coverage": [
+        "approach",
+        "closed_candle"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR03",
+      "title": "Yaklaşma sınırı dahildir",
+      "category": "approach",
+      "given": "DR02 başlangıcı.",
+      "steps": [
+        "close=99.0,high=99.1"
+      ],
+      "expected": {
+        "event": "APPROACH",
+        "distance": "1.0",
+        "semantic_events": 1
+      },
+      "coverage": [
+        "approach",
+        "inclusive_boundary",
+        "decimal"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR04",
+      "title": "Bandın dışı yaklaşma değildir",
+      "category": "approach",
+      "given": "DR02 başlangıcı.",
+      "steps": [
+        "close=98.9,high=99.0"
+      ],
+      "expected": {
+        "semantic_events": 0,
+        "observation": "OUTSIDE_APPROACH"
+      },
+      "coverage": [
+        "approach",
+        "negative_boundary"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR05",
+      "title": "Kapalı OHLC bandı temasla kesişir",
+      "category": "touch",
+      "given": "ARMED/FROM_BELOW; önceki close=98.0; touch bandı[99.9,100.1].",
+      "steps": [
+        "low=99.4,high=100.0,close=99.8; kapalı mum"
+      ],
+      "expected": {
+        "event": "TOUCH",
+        "semantic_events": 1,
+        "local_intents": 1,
+        "next_phase": "TOUCH_LATCHED"
+      },
+      "coverage": [
+        "touch"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR06",
+      "title": "Aynı mumda temas yaklaşmaya önceliklidir",
+      "category": "touch",
+      "given": "DR05, yakınlık koşulu da doğru.",
+      "steps": [
+        "Tek kapalı mum değerlendir"
+      ],
+      "expected": {
+        "event": "TOUCH",
+        "semantic_events": 1,
+        "approach_events": 0
+      },
+      "coverage": [
+        "touch",
+        "same_bar_priority"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR07",
+      "title": "Süren temas yeni temas değildir",
+      "category": "touch",
+      "given": "TOUCH_LATCHED; bir olay kayıtlı.",
+      "steps": [
+        "Sonraki iki uygun kapalı mum temas bandını keser"
+      ],
+      "expected": {
+        "new_semantic_events": 0,
+        "reason": "CONTACT_EPISODE_CONTINUES",
+        "measurement_reason_recorded": true
+      },
+      "coverage": [
+        "touch",
+        "latch",
+        "suppression_audit"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR08",
+      "title": "Ayrılma ve cooldown sonrası yeniden kurulma",
+      "category": "state",
+      "given": "TOUCH_LATCHED; cooldown_closed_bars=2; her mum sıralı ve tekil.",
+      "steps": [
+        "Sonraki iki mumun high değerleri97.8 ve97.7; ikisi de kapanır",
+        "İkinci ayrılma mumu yalnız yeniden kurar",
+        "Daha sonraki mum close=99.1,high=99.2"
+      ],
+      "expected": {
+        "event_on_rearm_bar": null,
+        "next_episode_event": "APPROACH",
+        "new_semantic_events": 1
+      },
+      "coverage": [
+        "rearm",
+        "cooldown",
+        "state"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR09",
+      "title": "Açık mumda varsayılan olay yok",
+      "category": "eligibility",
+      "given": "CLOSED_CANDLE varsayılanı.",
+      "steps": [
+        "Açık mumun high değeri100.5,close=100.2"
+      ],
+      "expected": {
+        "outcome": "OBSERVE_ONLY",
+        "semantic_events": 0
+      },
+      "coverage": [
+        "closed_candle",
+        "open_bar"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR10",
+      "title": "Kapanışla kırılım ayrı W5 profili",
+      "category": "close",
+      "given": "Gelecek close-confirmed profili; önceki close99.8.",
+      "steps": [
+        "Bir fixture close100.1",
+        "Ayrı fixture close100.2"
+      ],
+      "expected": {
+        "equality_cross_event": 0,
+        "strict_cross_event": 1,
+        "w4_enabled_by_this_case": false
+      },
+      "coverage": [
+        "close",
+        "strict_boundary",
+        "W5_not_W4"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR11",
+      "title": "OHLC içi sıra bilinmez",
+      "category": "close",
+      "given": "Aynı mum low98/high102/close99.5.",
+      "steps": [
+        "Kırılım+retest veya stop/hedef sırası sor"
+      ],
+      "expected": {
+        "outcome": "INTRABAR_ORDER_UNKNOWN",
+        "ordered_pattern_events": 0
+      },
+      "coverage": [
+        "ohlc_ambiguity",
+        "no_lookahead"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR12",
+      "title": "Zaman sınırlı bölge",
+      "category": "geometry",
+      "given": "Zone t0..t1 ve fiyat[99,101].",
+      "steps": [
+        "t>t1 anında fiyat100 gözle"
+      ],
+      "expected": {
+        "outcome": "OUT_OF_SCOPE",
+        "semantic_events": 0
+      },
+      "coverage": [
+        "zone",
+        "finite_time"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR13",
+      "title": "Trend grid kanıtı yok",
+      "category": "geometry",
+      "given": "İki trend anchor var; grid eksik/değişmiş veya sorgu segment dışında.",
+      "steps": [
+        "Trend seviyesi iste"
+      ],
+      "expected": {
+        "outcome": "BLOCKED",
+        "reason": "GRID_OR_GEOMETRY_UNSUPPORTED"
+      },
+      "coverage": [
+        "trend",
+        "GRID_OR_GEOMETRY_UNSUPPORTED"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR14",
+      "title": "Ters Fibonacci ve ondalık seviye",
+      "category": "geometry",
+      "given": "Kaydedilmiş p0=110,p1=100,r=.618.",
+      "steps": [
+        "Sırayı koruyarak seviye hesapla"
+      ],
+      "expected": {
+        "level": "103.82",
+        "silent_tick_rounding": false
+      },
+      "coverage": [
+        "fibonacci",
+        "decimal"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR15",
+      "title": "Snapshot/history close metadata canlı olay değildir",
+      "category": "recovery",
+      "given": "Seed/reconnect snapshot eski close_event taşır.",
+      "steps": [
+        "Snapshot ve aynı close_event içeren heartbeat işle"
+      ],
+      "expected": {
+        "new_live_events": 0,
+        "external_messages": 0
+      },
+      "coverage": [
+        "snapshot",
+        "recovery",
+        "sticky_close"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR16",
+      "title": "Tekrar paket ve semantik tekrar",
+      "category": "dedup",
+      "given": "Aynı binding/rule/çizim revision ve mum olayı kayıtlı.",
+      "steps": [
+        "Aynı paket tekrar",
+        "Yeni sequence ile aynı semantik olay tekrar"
+      ],
+      "expected": {
+        "new_semantic_events": 0,
+        "new_delivery_intents": 0,
+        "reason": "SEMANTIC_EVENT_ALREADY_RECORDED"
+      },
+      "coverage": [
+        "dedup",
+        "SEMANTIC_EVENT_ALREADY_RECORDED"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR17",
+      "title": "Restart epoch ve temas hafızası",
+      "category": "recovery",
+      "given": "Kalıcı TOUCH_LATCHED/checkpoint ve dedup kayıtları var.",
+      "steps": [
+        "Süreci yeniden başlat; yeni epoch, düşük generation/sequence",
+        "Resync snapshot yükle",
+        "Aynı close metadatasını tekrar oku"
+      ],
+      "expected": {
+        "phase_restored": "TOUCH_LATCHED",
+        "historical_live_events": 0,
+        "duplicate_intents": 0
+      },
+      "coverage": [
+        "restart",
+        "epoch",
+        "dedup",
+        "state"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR18",
+      "title": "Sequence atlaması tek başına veri boşluğu değildir",
+      "category": "recovery",
+      "given": "Sıralı tam mum/tail, qualityOK, prooflar tam.",
+      "steps": [
+        "Status/coalescing nedeniyle sequence atlar"
+      ],
+      "expected": {
+        "false_gap": false,
+        "data_validation_still_required": true
+      },
+      "coverage": [
+        "sequence",
+        "coalescing"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR19",
+      "title": "Eski/bozuk paket kural hafızasını değiştirmez",
+      "category": "eligibility",
+      "given": "Aynı epoch eski sıra veya NaN/negatif OHLC/ters timestamp.",
+      "steps": [
+        "Paketi doğrula"
+      ],
+      "expected": {
+        "semantic_events": 0,
+        "state_mutation": false,
+        "reason": "INVALID_PACKET"
+      },
+      "coverage": [
+        "INVALID_PACKET",
+        "stale_sequence"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR20",
+      "title": "Kaynak/sembol/fiyat türü uyuşmazlığı",
+      "category": "eligibility",
+      "given": "BTC/live_public/LAST_PRICE bağı var.",
+      "steps": [
+        "ETH veya MARK_PRICE veya demo hesap verisi gönder"
+      ],
+      "expected": {
+        "outcome": "BLOCKED",
+        "reason": "IDENTITY_MISMATCH"
+      },
+      "coverage": [
+        "IDENTITY_MISMATCH"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR21",
+      "title": "Taze heartbeat eski upstream veriyi canlandıramaz",
+      "category": "eligibility",
+      "given": "Transport yeni; son güvenilir upstream veri20sn önce.",
+      "steps": [
+        "Heartbeat al"
+      ],
+      "expected": {
+        "outcome": "BLOCKED",
+        "reason": "STALE_INPUT"
+      },
+      "coverage": [
+        "STALE_INPUT",
+        "freshness"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR22",
+      "title": "Saat kanıtı yok veya saat sıçrar",
+      "category": "eligibility",
+      "given": "UTC/monotonic çapraz kanıtı yok veya geleceğe stamp var.",
+      "steps": [
+        "LIVE etiketiyle değerlendirme dene"
+      ],
+      "expected": {
+        "outcome": "BLOCKED",
+        "reason": "CLOCK_UNTRUSTED"
+      },
+      "coverage": [
+        "CLOCK_UNTRUSTED",
+        "freshness"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR23",
+      "title": "Kalite/gap/warmup eksikliği",
+      "category": "eligibility",
+      "given": "quality UNKNOWN/GAP veya gerekli geçmiş eksik.",
+      "steps": [
+        "Kapalı mum oku"
+      ],
+      "expected": {
+        "semantic_events": 0,
+        "reasons": [
+          "QUALITY_NOT_OK",
+          "GAP_OR_INCOMPLETE_WARMUP"
+        ]
+      },
+      "coverage": [
+        "QUALITY_NOT_OK",
+        "GAP_OR_INCOMPLETE_WARMUP"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR24",
+      "title": "Float fiyat kesinlik kanıtı değildir",
+      "category": "eligibility",
+      "given": "Mevcut wire JSON number; orijinal decimal provenance yok.",
+      "steps": [
+        "Decimal(str(float)) ile uygun saymayı dene"
+      ],
+      "expected": {
+        "outcome": "BLOCKED",
+        "reason": "PRICE_PRECISION_UNPROVEN"
+      },
+      "coverage": [
+        "PRICE_PRECISION_UNPROVEN",
+        "decimal"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR25",
+      "title": "Çizim commit yarışı",
+      "category": "revision",
+      "given": "Değerlendirme revision7 ile başladı; head8 oldu.",
+      "steps": [
+        "Semantik event/intent transaction commit öncesi head karşılaştır"
+      ],
+      "expected": {
+        "semantic_events": 0,
+        "local_intents": 0,
+        "reason": "REVISION_CHANGED"
+      },
+      "coverage": [
+        "revision",
+        "REVISION_CHANGED",
+        "atomicity"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR26",
+      "title": "Silinme veya head okunamaması",
+      "category": "revision",
+      "given": "Binding etkin, head deleted/404/okuma hatası.",
+      "steps": [
+        "Değerlendirme dene"
+      ],
+      "expected": {
+        "outcome": "BLOCKED",
+        "reason": "DRAWING_NOT_FOUND_OR_DELETED"
+      },
+      "coverage": [
+        "DRAWING_NOT_FOUND_OR_DELETED",
+        "revision"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR27",
+      "title": "Undo eski yetkiyi canlandırmaz",
+      "category": "revision",
+      "given": "Revision9 geometri revision7 ile aynı, binding7.",
+      "steps": [
+        "Undo sonrası close oku"
+      ],
+      "expected": {
+        "outcome": "BLOCKED",
+        "reason": "REVISION_CHANGED",
+        "explicit_rebind_required": true
+      },
+      "coverage": [
+        "revision",
+        "undo"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR28",
+      "title": "LIVE dışı durum ve renderer/fault",
+      "category": "eligibility",
+      "given": "E3 blocked_statuses listesindeki her durum ayrı fixture.",
+      "steps": [
+        "Durum değiştir; uygun kapalı mum mevcut olsa da değerlendir"
+      ],
+      "expected": {
+        "semantic_events": 0,
+        "blocked_statuses_ref": "E3.blocked_statuses"
+      },
+      "coverage": [
+        "blocked_statuses",
+        "fault"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR29",
+      "title": "Gecikmiş resync catchup fırsat değildir",
+      "category": "recovery",
+      "given": "Uzun kesintide iki kapanış kaçtı; history ile doldu.",
+      "steps": [
+        "Resync sonrası eski kapanışları oku"
+      ],
+      "expected": {
+        "new_live_events": 0,
+        "audit": "HISTORICAL_CATCHUP",
+        "resume_requires_fresh_proofs": true
+      },
+      "coverage": [
+        "recovery",
+        "late_data",
+        "no_lookahead"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR30",
+      "title": "Replay aynı domain izi, ayrı yan etki alanı",
+      "category": "replay",
+      "given": "Aynı frozen girdiler/binding/rule/hash/checkpoint ve recorded live-start sınırı.",
+      "steps": [
+        "Aynı veri iki kez replay",
+        "Aynı kayıtlı live fixture iziyle karşılaştır"
+      ],
+      "expected": {
+        "domain_event_ids_identical": true,
+        "external_messages": 0,
+        "live_outbox_writes": 0,
+        "namespace": "replay:<run_id>"
+      },
+      "coverage": [
+        "replay",
+        "determinism",
+        "no_lookahead"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR31",
+      "title": "Event+intent atomik; köprü tekrarına dayanıklı",
+      "category": "delivery",
+      "given": "Gelecek uygulama DB transaction’ı ve idempotent notification bridge.",
+      "steps": [
+        "Commit öncesi crash: ikisi de yok",
+        "Commit sonrası/bridge öncesi crash: aynı intentten devam",
+        "Bridge enqueue sonrası/ack öncesi crash: aynı event_id,destination ile tekrar"
+      ],
+      "expected": {
+        "lost_domain_events": 0,
+        "duplicate_queue_rows": 0,
+        "cross_database_atomicity_claim": false
+      },
+      "coverage": [
+        "atomicity",
+        "dedup",
+        "crash_recovery"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR32",
+      "title": "Gönderim sonucu belirsiz",
+      "category": "delivery",
+      "given": "Sağlayıcı mesajı aldı; receipt kayboldu veya worker ack öncesi kapandı.",
+      "steps": [
+        "Lease/retry tekrarını işle"
+      ],
+      "expected": {
+        "delivery_state": "DELIVERY_UNKNOWN",
+        "exactly_once_delivery_claim": false,
+        "manual_or_policy_reconcile_required": true
+      },
+      "coverage": [
+        "delivery_unknown",
+        "crash_recovery"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR33",
+      "title": "Kanal yok/429/kalıcı hata/TTL",
+      "category": "delivery",
+      "given": "Yerel sink etkin; gerçek Telegram gönderimi kapalı.",
+      "steps": [
+        "Kanal yapılandırılmamış fixture",
+        "429 Retry-After fixture",
+        "Kalıcı ret fixture",
+        "İntent TTL aşımı fixture"
+      ],
+      "expected": {
+        "local_receipt_supported": true,
+        "external_messages": 0,
+        "outcomes": [
+          "CHANNEL_UNCONFIGURED",
+          "RETRY_BOUNDED",
+          "FAILED",
+          "EXPIRED"
+        ]
+      },
+      "coverage": [
+        "delivery_failure",
+        "expiry",
+        "local_only"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR34",
+      "title": "Kuyrukta beklerken revision değişir",
+      "category": "delivery",
+      "given": "Intent eski revision’a bağlı; henüz gönderilmedi.",
+      "steps": [
+        "Head değiştir",
+        "Delivery eligibility kontrol et"
+      ],
+      "expected": {
+        "delivery_state": "CANCELED_SUPERSEDED",
+        "old_message_sent": false,
+        "already_sent_message_recalled": false
+      },
+      "coverage": [
+        "delivery_revision",
+        "expiry"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR35",
+      "title": "Ayrı kural bağı ayrı olaydır",
+      "category": "dedup",
+      "given": "Aynı mumda iki farklı binding/rule version.",
+      "steps": [
+        "İkisini değerlendir"
+      ],
+      "expected": {
+        "semantic_events": 2,
+        "cross_binding_suppression": false
+      },
+      "coverage": [
+        "binding_isolation",
+        "dedup"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    },
+    {
+      "id": "DR36",
+      "title": "Emir/hesap yan etkisi yok",
+      "category": "isolation",
+      "given": "DR01–DR35 tam plan.",
+      "steps": [
+        "Bütün fixture’larda dış erişimleri yakala"
+      ],
+      "expected": {
+        "order_requests": 0,
+        "account_requests": 0,
+        "external_messages": 0,
+        "execution_store_mutations": 0,
+        "runtime_worker_started": false
+      },
+      "coverage": [
+        "no_orders",
+        "isolation"
+      ],
+      "execution_status": "SPECIFIED_NOT_EXECUTED"
+    }
+  ],
+  "all_cases_execution_status": "SPECIFIED_NOT_EXECUTED",
+  "acceptance_exit": [
+    "All E3 proofs implemented and missing proof cases blocked",
+    "All scenario expectations executed in isolated fake-clock fixtures with traces",
+    "Durable state/event/intent/checkpoint restart tests pass",
+    "No user/execution store writes, account/order requests or actual provider sends in dry-run",
+    "Local report distinguishes measured events, suppressed conditions, queued/unknown/delivered state",
+    "E1/B5 open items and E5 user review remain required before integration authorization"
+  ],
+  "event_id_encoding": {
+    "serialization": "UTF8 canonical compact JSON array in E3 event_identity_template order",
+    "component_format": "Every component is a string; revisions/versions/candle_open_time use positive base10 with no leading zero. Convert backend integers losslessly before hashing.",
+    "hash": "SHA256 lowercase hex",
+    "namespace": "owner-bound app storage or replay:<run_id>, not a browser label"
+  },
+  "synthetic_golden_values": {
+    "approach_distance": "1.0",
+    "touch_band": [
+      "99.9",
+      "100.1"
+    ],
+    "from_below_rearm_high_max": "98.0",
+    "reverse_fibonacci_0618": "103.82",
+    "event_components": {
+      "source": "binance_usdm_live_trade_price",
+      "environment": "live_public",
+      "product": "USD-M",
+      "price_type": "LAST_PRICE",
+      "symbol": "BTCUSDT",
+      "interval": "15m",
+      "workspace_id": "main",
+      "drawing_id": "drawing_demo",
+      "drawing_revision": "7",
+      "binding_id": "binding_demo",
+      "binding_version": "1",
+      "rule_id": "level_watch",
+      "rule_version": "1",
+      "event_kind": "TOUCH",
+      "candle_open_time": "1800000000"
+    },
+    "event_canonical_json": "[\"binance_usdm_live_trade_price\",\"live_public\",\"USD-M\",\"LAST_PRICE\",\"BTCUSDT\",\"15m\",\"main\",\"drawing_demo\",\"7\",\"binding_demo\",\"1\",\"level_watch\",\"1\",\"TOUCH\",\"1800000000\"]",
+    "event_id": "52fc0cd3986e187665b84ae2774bd63685fceb28ac71589a9d7b63c0624cc811"
+  }
+}

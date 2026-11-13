@@ -1,0 +1,67 @@
+{
+  "schema": "chart-binding-definition/1",
+  "binding_schema": "chart-binding/1",
+  "catalog_schema": "chart-binding-catalog/1",
+  "states": [
+    "DISABLED",
+    "STOPPED"
+  ],
+  "default_state": "DISABLED",
+  "evaluation": "NOT_IMPLEMENTED_P5",
+  "closed_candle": true,
+  "rearm_policy": "EXPLICIT",
+  "identity": [
+    "owner",
+    "workspace_id",
+    "target.type",
+    "target.object_id",
+    "target.revision"
+  ],
+  "context": [
+    "market",
+    "LINEAR",
+    "grid.times",
+    "grid.hash",
+    "query",
+    "rule",
+    "evidence"
+  ],
+  "fingerprint": "SHA256 canonical JSON; numbers encoded as $f64 using chart_number; not authorization signature",
+  "snapshot_proof": "CLIENT_REFERENCE_NOT_ELIGIBILITY",
+  "supported_target_kinds": 20,
+  "drawing_kinds": 12,
+  "indicator_kinds": 8,
+  "rules": [
+    "observe",
+    "approach",
+    "touch",
+    "close_cross"
+  ],
+  "price_rules": "All four only for canonical PRICE query outputs",
+  "observe_only": [
+    "DISPLAY_NUMBER",
+    "METRIC",
+    "BOOLEAN",
+    "HYPOTHETICAL_METRIC"
+  ],
+  "unsupported": [
+    "annotations",
+    "fibonacci_projection",
+    "LOG"
+  ],
+  "lifecycle": "Target revision changes append STOPPED in same transaction; explicit rebind appends DISABLED; no automatic rearm",
+  "ack": "Immutable original request result; fresh GET is current head authority",
+  "capabilities": {
+    "read_definition": true,
+    "target_write": false,
+    "target_edit": false,
+    "execute": false,
+    "order_authority": false
+  },
+  "limits": {
+    "bindings_per_workspace": 100,
+    "expected_revision_exclusive_max": 1000
+  },
+  "migration": 6,
+  "delivery": "docs/chart/P4-REVISION-BINDINGS-DELIVERY.md"
+}

@@ -1,0 +1,709 @@
+{
+  "schema": "chart-ruler-reference/1",
+  "cases": [
+    {
+      "name": "up",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "up",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100"
+          },
+          {
+            "time": 1800001800,
+            "price": "110"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": [
+        1800000000,
+        1800000900,
+        1800001800
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "percent_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "tick_change": {
+          "numerator": "40",
+          "denominator": "1",
+          "decimal": "40"
+        },
+        "elapsed_seconds": 1800,
+        "duration_seconds": 1800,
+        "bars": {
+          "state": "COMPLETE",
+          "reason": null,
+          "count": 3,
+          "intervals": {
+            "numerator": "2",
+            "denominator": "1",
+            "decimal": "2"
+          },
+          "missing_bars": 0
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "reverse_down",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "reverse_down",
+        "anchors": [
+          {
+            "time": 1800001800,
+            "price": "110"
+          },
+          {
+            "time": 1800000000,
+            "price": "100"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": [
+        1800000000,
+        1800000900,
+        1800001800
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "-10",
+          "denominator": "1",
+          "decimal": "-10"
+        },
+        "percent_change": {
+          "numerator": "-100",
+          "denominator": "11",
+          "decimal": null
+        },
+        "tick_change": {
+          "numerator": "-40",
+          "denominator": "1",
+          "decimal": "-40"
+        },
+        "elapsed_seconds": -1800,
+        "duration_seconds": 1800,
+        "bars": {
+          "state": "COMPLETE",
+          "reason": null,
+          "count": 3,
+          "intervals": {
+            "numerator": "2",
+            "denominator": "1",
+            "decimal": "2"
+          },
+          "missing_bars": 0
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "flat",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "flat",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100"
+          },
+          {
+            "time": 1800001800,
+            "price": "100"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": [
+        1800000000,
+        1800000900,
+        1800001800
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal": "0"
+        },
+        "percent_change": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal": "0"
+        },
+        "tick_change": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal": "0"
+        },
+        "elapsed_seconds": 1800,
+        "duration_seconds": 1800,
+        "bars": {
+          "state": "COMPLETE",
+          "reason": null,
+          "count": 3,
+          "intervals": {
+            "numerator": "2",
+            "denominator": "1",
+            "decimal": "2"
+          },
+          "missing_bars": 0
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "vertical",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "vertical",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100"
+          },
+          {
+            "time": 1800000000,
+            "price": "110"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": [
+        1800000000
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "percent_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "tick_change": {
+          "numerator": "40",
+          "denominator": "1",
+          "decimal": "40"
+        },
+        "elapsed_seconds": 0,
+        "duration_seconds": 0,
+        "bars": {
+          "state": "COMPLETE",
+          "reason": null,
+          "count": 1,
+          "intervals": {
+            "numerator": "0",
+            "denominator": "1",
+            "decimal": "0"
+          },
+          "missing_bars": 0
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "point",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "point",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100"
+          },
+          {
+            "time": 1800000000,
+            "price": "100"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": [
+        1800000000
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal": "0"
+        },
+        "percent_change": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal": "0"
+        },
+        "tick_change": {
+          "numerator": "0",
+          "denominator": "1",
+          "decimal": "0"
+        },
+        "elapsed_seconds": 0,
+        "duration_seconds": 0,
+        "bars": {
+          "state": "COMPLETE",
+          "reason": null,
+          "count": 1,
+          "intervals": {
+            "numerator": "0",
+            "denominator": "1",
+            "decimal": "0"
+          },
+          "missing_bars": 0
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "gap",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "gap",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100"
+          },
+          {
+            "time": 1800003600,
+            "price": "110"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": [
+        1800000000,
+        1800000900,
+        1800003600
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "percent_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "tick_change": {
+          "numerator": "40",
+          "denominator": "1",
+          "decimal": "40"
+        },
+        "elapsed_seconds": 3600,
+        "duration_seconds": 3600,
+        "bars": {
+          "state": "GAPPED",
+          "reason": "GRID_GAP",
+          "count": 3,
+          "intervals": {
+            "numerator": "2",
+            "denominator": "1",
+            "decimal": "2"
+          },
+          "missing_bars": 2
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "fractional_gap",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "fractional_gap",
+        "anchors": [
+          {
+            "time": 1800000450,
+            "price": "100"
+          },
+          {
+            "time": 1800002250,
+            "price": "110"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": [
+        1800000000,
+        1800000900,
+        1800003600
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "percent_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "tick_change": {
+          "numerator": "40",
+          "denominator": "1",
+          "decimal": "40"
+        },
+        "elapsed_seconds": 1800,
+        "duration_seconds": 1800,
+        "bars": {
+          "state": "GAPPED",
+          "reason": "GRID_GAP",
+          "count": 1,
+          "intervals": {
+            "numerator": "1",
+            "denominator": "1",
+            "decimal": "1"
+          },
+          "missing_bars": 1
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "no_grid",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "no_grid",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100"
+          },
+          {
+            "time": 1800001800,
+            "price": "110"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": null,
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "percent_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "tick_change": {
+          "numerator": "40",
+          "denominator": "1",
+          "decimal": "40"
+        },
+        "elapsed_seconds": 1800,
+        "duration_seconds": 1800,
+        "bars": {
+          "state": "UNAVAILABLE",
+          "reason": "GRID_UNAVAILABLE",
+          "count": null,
+          "intervals": null,
+          "missing_bars": null
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "out_of_range",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "out_of_range",
+        "anchors": [
+          {
+            "time": 1799999100,
+            "price": "100"
+          },
+          {
+            "time": 1800003600,
+            "price": "110"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": [
+        1800000000,
+        1800000900,
+        1800001800
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "percent_change": {
+          "numerator": "10",
+          "denominator": "1",
+          "decimal": "10"
+        },
+        "tick_change": {
+          "numerator": "40",
+          "denominator": "1",
+          "decimal": "40"
+        },
+        "elapsed_seconds": 4500,
+        "duration_seconds": 4500,
+        "bars": {
+          "state": "UNAVAILABLE",
+          "reason": "GRID_OUT_OF_RANGE",
+          "count": null,
+          "intervals": null,
+          "missing_bars": null
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "large_exact",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "large_exact",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "9007199254740993.25"
+          },
+          {
+            "time": 1800001800,
+            "price": "9007199254740993.50"
+          }
+        ]
+      },
+      "tick_size": "0.25",
+      "interval": "15m",
+      "times": [
+        1800000000,
+        1800000900,
+        1800001800
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "1",
+          "denominator": "4",
+          "decimal": "0.25"
+        },
+        "percent_change": {
+          "numerator": "100",
+          "denominator": "36028797018963973",
+          "decimal": null
+        },
+        "tick_change": {
+          "numerator": "1",
+          "denominator": "1",
+          "decimal": "1"
+        },
+        "elapsed_seconds": 1800,
+        "duration_seconds": 1800,
+        "bars": {
+          "state": "COMPLETE",
+          "reason": null,
+          "count": 3,
+          "intervals": {
+            "numerator": "2",
+            "denominator": "1",
+            "decimal": "2"
+          },
+          "missing_bars": 0
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "micro",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "micro",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "0.00000001"
+          },
+          {
+            "time": 1800001800,
+            "price": "0.00000002"
+          }
+        ]
+      },
+      "tick_size": "0.00000001",
+      "interval": "15m",
+      "times": [
+        1800000000,
+        1800000900,
+        1800001800
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "1",
+          "denominator": "100000000",
+          "decimal": "0.00000001"
+        },
+        "percent_change": {
+          "numerator": "100",
+          "denominator": "1",
+          "decimal": "100"
+        },
+        "tick_change": {
+          "numerator": "1",
+          "denominator": "1",
+          "decimal": "1"
+        },
+        "elapsed_seconds": 1800,
+        "duration_seconds": 1800,
+        "bars": {
+          "state": "COMPLETE",
+          "reason": null,
+          "count": 3,
+          "intervals": {
+            "numerator": "2",
+            "denominator": "1",
+            "decimal": "2"
+          },
+          "missing_bars": 0
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    },
+    {
+      "name": "repeating_percent",
+      "geometry": {
+        "kind": "ruler",
+        "schema": "chart-ruler/1",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "repeating_percent",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "3"
+          },
+          {
+            "time": 1800001800,
+            "price": "4"
+          }
+        ]
+      },
+      "tick_size": "0.01",
+      "interval": "15m",
+      "times": [
+        1800000000,
+        1800000900,
+        1800001800
+      ],
+      "expected": {
+        "schema": "chart-ruler-measurement/1",
+        "price_change": {
+          "numerator": "1",
+          "denominator": "1",
+          "decimal": "1"
+        },
+        "percent_change": {
+          "numerator": "100",
+          "denominator": "3",
+          "decimal": null
+        },
+        "tick_change": {
+          "numerator": "100",
+          "denominator": "1",
+          "decimal": "100"
+        },
+        "elapsed_seconds": 1800,
+        "duration_seconds": 1800,
+        "bars": {
+          "state": "COMPLETE",
+          "reason": null,
+          "count": 3,
+          "intervals": {
+            "numerator": "2",
+            "denominator": "1",
+            "decimal": "2"
+          },
+          "missing_bars": 0
+        },
+        "live_eligible": false,
+        "order_authority": false
+      }
+    }
+  ]
+}

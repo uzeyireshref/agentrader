@@ -1,0 +1,8 @@
+{
+  "max_trade_loss": "5",
+  "max_total_loss": "10",
+  "max_daily_loss": "25",
+  "max_notional": "100",
+  "max_positions": 1,
+  "max_age_seconds": 15
+}

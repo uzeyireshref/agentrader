@@ -1,0 +1,914 @@
+{
+  "schema": "chart-binding-evidence/1",
+  "runtime_sources": [
+    {
+      "path": "agentrader/drawings/channel_family.py",
+      "sha256": "d4ab694f57c6739e290e96df3541cc2471001d93e9bdf61c0374bac6bc87b0b8"
+    },
+    {
+      "path": "agentrader/drawings/service.py",
+      "sha256": "ffa6bcc4424cc20042c3ea4e88c49b965b774eb13384a0dc864ee390c55cb708"
+    },
+    {
+      "path": "agentrader/drawings/contracts.py",
+      "sha256": "479afa5abc3edc47c946e664fd97a75536136ecc9b200c608f1020a9968639a1"
+    },
+    {
+      "path": "agentrader/chart_bindings.py",
+      "sha256": "5e3b7ea9e567b7845718789cc4a37dd18d24555f2731af8df0104e1c87945aff"
+    },
+    {
+      "path": "agentrader/binding_catalog.py",
+      "sha256": "3c8d2b052d29a01c2548f9f711db9477ef5e372030c5986252315b42cd364da2"
+    },
+    {
+      "path": "agentrader/drawings/calculations.py",
+      "sha256": "02d3a9dd14149c568b4151b8b8f9504d8ae2b845ebbdaf6c3934b28281dcd407"
+    },
+    {
+      "path": "agentrader/drawings/channel.py",
+      "sha256": "2656eea381305cf9852c8f20cb828eae79ebef11ae1bcd20ec3973c7dd8020d2"
+    },
+    {
+      "path": "agentrader/drawings/position.py",
+      "sha256": "905901f1a004739640950f0a7af1c3039af7f646c0fad1c10fe73a201021c159"
+    },
+    {
+      "path": "agentrader/drawings/fibonacci.py",
+      "sha256": "5ccf06970c8588551970335ec81cef16f47d07ae37514c78b7a1a7b2fd97eb00"
+    },
+    {
+      "path": "agentrader/indicator_config.py",
+      "sha256": "fc07a999363dadfbfb36ed79d94bd971ccb594829ed459caa9376335f29b7902"
+    },
+    {
+      "path": "agentrader/vwap.py",
+      "sha256": "8fbd27d2dd684ca9f56203d4df2b9e61190f2e3bfacab29c30cc23907e657176"
+    },
+    {
+      "path": "agentrader/binding_eligibility.py",
+      "sha256": "21ea614cd0279c514ca44c90c719ce251bc5a815d06198cdafd546a276ea2d98"
+    },
+    {
+      "path": "agentrader/chart_clock.py",
+      "sha256": "002b13abbfc3046ea0db2510131e887bd3b55dc2c927cf9fac3e43511ac38859"
+    },
+    {
+      "path": "agentrader/chart_evidence.py",
+      "sha256": "00e2d501139f29ad5124b64d5b5870c4f1b3ccc523ba063f5423377fb8d8abac"
+    },
+    {
+      "path": "agentrader/chart_precision.py",
+      "sha256": "c8b644b0bbb9be24c8e9defad1c1c03c4bcaf348265864415f79ab5c6863fba1"
+    },
+    {
+      "path": "agentrader/market_feed.py",
+      "sha256": "148f75e7e17f266b382e1c5b5cd07639d9a05c6789a8950f18946855754d8cfa"
+    },
+    {
+      "path": "agentrader/local_chart_events.py",
+      "sha256": "4dae343d0a72d9e5f0a87b681aba226b5cf2f683ebdfaf2132b13091c7f433df"
+    },
+    {
+      "path": "agentrader/chart_replay.py",
+      "sha256": "b7989c67884dda98c44182448e897e25087bb9c05e21cae89f1f593f4ec81d10"
+    }
+  ],
+  "targets": {
+    "drawing:horizontal": {
+      "queries": [
+        {
+          "operation": "priceAt",
+          "output": "value",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        },
+        {
+          "operation": "distance",
+          "output": "value",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/geometry-parity.json",
+          "sha256": "3b5aaa1562a9898a3e5cc2039c2ee6d3e8277948f6894b35fc94ab108a374b61"
+        },
+        {
+          "path": "tests/test_chart_calculations.py",
+          "sha256": "52f16ae24875ad92f077b85e2c6f40010f0383d70b5c6d9f42083587a84c7482"
+        }
+      ]
+    },
+    "drawing:trend": {
+      "queries": [
+        {
+          "operation": "priceAt",
+          "output": "value",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        },
+        {
+          "operation": "distance",
+          "output": "value",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/geometry-parity.json",
+          "sha256": "3b5aaa1562a9898a3e5cc2039c2ee6d3e8277948f6894b35fc94ab108a374b61"
+        },
+        {
+          "path": "tests/test_chart_calculations.py",
+          "sha256": "52f16ae24875ad92f077b85e2c6f40010f0383d70b5c6d9f42083587a84c7482"
+        }
+      ]
+    },
+    "drawing:horizontal_ray": {
+      "queries": [
+        {
+          "operation": "priceAt",
+          "output": "value",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        },
+        {
+          "operation": "distance",
+          "output": "value",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/lineGeometry.test.ts",
+          "sha256": "d020457a120e5b66eaec48ac811c84a3bf12522b3d611075617636189d72f8ea"
+        },
+        {
+          "path": "tests/test_line_extensions.py",
+          "sha256": "b979ed0e9f7d2145a2ad8009601c1b593005787bb854eb9d245d130b9d573b00"
+        }
+      ]
+    },
+    "drawing:ray": {
+      "queries": [
+        {
+          "operation": "priceAt",
+          "output": "value",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        },
+        {
+          "operation": "distance",
+          "output": "value",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/lineGeometry.test.ts",
+          "sha256": "d020457a120e5b66eaec48ac811c84a3bf12522b3d611075617636189d72f8ea"
+        },
+        {
+          "path": "tests/test_line_extensions.py",
+          "sha256": "b979ed0e9f7d2145a2ad8009601c1b593005787bb854eb9d245d130b9d573b00"
+        }
+      ]
+    },
+    "drawing:extended_line": {
+      "queries": [
+        {
+          "operation": "priceAt",
+          "output": "value",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        },
+        {
+          "operation": "distance",
+          "output": "value",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/lineGeometry.test.ts",
+          "sha256": "d020457a120e5b66eaec48ac811c84a3bf12522b3d611075617636189d72f8ea"
+        },
+        {
+          "path": "tests/test_line_extensions.py",
+          "sha256": "b979ed0e9f7d2145a2ad8009601c1b593005787bb854eb9d245d130b9d573b00"
+        }
+      ]
+    },
+    "drawing:zone": {
+      "queries": [
+        {
+          "operation": "contains",
+          "output": "value",
+          "output_type": "BOOLEAN",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "distance",
+          "output": "value",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/geometry-parity.json",
+          "sha256": "3b5aaa1562a9898a3e5cc2039c2ee6d3e8277948f6894b35fc94ab108a374b61"
+        },
+        {
+          "path": "tests/test_chart_calculations.py",
+          "sha256": "52f16ae24875ad92f077b85e2c6f40010f0383d70b5c6d9f42083587a84c7482"
+        }
+      ]
+    },
+    "drawing:fibonacci": {
+      "queries": [
+        {
+          "operation": "level",
+          "output": "value",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fibonacciConfig.test.ts",
+          "sha256": "730b9a08c12b53ace94cfd2b4f161583375a359564910f3e59d1719189472394"
+        },
+        {
+          "path": "tests/test_configurable_fibonacci.py",
+          "sha256": "909e8e668a0b92828cd9d3fab8aa85c11ac7ddd9af35627ebc1281ae4a59dc9b"
+        }
+      ]
+    },
+    "drawing:fibonacci_extension": {
+      "queries": [
+        {
+          "operation": "level",
+          "output": "value",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fibonacciConfig.test.ts",
+          "sha256": "730b9a08c12b53ace94cfd2b4f161583375a359564910f3e59d1719189472394"
+        },
+        {
+          "path": "tests/test_configurable_fibonacci.py",
+          "sha256": "909e8e668a0b92828cd9d3fab8aa85c11ac7ddd9af35627ebc1281ae4a59dc9b"
+        }
+      ]
+    },
+    "drawing:parallel_channel": {
+      "queries": [
+        {
+          "operation": "boundsAt",
+          "output": "lower",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        },
+        {
+          "operation": "boundsAt",
+          "output": "middle",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        },
+        {
+          "operation": "boundsAt",
+          "output": "upper",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        },
+        {
+          "operation": "boundsAt",
+          "output": "width",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "contains",
+          "output": "value",
+          "output_type": "BOOLEAN",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "distance",
+          "output": "value",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/channel.test.ts",
+          "sha256": "f6e70e06fb0f4e1f73b7596789dc97960bdfe4b53c2b3437ffa7af4f64e75f66"
+        },
+        {
+          "path": "tests/test_parallel_channel.py",
+          "sha256": "0657d64a259f3f82a48259ff48eea82fbff4585d9b1956a6784919a4a7bc9919"
+        }
+      ]
+    },
+    "drawing:long_plan": {
+      "queries": [
+        {
+          "operation": "riskReward",
+          "output": "entry_fill",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "stop_fill",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "target_fill",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "gross_rr",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "net_rr",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "quantity",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/position.test.ts",
+          "sha256": "4b523ff269ae47f9ba5a219ccb86ad15e871040a7da2a2e0d2efef952568409d"
+        },
+        {
+          "path": "tests/test_chart_position.py",
+          "sha256": "f6b224849e2c24fde4e9cc98b763e1db6489355767d7d95fde0ba2a4589bb31f"
+        }
+      ]
+    },
+    "drawing:short_plan": {
+      "queries": [
+        {
+          "operation": "riskReward",
+          "output": "entry_fill",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "stop_fill",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "target_fill",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "gross_rr",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "net_rr",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "riskReward",
+          "output": "quantity",
+          "output_type": "HYPOTHETICAL_METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/position.test.ts",
+          "sha256": "4b523ff269ae47f9ba5a219ccb86ad15e871040a7da2a2e0d2efef952568409d"
+        },
+        {
+          "path": "tests/test_chart_position.py",
+          "sha256": "f6b224849e2c24fde4e9cc98b763e1db6489355767d7d95fde0ba2a4589bb31f"
+        }
+      ]
+    },
+    "drawing:ruler": {
+      "queries": [
+        {
+          "operation": "measurement",
+          "output": "price_change",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "measurement",
+          "output": "percent_change",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "measurement",
+          "output": "tick_change",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "measurement",
+          "output": "duration_seconds",
+          "output_type": "METRIC",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_CANONICAL",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid",
+        "native_tick_size"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/ruler-parity.json",
+          "sha256": "85b2e0b508813b9b2f089eaa4404bf79c4e88c0bde9cf867d0eac1433353caa1"
+        },
+        {
+          "path": "tests/test_ruler.py",
+          "sha256": "01e42eba0961262dfcb1706923fa00fa7210909d9c125a6cda3848a03c9019b8"
+        }
+      ]
+    },
+    "indicator:EMA": {
+      "queries": [
+        {
+          "operation": "valueAt",
+          "output": "value",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "FLOAT_DISPLAY",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid",
+        "native_ohlcv",
+        "calculation_version",
+        "warmup",
+        "volume_provenance_or_seed"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/indicators-v2-parity.json",
+          "sha256": "e2b64ad7d15fbb84d8a6c7f2f51a6b3359f0f98854a59579ebc8f485cf17923f"
+        }
+      ]
+    },
+    "indicator:SMA": {
+      "queries": [
+        {
+          "operation": "valueAt",
+          "output": "value",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "FLOAT_DISPLAY",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid",
+        "native_ohlcv",
+        "calculation_version",
+        "warmup",
+        "volume_provenance_or_seed"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/indicators-v2-parity.json",
+          "sha256": "e2b64ad7d15fbb84d8a6c7f2f51a6b3359f0f98854a59579ebc8f485cf17923f"
+        }
+      ]
+    },
+    "indicator:RSI": {
+      "queries": [
+        {
+          "operation": "valueAt",
+          "output": "value",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "FLOAT_DISPLAY",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid",
+        "native_ohlcv",
+        "calculation_version",
+        "warmup",
+        "volume_provenance_or_seed"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/indicators-v2-parity.json",
+          "sha256": "e2b64ad7d15fbb84d8a6c7f2f51a6b3359f0f98854a59579ebc8f485cf17923f"
+        }
+      ]
+    },
+    "indicator:ATR": {
+      "queries": [
+        {
+          "operation": "valueAt",
+          "output": "value",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "FLOAT_DISPLAY",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid",
+        "native_ohlcv",
+        "calculation_version",
+        "warmup",
+        "volume_provenance_or_seed"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/indicators-v2-parity.json",
+          "sha256": "e2b64ad7d15fbb84d8a6c7f2f51a6b3359f0f98854a59579ebc8f485cf17923f"
+        }
+      ]
+    },
+    "indicator:MACD": {
+      "queries": [
+        {
+          "operation": "valueAt",
+          "output": "macd",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "valueAt",
+          "output": "signal",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "valueAt",
+          "output": "histogram",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "FLOAT_DISPLAY",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid",
+        "native_ohlcv",
+        "calculation_version",
+        "warmup",
+        "volume_provenance_or_seed"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/g05-multi-parity.json",
+          "sha256": "36e0c716704cced2a98b02696b9885d0bfc8d382ac722ca35ea3b5e6b10ecd30"
+        }
+      ]
+    },
+    "indicator:BB": {
+      "queries": [
+        {
+          "operation": "valueAt",
+          "output": "basis",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "valueAt",
+          "output": "upper",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        },
+        {
+          "operation": "valueAt",
+          "output": "lower",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "FLOAT_DISPLAY",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid",
+        "native_ohlcv",
+        "calculation_version",
+        "warmup",
+        "volume_provenance_or_seed"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/g05-multi-parity.json",
+          "sha256": "36e0c716704cced2a98b02696b9885d0bfc8d382ac722ca35ea3b5e6b10ecd30"
+        }
+      ]
+    },
+    "indicator:SESSION_VWAP": {
+      "queries": [
+        {
+          "operation": "valueAt",
+          "output": "value",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_RATIO_OR_BAR_DISPLAY",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid",
+        "native_ohlcv",
+        "calculation_version",
+        "warmup",
+        "volume_provenance_or_seed"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/vwap-parity.json",
+          "sha256": "345bf1aa1a59f9dd68e11a096e694475ec356f9d71351eff043d21cecd046833"
+        }
+      ]
+    },
+    "indicator:ANCHORED_VWAP": {
+      "queries": [
+        {
+          "operation": "valueAt",
+          "output": "value",
+          "output_type": "DISPLAY_NUMBER",
+          "rules": [
+            "observe"
+          ]
+        }
+      ],
+      "numeric_basis": "RATIONAL_RATIO_OR_BAR_DISPLAY",
+      "context_requirements": [
+        "verified_market_identity",
+        "closed_data_reference",
+        "fresh_clock",
+        "verified_grid",
+        "native_ohlcv",
+        "calculation_version",
+        "warmup",
+        "volume_provenance_or_seed"
+      ],
+      "artifacts": [
+        {
+          "path": "frontend/tests/fixtures/vwap-parity.json",
+          "sha256": "345bf1aa1a59f9dd68e11a096e694475ec356f9d71351eff043d21cecd046833"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "contract_version": "chart-bot-input/1.0-draft",
+  "status": "DESIGN_ONLY_NOT_IMPLEMENTED",
+  "production_adapter_implemented": false,
+  "runtime_activation_authorized": false,
+  "source_of_truth": "Backend market state and persisted drawing revision; never pixels/DOM",
+  "market_identity": {
+    "source": "binance_usdm_live_trade_price",
+    "environment": "live_public",
+    "product": "USD-M",
+    "price_type": "LAST_PRICE",
+    "symbol": "catalog-supported USDT perpetual",
+    "intervals": [
+      "15m",
+      "1h",
+      "4h",
+      "1d",
+      "1w"
+    ]
+  },
+  "units": {
+    "candle.time": "UTC_SECONDS_INTEGER",
+    "candle.close_time": "UTC_MILLISECONDS_INTEGER",
+    "packet.observed_at": "LOCAL_BACKEND_UTC_MILLISECONDS",
+    "packet.received_at": "LOCAL_BACKEND_LAST_ACCEPTED_DATA_RECEIPT_UTC_MILLISECONDS",
+    "close_event.time": "CANDLE_OPEN_UTC_SECONDS",
+    "close_event.event_time": "UPSTREAM_EVENT_UTC_MILLISECONDS",
+    "drawing.geometry.anchors[].time": "UTC_SECONDS_INTEGER",
+    "drawing.updated_at": "UTC_SECONDS_NUMBER",
+    "future.consumer_received_monotonic_ns": "PROCESS_MONOTONIC_NANOSECONDS"
+  },
+  "current_endpoints": {
+    "catalog": "GET /api/markets",
+    "history": "GET /api/candles?symbol=...&interval=...",
+    "stream": "WS /api/market-stream?symbol=...&interval=...",
+    "drawings": "GET /api/workspaces/{workspace_id}/drawings?symbol=...",
+    "drawing_head": "GET /api/drawings/{drawing_id}"
+  },
+  "current_wire": {
+    "packet_common_required": [
+      "type",
+      "source",
+      "environment",
+      "product",
+      "price_type",
+      "symbol",
+      "interval",
+      "status",
+      "sequence",
+      "generation",
+      "observed_at",
+      "received_at",
+      "quality",
+      "market",
+      "close_event"
+    ],
+    "snapshot_payload": "candles",
+    "update_payload": [
+      "candle",
+      "tail"
+    ],
+    "candle_required": [
+      "time",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "quote_volume",
+      "close_time",
+      "closed"
+    ],
+    "drawing_required": [
+      "drawing_id",
+      "revision",
+      "workspace_id",
+      "geometry",
+      "deleted",
+      "updated_at",
+      "product",
+      "source",
+      "tracking"
+    ],
+    "geometry_fields": [
+      "kind",
+      "symbol",
+      "price_source",
+      "anchors",
+      "label"
+    ],
+    "geometry_kinds": [
+      "horizontal",
+      "zone",
+      "trend",
+      "fibonacci"
+    ],
+    "drawing_has_interval": false,
+    "candle_decimal_transport": "JSON_NUMBER_PRESENTATION_PLUS_VERSIONED_EXACT_DECIMAL_SIDECAR",
+    "tracking_value": "NOT_IMPLEMENTED",
+    "candle_optional": [
+      "exact"
+    ],
+    "packet_common_optional": [
+      "precision",
+      "timing",
+      "stream_epoch",
+      "data_proof"
+    ],
+    "precision_sidecar_schema": "chart-exact-decimal/1",
+    "precision_verified_is_bot_eligibility": false,
+    "time_proof_schema": "chart-time-proof/1",
+    "time_policy_schema": "chart-time-policy/1",
+    "timing_fresh_is_bot_eligibility": false,
+    "data_proof_schema": "chart-data-proof/1",
+    "snapshot_schema": "chart-data-snapshot/1",
+    "data_proof_verified_is_bot_eligibility": false,
+    "drawing_format_v2": {
+      "opt_in": "format_version=2",
+      "additional_kinds": [
+        "ruler"
+      ],
+      "ruler_schema": "chart-ruler/1",
+      "legacy_default_excludes_new_kinds": true,
+      "measurement_is_order_authority": false
+    }
+  },
+  "stream_rules": [
+    "Implemented P3: producer UUID epoch changes on feed seed; each consumer transport has a local callback serial and first-snapshot barrier. Counters compare only within epoch.",
+    "Within epoch reject lower generation/sequence; equal generation+sequence is heartbeat only; greater generation requires full validated snapshot and no replay as live opportunity.",
+    "Sequence may change for status or skip in coalesced packets. A sequence jump alone is not proof of candle gap. Validate candle continuity and quality.",
+    "Repeated close_event is sticky metadata, not a new event. Seed/reconnect/history never emit historical closes as new live signals."
+  ],
+  "proposed_binding_fields": [
+    "binding_id",
+    "binding_version",
+    "workspace_id",
+    "drawing_id",
+    "drawing_revision",
+    "rule_id",
+    "rule_version",
+    "source",
+    "environment",
+    "product",
+    "price_type",
+    "symbol",
+    "interval",
+    "evaluation_mode",
+    "time_basis",
+    "validity",
+    "tolerance_profile",
+    "geometry_hash",
+    "grid_proof_id"
+  ],
+  "proposed_binding_defaults": {
+    "state": "DISABLED_UNTIL_EXPLICIT_ACTIVATION",
+    "evaluation_mode": "CLOSED_CANDLE",
+    "trend_time_basis": "LOADED_BAR_LOGICAL_PIECEWISE_V1",
+    "extrapolation": "NONE",
+    "revision_change": "SUSPEND_AND_REQUIRE_EXPLICIT_REBIND",
+    "deleted_or_unknown_head": "BLOCK",
+    "label": "DISPLAY_ONLY_NOT_EXECUTABLE"
+  },
+  "future_required_capabilities": [
+    "stable_stream_epoch",
+    "exact_decimal_market_values",
+    "monotonic_transport_age",
+    "trusted_upstream_clock_age_with_uncertainty",
+    "immutable_quality_complete_snapshot",
+    "revision_bound_rule_and_geometry",
+    "compare_drawing_head_before_durable_event_commit",
+    "persistent_semantic_event_deduplication"
+  ],
+  "freshness_policy": {
+    "current_ui_stale_after_ms": 10000,
+    "current_backend_event_age_guard_ms": 20000,
+    "proposed_bot_max_transport_age_ms": 10000,
+    "proposed_bot_max_upstream_age_ms": 10000,
+    "thresholds_status": "PROPOSED_VERSIONED_RULE_POLICY_NOT_IMPLEMENTED",
+    "clock_proof_missing": "BLOCKED_CLOCK_UNTRUSTED",
+    "repeated_wire_heartbeat": "DOES_NOT_REFRESH_LAST_UPSTREAM_DATA_AGE"
+  },
+  "blocked_statuses": [
+    "CONNECTING",
+    "SYNCING",
+    "RECONNECTING",
+    "STALE",
+    "GAP",
+    "STOPPED",
+    "ERROR",
+    "RENDER_ERROR",
+    "UNKNOWN"
+  ],
+  "blocked_reasons": [
+    "NOT_IMPLEMENTED",
+    "IDENTITY_MISMATCH",
+    "CLOCK_UNTRUSTED",
+    "STALE_INPUT",
+    "QUALITY_NOT_OK",
+    "INVALID_PACKET",
+    "GAP_OR_INCOMPLETE_WARMUP",
+    "PRICE_PRECISION_UNPROVEN",
+    "DRAWING_NOT_FOUND_OR_DELETED",
+    "REVISION_CHANGED",
+    "GRID_OR_GEOMETRY_UNSUPPORTED",
+    "SEMANTIC_EVENT_ALREADY_RECORDED"
+  ],
+  "fibonacci_ratios": [
+    "0",
+    "0.236",
+    "0.382",
+    "0.5",
+    "0.618",
+    "0.786",
+    "1"
+  ],
+  "event_identity_template": [
+    "source",
+    "environment",
+    "product",
+    "price_type",
+    "symbol",
+    "interval",
+    "workspace_id",
+    "drawing_id",
+    "drawing_revision",
+    "binding_id",
+    "binding_version",
+    "rule_id",
+    "rule_version",
+    "event_kind",
+    "candle_open_time"
+  ],
+  "event_identity_excludes": [
+    "packet_sequence",
+    "packet_generation",
+    "screen_pixels",
+    "label",
+    "browser_tab_id"
+  ],
+  "output_scope": [
+    "BLOCKED_WITH_REASON",
+    "OBSERVE_ONLY",
+    "EVALUATION_ELIGIBLE_NOT_ORDER_AUTHORITY"
+  ],
+  "execution_authority": false,
+  "example_decisions": [
+    {
+      "input": "Current production LIVE packet and saved drawing only",
+      "expected": "BLOCKED",
+      "reason": "NOT_IMPLEMENTED: required epoch/clock/exact-decimal/binding/dedup proofs absent"
+    },
+    {
+      "input": "Future v1 proofs valid, current candle open",
+      "expected": "OBSERVE_ONLY",
+      "reason": "Default CLOSED_CANDLE mode"
+    },
+    {
+      "input": "Future v1 proofs valid and fresh closed candle, revision matches",
+      "expected": "EVALUATION_ELIGIBLE_NOT_ORDER_AUTHORITY",
+      "reason": "No trading command or account authority implied"
+    },
+    {
+      "input": "Reconnect snapshot repeats a previous close_event",
+      "expected": "NO_NEW_LIVE_EVENT",
+      "reason": "History/bootstrap/resync are not new live opportunities"
+    },
+    {
+      "input": "Drawing revision changed or undo restored same geometry under a newer revision",
+      "expected": "BLOCKED",
+      "reason": "REVISION_CHANGED; geometry equality does not restore old binding"
+    }
+  ],
+  "eligibility_constraints": {
+    "status": "LIVE",
+    "quality_state": "OK",
+    "missing_bars": 0,
+    "warmup": "COMPLETE_FOR_SELECTED_RULE",
+    "identity": "EXACT_MATCH",
+    "revision": "CURRENT_HEAD_MATCH",
+    "all_future_capabilities_required": true
+  }
+}

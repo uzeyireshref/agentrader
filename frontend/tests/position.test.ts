@@ -1,0 +1,16 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {positionMetrics,positionText} from '../src/position.ts';
+import {decimalRational,divide,exactDecimal,multiply} from '../src/exactGeometry.ts';
+import {moveGeometry} from '../src/drag.ts';
+import {editGeometry} from '../src/editGeometry.ts';
+import type {Geometry} from '../src/drawings.ts';
+import type {Candle} from '../src/types.ts';
+const plan=(kind:'long_plan'|'short_plan'='long_plan'):Geometry=>({schema:'chart-position/1',kind,symbol:'BTCUSDT',price_source:'LAST_PRICE',label:'plan',anchors:[{time:1800000000,price:'100'},{time:1800009000,price:kind==='long_plan'?'90':'110'},{time:1800009000,price:kind==='long_plan'?'120':'80'}],params:{risk_budget:'100',fee_bps:'10',slippage_bps:'20'}});
+test('independent long and short cost references match backend exact fractions',()=>{for(const [kind,risk,reward] of [['long_plan','10.57002','19.34004'],['short_plan','10.63002','19.46004']] as const){const m=positionMetrics(plan(kind));assert.equal(exactDecimal(m.net_risk),risk);assert.equal(exactDecimal(m.net_reward),reward);assert.deepEqual(m.net_rr,divide(decimalRational(reward),decimalRational(risk)));assert.equal(exactDecimal(multiply(m.quantity!,m.net_risk)),'100');}});
+test('absent budget stays unavailable and fees can erase target profit',()=>{const g=plan();g.params={risk_budget:null,fee_bps:'1000',slippage_bps:'0'};g.anchors[2].price='100.01';const m=positionMetrics(g);assert.equal(m.quantity,null);assert.equal(m.target_pnl,null);assert.ok(m.net_reward.n<0n);});
+test('wrong order, zero risk, time mismatch and invalid costs cannot be saved',()=>{for(const price of ['100','101']){const g=plan();g.anchors[1].price=price;assert.throws(()=>positionMetrics(g));}const g=plan();g.params!.fee_bps='1001';assert.throws(()=>positionMetrics(g));g.params!.fee_bps='1000.000000000000000000001';assert.throws(()=>positionMetrics(g));g.params!.fee_bps='0';g.anchors[1].time--;assert.throws(()=>positionMetrics(g));});
+test('stop and target handle movement synchronizes the shared horizon and rejects crossing',()=>{const rows=Array.from({length:30},(_,i)=>({time:1800000000+i*900})) as Candle[];const g=plan();const moved=moveGeometry(g,rows,2,5,'0.25',900,1)!;assert.equal(moved.anchors[1].price,'95.00');assert.equal(moved.anchors[1].time,moved.anchors[2].time);assert.equal(moved.anchors[0].price,'100');assert.equal(moveGeometry(g,rows,2,10,'0.25',900,1),null);const group=moveGeometry(g,rows,1,5,'0.25',900,null)!;assert.deepEqual(group.anchors.map(a=>a.price),['105.00','95.00','125.00']);assert.deepEqual(group.params,g.params);});
+test('numeric form uses exact tick rules and preserves cost assumptions',()=>{const g=plan();const times=g.anchors.map(a=>new Date(a.time*1000).toISOString().slice(0,19));const result=editGeometry(g,'edited',['100','89.75','120'],times,'0.25');assert.deepEqual(result.params,g.params);assert.throws(()=>editGeometry(g,'bad',['100','100','120'],times,'0.25'));assert.throws(()=>editGeometry(g,'bad',['100','89.70','120'],times,'0.25'));});
+
+test('rounded terminating and repeating fractions both disclose approximation',()=>{assert.match(positionText(decimalRational('1.23456789')),/^≈ /);assert.match(positionText(divide(decimalRational('1'),decimalRational('3'))),/^≈ /);assert.equal(positionText(decimalRational('2')),'2');});

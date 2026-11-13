@@ -1,0 +1,22 @@
+{
+  "repository": "https://github.com/tradingview/lightweight-charts",
+  "commit": "2e1d5ce9fa0cf2a1fc8d70e0df66237e622e52c8",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "source": "packages/lwc-toolkit/src/scheduling/coalesced-task.ts",
+      "file": "coalesced-task.ts",
+      "sha256": "98274cfd9d763dea6c76433f4828be7e7f36e8e9faec74dce0632351aad3e82c"
+    },
+    {
+      "source": "LICENSE",
+      "file": "LICENSE",
+      "sha256": "70c9d5382506dd184465425c08a99ad9bd6d9ac1313c252968ba0b585e5ef823"
+    },
+    {
+      "source": "NOTICE",
+      "file": "NOTICE",
+      "sha256": "f76c6afab94884448f0426e30d6e9d555ca7247894cd3484e477d2f87513036e"
+    }
+  ]
+}

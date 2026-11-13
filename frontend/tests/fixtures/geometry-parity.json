@@ -1,0 +1,216 @@
+{
+  "schema": "chart-geometry-reference/1",
+  "interval": "15m",
+  "grid": [
+    1800000000,
+    1800000900,
+    1800001800,
+    1800002700
+  ],
+  "cases": [
+    {
+      "name": "horizontal exact sub-float",
+      "geometry": {
+        "kind": "horizontal",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "reference",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100.000000000000000000001"
+          }
+        ]
+      },
+      "operation": "priceAt",
+      "time": 1800000000,
+      "expected": {
+        "numerator": "100000000000000000000001",
+        "denominator": "1000000000000000000000",
+        "decimal": "100.000000000000000000001"
+      }
+    },
+    {
+      "name": "trend repeating rational",
+      "geometry": {
+        "kind": "trend",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "reference",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100"
+          },
+          {
+            "time": 1800002700,
+            "price": "110"
+          }
+        ]
+      },
+      "operation": "priceAt",
+      "time": 1800000900,
+      "expected": {
+        "numerator": "310",
+        "denominator": "3",
+        "decimal": null
+      }
+    },
+    {
+      "name": "trend fractional anchor",
+      "geometry": {
+        "kind": "trend",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "reference",
+        "anchors": [
+          {
+            "time": 1800000450,
+            "price": "100"
+          },
+          {
+            "time": 1800002700,
+            "price": "110"
+          }
+        ]
+      },
+      "operation": "priceAt",
+      "time": 1800000900,
+      "expected": {
+        "numerator": "102",
+        "denominator": "1",
+        "decimal": "102"
+      }
+    },
+    {
+      "name": "trend reversed anchors",
+      "geometry": {
+        "kind": "trend",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "reference",
+        "anchors": [
+          {
+            "time": 1800002700,
+            "price": "110"
+          },
+          {
+            "time": 1800000000,
+            "price": "100"
+          }
+        ]
+      },
+      "operation": "priceAt",
+      "time": 1800000900,
+      "expected": {
+        "numerator": "310",
+        "denominator": "3",
+        "decimal": null
+      }
+    },
+    {
+      "name": "zone inclusive edge",
+      "geometry": {
+        "kind": "zone",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "reference",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100"
+          },
+          {
+            "time": 1800002700,
+            "price": "110"
+          }
+        ]
+      },
+      "operation": "contains",
+      "query_price": "100",
+      "time": 1800000000,
+      "expected": true
+    },
+    {
+      "name": "zone outside distance",
+      "geometry": {
+        "kind": "zone",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "reference",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "100"
+          },
+          {
+            "time": 1800002700,
+            "price": "110"
+          }
+        ]
+      },
+      "operation": "distance",
+      "query_price": "112.25",
+      "time": 1800000900,
+      "expected": {
+        "numerator": "9",
+        "denominator": "4",
+        "decimal": "2.25"
+      }
+    },
+    {
+      "name": "reverse fib",
+      "geometry": {
+        "kind": "fibonacci",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "reference",
+        "anchors": [
+          {
+            "time": 1800002700,
+            "price": "110"
+          },
+          {
+            "time": 1800000000,
+            "price": "100"
+          }
+        ]
+      },
+      "operation": "level",
+      "ratio": "0.236",
+      "time": 1800000900,
+      "expected": {
+        "numerator": "2691",
+        "denominator": "25",
+        "decimal": "107.64"
+      }
+    },
+    {
+      "name": "micro fib no tick rounding",
+      "geometry": {
+        "kind": "fibonacci",
+        "symbol": "BTCUSDT",
+        "price_source": "LAST_PRICE",
+        "label": "reference",
+        "anchors": [
+          {
+            "time": 1800000000,
+            "price": "0.00000001"
+          },
+          {
+            "time": 1800002700,
+            "price": "0.00000002"
+          }
+        ]
+      },
+      "operation": "level",
+      "ratio": "0.236",
+      "time": 1800000900,
+      "expected": {
+        "numerator": "309",
+        "denominator": "25000000000",
+        "decimal": "0.00000001236"
+      }
+    }
+  ]
+}

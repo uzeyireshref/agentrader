@@ -1,0 +1,76 @@
+{
+  "schema": "chart-indicators/1",
+  "calculation_version": 1,
+  "defaults": [
+    {
+      "indicator_id": "ema-fast",
+      "revision": 0,
+      "kind": "EMA",
+      "period": 20,
+      "source": "close",
+      "smoothing": "EMA_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "ema-slow",
+      "revision": 0,
+      "kind": "EMA",
+      "period": 50,
+      "source": "close",
+      "smoothing": "EMA_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "rsi-main",
+      "revision": 0,
+      "kind": "RSI",
+      "period": 14,
+      "source": "close",
+      "smoothing": "WILDER_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "oscillator",
+      "enabled": false,
+      "calculation_version": 1
+    }
+  ],
+  "sources": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "hl2",
+    "hlc3",
+    "ohlc4"
+  ],
+  "period_bounds": [
+    1,
+    500
+  ],
+  "seed_anchor": "LOADED_HISTORY_START",
+  "smoothing": {
+    "EMA": "EMA_SMA_SEED",
+    "RSI": "WILDER_SMA_SEED"
+  },
+  "warmup_first_index": {
+    "EMA": "period-1",
+    "RSI": "period"
+  },
+  "flat_rsi": 50,
+  "open_candle": "PROVISIONAL",
+  "history_expansion": "RESEED_FROM_LOADED_HISTORY",
+  "permissions": {
+    "order_authority": false,
+    "live_eligible": false
+  },
+  "unsupported": [
+    "SESSION_ANCHOR",
+    "ARBITRARY_PANE",
+    "ALTERNATE_SMOOTHING"
+  ]
+}

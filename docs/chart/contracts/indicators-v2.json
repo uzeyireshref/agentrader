@@ -1,0 +1,106 @@
+{
+  "schema": "chart-indicators/2",
+  "api_format_version": 2,
+  "defaults": [
+    {
+      "indicator_id": "ema-fast",
+      "revision": 0,
+      "kind": "EMA",
+      "period": 20,
+      "source": "close",
+      "smoothing": "EMA_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "ema-slow",
+      "revision": 0,
+      "kind": "EMA",
+      "period": 50,
+      "source": "close",
+      "smoothing": "EMA_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "rsi-main",
+      "revision": 0,
+      "kind": "RSI",
+      "period": 14,
+      "source": "close",
+      "smoothing": "WILDER_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "oscillator",
+      "enabled": false,
+      "calculation_version": 2
+    },
+    {
+      "indicator_id": "sma-main",
+      "revision": 0,
+      "kind": "SMA",
+      "period": 20,
+      "source": "close",
+      "smoothing": "ROLLING_SMA",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "price",
+      "enabled": false,
+      "calculation_version": 1
+    },
+    {
+      "indicator_id": "atr-main",
+      "revision": 0,
+      "kind": "ATR",
+      "period": 14,
+      "source": "ohlc",
+      "smoothing": "WILDER_TR_SMA_SEED",
+      "anchor": "LOADED_HISTORY_START",
+      "pane": "volatility",
+      "enabled": false,
+      "calculation_version": 1
+    }
+  ],
+  "sources": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "hl2",
+    "hlc3",
+    "ohlc4"
+  ],
+  "atr_source": "ohlc",
+  "period_bounds": [
+    1,
+    500
+  ],
+  "seed_anchor": "LOADED_HISTORY_START",
+  "first_output_index": {
+    "SMA": "period-1",
+    "EMA": "period-1",
+    "RSI": "period",
+    "ATR": "period-1"
+  },
+  "smoothing": {
+    "SMA": "ROLLING_SMA",
+    "EMA": "EMA_SMA_SEED",
+    "RSI": "WILDER_SMA_SEED",
+    "ATR": "WILDER_TR_SMA_SEED"
+  },
+  "atr_true_range": "max(high-low,abs(high-previous_close),abs(low-previous_close))",
+  "first_atr_range": "high-low",
+  "rsi_flat_by_calculation_version": {
+    "1": 50,
+    "2": 100
+  },
+  "legacy_migration": "Expand 3 to 5 disabled slots; preserve existing RSI version until explicit save",
+  "grid_policy": "BLOCK_ALL_OUTPUTS_ON_GAP_OR_INVALID_GRID",
+  "history_expansion": "RESEED_FROM_LOADED_HISTORY",
+  "open_candle": "PROVISIONAL",
+  "order_authority": false,
+  "live_eligible": false,
+  "legacy_analysis_py": "Unchanged, RSI v1; not silently migrated into strategy/replay"
+}

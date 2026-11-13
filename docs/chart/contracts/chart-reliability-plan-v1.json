@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-10",
+  "task": "CL05",
+  "status": "PARTIALLY_IMPLEMENTED_P1_P2_P3_COMPLETE",
+  "runtime_implemented": false,
+  "bot_integration_authorized": false,
+  "physical_acceptance_required_before_integration": true,
+  "original_plan_completed": 24,
+  "original_plan_total": 25,
+  "B5": "INCOMPLETE",
+  "dry_run_scenarios_executed": 0,
+  "stages": [
+    {
+      "id": "P1",
+      "title": "Kesin piyasa fiyatı ve provenans",
+      "depends_on": [],
+      "sources": [
+        "agentrader/chart_market.py",
+        "agentrader/market_feed.py"
+      ],
+      "deliverable": "Borsa metninden Decimal doğrulanan, üssüz OHLC/hacim ve tick_size DTO; grafik float görünümü ayrı türetilir. Float üzerinden kesin fiyat geri üretilmez. Eski cache provenansı yoksa yeniden edinilir veya engellenir.",
+      "acceptance": [
+        "DR24: float-only girdi PRICE_PRECISION_UNPROVEN",
+        "Negatif/NaN/sonsuz ve OHLC tutarsızlığı reddedilir",
+        "Tick dışı anchor sessiz yuvarlanmaz; ondalık metin round-trip kayıpsız"
+      ],
+      "reason": "PRICE_PRECISION_UNPROVEN",
+      "status": "IMPLEMENTED_VERIFIED"
+    },
+    {
+      "id": "P2",
+      "title": "Saat, upstream yaş ve uzun kesinti",
+      "depends_on": [
+        "P1"
+      ],
+      "sources": [
+        "agentrader/market_feed.py",
+        "frontend/src/freshness.ts"
+      ],
+      "deliverable": "Enjekte edilebilir monotonic/wall clock; upstream event zamanı ve server-time ölçüm aralığından offset/belirsizlik kanıtı. Consumer ve producer monotonic değerleri süreçler arasında doğrudan çıkarılmaz. Heartbeat taşıma yaşını güncelleyebilir, veri yaşını güncelleyemez. 10sn/10sn taslak eşikler ayrı sürümlü politika; belirsizlik limiti koddan önce açıkça seçilir.",
+      "acceptance": [
+        "DR21/DR22: eski upstream+taze heartbeat engellenir",
+        "İleri/geri wall-clock sıçraması, gelecek timestamp ve eksik saat kanıtı engellenir",
+        "Uzun kesinti/catchup geçmiş close için olay üretmez; taze snapshot ve kanıtla yeniden uygunluk"
+      ],
+      "reason": "CLOCK_UNTRUSTED",
+      "status": "IMPLEMENTED_VERIFIED",
+      "evidence": "reports/chart-p2-validation-20261110.json"
+    },
+    {
+      "id": "P3",
+      "title": "Stream epoch ve değişmez veri kanıtı",
+      "depends_on": [
+        "P1",
+        "P2"
+      ],
+      "sources": [
+        "agentrader/market_feed.py"
+      ],
+      "deliverable": "Her stream ömrüne yeni epoch; process restart/yeniden edinmede snapshot bariyeri. Immutable snapshot hash, quality, warmup, bar grid ve continuity kanıtı. Sequence atlaması tek başına gap değildir.",
+      "acceptance": [
+        "DR15/DR17/DR18/DR19/DR23/DR29",
+        "Eski epoch ve tekrar paket state veya olay değiştirmez",
+        "Reconnect snapshot geçmiş kapanışı canlı fırsata dönüştürmez"
+      ],
+      "reason": "GAP_OR_INCOMPLETE_WARMUP",
+      "status": "IMPLEMENTED_VERIFIED",
+      "evidence": "reports/chart-p3-validation-20261110.json"
+    },
+    {
+      "id": "P4",
+      "title": "Kalıcı ve varsayılan kapalı çizim bağı",
+      "depends_on": [
+        "P3"
+      ],
+      "sources": [
+        "agentrader/drawings/service.py",
+        "docs/chart/BOT-DATA-CONTRACT.md"
+      ],
+      "deliverable": "Ayrı binding şeması: owner/workspace/drawing revision, binding/rule version, tam market kimliği, interval, zaman penceresi ve geometry/grid hash. Mevcut strict çizim CRUD alanları değiştirilmez. UI sembol değişimi bağı değiştirmez. Trend yalnız doğrulanmış loaded-bar logical segment üzerinde; eksik grid veya segment dışı extrapolation yok.",
+      "acceptance": [
+        "DR12/DR13/DR14/DR20/DR25/DR26/DR27",
+        "Düzenleme/silme/undo eski bağı durdurur; açık rebind gerekir",
+        "Boşluklu gridde grafik/Decimal hesap eşleşir; label talimat olarak yorumlanmaz"
+      ],
+      "reason": "REVISION_CHANGED",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "P5",
+      "title": "Saf uygunluk kapısı ve nedenli engelleme",
+      "depends_on": [
+        "P4"
+      ],
+      "sources": [
+        "docs/chart/contracts/chart-bot-input-v1.json",
+        "docs/chart/contracts/chart-dry-run-v1.json"
+      ],
+      "deliverable": "Yan etkisiz karar fonksiyonu yalnız BLOCKED, OBSERVE_ONLY veya EVALUATION_ELIGIBLE_NOT_ORDER_AUTHORITY üretir. Kanıt alanı yoksa güvenli varsayılanla doldurmaz. Bugünkü LIVE tek başına uygunluk değildir. Açık mum varsayılan OBSERVE_ONLY.",
+      "acceptance": [
+        "DR01/DR09/DR11/DR28",
+        "Her gerekli kanıt tek tek çıkarıldığında olay yok ve doğru engel nedeni var",
+        "Uygunluk emir veya hesap yetkisi vermez"
+      ],
+      "reason": "NOT_IMPLEMENTED",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "P6",
+      "title": "Kalıcı semantik olay ve yerel intent",
+      "depends_on": [
+        "P5"
+      ],
+      "sources": [
+        "agentrader/drawings/service.py",
+        "docs/chart/DRY-RUN-PLAN.md"
+      ],
+      "deliverable": "İzole test DB migration taslağı; event semantic key unique. Head revision aynı uygulama DB transaction içinde yeniden okunur; event+local intent birlikte commit edilir. Piyasa DB snapshotı donmuş kanıt olarak taşınır, çapraz DB atomiklik iddiası yapılmaz. Request_id semantik olay anahtarı değildir. Replay namespace ayrıdır.",
+      "acceptance": [
+        "DR16/DR17/DR25/DR30/DR31/DR34/DR35",
+        "İki worker yarışı, commit öncesi/sonrası crash, restart ve tekrar köprüde tek kalıcı event/intent",
+        "Yalnız sahte sink; gerçek kanal yok; DELIVERY_UNKNOWN exactly-once sayılmaz"
+      ],
+      "reason": "SEMANTIC_EVENT_ALREADY_RECORDED",
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "P7",
+      "title": "İzole kuru çalışma ve entegrasyon kararı",
+      "depends_on": [
+        "P6"
+      ],
+      "sources": [
+        "docs/chart/contracts/chart-dry-run-v1.json",
+        "docs/chart/ACCEPTANCE.md"
+      ],
+      "deliverable": "36 E4 senaryosu gerçek izole motorda fake-clock/sahte sink ile yürütülür; expected/gözlenen ve yan etki sayaçları kaydedilir. Runtime bağlama, sürekli worker ve gerçek kanal ayrı karar gerektirir.",
+      "acceptance": [
+        "DR01–DR36 gerçekten çalıştırılır; statik kontrol PASS yerine geçmez",
+        "Order/account/external message/execution DB mutation sayaçları sıfır",
+        "B5/fiziksel destek açıkları ve R05 sonucu kullanıcı incelemesine sunulur; otomatik genel kabul verilmez"
+      ],
+      "reason": "INTEGRATION_NOT_AUTHORIZED",
+      "status": "NOT_IMPLEMENTED"
+    }
+  ],
+  "precision_transport_implemented": true,
+  "orchestration_plan": "docs/chart/contracts/chart-core-plan-v2.json",
+  "next_task": "T04",
+  "note": "P1/P2/P3 and T01/T02/T03 complete; v2 orchestration next T04. P4 follows required core tools; bot runtime not implemented.",
+  "clock_transport_implemented": true,
+  "market_evidence_implemented": true
+}

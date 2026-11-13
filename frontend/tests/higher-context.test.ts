@@ -1,0 +1,17 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {higherIntervals,referenceTime,validHigherContext,type HigherContext} from '../src/higherContextModel';
+import {steps} from '../src/evidence';
+import {intervals,type Candle} from '../src/types';
+const boundary=1800000000000;
+const candle:Candle={time:(boundary-3600000)/1000,close_time:boundary-1,closed:true,open:100,high:110,low:90,close:105,volume:10,quote_volume:1050,exact:{state:'VERIFIED'}};
+const ready=():HigherContext=>({schema:'chart-higher-context/1',symbol:'BTCUSDT',base_interval:'1m',interval:'1h',requested_reference_time:boundary,effective_reference_time:boundary,state:'READY',reason:null,candle:structuredClone(candle),source:'binance_usdm_live_trade_price',environment:'live_public',product:'USD-M',price_type:'LAST_PRICE',provenance:'BINANCE_NATIVE_KLINE',resampled:false,server_time:boundary+10,clock_state:'MEASURED',clock_uncertainty_ms:1,precision:{state:'VERIFIED'},live_eligible:false,order_authority:false});
+const valid=(r:HigherContext)=>validHigherContext(r,'BTCUSDT','1m','1h',boundary);
+test('all eight intervals match UTC backend contract',()=>{const c=JSON.parse(readFileSync(new URL('../../docs/chart/contracts/intervals-v1.json',import.meta.url),'utf8'));assert.deepEqual(Object.fromEntries(intervals.map(i=>[i,steps[i]*1000])),c.milliseconds);});
+test('higher targets strictly exceed base, weekly has none',()=>{assert.deepEqual(higherIntervals('30m'),['1h','4h','1d','1w']);assert.deepEqual(higherIntervals('1w'),[]);});
+test('open reference uses start, closed reference uses close boundary',()=>{assert.equal(referenceTime(candle),boundary);assert.equal(referenceTime({...candle,closed:false}),boundary-3600000);assert.equal(referenceTime(),null);});
+test('only last fully closed native candle is accepted',()=>{assert.equal(valid(ready()),true);for(const patch of [{closed:false},{time:candle.time+3600,close_time:boundary+3599999},{time:candle.time-3600,close_time:boundary-3600001},{time:candle.time+1},{exact:{state:'UNPROVEN'}}]){const r=ready();Object.assign(r.candle!,patch);assert.equal(valid(r),false);}});
+test('clock uncertainty and historical cutoff cannot leak future close',()=>{for(const patch of [{effective_reference_time:boundary-1},{effective_reference_time:boundary+1},{server_time:boundary},{clock_state:'UNTRUSTED'},{clock_uncertainty_ms:1001},{clock_uncertainty_ms:NaN}]){assert.equal(valid(Object.assign(ready(),patch)),false);}});
+test('cross-context, resampled and precision-unproven payloads are rejected',()=>{for(const patch of [{symbol:'ETHUSDT'},{base_interval:'5m'},{interval:'4h'},{requested_reference_time:boundary+1},{resampled:true},{provenance:'RESAMPLED'},{precision:{state:'UNPROVEN'}},{order_authority:true}])assert.equal(valid(Object.assign(ready(),patch)),false);});
+test('blocked states cannot carry stale OHLC',()=>{assert.equal(valid({...ready(),state:'BLOCKED',candle:null}),true);assert.equal(valid({...ready(),state:'BLOCKED'}),false);});

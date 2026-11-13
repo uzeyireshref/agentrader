@@ -1,0 +1,15 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {parseFibLevels,normalizeFibLevels,fibValue,tryFibValue,fibLevels,legacyFibLevels} from '../src/fibonacci.ts';
+import {exactDecimal,onTick} from '../src/exactGeometry.ts';
+import {editGeometry} from '../src/editGeometry.ts';
+import {moveGeometry} from '../src/drag.ts';
+import {visibleFibonacciLabels} from '../src/fibonacciLabels.ts';
+import type {Geometry} from '../src/drawings.ts';
+import type {Candle} from '../src/types.ts';
+const fib=():Geometry=>({schema:'chart-fibonacci/1',kind:'fibonacci',symbol:'BTCUSDT',price_source:'LAST_PRICE',label:'fib',anchors:[{time:1800000000,price:'100.25'},{time:1800009000,price:'110.75'}],levels:['0','0.236','1','1.618','2.618'],time_scope:'bounded'});
+test('decimal ratios normalize without float loss and duplicates/precision/limits are rejected',()=>{assert.deepEqual(parseFibLevels('-00,2500; +01.000\n-0.000'),['-0.25','1','0']);for(const values of [['0','0.00'],['0','11'],['0','0.1234567890123'],['0','1e0'],['0']])assert.throws(()=>normalizeFibLevels(values));});
+test('extension and reverse prices match independent decimals without tick rounding',()=>{const g=fib();assert.equal(exactDecimal(fibValue(g,'1.618')),'117.239');assert.equal(exactDecimal(fibValue(g,'0.236')),'102.728');assert.equal(onTick('102.728','0.25'),false);g.anchors.reverse();assert.equal(exactDecimal(fibValue(g,'1.618')),'93.761');});
+test('legacy stays at seven levels and nonpositive custom levels remain explicitly unavailable',()=>{const g=fib();delete g.schema;delete g.levels;assert.deepEqual(fibLevels(g),legacyFibLevels);g.anchors=[{time:1800000000,price:'110'},{time:1800009000,price:'90'}];assert.equal(tryFibValue(g,'10'),null);});
+test('numeric and drag edits keep configured ratios and scope',()=>{const g=fib(),times=g.anchors.map(a=>new Date(a.time*1000).toISOString().slice(0,19));const changed=editGeometry(g,'renamed',['100.25','110.75'],times,'0.25');assert.deepEqual(changed.levels,g.levels);const rows=Array.from({length:20},(_,i)=>({time:1800000000+i*900})) as Candle[];const moved=moveGeometry(g,rows,1,5,'0.25',900,null)!;assert.deepEqual(moved.levels,g.levels);assert.equal(moved.time_scope,'bounded');assert.equal(exactDecimal(fibValue(moved,'1.618')),'122.239');});
+test('dense custom levels suppress only text while keeping all price lines',()=>{const levels=parseFibLevels('0; 0.236; 0.236000000001; 0.5; 1; 1.618');const visible=visibleFibonacciLabels(levels.map(level=>({level:Number(level),y:500-Number(level)*10})));assert.ok(visible.size<levels.length);assert.equal(levels.length,6);});

@@ -1,0 +1,3 @@
+import {sha256,canonical} from './evidence';
+const fields=['source','environment','product','price_type','symbol','interval','workspace_id','drawing_id','drawing_revision','binding_id','binding_version','rule_id','rule_version','event_kind','candle_open_time'];
+export function replayIdentity(c:Record<string,string>):string{const values=fields.map(k=>{const v=c[k];if(typeof v!=='string'||!v||(['drawing_revision','binding_version','rule_version','candle_open_time'].includes(k)&&!/^\d+$/.test(v)))throw Error('Invalid identity');if(['drawing_revision','binding_version','rule_version','candle_open_time'].includes(k)&&(!/^[1-9]\d*$/.test(v)))throw Error('Invalid identity integer');return v;});return sha256(canonical(values));}

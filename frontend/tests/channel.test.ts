@@ -1,0 +1,15 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {channelBasis,channelAt,channelValues,channelDistance} from '../src/channel.ts';
+import {exactDecimal} from '../src/exactGeometry.ts';
+import {moveGeometry} from '../src/drag.ts';
+import {editGeometry} from '../src/editGeometry.ts';
+import type {Geometry} from '../src/drawings.ts';
+import type {Candle} from '../src/types.ts';
+const rows=Array.from({length:12},(_,i)=>({time:1800000000+i*900})) as Candle[];
+const channel=():Geometry=>({schema:'chart-channel/1',kind:'parallel_channel',symbol:'BTCUSDT',price_source:'LAST_PRICE',label:'channel',anchors:[{time:rows[2].time,price:'100.25'},{time:rows[6].time,price:'110.75'},{time:rows[4].time,price:'115.5'}]});
+test('independent channel boundary and midpoint references match both baseline directions',()=>{const g=channel(),b=channelAt(g,rows,rows[6].time,'15m');assert.deepEqual([b.lower,b.upper,b.middle,b.width].map(exactDecimal),['110.75','120.75','115.75','10']);g.anchors=[g.anchors[1],g.anchors[0],g.anchors[2]];assert.deepEqual(channelAt(g,rows,rows[6].time,'15m'),b);});
+test('negative offset, flat baseline and inside/outside distance are exact',()=>{const g=channel();g.anchors[2].price='95.5';const b=channelValues(g,rows[6].time);assert.equal(exactDecimal(b.lower),'100.75');assert.equal(exactDecimal(channelDistance(b,'101')),'0');assert.equal(exactDecimal(channelDistance(b,'111')),'0.25');g.anchors[0].price=g.anchors[1].price='100';g.anchors[2].price='100.25';assert.equal(exactDecimal(channelValues(g,rows[4].time).middle),'100.125');});
+test('degenerate geometry, scope and gaps outside channel fail closed',()=>{const g=channel();g.anchors[2].price='105.5';assert.throws(()=>channelBasis(g));assert.throws(()=>channelAt(channel(),rows,rows[1].time,'15m'));assert.throws(()=>channelAt(channel(),rows.filter((_,i)=>i!==10),rows[4].time,'15m'));g.anchors[1].time=g.anchors[0].time;assert.throws(()=>channelBasis(g));});
+test('width handle and whole drag preserve valid channel and reject zero width',()=>{const g=channel(),moved=moveGeometry(g,rows,0,5,'0.25',900,2)!;assert.equal(exactDecimal(channelValues(moved,rows[6].time).width),'15');assert.equal(moveGeometry(g,rows,0,-10,'0.25',900,2),null);const all=moveGeometry(g,rows,1,5,'0.25',900,null)!;assert.equal(exactDecimal(channelValues(all,rows[7].time).width),'10');assert.deepEqual(all.anchors.map(a=>a.time),g.anchors.map(a=>a.time+900));});
+test('form preserves three anchor roles and rejects off tick or zero width',()=>{const g=channel(),times=g.anchors.map(a=>new Date(a.time*1000).toISOString().slice(0,19));const edited=editGeometry(g,'changed',['100.25','110.75','120.50'],times,'0.25');assert.equal(exactDecimal(channelValues(edited,rows[6].time).width),'15');assert.throws(()=>editGeometry(g,'bad',['100.25','110.75','105.50'],times,'0.25'));assert.throws(()=>editGeometry(g,'bad',['100.25','110.75','120.51'],times,'0.25'));});

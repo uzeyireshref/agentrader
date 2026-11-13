@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentrader"
+version = "0.1.0"
+description = "Kendi grafik terminali için yerel uygulama API katmanı ve Binance Futures demo işlem çekirdeği"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+streams = ["websocket-client>=1.9,<2"]
+web = ["fastapi>=0.142,<1", "uvicorn>=0.54,<1", "websocket-client>=1.9,<2"]
+web-test = ["fastapi>=0.142,<1", "uvicorn>=0.54,<1", "httpx>=0.28,<1", "websocket-client>=1.9,<2"]
+
+[project.scripts]
+agentrader = "agentrader.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["agentrader*"]
+
+[tool.setuptools.package-data]
+agentrader = ["binding_evidence.json", "replay_validation.json", "data/*.json", "web_assets/*.html", "web_assets/assets/*", "web_assets/licenses/*"]

@@ -1,0 +1,18 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {act} from 'react';
+import {JSDOM} from 'jsdom';
+import type {IChartApi,ISeriesApi,MouseEventParams,Time} from 'lightweight-charts';
+import type {Candle} from '../src/types.ts';
+import OhlcReadout,{OHLC_EMPTY,formatOhlc} from '../src/OhlcReadout.tsx';
+const dom=new JSDOM('<!doctype html><html><body></body></html>',{url:'http://localhost/'});
+Object.assign(globalThis,{window:dom.window,document:dom.window.document,HTMLElement:dom.window.HTMLElement,IS_REACT_ACT_ENVIRONMENT:true});
+const {createRoot}=await import('react-dom/client');
+const candle:Candle={time:1800000000,open:.00000012,high:.00000015,low:.00000011,close:.00000013,volume:1,quote_volume:1,close_time:1800000899999,closed:false};
+test('microprice OHLC keeps eight tick decimals rather than displaying zero',()=>{const text=formatOhlc(candle,1e-8);assert.match(text,/A 0,00000012/);assert.match(text,/K 0,00000013/);assert.notEqual(candle.close.toFixed(4),'0.00000013');});
+test('quarter and whole-unit ticks use their own precision; invalid values are not printed',()=>{assert.match(formatOhlc({...candle,open:100.25},.25),/A 100,25/);assert.match(formatOhlc({...candle,open:100},1),/A 100 /);assert.equal(formatOhlc(candle,0),OHLC_EMPTY);assert.equal(formatOhlc({...candle,close:NaN},.1),OHLC_EMPTY);});
+async function fixture(){const host=document.createElement('div');document.body.append(host);const root=createRoot(host);let handler:((event:MouseEventParams<Time>)=>void)|null=null,unsubscribed=0;const chart={subscribeCrosshairMove:(callback:typeof handler)=>{handler=callback;},unsubscribeCrosshairMove:(callback:typeof handler)=>{if(handler===callback)handler=null;unsubscribed++;}} as unknown as IChartApi;const series={} as ISeriesApi<'Candlestick'>;const render=async(rows:Candle[]=[candle],key='MICRO:15m',tick=1e-8)=>{await act(async()=>root.render(<OhlcReadout key={key} chart={chart} series={series} rows={rows} tick={tick}/>));};const emit=async(value:Partial<Candle>|null|undefined=candle,time:number|undefined=candle.time)=>{await act(async()=>handler?.({time,seriesData:new Map(value?[[series,value]]:[])} as unknown as MouseEventParams<Time>));};await render();return {host,render,emit,unsubscribed:()=>unsubscribed,handler:()=>handler,close:async()=>{await act(async()=>root.unmount());host.remove();}};}
+test('crosshair label clears when mouse leaves candle or lands on whitespace',async()=>{const f=await fixture();try{await f.emit();assert.match(f.host.textContent!,/0,00000013/);await f.emit(null);assert.equal(f.host.textContent,OHLC_EMPTY);await f.emit();await f.emit({time:candle.time});assert.equal(f.host.textContent,OHLC_EMPTY);}finally{await f.close();}});
+test('market/timeframe remount clears prior OHLC and removes old listener',async()=>{const f=await fixture();try{await f.emit();await f.render([candle],'OTHER:1h',.1);assert.equal(f.host.textContent,OHLC_EMPTY);assert.equal(f.unsubscribed(),1);}finally{await f.close();}assert.equal(f.handler(),null);});
+test('old queued candle data cannot describe current-market row with same timestamp',async()=>{const f=await fixture();try{const other={...candle,open:100,high:110,low:90,close:105};await f.render([other],'OTHER:15m',.1);await f.emit(candle);assert.equal(f.host.textContent,OHLC_EMPTY);await f.emit(other);assert.match(f.host.textContent!,/K 105,0/);}finally{await f.close();}});
+test('stationary hover follows updated data and clears during same-market resync',async()=>{const f=await fixture();try{await f.emit();await f.render([{...candle,close:.00000014}]);assert.match(f.host.textContent!,/K 0,00000014/);await f.render([]);assert.equal(f.host.textContent,OHLC_EMPTY);}finally{await f.close();}});

@@ -1,0 +1,60 @@
+{
+  "schema": "chart-local-domain-event/1",
+  "profile": "CLOSED_EXPLICIT_REARM/1",
+  "intent_schema": "chart-local-intent/1",
+  "history_schema": "chart-local-event-list/1",
+  "namespace": "replay:<run_id>",
+  "live_namespace_allowed": false,
+  "default_namespace": "replay:local",
+  "migration": 7,
+  "atomic_writes": [
+    "event",
+    "local_intent",
+    "phase"
+  ],
+  "head_recheck": [
+    "commit_transaction",
+    "fake_receipt_transaction"
+  ],
+  "semantic_key_excludes": [
+    "request_id",
+    "stream_epoch",
+    "generation",
+    "data_revision",
+    "snapshot_hash",
+    "transport_sequence",
+    "namespace"
+  ],
+  "domain_id": "Owner/workspace + versioned binding/target/rule/market/query + closed candle/type/direction/episode; namespace independent",
+  "event_id": "SHA256 namespace + domain_event_id",
+  "states": [
+    "PENDING_FAKE",
+    "IN_FLIGHT_FAKE",
+    "DELIVERED_FAKE",
+    "DELIVERY_UNKNOWN",
+    "CANCELED_SUPERSEDED"
+  ],
+  "phases": [
+    "TOUCH_LATCHED",
+    "APPROACH_NOTIFIED",
+    "CROSS_LATCHED"
+  ],
+  "rearm": "EXPLICIT_REBIND_ONLY",
+  "sink": "SQLITE_FAKE_ONLY",
+  "automatic_retry": false,
+  "exactly_once_external_claim": false,
+  "continuous_worker": false,
+  "public_feed_producer": false,
+  "http_mutations": false,
+  "history_endpoint": "GET /api/workspaces/{workspace_id}/local-events",
+  "cross_database_atomicity": false,
+  "order_authority": false,
+  "next_task": "P7",
+  "limits": [
+    "Internal replay evidence only; no live adapter",
+    "Full DR01-DR36 engine acceptance remains P7",
+    "No cooldown or automatic rearm in this profile"
+  ],
+  "namespace_pattern": "^replay:[A-Za-z0-9_-]{1,64}$",
+  "query_time": "UTC candle open timestamp; no intrabar path inference"
+}

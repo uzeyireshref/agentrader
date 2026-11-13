@@ -1,0 +1,920 @@
+{
+  "version": "professional-chart-inventory/1",
+  "date": "2026-11-10",
+  "status": "IN_PROGRESS",
+  "selection": "Product-specific initial prioritization; not a universal standard",
+  "items": [
+    {
+      "id": "REF-001",
+      "family": "cursors",
+      "name": "Cross",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-002",
+      "family": "cursors",
+      "name": "Dot",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-003",
+      "family": "cursors",
+      "name": "Arrow",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-004",
+      "family": "cursors",
+      "name": "Demonstration",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-005",
+      "family": "cursors",
+      "name": "Eraser",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-006",
+      "family": "cursors",
+      "name": "Values tooltip on long press",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-007",
+      "family": "lines",
+      "name": "Trendline",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-008",
+      "family": "lines",
+      "name": "Ray",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-009",
+      "family": "lines",
+      "name": "Info line",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-010",
+      "family": "lines",
+      "name": "Extended line",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-011",
+      "family": "lines",
+      "name": "Trend angle",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-012",
+      "family": "lines",
+      "name": "Horizontal line",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-013",
+      "family": "lines",
+      "name": "Horizontal ray",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-014",
+      "family": "lines",
+      "name": "Vertical line",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-015",
+      "family": "lines",
+      "name": "Crossline",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-016",
+      "family": "lines",
+      "name": "Parallel channel",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-017",
+      "family": "lines",
+      "name": "Regression trend",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-018",
+      "family": "lines",
+      "name": "Flat top/bottom",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-019",
+      "family": "lines",
+      "name": "Disjoint channel",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-020",
+      "family": "lines",
+      "name": "Pitchfork",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-021",
+      "family": "lines",
+      "name": "Schiff pitchfork",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-022",
+      "family": "lines",
+      "name": "Modified Schiff pitchfork",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-023",
+      "family": "lines",
+      "name": "Inside pitchfork",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-024",
+      "family": "fib",
+      "name": "Fib retracement",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-025",
+      "family": "fib",
+      "name": "Trend-based fib extension",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-026",
+      "family": "fib",
+      "name": "Fib channel",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-027",
+      "family": "fib",
+      "name": "Fib time zone",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-028",
+      "family": "fib",
+      "name": "Fib speed resistance fan",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-029",
+      "family": "fib",
+      "name": "Trend-based fib time",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-030",
+      "family": "fib",
+      "name": "Fib circles",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-031",
+      "family": "fib",
+      "name": "Fib spiral",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-032",
+      "family": "fib",
+      "name": "Fib speed resistance arcs",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-033",
+      "family": "fib",
+      "name": "Fib wedge",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-034",
+      "family": "fib",
+      "name": "Pitchfan",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-035",
+      "family": "fib",
+      "name": "Gann box",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-036",
+      "family": "fib",
+      "name": "Gann square fixed",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-037",
+      "family": "fib",
+      "name": "Gann square",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-038",
+      "family": "fib",
+      "name": "Gann fan",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-039",
+      "family": "patterns",
+      "name": "XABCD pattern",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-040",
+      "family": "patterns",
+      "name": "Cypher pattern",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-041",
+      "family": "patterns",
+      "name": "Head and shoulders",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-042",
+      "family": "patterns",
+      "name": "ABCD pattern",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-043",
+      "family": "patterns",
+      "name": "Triangle pattern",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-044",
+      "family": "patterns",
+      "name": "Three drives pattern",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-045",
+      "family": "patterns",
+      "name": "Elliott impulse wave (1·2·3·4·5)",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-046",
+      "family": "patterns",
+      "name": "Elliott correction wave (A·B·C)",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-047",
+      "family": "patterns",
+      "name": "Elliott triangle wave (A·B·C·D·E)",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-048",
+      "family": "patterns",
+      "name": "Elliott double combo wave (W·X·Y)",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-049",
+      "family": "patterns",
+      "name": "Elliott triple combo wave (W·X·Y·X·Z)",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-050",
+      "family": "patterns",
+      "name": "Cyclic lines",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-051",
+      "family": "patterns",
+      "name": "Time cycles",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-052",
+      "family": "patterns",
+      "name": "Sine line",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-053",
+      "family": "forecast",
+      "name": "Long position",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-054",
+      "family": "forecast",
+      "name": "Short position",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-055",
+      "family": "forecast",
+      "name": "Position forecast",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-056",
+      "family": "forecast",
+      "name": "Bars pattern",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-057",
+      "family": "forecast",
+      "name": "Ghost feed",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-058",
+      "family": "forecast",
+      "name": "Sector",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-059",
+      "family": "forecast",
+      "name": "Anchored VWAP",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-060",
+      "family": "forecast",
+      "name": "Fixed range volume profile",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-061",
+      "family": "forecast",
+      "name": "Anchored volume profile",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-062",
+      "family": "forecast",
+      "name": "Price range",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-063",
+      "family": "forecast",
+      "name": "Date range",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-064",
+      "family": "forecast",
+      "name": "Date and price range",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-065",
+      "family": "shapes",
+      "name": "Brush",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-066",
+      "family": "shapes",
+      "name": "Highlighter",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-067",
+      "family": "shapes",
+      "name": "Arrow marker",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-068",
+      "family": "shapes",
+      "name": "Arrow",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-069",
+      "family": "shapes",
+      "name": "Arrow mark up",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-070",
+      "family": "shapes",
+      "name": "Arrow mark down",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-071",
+      "family": "shapes",
+      "name": "Rectangle",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-072",
+      "family": "shapes",
+      "name": "Rotated rectangle",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-073",
+      "family": "shapes",
+      "name": "Path",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-074",
+      "family": "shapes",
+      "name": "Circle",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-075",
+      "family": "shapes",
+      "name": "Ellipse",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-076",
+      "family": "shapes",
+      "name": "Polyline",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-077",
+      "family": "shapes",
+      "name": "Triangle",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-078",
+      "family": "shapes",
+      "name": "Arc",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-079",
+      "family": "shapes",
+      "name": "Curve",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-080",
+      "family": "shapes",
+      "name": "Double curve",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-081",
+      "family": "annotations",
+      "name": "Text",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-082",
+      "family": "annotations",
+      "name": "Note",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-083",
+      "family": "annotations",
+      "name": "Price note",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-084",
+      "family": "annotations",
+      "name": "Pin",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-085",
+      "family": "annotations",
+      "name": "Table",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-086",
+      "family": "annotations",
+      "name": "Callout",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-087",
+      "family": "annotations",
+      "name": "Comment",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-088",
+      "family": "annotations",
+      "name": "Price label",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-089",
+      "family": "annotations",
+      "name": "Signpost",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-090",
+      "family": "annotations",
+      "name": "Flag mark",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-091",
+      "family": "annotations",
+      "name": "Image",
+      "priority": "C_NOT_CURRENT_PRODUCT_TARGET",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-092",
+      "family": "annotations",
+      "name": "Post",
+      "priority": "C_NOT_CURRENT_PRODUCT_TARGET",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-093",
+      "family": "annotations",
+      "name": "Idea",
+      "priority": "C_NOT_CURRENT_PRODUCT_TARGET",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-094",
+      "family": "chart-types",
+      "name": "Bars",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-095",
+      "family": "chart-types",
+      "name": "Candles",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-096",
+      "family": "chart-types",
+      "name": "Hollow candles",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-097",
+      "family": "chart-types",
+      "name": "Volume candles",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-098",
+      "family": "chart-types",
+      "name": "Line",
+      "priority": "A_ESSENTIAL",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-099",
+      "family": "chart-types",
+      "name": "Line with markers",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-100",
+      "family": "chart-types",
+      "name": "Step line",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-101",
+      "family": "chart-types",
+      "name": "Area",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-102",
+      "family": "chart-types",
+      "name": "HLC area",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-103",
+      "family": "chart-types",
+      "name": "Baseline",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-104",
+      "family": "chart-types",
+      "name": "Columns",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-105",
+      "family": "chart-types",
+      "name": "High-low",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-106",
+      "family": "chart-types",
+      "name": "Volume footprint",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-107",
+      "family": "chart-types",
+      "name": "Time price opportunity",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-108",
+      "family": "chart-types",
+      "name": "Session volume profile",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-109",
+      "family": "chart-types",
+      "name": "Heikin Ashi",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-110",
+      "family": "chart-types",
+      "name": "Renko",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-111",
+      "family": "chart-types",
+      "name": "Line break",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-112",
+      "family": "chart-types",
+      "name": "Kagi",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-113",
+      "family": "chart-types",
+      "name": "Point & figure",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    },
+    {
+      "id": "REF-114",
+      "family": "chart-types",
+      "name": "Range",
+      "priority": "B_NEEDS_JUSTIFICATION",
+      "research_status": "MENU_DISCOVERED_NOT_BEHAVIOR_VALIDATED",
+      "evidence_id": "ev_98798bcd0c3ec3eace9fa2dcdb1d29113a089452fe16edc2f4a88879553be432"
+    }
+  ]
+}

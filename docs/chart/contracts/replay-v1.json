@@ -1,0 +1,50 @@
+{
+  "schema": "chart-replay-profile/1",
+  "event_profile": "CLOSED_EPISODE_REPLAY/1",
+  "legacy_profile": "CLOSED_EXPLICIT_REARM/1",
+  "source_spec": "docs/chart/contracts/chart-dry-run-v1.json",
+  "source_spec_preserved": true,
+  "execution_amendments": {
+    "DR01": {
+      "old_reason": "NOT_IMPLEMENTED",
+      "reason": "INVALID_PACKET",
+      "why": "Adapter exists; incomplete LIVE-only packet is rejected at implemented input validation"
+    }
+  },
+  "default_parameters": {
+    "direction": "FROM_BELOW",
+    "approach": "1",
+    "touch": "0.1",
+    "rearm": "2",
+    "cooldown": 2,
+    "mode": "APPROACH_TOUCH",
+    "ttl_seconds": 60,
+    "max_attempts": 3
+  },
+  "synthetic_not_trading_recommendation": true,
+  "history_boundary": "Snapshots/history/heartbeat never create opportunities; restart/gap require proof plus explicit internal resume",
+  "phases": [
+    "ARMED",
+    "APPROACH_NOTIFIED",
+    "TOUCH_LATCHED"
+  ],
+  "identity": "E3 canonical string-array SHA256; namespace independent; Python/TypeScript golden verified",
+  "migration": 8,
+  "atomic": [
+    "event",
+    "intent",
+    "checkpoint",
+    "observation"
+  ],
+  "http": "GET /api/replay-validation only; no execute/activate endpoint",
+  "authority": {
+    "runtime_connected": false,
+    "order_authority": false,
+    "external_delivery": false
+  },
+  "decision": "KEEP_LIVE_DISABLED_PENDING_QA01_AND_PHYSICAL_REVIEW",
+  "cases_executed": 36,
+  "additional_target_kinds": 20,
+  "additional_query_cases": 48,
+  "next_task": "QA01"
+}

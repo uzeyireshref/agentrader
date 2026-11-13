@@ -1,0 +1,1050 @@
+{
+  "version": "chart-core-plan/3",
+  "date": "2026-11-13",
+  "user_approved_scope": "Broad professional-chart research beyond existing tools, followed by curated essential/advanced/out-of-scope capabilities; integrated functional and visual quality; no exhaustive TradingView feature clone",
+  "status": "CONTROLLED_IMPLEMENTATION_COMPLETE_WITH_OPEN_ACCEPTANCE",
+  "next_task": "REVIEW_OPEN_ACCEPTANCE",
+  "original_plan": {
+    "archive": "docs/chart/PLAN-v1-20261110.md",
+    "completed": 24,
+    "total": 25,
+    "B5": "DEFERRED_INCOMPLETE"
+  },
+  "completed_prerequisites": {
+    "P1": "reports/chart-p1-validation-20261110.json"
+  },
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "Ortak araç sözleşmesi ve yetenek kaydı",
+      "group": "Temel",
+      "status": "COMPLETED",
+      "depends_on": [
+        "P1"
+      ],
+      "deliverable": "Mevcut dört çizim dahil kind/schema/version, anchors/params, source/product/price_type/symbol/interval, zaman kapsamı ve sorgu capabilities; çizim, gösterge, kural ve plan nesneleri ayrılır. Eski strict CRUD için açık yeni sürüm/migration ve backward compatibility planı.",
+      "acceptance": [
+        "Her çekirdek araç için okunabilir/hesaplanabilir/düzenlenebilir yetenekler açık",
+        "Gizleme, kilit, izleme aktivasyonu ve emir yetkisi birbirinden ayrı",
+        "Desteklenmeyen araç açık hata/BLOCKED verir; eski kayda sessiz anlam değişimi yok"
+      ],
+      "audit_features": [
+        "F03",
+        "F04",
+        "F05",
+        "F08",
+        "F09",
+        "F10"
+      ],
+      "evidence": "reports/chart-t01-validation-20261110.json"
+    },
+    {
+      "id": "T02",
+      "title": "Kanonik hesap ve grafik eşleşmesi",
+      "group": "Temel",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T01"
+      ],
+      "deliverable": "Decimal/rational geometri ve ölçüm çekirdeği; TS görüntü hesaplarıyla parity fixtures. Grid boşlukları, lineer/log semantiği, canonical hash ve sürükleme/tick girdi yolları tanımlanır.",
+      "acceptance": [
+        "Yatay/bölge/trend/Fib sonuçları bağımsız referansla eşleşir",
+        "Float gösterimden kesin bot fiyatı türetilmez; form ve drag aynı tick politikasına uyar",
+        "History/grid eksikliği, aralık dışı sorgu ve zaman birimleri test edilir"
+      ],
+      "audit_features": [
+        "F01",
+        "F03",
+        "F05",
+        "F08",
+        "F09"
+      ],
+      "evidence": "reports/chart-t02-validation-20261110.json"
+    },
+    {
+      "id": "P2",
+      "title": "Güvenilir saat ve uzun kesinti",
+      "group": "Temel",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T01"
+      ],
+      "deliverable": "Mevcut reliability P2: monotonic taşıma yaşı, upstream saat/uncertainty kanıtı, future stamp ve wall-clock jump davranışı.",
+      "acceptance": [
+        "Taze heartbeat eski upstream veriyi uygun göstermez",
+        "İleri/geri saat sıçraması veya eksik kanıt engellenir",
+        "Uzun kesinti/catchup canlı fırsat üretmez; eşikler sürümlü"
+      ],
+      "audit_features": [
+        "F10"
+      ],
+      "evidence": "reports/chart-p2-validation-20261110.json"
+    },
+    {
+      "id": "P3",
+      "title": "Epoch ve değişmez piyasa kanıtı",
+      "group": "Temel",
+      "status": "COMPLETED",
+      "depends_on": [
+        "P2"
+      ],
+      "deliverable": "Mevcut reliability P3: stream epoch, snapshot/grid/quality/warmup/continuity kanıtı.",
+      "acceptance": [
+        "Restart/reconnect snapshot bariyeri",
+        "Tekrar/eski paket ve eksik geçmiş uygunluk üretmez",
+        "Sequence atlaması tek başına veri boşluğu sayılmaz"
+      ],
+      "audit_features": [
+        "F10"
+      ],
+      "evidence": "reports/chart-p3-validation-20261110.json"
+    },
+    {
+      "id": "T03",
+      "title": "Fiyat/zaman cetveli",
+      "group": "Araçlar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T02"
+      ],
+      "deliverable": "Fiyat, yüzde, tick, bar sayısı ve gerçek UTC süre ölçümü; sıfır/düşen fiyat yönü ve sonuç sunumu.",
+      "acceptance": [
+        "Boşluklu grafikte bar sayısı ile süre ayrı hesaplanır",
+        "UI ve kanonik sonuçlar eşleşir; uç değerlerde sessiz yuvarlama yok",
+        "Kalıcı ölçüm seçeneği varsa kayıt/edit/undo/reload doğrulanır"
+      ],
+      "audit_features": [
+        "F01"
+      ],
+      "evidence": "reports/chart-t03-validation-20261110.json"
+    },
+    {
+      "id": "T04",
+      "title": "Long/short planlama",
+      "group": "Araçlar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T03",
+        "T07"
+      ],
+      "deliverable": "Entry/stop/hedef ve R:R; opsiyonel risk bütçesi/teorik qty, ücret/kayma varsayımları. Plan emir değildir.",
+      "acceptance": [
+        "Long/short seviye sırası ve sıfır risk reddi",
+        "Decimal mesafeler ve maliyet dahil/hariç sonuçlar açık",
+        "Plan kaydı/edit/undo/reload; hiçbir hesap/emir API çağrısı yok"
+      ],
+      "audit_features": [
+        "F02"
+      ],
+      "evidence": "reports/chart-t04-validation-20261112.json"
+    },
+    {
+      "id": "T05",
+      "title": "Ray ve çizgi uzatma",
+      "group": "Araçlar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T02",
+        "G03"
+      ],
+      "deliverable": "Trend segment/ray/bilateral uzatma, horizontal ray; sonlu/sınırsız zone zaman kapsamı sürümlü.",
+      "acceptance": [
+        "Başlangıç/son sınırları ve ters anchor doğru",
+        "UI/bot priceAt/contains aynı; eksik grid sessiz extrapolation üretmez",
+        "Eski segment/bölge kayıtları önceki anlamıyla açılır"
+      ],
+      "audit_features": [
+        "F03",
+        "F04"
+      ],
+      "evidence": "reports/chart-t05-validation-20261112.json"
+    },
+    {
+      "id": "T06",
+      "title": "Paralel kanal",
+      "group": "Araçlar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T05"
+      ],
+      "deliverable": "Üç anchor veya açık offset ile paralel kanal, orta çizgi ve sınır sorguları.",
+      "acceptance": [
+        "Paralellik, ters yön ve degenerate geometri testleri",
+        "İçeride/dışarıda/mesafe hesapları aynı referansa uyar",
+        "Tutamak/drag/edit/kayıt/undo/reload doğrulanır"
+      ],
+      "audit_features": [
+        "F03"
+      ],
+      "evidence": "reports/chart-t06-validation-20261112.json"
+    },
+    {
+      "id": "T07",
+      "title": "Çizim yönetimi",
+      "group": "Araçlar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T01",
+        "T05",
+        "G03"
+      ],
+      "deliverable": "Kilitle, gizle/göster, çoğalt, timeframe görünürlüğü, kalıcı özellikler ve çoklu çizim seçimi ihtiyacının sınırı.",
+      "acceptance": [
+        "Kilit yalnız edit engeller; hide bot bağını değiştirmez",
+        "Kopya yeni kimlik alır, bot aktivasyonu taşınmaz",
+        "409/retry/undo/market geçişleri ve farklı timeframe görünümü doğrulanır",
+        "Çoklu pointer hareketinde seçili kilitli çizim sabit, serbest çizim değişir; tek history işlemi; property edit politikası ayrı"
+      ],
+      "audit_features": [
+        "F04"
+      ],
+      "evidence": "reports/chart-t07-validation-20261112.json"
+    },
+    {
+      "id": "T08",
+      "title": "Zaman dilimleri ve üst-zaman bağlamı",
+      "group": "Hesaplar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "P3",
+        "T02",
+        "G03"
+      ],
+      "deliverable": "1m/5m/30m ekle; mevcut15m/1h/4h/1d/1w korunur. Üst-zaman kapalı mum bağlamı; çoklu pencere zorunlu değil.",
+      "acceptance": [
+        "Backend/frontend interval listesi ve UTC bucket tutarlı",
+        "Pagination/warmup/reconnect her yeni intervalde doğru",
+        "Üst-zaman kapanışı erken okunmaz; kaynak/resample provenansı açık"
+      ],
+      "audit_features": [
+        "F07"
+      ],
+      "evidence": "reports/chart-t08-validation-20261112.json"
+    },
+    {
+      "id": "T09",
+      "title": "Kalıcı ayarlanabilir gösterge modeli",
+      "group": "Hesaplar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T01",
+        "T02",
+        "G02",
+        "G03"
+      ],
+      "deliverable": "indicator_id/revision, period/source/smoothing/anchor/pane ve workspace ayar kaydı.",
+      "acceptance": [
+        "EMA/RSI mevcut sonuçları korunur",
+        "UI ve backend bağımsız referans/seed/warmup parity",
+        "Ayar/coin/timeframe/reload ve 50 pane döngüsü regresyonu"
+      ],
+      "audit_features": [
+        "F05"
+      ],
+      "evidence": "reports/chart-t09-validation-20261112.json"
+    },
+    {
+      "id": "T10",
+      "title": "SMA ve ATR; ayarlı EMA/RSI",
+      "group": "Hesaplar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T09",
+        "T08"
+      ],
+      "deliverable": "SMA ve ATR ekle; mevcut EMA/RSI modeline ayarlar bağla. Eski analysis.py yeniden kullanımı ancak parity sonrası.",
+      "acceptance": [
+        "SMA/EMA/RSI/ATR bağımsız referans değerleri",
+        "ATR smoothing ve seed açık; açık mum ve warmup eksikliği işaretli",
+        "Eksik bar/veri revizyonu sonrası sonuç güncelliği doğru",
+        "ATR previous-close gap511.4 versus high-low511.3 fixture; RSI uzun-history yakınsama origin seed kanıtı sayılmaz"
+      ],
+      "audit_features": [
+        "F06"
+      ],
+      "evidence": "reports/chart-t10-validation-20261112.json"
+    },
+    {
+      "id": "T11",
+      "title": "Seanslı ve anchored VWAP",
+      "group": "Hesaplar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T09",
+        "T08"
+      ],
+      "deliverable": "UTC seans reset ve kaydedilmiş anchor; fiyat/hacim kaynağı ve bar tabanlı hesap tanımı.",
+      "acceptance": [
+        "Sıfır hacim/anchor öncesi/eksik geçmiş davranışı",
+        "Reset/anchor/reconnect/history sonrası aynı sonuç",
+        "Mum VWAP gerçek trade VWAP olarak sunulmaz; mümkünse exact quote/base seçimi açık",
+        "K-compacted UI volume kanonik girdi olmaz; HLC3 bar VWAP kaynak/UTC-session ve hacim provenansı açık"
+      ],
+      "audit_features": [
+        "F06"
+      ],
+      "evidence": "reports/chart-t11-validation-20261112.json"
+    },
+    {
+      "id": "T12",
+      "title": "Ayarlanabilir Fibonacci ve extension",
+      "group": "Hesaplar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T02",
+        "T07"
+      ],
+      "deliverable": "Kalıcı Decimal oran listesi, ters anchor, seçilmiş extension seviyeleri ve zaman kapsamı; üç noktalı projection ayrı kind olarak sınırlandırılır.",
+      "acceptance": [
+        "Eski yedi seviyeli kayıt göçü/gösterimi korunur",
+        "Seviye sonuçları Decimal referansla eşleşir",
+        "Tick emir yuvarlaması yapılmaz; sıkışık etiket/drag/undo regresyonu"
+      ],
+      "audit_features": [
+        "F08"
+      ],
+      "evidence": "reports/chart-t12-validation-20261112.json"
+    },
+    {
+      "id": "T13",
+      "title": "Lineer/log ölçek semantiği",
+      "group": "Hesaplar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T02",
+        "T05",
+        "T06",
+        "T12"
+      ],
+      "deliverable": "Log görünüm ve trend/channel/Fib anlamı açık sürüm ile; görüntü ve fiyat fonksiyonu birbirine karışmaz.",
+      "acceptance": [
+        "Ölçek değişiminde anchor fiyatları korunur",
+        "Düz ekran çizgisi ile bot priceAt eşleşir veya desteklenmeyen kombinasyon BLOCKED",
+        "Scale/reload/zoom/raster ve geometry parity testleri"
+      ],
+      "audit_features": [
+        "F09"
+      ],
+      "evidence": "reports/chart-t13-validation-20261112.json"
+    },
+    {
+      "id": "T14",
+      "title": "Çalışma alanı ve araç şablonları",
+      "group": "Hesaplar",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T07",
+        "T09",
+        "T12",
+        "G04",
+        "G05"
+      ],
+      "deliverable": "Araç/gösterge varsayılanları ve workspace preset kaydı; çizim/indicator ayarları toplu geri yükleme.",
+      "acceptance": [
+        "Şablon bot aktivasyonu veya işlem yetkisi taşımaz",
+        "Market/timeframe geçişinde yanlış kaydı yüklemez",
+        "Version/restore/409 ve eski workspace uyumluluğu"
+      ],
+      "audit_features": [
+        "F04",
+        "F05"
+      ],
+      "evidence": "reports/chart-t14-validation-20261112.json"
+    },
+    {
+      "id": "P4",
+      "title": "Revision bağlı araç/kural tanımları",
+      "group": "Bot uyumu",
+      "status": "COMPLETED",
+      "depends_on": [
+        "P3",
+        "T04",
+        "T06",
+        "T08",
+        "T10",
+        "T11",
+        "T12",
+        "T13",
+        "T14",
+        "G04",
+        "G05"
+      ],
+      "deliverable": "Mevcut reliability P4 genişleyen araç registry kapsamıyla: binding varsayılan DISABLED, owner/revision/rule/interval/grid/hash.",
+      "acceptance": [
+        "Edit/delete/undo eski bağı durdurur; açık rebind",
+        "Her desteklenen araç query/parity kanıtı taşır",
+        "Bot yazma/düzenleme capability ayrı; emir yetkisi yok"
+      ],
+      "audit_features": [
+        "F10"
+      ],
+      "evidence": "reports/chart-p4-delivery-20261112.json"
+    },
+    {
+      "id": "P5",
+      "title": "Saf uygunluk ve nedenli engel",
+      "group": "Bot uyumu",
+      "status": "COMPLETED",
+      "depends_on": [
+        "P4"
+      ],
+      "deliverable": "Eksik kanıtta BLOCKED; OBSERVE_ONLY/EVALUATION_ELIGIBLE_NOT_ORDER_AUTHORITY sonuçları.",
+      "acceptance": [
+        "Her zorunlu kanıtın yokluğuna negatif test",
+        "UI LIVE veya çizim görünürlüğü aktivasyon değildir",
+        "Desteklenmeyen kind/formula/scale/grid açık engel"
+      ],
+      "audit_features": [
+        "F10"
+      ],
+      "evidence": "reports/chart-p5-delivery-20261113.json"
+    },
+    {
+      "id": "P6",
+      "title": "Kalıcı semantik olay/yerel intent",
+      "group": "Bot uyumu",
+      "status": "COMPLETED",
+      "depends_on": [
+        "P5"
+      ],
+      "deliverable": "Mevcut reliability P6: transaction head recheck, semantic unique key, replay namespace, crash/restart.",
+      "acceptance": [
+        "Event+intent atomik ve kalıcı dedup",
+        "Ayrı DB atomik snapshot iddiası yok",
+        "Sahte sink; gerçek mesaj/hesap/emir/worker aktivasyonu yok"
+      ],
+      "audit_features": [
+        "F10"
+      ],
+      "evidence": "reports/chart-p6-delivery-20261113.json"
+    },
+    {
+      "id": "P7",
+      "title": "İzole replay/kuru çalışma",
+      "group": "Bot uyumu",
+      "status": "COMPLETED",
+      "depends_on": [
+        "P6"
+      ],
+      "deliverable": "Mevcut36 E4 senaryosunu gerçekten yürüt; yeni araçlara registryde açıkça desteklenen ek senaryolar.",
+      "acceptance": [
+        "36 senaryo ve araç bazlı ek parity testleri sonuç sayılarıyla",
+        "Fake clock/restart/revision yarışı tekrar edilebilir",
+        "Canlı fırsat/history ayrımı; dış yan etki sayaçları sıfır"
+      ],
+      "audit_features": [
+        "F10"
+      ],
+      "evidence": "reports/chart-p7-delivery-20261113.json"
+    },
+    {
+      "id": "QA01",
+      "title": "Masaüstü grafik kabulü ve yeni aday",
+      "group": "Kabul",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T03",
+        "T04",
+        "T05",
+        "T06",
+        "T07",
+        "T08",
+        "T09",
+        "T10",
+        "T11",
+        "T12",
+        "T13",
+        "T14",
+        "P7",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06"
+      ],
+      "deliverable": "Genişleyen çekirdek kapsamı regression/raster/performans ve gerekli görünür klavye/fullscreen kabulü; restore edilebilir yeni aday.",
+      "acceptance": [
+        "Ertelenmiş B5 masaüstü D03/D05/D06 kapanır veya açık kalır; dokunmatik ayrı iş",
+        "Değişiklik etkisine göre ölçüm; her küçük değişiklikte30dk tekrar yok",
+        "Yeni aday hash/restore ve kaynak kanıtı; bot/live order/notification ayrı sonraki karar",
+        "Pointercancel/lost capture/blur commit edilmemiş preview ve pointer/chart lock temizliği, history/persistence/bot olayı yok; sonraki gesture çalışır; gerçek input kohortu açık"
+      ],
+      "audit_features": [],
+      "completion_scope": "CONTROLLED_DESKTOP_PHYSICAL_ACCEPTANCE_OPEN",
+      "evidence": "reports/chart-qa01-delivery-20261113.json"
+    },
+    {
+      "id": "G01",
+      "title": "Grafik kabuğu ve tasarım temeli",
+      "group": "Profesyonel grafik genişletmesi",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T03",
+        "P3"
+      ],
+      "deliverable": "App.tsx/style.css; compact header, grouped tool rail, optional side panel, theme/type/icon/focus tokens",
+      "acceptance": [
+        "1536/1280/1024 two themes and keyboard; existing chart/data/drawings remain correct",
+        "Functional and visual acceptance together; scoped tests and build after implementation"
+      ],
+      "design_tracks": [
+        "D01",
+        "D02",
+        "D06"
+      ],
+      "evidence": "reports/chart-g01-validation-20261111.json",
+      "delivery": "docs/chart/G01-SHELL-DELIVERY.md"
+    },
+    {
+      "id": "G06",
+      "title": "Günlük navigasyon ve sembol/araç erişimi",
+      "group": "Profesyonel grafik genişletmesi",
+      "status": "COMPLETED",
+      "depends_on": [
+        "G01"
+      ],
+      "deliverable": "App/chartNavigation/chartKeyboard; search/watchlist, interval, tool menus, fullscreen/latest",
+      "acceptance": [
+        "Input focus isolation, context identity, no stale selection writes",
+        "Functional and visual acceptance together; scoped tests and build after implementation"
+      ],
+      "design_tracks": [
+        "D02",
+        "D06"
+      ],
+      "evidence": "reports/chart-g06-validation-20261111.json",
+      "delivery": "docs/chart/G06-NAVIGATION-DELIVERY.md"
+    },
+    {
+      "id": "G02",
+      "title": "Pane ve ölçek altyapısı",
+      "group": "Profesyonel grafik genişletmesi",
+      "status": "COMPLETED",
+      "depends_on": [
+        "G01",
+        "G06"
+      ],
+      "deliverable": "App/PriceScaleControl/ProjectionPrimitive; independent pane/scale registry and resize",
+      "acceptance": [
+        "DPR/fullscreen/pane resizing; existing canonical anchors retained",
+        "Functional and visual acceptance together; scoped tests and build after implementation"
+      ],
+      "design_tracks": [
+        "D03",
+        "D05"
+      ],
+      "evidence": "reports/chart-g02-validation-20261111.json",
+      "delivery": "docs/chart/G02-PANES-DELIVERY.md"
+    },
+    {
+      "id": "G03",
+      "title": "Veri penceresi ve hazırlık durumları",
+      "group": "Profesyonel grafik genişletmesi",
+      "status": "COMPLETED",
+      "depends_on": [
+        "G02",
+        "P3"
+      ],
+      "deliverable": "OhlcReadout/types/freshness/renderRecovery/useDrawings; selected/latest and market/indicator/drawing readiness",
+      "acceptance": [
+        "A-B-A, history/reconnect/async race, 0 vs null/error, paint proof, drawing loading barrier",
+        "Functional and visual acceptance together; scoped tests and build after implementation"
+      ],
+      "design_tracks": [
+        "D04",
+        "D12",
+        "D13"
+      ],
+      "evidence": "reports/chart-g03-validation-20261111.json",
+      "delivery": "docs/chart/G03-DATA-WINDOW-DELIVERY.md"
+    },
+    {
+      "id": "G04",
+      "title": "Metin/not/fiyat etiketi",
+      "group": "Profesyonel grafik genişletmesi",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T07",
+        "T13"
+      ],
+      "deliverable": "Versioned geometry/registry and DrawingLayer/Panel; multiline text and anchored price labels",
+      "acceptance": [
+        "Create/edit/drag/reload, access keys, hit test, bot capability explicit",
+        "Functional and visual acceptance together; scoped tests and build after implementation"
+      ],
+      "design_tracks": [
+        "D04",
+        "D05"
+      ],
+      "evidence": "reports/chart-g04-validation-20261112.json"
+    },
+    {
+      "id": "G05",
+      "title": "MACD ve Bollinger Bands",
+      "group": "Profesyonel grafik genişletmesi",
+      "status": "COMPLETED",
+      "depends_on": [
+        "T10",
+        "G02"
+      ],
+      "deliverable": "Persistent indicator registry/calculators/panes; MACD histogram states and BB basis/stddev/offset",
+      "acceptance": [
+        "Closed numerical fixtures, configurable styles, output identity and unavailable reasons",
+        "Functional and visual acceptance together; scoped tests and build after implementation"
+      ],
+      "design_tracks": [
+        "D03",
+        "D11",
+        "D13"
+      ],
+      "evidence": "reports/chart-g05-validation-20261112.json"
+    }
+  ],
+  "new_tasks_completed": 27,
+  "new_tasks_total": 27,
+  "desktop_scope_decision": "reports/chart-b5-desktop-scope-decision-20261110.json",
+  "touch_followup": "OPEN_NOT_TESTED",
+  "bot_adapter_connected": false,
+  "live_execution_authorized": false,
+  "design_priority": "INTEGRATED_WITH_FUNCTIONAL_DELIVERIES",
+  "second_wave": [
+    "Multi-chart/replay, advanced volume/profile only with suitable data",
+    "Nested/mixed-tool groups and true mobile/touch as separate scope",
+    "Broader community scripts and special drawing families only if needed"
+  ],
+  "research_gate": {
+    "order": [
+      "REA01",
+      "REA02",
+      "REA03",
+      "REA04"
+    ],
+    "implementation_resumes_at": "G01",
+    "tasks": [
+      {
+        "id": "REA01",
+        "status": "COMPLETED",
+        "evidence": "reports/chart-rea-setup-20261110.json"
+      },
+      {
+        "id": "REA02",
+        "status": "COMPLETED",
+        "evidence": "docs/chart/REA-REFERENCE-ANALYSIS.md"
+      },
+      {
+        "id": "REA03",
+        "status": "COMPLETED",
+        "completion_kind": "BOUNDED_RESEARCH_WITH_RECORDED_LIMITS"
+      },
+      {
+        "id": "REA04",
+        "status": "COMPLETED",
+        "evidence": "docs/chart/REA04-IMPLEMENTATION-ROADMAP.md"
+      }
+    ],
+    "reference_selection": {
+      "tools": "TradingView Supercharts",
+      "market_data_context": "Binance USD-M",
+      "numerical_parity": "PARTIAL_DISPLAY_FINITE_WINDOW_RECURRENCE_AND_BOUNDED_CONSISTENCY; not complete vendor parity",
+      "performance_parity": "NOT_MEASURED: numeric trace lacks DrawFrame; no vendor/product FPS comparison"
+    },
+    "scope_document": "docs/chart/PROFESSIONAL-CHART-SCOPE.md",
+    "design_document": "docs/chart/REA-DESIGN-SPEC.md",
+    "inventory_document": "docs/chart/REA-FULL-CHART-SCOPE.md",
+    "remaining_order": [
+      "Market/interval late-response provenance and explicit seed/NA/zero-volume/session contracts",
+      "Reference performance baseline and desktop visual acceptance states",
+      "REA04 curated scope/dependencies/acceptance consolidation; real pointercancel and physical touch remain QA01 followups"
+    ],
+    "roadmap": "docs/chart/REA04-IMPLEMENTATION-ROADMAP.md",
+    "scope_closure": "User requested combined final round then implementation planning; unresolved observations become explicit owned acceptance, no claim full vendor parity",
+    "reopen_policy": "Targeted REA only for reproducible numeric/context/interaction/performance discrepancy, with bounded question and minimal evidence"
+  },
+  "second_wave_status": "CURATED_ADVANCED_SCOPE",
+  "live_research_checkpoint": {
+    "date": "2026-11-11",
+    "status": "BOUNDED_RESEARCH_COMPLETE",
+    "report": "docs/chart/REA-REFERENCE-ANALYSIS.md",
+    "evidence_bundle": "reports/rea-chart/rea-evidence-final-network-design-20261111.json",
+    "observed": [
+      "MACD inputs/style/visibility and read-only builtin source",
+      "MACD pane context and move submenu",
+      "builtin Bollinger Bands identity/inputs/style",
+      "chart symbol/status/scales/canvas settings",
+      "price-axis context menu",
+      "data-window selected-bar outputs",
+      "interval/range/date navigation",
+      "Candles-Line-Candles with line source menu",
+      "BTC-ETH symbol isolation and restored BTC drawings",
+      "research drawings hidden; explicit save confirmed",
+      "Text multiline/style/create/delete",
+      "indicator template symbol/interval scope fields",
+      "builtin BB/RSI/ATR/VWAP read-only Pine formulas",
+      "RSI pane visual reference",
+      "dark theme wide chart and measured settings dialog",
+      "Fib clone/rename; one-member group lock/hide/displacement",
+      "numeric displacement and two undo steps",
+      "locked group deletion with confirmation and undo/redo",
+      "layer order change and undo",
+      "drawing-template save/apply/delete; geometry unchanged",
+      "Alt+D, Alt+G, comma interval30/D and Ctrl+S",
+      "real navigation reload: Fib coordinates/options and Long/Short inputs",
+      "linear/log Fib midpoint changes with canonical anchors retained",
+      "percent/index/invert and left/right axis UI",
+      "axis label overlap off/on visual comparison",
+      "1h closed-candle UTC+4 to UTC: same OHLCV and BB outputs",
+      "restored UTC/1D/log/right axis/non-inverted/no-overlap",
+      "masked date focus blocks global letter/slash/comma shortcuts",
+      "BB numeric ArrowUp/last-valid fallback and Cancel rollback",
+      "BB Escape and X keep preview values; explicit Ok20 restore",
+      "anonymous actual viewport1280/1024/768; seven size-verified images",
+      "nested group Basic-plan limit; temporary clones/groups cleaned",
+      "32 closed daily bars; BB20 finite-window13 rows/39 values match at display precision",
+      "BB5 offset+2:28 closed-source output rows/84 values; future OHLC empty",
+      "EMA20 basis:31 adjacent closed recurrences; initial seed still unknown",
+      "Table view and CSV export UI; Basic plan export gate",
+      "ATR14 RMA31 rounded recurrences and SMA18 finite windows",
+      "RSI14 SMA14 overlay19 windows; RSI2 local-seed20-update burnin10 outputs",
+      "VWAP Session1h reset and25 rounded-volume consistency rows; two00:00 starts",
+      "VWAP1D hide retains object/blank outputs; Percentage2 source/bands32 rows/96 values",
+      "24 closed UTC hourly bars exactly aggregate to one daily OHLC; VWAP calculation timeframe matters",
+      "1m evolving open candle;31 prior closed rows unchanged;30 common closed rows unchanged across document navigation",
+      "25-second scoped offline emulation, UI warning and restored network; residual socket traffic prevents blackout claim",
+      "Go to Nov8 and Nov5 historical1m windows, no assumed hard history limit",
+      "Volume Precision8 improves small values but K compaction remains",
+      "Spot/perpetual/mark identity, distinct same-minute OHLC and drawing isolation roundtrip",
+      "Real missing-volume VWAP RE10142; data-window empty rows versus omitted table columns",
+      "Ordinary-CDP two-point temporary trend creation and endpoint drag; REA coordinate forms verify one-point change and undo; temporary trend deleted",
+      "Current saved Fib UTC time_t values and initial300-day price-series mapping exactly match displayed186/248; older187/249 snapshot is prior UTC day, historical explanation inferred",
+      "One spot daily log trend body movement: common multiplicative price factor within cents uncertainty and bar delta9; direct Ctrl+Z/Redo restores values",
+      "Escape during held endpoint drag keeps change; one Undo restores; not pointercancel",
+      "BB Calculation1day selected on chart1h; WaitON/OFF table mapping,31 common closed OHLCV rows; HTF context visible in legend",
+      "15-second quiet renderer resource sample; no frame p95 or leak conclusion",
+      "Six fixed-position spot1D OHLC magnet cases: near Weak=Strong OHLC, far Weak=Off free price and Strong OHLC; bars260/274 unchanged",
+      "Single steep trend body cursor samples0px pointer versus4/8/16 crosshair; not universal radius",
+      "Held endpoint drag released in browser right panel commits to bar309 and one Undo restores; initial no-preview attempt excluded",
+      "Held endpoint drag with owned blank-tab switch keeps new value; one Undo restores; blank tab closed",
+      "Two tree rows selected via ordinary Ctrl-click; still two selected when one locked; mixed lock icons corroborated by REA",
+      "Both temporary spot trends unlocked/deleted together; original four perpetual drawings restored hidden",
+      "Paired body mouse control moves two unlocked spot trends; one Undo restores; with one locked only unlocked trend moves to same coordinates",
+      "Whitelisted reload stream300 hourly OHLCV rows; no raw auth/session/header/frame retained; hidden study numeric rows not captured",
+      "VWAP HLC3 Session stddev1 BigInt rational volume sums match32 closed hourly UI rows/96 outputs at0.1 display precision",
+      "RSI14 Close plusSMA14:32 closed rows/64 outputs after minimum253 local-seed Wilder updates; origin seed still unverified",
+      "ATR precision8:31 recent and55 older recurrence steps plus2 targeted steps; previous close74800 above high74799.9 discriminates TR511.4 versus H-L511.3",
+      "Controlled touchStart timed out before move/cancel; no pointercancel proof; breakpoint/debugger/touch cleanup acknowledged and no active touch/paused state remained",
+      "Table PageDown did not move rows; custom scrollbar click retrieved56 older rows; exact goto/time/cursor lock verified3 target hours",
+      "Serial5 and rapid6 ordinary interval menu transitions; two old-turnaround price updates received276ms/111ms after newer requests; not render rejection proof",
+      "ETH-BTC-ETH-BTC: three normal symbol selections; BTC Canvas/source ready before four drawings reappear; cached ETH resolve remains unobserved",
+      "Two loaded hash-matched selected source files: wire t decodes turnaround; SeriesDataSource static instance/revision guard accepts undefined tags; active main-chart dispatch not traced",
+      "Self-ratio constant-price display with RSI14=100 and BB20=1/1/1; actual product synthetic constant-input RSI14=50",
+      "RSI1/SMA1 closed adjacent up/down display checks; RSI10000 RE10004 versus RSI3000 blank without runtime error",
+      "Session-conflict overlay observed; no Connect action; temporaryRSI deletion and explicit save confirmed"
+    ],
+    "not_verified": [
+      "matched-workload performance",
+      "Text anchor/drag/reload",
+      "Hidden-precision constant-series platform inputs and exact seed/NA; self-ratio display fixture observed",
+      "full numeric/render/timestamp reload beyond tested fields",
+      "indicator/layout template apply and overwrite",
+      "input focus isolation negative tests",
+      "percent reference-base algorithm and viewport dependence",
+      "zero/negative log domain and invert drag",
+      "DST/session boundary fixtures",
+      "label collision priority and pixel tolerances",
+      "nested group inheritance on eligible account",
+      "IME/clipboard/contenteditable focus",
+      "real touch and mobile acceptance",
+      "full viewport state matrix at1024",
+      "Table keyboard scroll/focus isolation and horizontal column navigation",
+      "EMA/ATR origin seed/warmup/NA; RSI14 base origin and full all-up/all-down histories; flat self-ratio display and period1 branch samples observed",
+      "Full stream blackout/upstream staleness/catchup dedup;25-second emulation retained WebSocket traffic",
+      "Complete history paging/gap/hard-limit; late-tag arrival observed, all-frame/cross-symbol stale rejection and async commit boundaries unverified",
+      "Other HTF indicators/timeframes, historical reload/repaint and exact availability timestamps beyond observed BB1D/1h",
+      "Prior UTC-day raw Fib time_t and initial series; historical anchor equality not directly captured",
+      "Actual browser pointercancel/lost capture/OS blur; tab-switch is bounded separate observation",
+      "Universal snap/hit radius, horizontal/time snap, tie-break, temporary Ctrl magnet, indicator snapping, endpoint and DPI/zoom/touch matrix",
+      "Nested/mixed-tool groups and displacement redo; basic two-trend mixed-lock mouse movement now observed",
+      "VWAP hidden numeric output/exchange-trade fidelity/zero volume/DST/HTF and non-UTC session calendars",
+      "Controlled touchStart timed out; actual browser pointercancel/lost capture/OS blur and physical touch remain unverified"
+    ],
+    "browser_state": "BTCUSDT.P/1D/UTC; Volume+BB, originals4 hidden, All changes saved; network online restored, trace stopped; session conflict dismissed without Connect; continuous live freshness not certified",
+    "detailed_report": "docs/chart/REA-FINAL-NETWORK-DESIGN.md",
+    "calculation_gap": {
+      "id": "IND-RSI-FLAT",
+      "current_app": "50 when gain=loss=0",
+      "reference_source": "down==0 branch100",
+      "live_observation": "Synthetic self-ratio displayed flat1; RSI14 display100 across observed rows",
+      "status": "LIVE_SYNTHETIC_DISPLAY_CORROBORATES_SOURCE_DIFFERENCE_NO_HIDDEN_PRECISION",
+      "implementation": "UNCHANGED"
+    },
+    "observed_fixtures": "docs/chart/contracts/rea-observed-fixtures-v1.json",
+    "visual_manifest": "reports/rea-chart/final-network-design-visual-manifest-20261111.json",
+    "access_limits": {
+      "multi_selection": "TWO_TREE_CTRL_AND_TWO_TREND_MIXED_LOCK_BODY_MOVEMENT_VERIFIED: only unlocked object changes; nested/mixed-tool groups still open",
+      "nested_groups": "NOT_VERIFIED: Basic plan upgrade gate observed; no upgrade",
+      "attached_responsive": "NOT_ACCEPTED: requested and actual viewport mismatch",
+      "anonymous_responsive": "VERIFIED_1280_1024_768_DESKTOP_ONLY",
+      "csv_export": "NOT_OBTAINED: Basic plan upgrade gate; visible table samples used",
+      "higher_timeframe": "BB_DAILY_ON_HOURLY_WAIT_ON_OFF_VERIFIED: ordinary accessible focus/Enter fallback plus REA; VWAP and other HTF not tested",
+      "pointer_drag": "ENDPOINT_LOG_BODY_PAIR_CONTROL_MIXED_LOCK_OUTSIDE_TAB_AND_UNDO_OBSERVED; actual pointercancel unverified",
+      "offline": "PARTIAL: scoped ordinary-CDP offline25s restored; residual traffic, no complete blackout",
+      "pointer_cancel": "UNVERIFIED: controlled touchStart timeout before event observation; cleanup removeBreakpoint/disableDebugger/disableTouch acknowledged, no active touch/paused state",
+      "transition_races": "OLD_TAG_ARRIVAL_OBSERVED_NOT_RENDER_REJECTION_PROOF; source guard static only; cached symbol resolution incomplete",
+      "indicator_boundaries": "FLAT_SYNTHETIC_DISPLAY_OBSERVED; hidden input capture failed; origin seed/NA/zero volume remain open"
+    },
+    "numeric_parity": {
+      "report": "docs/chart/REA-ATR-RSI-VWAP-DATA.md",
+      "scope": "Research observations only; finite-window, recurrence, convergence and uncertainty classes stay separate",
+      "bb20_rows": 13,
+      "bb5_offset_rows": 28,
+      "ema_recurrences": 31,
+      "atr_rma_recurrences": 31,
+      "atr_sma_windows": 18,
+      "rsi_overlay_windows": 19,
+      "rsi2_after_burnin_rows": 10,
+      "vwap_hourly_uncertainty_rows": 25,
+      "vwap_percentage_daily_rows": 32,
+      "ohlc_aggregation_days": 1,
+      "origin_seeds": "UNVERIFIED",
+      "precise_volume_vwap_rows": 32,
+      "precise_volume_vwap_outputs": 96,
+      "precise_volume_vwap_class": "FULL_BROWSER_VOLUME_RATIONAL_REFERENCE_VS_0.1_UI",
+      "rsi14_long_burnin_rows": 32,
+      "rsi14_min_updates_after_local_seed": 253,
+      "atr8_recent_recurrences": 31,
+      "atr8_older_recurrences": 55,
+      "atr8_gap_targeted_recurrences": 2,
+      "atr_previous_close_gap": "ONE0.1_GAP_DISCRIMINATED"
+    },
+    "data_lifecycle": {
+      "report": "docs/chart/REA-LIFECYCLE-MARKET-POINTER.md",
+      "closed_display_pairs": 31,
+      "reload_closed_display_pairs": 30,
+      "overlap": "not61 unique bars",
+      "network_blackout": "NOT_PROVEN",
+      "missing_volume": "MARK_SERIES_RE10142_OBSERVED",
+      "pointer": "SINGLE_ENDPOINT_UNDO_AND_LOG_BODY_DIRECT_UNDO_REDO_OBSERVED_ESCAPE_KEEP",
+      "fib_index_drift": "CURRENT_UTC_WINDOW_MAPPING_VERIFIED_HISTORICAL_DAY_SHIFT_INFERRED",
+      "transitions": {
+        "report": "docs/chart/REA-TRANSITIONS-REVISION-READINESS.md",
+        "serial_selections": 5,
+        "rapid_selections": 6,
+        "symbol_selections": 3,
+        "primary_late_tag_events": 2,
+        "late_after_request_ms": [
+          276,
+          111
+        ],
+        "drawing_readiness": "MARKET_AND_DRAWINGS_ASYNCHRONOUS",
+        "render_rejection": "NOT_PROVEN",
+        "full_blackout": "NOT_PROVEN"
+      }
+    },
+    "evidence_records": 6,
+    "observed_fixture_count": 49,
+    "utc_anchor_window": {
+      "report": "reports/rea-chart/utc-anchor-window-fixture-20261111.json",
+      "current_mapping": "VERIFIED",
+      "historical_shift": "INFERRED",
+      "product_storage": "Existing Anchor.time retained; grid mapping and prepend acceptance planned"
+    },
+    "htf_mapping": {
+      "report": "reports/rea-chart/bb-htf-wait-fixture-20261111.json",
+      "scope": "BB1D-on1h WaitON/OFF",
+      "common_closed_rows": 31,
+      "vwap_htf": "NOT_TESTED"
+    },
+    "resource_observation": {
+      "report": "reports/rea-chart/quiet-resource-window-20261111.json",
+      "duration_seconds": 15,
+      "frame_p95": "NOT_MEASURED",
+      "leak_conclusion": "NONE",
+      "matched_product_workload": false
+    },
+    "validation": "reports/rea-chart/final-rea04-validation-20261111.json",
+    "final_state_evidence": "ev_113607c9994790935eaee74b61b64ea156517e1a2d8255b7c85e8dd0d55a50b8",
+    "previous_evidence_bundle": "reports/rea-chart/rea-evidence-indicator-boundaries-20261111.json",
+    "previous_evidence_records": 13,
+    "evidence_bundle_relationship": "Six current REA records separate from previous13 export+8 inline; historical82 and older bundles retained",
+    "interaction_research": {
+      "report": "docs/chart/REA-SNAP-SELECTION-INTERRUPTIONS.md",
+      "snap_cases": 6,
+      "snap_scope": "Two closed spot daily candles, fixed positions, UI cents",
+      "body_cursor_offsets": [
+        0,
+        4,
+        8,
+        16
+      ],
+      "outside_release": "COMMIT_AND_ONE_UNDO_OBSERVED",
+      "tab_switch": "KEEP_AND_ONE_UNDO_OBSERVED_NOT_POINTERCANCEL",
+      "tree_ctrl_selection": "1_TO_2_WITH_UNLOCKED_AND_MIXED_LOCK",
+      "mixed_group_drag": "TWO_TREND_LOCKED_EXCLUSION_AND_ONE_UNDO_VERIFIED",
+      "real_pointercancel": "UNVERIFIED_TOUCH_START_TIMEOUT_CLEANUP_CONFIRMED",
+      "design_images": 20
+    },
+    "final_round": {
+      "cold_reload": "OFFLINE_ERROR_AND_NEW300_DAILY_SNAPSHOT",
+      "warm_catchup": "NOT_PROVEN",
+      "actual_css_widths": [
+        1536,
+        1280,
+        1024
+      ],
+      "stable_responsive": "NOT_ACCEPTED_TRANSIENT_BLANK_PLOT",
+      "trace": "COMPLETE_WITHOUT_DRAWFRAME",
+      "frame_p95": null,
+      "zoom_workload": "NOT_VERIFIED_COORDINATE_INPUTS",
+      "session_conflict": "OBSERVED_CONNECT_NOT_USED"
+    }
+  },
+  "prior_contract": "docs/chart/contracts/chart-core-plan-v2.json",
+  "prior_core_baseline": {
+    "completed": 5,
+    "total": 21,
+    "preserved_completed": [
+      "T01",
+      "T02",
+      "P2",
+      "P3",
+      "T03"
+    ],
+    "validation": "Historical735 Python/161 frontend; not rerun in research"
+  },
+  "implementation_order": [
+    "T01",
+    "T02",
+    "P2",
+    "P3",
+    "T03",
+    "G01",
+    "G06",
+    "G02",
+    "G03",
+    "T05",
+    "T07",
+    "T04",
+    "T06",
+    "T12",
+    "T13",
+    "G04",
+    "T08",
+    "T09",
+    "T10",
+    "G05",
+    "T11",
+    "T14",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "QA01"
+  ],
+  "calculation_decisions": {
+    "rsi_flat": {
+      "target": 100,
+      "current": 50,
+      "implementation_task": "T10",
+      "change_policy": "Versioned calculator/config migration with replay and bot impact; not changed in research",
+      "evidence": "RSI-FLAT-LIVE-RATIO-001"
+    },
+    "ema_atr_origin_seed": "Deterministic documented policy; vendor origin parity not proved",
+    "vwap_zero_volume": "Unavailable when total volume0; zero bar after positive total leaves weighted sums unchanged; missing volume is not0"
+  },
+  "open_risks": [
+    {
+      "id": "R01",
+      "topic": "Established socket blackout/catchup/dedup reference unknown",
+      "owners": [
+        "G03",
+        "QA01"
+      ]
+    },
+    {
+      "id": "R02",
+      "topic": "Origin seed/NA and volume calendar/DST",
+      "owners": [
+        "T10",
+        "T11"
+      ]
+    },
+    {
+      "id": "R03",
+      "topic": "Frame/input p95 unmeasured",
+      "owners": [
+        "G01",
+        "G02",
+        "QA01"
+      ]
+    },
+    {
+      "id": "R04",
+      "topic": "Actual pointercancel/lost capture/touch",
+      "owners": [
+        "T07",
+        "QA01"
+      ]
+    },
+    {
+      "id": "R05",
+      "topic": "Nested/mixed-tool groups and mobile beyond first desktop scope",
+      "owners": [
+        "QA01"
+      ]
+    },
+    {
+      "id": "R06",
+      "topic": "Transient render readiness and cached provenance",
+      "owners": [
+        "G03"
+      ]
+    }
+  ],
+  "performance_acceptance": {
+    "status": "CONTROLLED_HEADLESS_PASSED",
+    "reference_frame_p95": null,
+    "workload": {
+      "closed_candles": 1000,
+      "open_candles": 1,
+      "drawings": 200,
+      "display_hz": 60,
+      "repeats": 5,
+      "cleanup_cycles": 20
+    },
+    "targets": {
+      "raf_p95_ms": 33.34,
+      "visual_feedback_p95_ms": 100
+    },
+    "limits": [
+      "Prospective product budgets, not measured vendor SLA",
+      "rAF not compositor FPS",
+      "Input workload state must be verified",
+      "Missing measurement blocks QA01 completion",
+      "Physical B5, trackpad/touch, screen reader and real display remain open; frame swap is not scanout"
+    ],
+    "product_raf_p95_ms": [
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8
+    ],
+    "product_wheel_frame_swap_p95_ms": 78.487,
+    "evidence": "reports/chart-qa01-performance-20261113.json"
+  },
+  "latest_implementation": {
+    "task": "QA01",
+    "date": "2026-11-13",
+    "python_tests": 920,
+    "frontend_tests": 278,
+    "build": "PASSED",
+    "functional_checks": 11,
+    "raster_cases": 18,
+    "feed_checks": 7,
+    "cleanup_cycles": 20,
+    "restore_checks": 10,
+    "report": "docs/chart/QA01-ACCEPTANCE.md",
+    "integration_decision": "KEEP_LIVE_DISABLED_PHYSICAL_AND_GENERAL_ACCEPTANCE_OPEN"
+  }
+}

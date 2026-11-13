@@ -1,0 +1,1264 @@
+{
+  "version": "rea-observed-fixtures/1",
+  "date": "2026-11-11",
+  "authority": "external-service",
+  "scope": "Observed research examples; not implementation tests or full platform parity",
+  "fixtures": [
+    {
+      "id": "GROUP-DISPLACEMENT-001",
+      "tool": "Fib retracement clone in one-member group",
+      "scale": "log",
+      "before": [
+        {
+          "price": "62287.1",
+          "bar": 187
+        },
+        {
+          "price": "83049.5",
+          "bar": 249
+        }
+      ],
+      "input": {
+        "price_expression": "+1000",
+        "bar_expression": "+2"
+      },
+      "after": [
+        {
+          "price": "63287.1",
+          "bar": 189
+        },
+        {
+          "price": "84049.5",
+          "bar": 251
+        }
+      ],
+      "first_undo": [
+        {
+          "price": "63287.1",
+          "bar": 187
+        },
+        {
+          "price": "84049.5",
+          "bar": 249
+        }
+      ],
+      "second_undo": [
+        {
+          "price": "62287.1",
+          "bar": 187
+        },
+        {
+          "price": "83049.5",
+          "bar": 249
+        }
+      ],
+      "evidence": [
+        "ev_33494a78db3875b280609e9d7412c7bb65b13955da911d51f453cd1ab737bba5",
+        "ev_8fd1378d4cbdc542b8c36436fde3ab5fe92b559e6d970b944afa3c558a44125f",
+        "ev_8c12fb8ad1f9e417b885199b686ca6a506899840796e571f84de51a80eeddc9d",
+        "ev_5639d5daa2d89a8407986713912901ba0da0c9b7e33c6f71ed9e4d91a9d02977"
+      ],
+      "limitations": [
+        "one-member group only",
+        "displacement redo not verified"
+      ]
+    },
+    {
+      "id": "FIB-TEMPLATE-RELOAD-001",
+      "coordinates": [
+        {
+          "price": "60000.0",
+          "bar": 187
+        },
+        {
+          "price": "80000.0",
+          "bar": 249
+        }
+      ],
+      "saved_template": {
+        "reverse": true,
+        "log_fib": true
+      },
+      "changed_reverse": false,
+      "after_template": {
+        "reverse": true,
+        "coordinates_unchanged": true
+      },
+      "after_real_navigation_reload": {
+        "reverse": true,
+        "log_fib": true,
+        "coordinates_unchanged": true,
+        "temporary_template_deleted": true
+      },
+      "evidence": [
+        "ev_469e513a9b5265bc90c435880e06180249946a0a9ae696d65a0669c9ca2543a8",
+        "ev_9a7be074a618ae73848efdebc0b63e9e6b48cf03334b3826e229e7c9db679427"
+      ]
+    },
+    {
+      "id": "RISK-RELOAD-001",
+      "account": "10000",
+      "lot": "1",
+      "risk_percent": "1.00",
+      "leverage": "10.0",
+      "entry": "70000.0",
+      "long": {
+        "target": "74000.0",
+        "stop": "68000.0",
+        "profit_ticks": "40000",
+        "stop_ticks": "20000"
+      },
+      "short": {
+        "target": "66000.0",
+        "stop": "72000.0",
+        "profit_ticks": "40000",
+        "stop_ticks": "20000"
+      },
+      "evidence": [
+        "ev_00a01c6cb88d68f51a5dcb30f7180917c01eec17be075252dac8436ad76d87b2"
+      ],
+      "limitations": [
+        "input reload verified; output labels and timestamp anchors not reverified",
+        "hypothetical research values"
+      ]
+    },
+    {
+      "id": "FIB-SCALE-DISPLAY-001",
+      "anchors": [
+        {
+          "price": "60000.0",
+          "bar": 187
+        },
+        {
+          "price": "80000.0",
+          "bar": 249
+        }
+      ],
+      "reverse": true,
+      "log_fib_preference": true,
+      "observed_display": {
+        "linear_midpoint": "70000.0",
+        "log_midpoint": "69282.0",
+        "percent_midpoint": "-7.78%",
+        "indexed_midpoint": "92.22"
+      },
+      "coordinate_form_in_percent": {
+        "prices": [
+          "60000.0",
+          "80000.0"
+        ],
+        "bars": [
+          187,
+          249
+        ]
+      },
+      "evidence": [
+        "ev_788a03556ade6c757752ae9c5d903d7668069b14b50bac89b871787c4d850025",
+        "ev_3c1b25983ece9ae19eb7136b8423f264a1d01a39f983107bcbc3767088e58edb",
+        "ev_818f140f26c5ad4326c778a302518c9303f9dd11369c4ba5e2b0ff87101c2e6b",
+        "ev_f248a73186e6ce7d2039fa95d2f5b1ea8a05b2356f1b3798a93fb3de1e5f1686"
+      ],
+      "limitations": [
+        "rounded UI values",
+        "percent base algorithm not verified; percent/index samples are snapshot comparisons, not fixed absolute expectations for arbitrary viewport"
+      ]
+    },
+    {
+      "id": "TIMEZONE-CLOSED-CANDLE-001",
+      "symbol": "BINANCE:BTCUSDT.P",
+      "interval": "1h",
+      "display_a": {
+        "timezone_menu": "(UTC+4) Dubai",
+        "date": "2026-11-07",
+        "time": "18:00"
+      },
+      "display_b": {
+        "timezone": "UTC",
+        "date": "2026-11-07",
+        "time": "14:00"
+      },
+      "unchanged": {
+        "open": "75903.0",
+        "high": "75950.1",
+        "low": "75895.0",
+        "close": "75916.3",
+        "volume": "881.64",
+        "bb_basis": "75936.1",
+        "bb_upper": "76106.5",
+        "bb_lower": "75765.7"
+      },
+      "evidence": [
+        "ev_13a2bfdca0a60312db18ce8f508def78158758802318e3c180d7d369af6600d7"
+      ],
+      "limitations": [
+        "same platform closed-bar display invariance; not independent math or vendor parity",
+        "Dubai is not Asia/Baku identity",
+        "DST and session boundary not tested"
+      ]
+    },
+    {
+      "id": "BB-LIVE-PREVIEW-CANCEL-001",
+      "initial_length": "20",
+      "typed_length": "30",
+      "after_arrow_up": "31",
+      "preview_legend": "BB 31 SMA close 2",
+      "invalid_input": "0",
+      "after_invalid_blur": "31",
+      "after_cancel": "20",
+      "undo_label_before_and_after_cancel": "Undo remove Fib retracement",
+      "evidence": [
+        "ev_125972f7d3f9b601d85f726e1093191c837a59b333354289a9f311c03084764b"
+      ],
+      "limitations": [
+        "specific BB numeric input; not all dialogs",
+        "no IME or clipboard test"
+      ]
+    },
+    {
+      "id": "BB-CLOSE-PATHS-001",
+      "escape": {
+        "before": "20",
+        "preview": "25",
+        "after_close": "25"
+      },
+      "x_close": {
+        "before": "25",
+        "preview": "26",
+        "after_close": "26"
+      },
+      "restore_ok": {
+        "before": "26",
+        "input": "20",
+        "after": "20"
+      },
+      "evidence": [
+        "ev_ac7a3d9f62d42194a194797e6d746ccc7106118b181fd88c088628e65b959116",
+        "ev_58d8139d3c08361585958ca3507b6daec56e83a207fa156888753d324112f3cd"
+      ],
+      "limitations": [
+        "reference behavior, not prescribed UX for product",
+        "specific BB Inputs dialog"
+      ]
+    },
+    {
+      "id": "RESPONSIVE-DESKTOP-ANON-001",
+      "browser": "Chrome157 desktop UA, headless temporary profiles",
+      "profiles": "anonymous; no authenticated storage copied",
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 720,
+          "dpr": 1,
+          "states": [
+            "watchlist-open",
+            "watchlist-closed",
+            "canvas-settings"
+          ]
+        },
+        {
+          "width": 1024,
+          "height": 768,
+          "dpr": 1,
+          "states": [
+            "watchlist-open"
+          ]
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "dpr": 1,
+          "states": [
+            "watchlist-open",
+            "watchlist-closed",
+            "canvas-settings"
+          ]
+        }
+      ],
+      "manifest": "reports/rea-chart/responsive-visual-manifest-20261111.json",
+      "evidence": [
+        "ev_559b08cf4517ed50f35a7cd2199eae831b09bb192e63cdd4e6a1ab497fdede83",
+        "ev_17d408f2020e82f4083279a12b93d325cb22555a62066a435ae8bacbcff49d7a",
+        "ev_112fa6c307c4e7d3cffe5d5611c675d9911ccf0c568fb54287269fd166448f8e"
+      ],
+      "limitations": [
+        "not mobile/touch acceptance",
+        "not same saved account layout",
+        "attached viewport requests excluded from verified cohort"
+      ]
+    },
+    {
+      "id": "BB-CLOSED-WINDOW-001",
+      "tool": "BB20/SMA/close/2, offset0",
+      "evidence": [
+        "ev_263ac7cb63f33275c8fd99acd4cafc66780cc6b11ea128b12319ad1105205878"
+      ],
+      "data": "reports/rea-chart/bb-closed-parity-20261111.json",
+      "closed_input_bars": 32,
+      "compared_output_rows": 13,
+      "compared_values": 39,
+      "absolute_tolerance": 0.05,
+      "status": "DISPLAY_PRECISION_PARITY_OBSERVED",
+      "limits": [
+        "No open candle",
+        "No raw volume or full history guarantee",
+        "Not product implementation acceptance"
+      ]
+    },
+    {
+      "id": "BB-OFFSET-002",
+      "tool": "BB5/SMA/close/2, offset+2",
+      "evidence": [
+        "ev_9c6d4f056082a47bc793ffe652ffbdbea2bf93129dca84b53215a78344b1399a"
+      ],
+      "data": "reports/rea-chart/bb-offset-parity-20261111.json",
+      "compared_output_rows": 28,
+      "compared_values": 84,
+      "absolute_tolerance": 0.05,
+      "status": "DISPLAY_PRECISION_PARITY_OBSERVED",
+      "limits": [
+        "Future output rows have empty OHLC",
+        "Open source candle excluded",
+        "Daily continuous sample only"
+      ]
+    },
+    {
+      "id": "EMA-RECURRENCE-001",
+      "tool": "BB EMA20 basis / close / offset0",
+      "evidence": [
+        "ev_1caf65467922fe24605b8bd5b2d044eedef71fb2ab5598d7f4b19db020bef555"
+      ],
+      "data": "reports/rea-chart/ema-recurrence-parity-20261111.json",
+      "closed_input_bars": 32,
+      "compared_recurrences": 31,
+      "absolute_tolerance": 0.09523810523809524,
+      "bb_band_rows": 13,
+      "bb_band_tolerance": 0.1,
+      "status": "RECURRENCE_ONLY_SEED_UNVERIFIED",
+      "limits": [
+        "Rounded previous EMA propagates uncertainty",
+        "Initial seed/warmup/NA not verified",
+        "Standalone EMA and product parity not tested"
+      ]
+    },
+    {
+      "id": "ATR-RMA-RECURRENCE-001",
+      "tool": "ATR14/RMA",
+      "evidence": [
+        "ev_43777f59ed97bd711ebc96f85a247895185e33e59265d5c34fd2d3f36eda6c38"
+      ],
+      "data": "reports/rea-chart/atr-rma-parity-20261111.json",
+      "compared": 31,
+      "tolerance": 0.09642858142857143,
+      "status": "ROUNDED_RECURRENCE_ONLY",
+      "limits": [
+        "Seed/warmup unknown",
+        "No discriminating gap row"
+      ]
+    },
+    {
+      "id": "ATR-SMA-WINDOW-001",
+      "tool": "ATR14/SMA",
+      "evidence": [
+        "ev_ae7f7b1ae3f6af23ecc7501f768cc5acc003337830c87fe058c526eb813ebc6f"
+      ],
+      "data": "reports/rea-chart/atr-sma-parity-20261111.json",
+      "compared": 18,
+      "tolerance": 0.05,
+      "status": "FINITE_WINDOW_DISPLAY_PARITY",
+      "limits": [
+        "First input TR excluded without previous close",
+        "No discriminating gap row"
+      ]
+    },
+    {
+      "id": "RSI-SMA-OVERLAY-001",
+      "tool": "RSI14 SMA14 overlay",
+      "evidence": [
+        "ev_7d578bd881643420eb52859efd239d606b0251d20d456ca521561ed55af7d5c0"
+      ],
+      "data": "reports/rea-chart/rsi-overlay-parity-20261111.json",
+      "compared": 19,
+      "tolerance": 0.01,
+      "status": "OVERLAY_ONLY_BASE_RSI_UNVERIFIED",
+      "limits": [
+        "Rounded RSI inputs",
+        "Does not validate RSI14 base seed"
+      ]
+    },
+    {
+      "id": "RSI2-CONVERGED-001",
+      "tool": "RSI2 close",
+      "evidence": [
+        "ev_d4b807d3d1bb22aa5e9d9d22e015e211ef425e0ee99f21f811abba4b0c7f55b6"
+      ],
+      "data": "reports/rea-chart/rsi2-converged-parity-20261111.json",
+      "compared": 10,
+      "tolerance": 0.005,
+      "status": "LOCAL_SEED_AFTER20_UPDATES",
+      "limits": [
+        "Actual origin seed unverified",
+        "Flat/all-up/all-down unknown",
+        "Not RSI14 base acceptance"
+      ]
+    },
+    {
+      "id": "VWAP-INTRADAY-BOUNDS-001",
+      "tool": "VWAP Session HLC3 1h stddev band1",
+      "evidence": [
+        "ev_3efef42c744c7213055a3cb820af08b98dcd292e46564ae5804144bdf276decc"
+      ],
+      "data": "reports/rea-chart/vwap-hourly-consistency-20261111.json",
+      "compared_rows": 25,
+      "status": "ROUNDED_VOLUME_INTERVAL_CONSISTENCY",
+      "limits": [
+        "Not full precision parity",
+        "Partial prior session and open candle excluded",
+        "No zero-volume/DST fixture"
+      ]
+    },
+    {
+      "id": "VWAP-PERCENTAGE-001",
+      "tool": "VWAP Session HLC3 1D percentage multiplier2",
+      "evidence": [
+        "ev_858c75e7726dddaaa77b42da6b3c3dc33f6a5b80ab99c4639f2054ccc0f589d1"
+      ],
+      "data": "reports/rea-chart/vwap-percentage-parity-20261111.json",
+      "compared_rows": 32,
+      "compared_values": 96,
+      "tolerance": 0.05,
+      "status": "DAILY_RESET_SOURCE_PERCENTAGE_PARITY",
+      "limits": [
+        "Not intraday accumulation acceptance"
+      ]
+    },
+    {
+      "id": "OHLC-AGGREGATION-UTC-001",
+      "tool": "24x1h to1D, BTCUSDT.P 2026-11-10 UTC",
+      "evidence": [
+        "ev_3efef42c744c7213055a3cb820af08b98dcd292e46564ae5804144bdf276decc",
+        "ev_43777f59ed97bd711ebc96f85a247895185e33e59265d5c34fd2d3f36eda6c38"
+      ],
+      "data": "reports/rea-chart/cross-interval-aggregation-20261111.json",
+      "status": "EXACT_DISPLAY_OHLC_MATCH_SINGLE_DAY",
+      "limits": [
+        "Volume compact rounded",
+        "No other market/session proof"
+      ]
+    },
+    {
+      "id": "VWAP-DAILY-HIDE-001",
+      "tool": "Hide VWAP on1D or Above",
+      "evidence": [
+        "ev_248083ab73ac2be5b1ca5676a0b28be39f5fd5f92996a96667abca315317176e"
+      ],
+      "status": "OBJECT_RETAINED_OUTPUT_CELLS_EMPTY",
+      "limits": [
+        "Blank is not zero",
+        "One indicator-specific setting only"
+      ]
+    },
+    {
+      "id": "MINUTE-LIFECYCLE-001",
+      "tool": "BTCUSDT.P1m open/closed and document reload",
+      "evidence": [
+        "ev_d19fa497f744f087417fdbe86b536386404b448d5337144ab272171d384c0f9b",
+        "ev_5109e9029df0a27d285c8cb6d78620e000f2b29744a7a0f090cc9f3a77f5d907",
+        "ev_aa88e31770a1f92514cbb90b5c3edfc6ac9cacd2d062cd485553455d81241d24"
+      ],
+      "data": "reports/rea-chart/minute-lifecycle-20261111.json",
+      "closed_pairs": 31,
+      "reloaded_closed_pairs": 30,
+      "status": "DISPLAY_INVARIANCE_OBSERVED",
+      "limits": [
+        "Overlapping comparison sets, not61 unique bars",
+        "Closed inferred from later timestamp, no exchange flag"
+      ]
+    },
+    {
+      "id": "NETWORK-OFFLINE-BOUNDED-001",
+      "tool": "25-second scoped Chrome offline emulation",
+      "evidence": [
+        "ev_e1c17c173c75cfa3bdc88174194a7f9ee00ec916509181e15190322b840d9a15",
+        "ev_dc1aad0e9c1bba167548f2e22a0ed1153b37702e852170840bfa6ad835961137"
+      ],
+      "data": "reports/rea-chart/network-offline-window-20261111.json",
+      "status": "PARTIAL_OFFLINE_RESTORE_RESIDUAL_TRAFFIC",
+      "limits": [
+        "Ordinary CDP action/counters; REA observed UI separately",
+        "31 WebSocket frames during offline, no full blackout proof",
+        "Network restored"
+      ]
+    },
+    {
+      "id": "HISTORY-GOTO-001",
+      "tool": "1m Go to historical windows",
+      "evidence": [
+        "ev_b27979bd3443b63af64561ca840fc3aa841a3605c74a775e7f5364779cfe2664",
+        "ev_2a0feaf696d0696e2223689a07a8ee52b4acc796a8d854a4ebfd818f72a39a58"
+      ],
+      "status": "NOV8_AND_NOV5_WINDOWS_OBSERVED",
+      "limits": [
+        "Nov5 cursor00:46, not exact requested00:00 proof",
+        "No pagination protocol/hard-limit/complete-gap acceptance"
+      ]
+    },
+    {
+      "id": "VOLUME-PRECISION-001",
+      "tool": "Volume Default/Precision8 and K formatter",
+      "evidence": [
+        "ev_c2335dd5d844544859505d0af6a0961c518460c8a0244eeca73eed75a2c0e076",
+        "ev_377b836637ac65825f9d1e348088d47faf8e9954eb6ec8b846e8459b7298626a"
+      ],
+      "before": "37",
+      "after": "37.187",
+      "status": "SMALL_VOLUME_PRECISION_K_COMPACTION_REMAINS",
+      "limits": [
+        "Not exact-volume acquisition for hourly VWAP",
+        "Default restored"
+      ]
+    },
+    {
+      "id": "MARKET-PRICE-TYPE-001",
+      "tool": "Spot/perpetual/mark identity",
+      "evidence": [
+        "ev_88e1c23f0490ec694597e30edfdb221fb6c7aea6c702399a6b1a3aa94c29fc2d",
+        "ev_759a1de8709997ae283287ad4b68cc7d948babe64a3f922846e7185f815fdfd4",
+        "ev_9e794082005fe42da7c5c3f5dd6cdb95e9b772f50e76766a8dc79ca0f6d518ff"
+      ],
+      "data": "reports/rea-chart/price-type-isolation-20261111.json",
+      "status": "DISTINCT_IDENTITY_AND_CLOSED_OHLC",
+      "limits": [
+        "Sequential transition, not race acceptance",
+        "Display decimals/bid-ask difference not tick-size authority"
+      ]
+    },
+    {
+      "id": "VWAP-NO-VOLUME-001",
+      "tool": "VWAP on BTCUSDT.P_MPRICE",
+      "evidence": [
+        "ev_6e56b854e500c40f2c2dce8c1628b28b144f3e7735374a2985048fb7b6c50318",
+        "ev_a8200ebc1e193fc53780770eaa10062687685041f7da17cdf2a36e6ec4193a22",
+        "ev_759a1de8709997ae283287ad4b68cc7d948babe64a3f922846e7185f815fdfd4"
+      ],
+      "error": "RE10142",
+      "status": "MISSING_VENDOR_VOLUME_BLOCKS_VOLUME_AND_VWAP",
+      "limits": [
+        "Data-window headers retained empty; table output columns omitted",
+        "Not zero-volume fixture"
+      ]
+    },
+    {
+      "id": "TREND-ENDPOINT-DRAG-001",
+      "tool": "Temporary spot daily trend endpoint",
+      "evidence": [
+        "ev_13fe35b437a9574cce35bd9e9562c5534e2a6a0e44b0b1abbe72ed82cb205123",
+        "ev_3d33bbbb218b3f201cd02d33492b12fede517e79ed7138929ecd28d48c442e22",
+        "ev_b1036a13e29bd37d2c1c98bf0f3288f077b3b47e84dc7bdec4cc7618ce96b9f0"
+      ],
+      "data": "reports/rea-chart/trend-pointer-fixture-20261111.json",
+      "status": "ONE_ENDPOINT_MOVE_AND_UNDO_OBSERVED",
+      "limits": [
+        "Ordinary CDP performed input; REA read coordinates",
+        "Reader Cancel left no Redo button; direct redo unverified",
+        "No bodydrag/multiselect/snap/cancel/touch/perf acceptance"
+      ]
+    },
+    {
+      "id": "FIB-BAR-INDEX-DRIFT-001",
+      "tool": "Existing Fib coordinate reader",
+      "evidence": [
+        "ev_6209af4d378e47a2947e5bac8958ae493b68dd0a9e8100530cc815c17cff1011",
+        "ev_21133bf78fab2f592662281ce5db9dd4850383d0b3b580ad1fa5b2570f832599"
+      ],
+      "prior_fixture": "FIB-TEMPLATE-RELOAD-001",
+      "before": [
+        {
+          "price": "60000.0",
+          "bar": 187
+        },
+        {
+          "price": "80000.0",
+          "bar": 249
+        }
+      ],
+      "after": [
+        {
+          "price": "60000.0",
+          "bar": 186
+        },
+        {
+          "price": "80000.0",
+          "bar": 248
+        }
+      ],
+      "status": "CURRENT_UTC_AND_WINDOW_MAPPING_VERIFIED_HISTORICAL_SHIFT_INFERRED",
+      "limits": [
+        "No numeric/pointer edits applied to this Fib",
+        "Do not rewrite indices as a fix",
+        "Prior fixture evidence remains in earlier bundle"
+      ],
+      "original_status": "DISPLAY_INDEX_CHANGE_CAUSE_AND_UTC_ANCHORS_UNVERIFIED",
+      "followup_fixture": "UTC-ANCHOR-WINDOW-001",
+      "resolution": "Current saved UTC anchors map exactly to current300-day window bars186/248. Prior187/249 snapshot predates UTC midnight; prior raw points/window unavailable, so historical date equality remains unproven."
+    },
+    {
+      "id": "UTC-ANCHOR-WINDOW-001",
+      "report": "reports/rea-chart/utc-anchor-window-fixture-20261111.json",
+      "symbol": "BINANCE:BTCUSDT.P",
+      "interval": "1D",
+      "status": "CURRENT_UTC_STORAGE_AND_INDEX_MAPPING_VERIFIED_PAST_SHIFT_EXPLANATION_INFERRED",
+      "initial_window": {
+        "count": 300,
+        "first_index": 0,
+        "last_index": 299,
+        "first_epoch_seconds": 1768521600,
+        "last_epoch_seconds": 1794355200,
+        "first_utc": "2026-01-16T00:00:00.000Z",
+        "last_utc": "2026-11-11T00:00:00.000Z"
+      },
+      "points": [
+        {
+          "time_t": 1784592000,
+          "offset": 0,
+          "price": 60000,
+          "utc": "2026-07-21T00:00:00.000Z",
+          "display_bar": 186,
+          "calculated_bar": 186
+        },
+        {
+          "time_t": 1789948800,
+          "offset": 0,
+          "price": 80000,
+          "utc": "2026-09-21T00:00:00.000Z",
+          "display_bar": 248,
+          "calculated_bar": 248
+        }
+      ],
+      "evidence": [
+        "ev_3cb7fdc0ea9b4102fb6768c4149600413c07e3c5036402cc19ea715085188adc"
+      ],
+      "ordinary_observations": [
+        "reports/rea-chart/saved-fib-anchor-source-20261111.json",
+        "reports/rea-chart/current-anchor-and-series-20261111.json"
+      ],
+      "limits": [
+        "Older raw time_t points and initial series were not captured",
+        "Current300-bar window is observed reference behaviour, not a required product history size",
+        "Grid gaps/non-daily/session markets require explicit mapping, not elapsed-day division"
+      ]
+    },
+    {
+      "id": "TREND-LOG-BODY-UNDO-REDO-001",
+      "report": "reports/rea-chart/log-body-escape-fixture-20261111.json",
+      "symbol": "BINANCE:BTCUSDT",
+      "interval": "1D",
+      "scale": "log",
+      "before": [
+        "78821.52",
+        "195",
+        "69129.27",
+        "248"
+      ],
+      "after": [
+        "80460.60",
+        "204",
+        "70566.81",
+        "257"
+      ],
+      "after_redo": [
+        "80460.60",
+        "204",
+        "70566.81",
+        "257"
+      ],
+      "bar_deltas": [
+        9,
+        9
+      ],
+      "price_deltas": [
+        "1639.08",
+        "1437.54"
+      ],
+      "common_factor_interval": [
+        1.0207948079883664,
+        1.02079495680843
+      ],
+      "status": "ONE_LOG_BODY_MOVE_AND_DIRECT_UNDO_REDO_OBSERVED",
+      "evidence": [
+        "ev_8e9d81181a5b2c14312e890cddf22008995a978490483f9aa048fc9da2ce7d03"
+      ],
+      "ordinary_observation": "reports/rea-chart/trend-body-cancel-20261111.json",
+      "limits": [
+        "Two-decimal display uncertainty",
+        "Direct undo history observed; coordinate reading done after redo",
+        "Not all tools/scales/snap or a performance benchmark"
+      ]
+    },
+    {
+      "id": "TREND-ESCAPE-KEEPS-001",
+      "report": "reports/rea-chart/log-body-escape-fixture-20261111.json",
+      "symbol": "BINANCE:BTCUSDT",
+      "before": [
+        "80460.60",
+        "204",
+        "70566.81",
+        "257"
+      ],
+      "after_escape": [
+        "80460.60",
+        "204",
+        "72966.83",
+        "267"
+      ],
+      "after_one_undo": [
+        "80460.60",
+        "204",
+        "70566.81",
+        "257"
+      ],
+      "status": "ESCAPE_DURING_HELD_MOUSE_DID_NOT_ROLL_BACK",
+      "evidence": [
+        "ev_500015b9b6cb2ca263f4f73e1b8ad8d068104d839132a54af8a15470ef9f0a68",
+        "ev_b2d2c1820c36e55619772a20f5fdbd6705c6bd60f066e3cd1994d67e09c86a0a"
+      ],
+      "ordinary_observation": "reports/rea-chart/trend-body-cancel-20261111.json",
+      "limits": [
+        "Not browser pointercancel/blur/lost capture",
+        "Single trend endpoint",
+        "Product Escape rollback decision remains separate"
+      ]
+    },
+    {
+      "id": "BB-HTF-WAIT-MAPPING-001",
+      "report": "reports/rea-chart/bb-htf-wait-fixture-20261111.json",
+      "symbol": "BINANCE:BTCUSDT.P",
+      "chart_interval": "1h",
+      "calculation_interval": "1D",
+      "timezone": "UTC",
+      "inputs": {
+        "length": 20,
+        "basis": "SMA",
+        "source": "close",
+        "stddev": 2,
+        "offset": 0
+      },
+      "wait_on_rows": 33,
+      "wait_off_rows": 32,
+      "common_closed_ohlcv_rows": 31,
+      "status": "BB_DAILY_TO_HOURLY_WAIT_ON_OFF_UI_MAPPING_OBSERVED",
+      "evidence": [
+        "ev_78e0b598c26bdff439794c8cdb86ae93d4145e4b658247257f97ff4754947c34",
+        "ev_94c361fb971fa86b4ae4978bfda4350204a2368946d137dcd7f0dbfbdd2894d4"
+      ],
+      "limits": [
+        "UI-rounded values; volume K formatter",
+        "Current 02:00 candle is open and changes between captures",
+        "Only BB daily calculation on hourly 24x7 perpetual chart",
+        "Historical repaint/reconnect, other indicators and sessions not verified"
+      ]
+    },
+    {
+      "id": "OHLC-MAGNET-MODES-001",
+      "symbol": "BINANCE:BTCUSDT",
+      "interval": "1D",
+      "report": "reports/rea-chart/snap-verified-fixture-20261111.json",
+      "status": "SIX_FIXED_POSITION_CASES_WITH_REA_COORDINATES",
+      "cases": [
+        {
+          "case": "near_off",
+          "evidence_id": "ev_43fef75af0548f341faef29a87abc4681c298584873db97089021b68946281c5",
+          "values": [
+            "85292.13",
+            "260",
+            "80529.63",
+            "274"
+          ]
+        },
+        {
+          "case": "near_weak",
+          "evidence_id": "ev_6702e7fed334316414f7f63a209bb4b6d6ae3851da33debe35c7f8892c07f36c",
+          "values": [
+            "85037.63",
+            "260",
+            "80819.66",
+            "274"
+          ]
+        },
+        {
+          "case": "near_strong",
+          "setup_evidence": "ev_0cf1791f63c04d094eb04af463ac9a76c9b27bff611571c7fe1a3d0f29c8a768",
+          "evidence_id": "ev_bc2db835b16426992492d5642dae5648484458de6909c889a0e2c9cb8f793285",
+          "values": [
+            "85037.63",
+            "260",
+            "80819.66",
+            "274"
+          ]
+        },
+        {
+          "case": "far_strong",
+          "setup_evidence": "ev_980075815384affded1bbe04a07934dd70d1ea9842cfa5e0d39de97633fadde8",
+          "evidence_id": "ev_e80f5a619327a37c58d7d12a9a8847e71255a5be112cc08dac33dd7b5bcc841a",
+          "values": [
+            "84456.02",
+            "260",
+            "81770.01",
+            "274"
+          ]
+        },
+        {
+          "case": "far_weak",
+          "setup_evidence": "ev_00f8825b54f1437bce8a8fe2fa0d0523f91c9dc1a26ef2f688bbcfd7349a7d2e",
+          "evidence_id": "ev_1aaa9d82897e2a8073afceb0bd21e9657e79229dcc505c061ddcdccb8c885ebd",
+          "values": [
+            "66398.38",
+            "260",
+            "87890.97",
+            "274"
+          ]
+        },
+        {
+          "case": "far_off",
+          "setup_evidence": "ev_f958a4ec5f602311e63b508444b21b65017ea695eda10237bb873a9e6261a4df",
+          "evidence_id": "ev_f08523a54949a2fdd8ef4cc7ec6c1507ff29911defd2dbb0db99aa63751db95a",
+          "values": [
+            "66398.38",
+            "260",
+            "87890.97",
+            "274"
+          ]
+        }
+      ],
+      "evidence": [
+        "ev_43fef75af0548f341faef29a87abc4681c298584873db97089021b68946281c5",
+        "ev_6702e7fed334316414f7f63a209bb4b6d6ae3851da33debe35c7f8892c07f36c",
+        "ev_bc2db835b16426992492d5642dae5648484458de6909c889a0e2c9cb8f793285",
+        "ev_e80f5a619327a37c58d7d12a9a8847e71255a5be112cc08dac33dd7b5bcc841a",
+        "ev_1aaa9d82897e2a8073afceb0bd21e9657e79229dcc505c061ddcdccb8c885ebd",
+        "ev_f08523a54949a2fdd8ef4cc7ec6c1507ff29911defd2dbb0db99aa63751db95a"
+      ],
+      "limits": [
+        "Two closed daily spot candles",
+        "Not universal threshold or indicator snap",
+        "Failed calibration attempts excluded",
+        "No universal radius, horizontal snap, tie-break or modifier proof"
+      ]
+    },
+    {
+      "id": "TREND-BODY-HIT-SAMPLES-001",
+      "symbol": "BINANCE:BTCUSDT",
+      "ordinary_report": "reports/rea-chart/trend-hit-probe-20261111.json",
+      "offset_css_px": [
+        0,
+        4,
+        8,
+        16
+      ],
+      "cursor": [
+        "pointer",
+        "crosshair",
+        "crosshair",
+        "crosshair"
+      ],
+      "status": "ORDINARY_DOM_CURSOR_AND_SCREENSHOT_OBSERVATIONS",
+      "evidence": [
+        "ev_2752514000c9c184b69171fa9b26a5ac436af698ab2fd1c03411268756e45bf3"
+      ],
+      "limits": [
+        "REA corroborates scene only; cursor samples are ordinary CDP",
+        "One steep2px trend, not universal hit radius or touch acceptance"
+      ]
+    },
+    {
+      "id": "TREND-OUTSIDE-RELEASE-001",
+      "symbol": "BINANCE:BTCUSDT",
+      "report": "reports/rea-chart/pointer-interruption-fixture-20261111.json",
+      "before": [
+        "66398.38",
+        "260",
+        "87890.97",
+        "274"
+      ],
+      "after": [
+        "66398.38",
+        "260",
+        "75837.70",
+        "309"
+      ],
+      "after_undo": [
+        "66398.38",
+        "260",
+        "87890.97",
+        "274"
+      ],
+      "evidence": [
+        "ev_d64d26e66c2183f5a4c08d587aa77ac7d1132696c431981a131b14e7388484e6",
+        "ev_4166a2418724b62a092a48c4670b73a5c58d5ed5272868b815fde803ea82b8a7"
+      ],
+      "ordinary_report": "reports/rea-chart/trend-interrupt-outside-20261111.json",
+      "status": "HELD_PREVIEW_AND_ONE_UNDO_VERIFIED",
+      "limits": [
+        "Right panel inside browser; not OS outside or pointercancel",
+        "Initial no-preview attempt excluded"
+      ]
+    },
+    {
+      "id": "TREND-TAB-SWITCH-001",
+      "symbol": "BINANCE:BTCUSDT",
+      "report": "reports/rea-chart/pointer-interruption-fixture-20261111.json",
+      "before": [
+        "66398.38",
+        "260",
+        "87890.97",
+        "274"
+      ],
+      "after": [
+        "66398.38",
+        "260",
+        "83841.73",
+        "281"
+      ],
+      "after_undo": [
+        "66398.38",
+        "260",
+        "87890.97",
+        "274"
+      ],
+      "evidence": [
+        "ev_c71d59237dde2ba1b0ff0c3ecc7949f981776e9da9e2ec121d5c98a9d078470b",
+        "ev_cc874ba36831968ea4795e40fdddea84792737dd150daa649609b7e6f6ebf962"
+      ],
+      "ordinary_report": "reports/rea-chart/trend-interrupt-tab-20261111.json",
+      "status": "OWNED_BLANK_TAB_SWITCH_KEEP_AND_ONE_UNDO_VERIFIED",
+      "limits": [
+        "Not captured pointercancel or proven OS blur",
+        "Owned blank tab closed"
+      ]
+    },
+    {
+      "id": "TREE-CTRL-MIXED-SELECTION-001",
+      "symbol": "BINANCE:BTCUSDT",
+      "ordinary_reports": [
+        "reports/rea-chart/multi-selection-unlocked-20261111.json",
+        "reports/rea-chart/multi-selection-mixed-20261111.json"
+      ],
+      "single_selected": 1,
+      "ctrl_selected": 2,
+      "mixed_locked_selected": 2,
+      "status": "TWO_TREE_ROWS_SELECTABLE_WITH_MIXED_LOCK",
+      "evidence": [
+        "ev_73e35c1e9af00f7abe97da81857be7e46ea2cd02915aae8e9a120aa35be4a660",
+        "ev_a55f7f31d60f7603e986de9a07a53efa235d1e8841cf7f6fb8d2fb5fd6fe7ccd",
+        "ev_2fcf2d8f2fb82f35544533b8f5c83a68d76a08eac81ca7b5bdc5cb89e76515a1"
+      ],
+      "limits": [
+        "Tree Ctrl-click only",
+        "Mixed lock group movement, marquee and canvas multi-select unverified"
+      ]
+    },
+    {
+      "id": "MIXED-LOCK-BODY-MOVE-001",
+      "symbol": "BINANCE:BTCUSDT",
+      "interval": "1D",
+      "scale": "log",
+      "report": "reports/rea-chart/mixed-body-move-fixture-20261111.json",
+      "baseline": [
+        [
+          "81572.22",
+          "195",
+          "71541.73",
+          "248"
+        ],
+        [
+          "78821.52",
+          "195",
+          "69129.27",
+          "248"
+        ]
+      ],
+      "control": [
+        {
+          "step": "control-after-0",
+          "values": [
+            "82983.35",
+            "204",
+            "72779.35",
+            "257"
+          ]
+        },
+        {
+          "step": "control-after-1",
+          "values": [
+            "80185.07",
+            "204",
+            "70325.16",
+            "257"
+          ]
+        },
+        {
+          "step": "control-undo-0",
+          "values": [
+            "81572.22",
+            "195",
+            "71541.73",
+            "248"
+          ]
+        },
+        {
+          "step": "control-undo-1",
+          "values": [
+            "78821.52",
+            "195",
+            "69129.27",
+            "248"
+          ]
+        }
+      ],
+      "mixed_after": [
+        [
+          "81572.22",
+          "195",
+          "71541.73",
+          "248"
+        ],
+        [
+          "80185.07",
+          "204",
+          "70325.16",
+          "257"
+        ]
+      ],
+      "mixed_undo": [
+        [
+          "81572.22",
+          "195",
+          "71541.73",
+          "248"
+        ],
+        [
+          "78821.52",
+          "195",
+          "69129.27",
+          "248"
+        ]
+      ],
+      "status": "UNLOCKED_PAIR_CONTROL_AND_LOCKED_EXCLUSION_VERIFIED",
+      "evidence": [
+        "ev_1737c6b1010bad44f96e7e6805845ac9b2bd8e455eb615925961493d642f3bb3",
+        "ev_080ba726d5f8d75f3a59f0829e0e0fd67dedc5c8d5b357363b87d6ebeb640c6e",
+        "ev_bce2e69a0f462d4934864b7fc7b382109f6c277bb9695de0ec8303794ea98b50",
+        "ev_64d01571be9dc6af34cfdf24562d9c05b87d79bfae5dc1e34ff1e5c9e9db09dd",
+        "ev_c824fa598252310d6d9f5f1d7e60ad2df9e71cb5ce1d612cc2ec8f278e85a8de"
+      ],
+      "limits": [
+        "Two trend tools on spot daily log chart",
+        "First no-mutation control excluded",
+        "No nested group or other tool lock claim"
+      ]
+    },
+    {
+      "id": "VWAP-FULL-VOLUME-UI-001",
+      "symbol": "BINANCE:BTCUSDT.P",
+      "interval": "1h",
+      "report": "reports/rea-chart/precise-vwap-parity-20261111.json",
+      "input": "reports/rea-chart/precise-volume-study-stream-20261111.json",
+      "closed_rows": 32,
+      "outputs": 96,
+      "tolerance": 0.0500001,
+      "max_abs_error": 0.04875589314906392,
+      "status": "FULL_BROWSER_VOLUME_INPUTS_MATCH_ROUNDED_UI",
+      "evidence": [
+        "ev_4617b9b491eaa958cecf64b5d305943c930c4d7b128eb434ec0be655dcbd89f8",
+        "ev_f96e42e9be6628407e7b5146e3a5cd911000c1525d5cd62daeca60d2d4a79c85"
+      ],
+      "limits": [
+        "Full precision browser-decoded base-volume inputs; not raw exchange trade data",
+        "UI outputs only at0.1 precision; hidden study outputs not captured",
+        "HLC3 bar VWAP, not trade-level execution VWAP",
+        "No zero-volume/DST/calendar/origin-seed claim",
+        "Current open hour excluded"
+      ]
+    },
+    {
+      "id": "RSI14-LONG-BURNIN-001",
+      "symbol": "BINANCE:BTCUSDT.P",
+      "interval": "1h",
+      "report": "reports/rea-chart/rsi14-hourly-long-burnin-20261111.json",
+      "closed_rows": 32,
+      "outputs": 64,
+      "min_updates_after_seed": 253,
+      "max_abs_error": 0.004925784440821701,
+      "status": "LOCAL_SEED_LONG_BURNIN_ROUNDED_UI_MATCH_NOT_ORIGIN_SEED",
+      "evidence": [
+        "ev_3d8e3907812d80519eb954e81c5d02eccb9267555adbd4a6b6bde576cacea910",
+        "ev_31aacc6b6bcd731964570168260dc9597c9ddb9e980635b6c4f02cef65e52504"
+      ],
+      "limits": [
+        "Local14-change SMA seed followed by long Wilder updates; platform origin seed unverified",
+        "UI precision0.01, current open hour excluded",
+        "Not flat/all-up/all-down/NA platform fixture",
+        "Disabled divergence columns are retained with empty cells, not calculated zero"
+      ]
+    },
+    {
+      "id": "ATR-RMA8-GAP-001",
+      "symbol": "BINANCE:BTCUSDT.P",
+      "interval": "1h",
+      "report": "reports/rea-chart/atr-gap-precise-parity-20261111.json",
+      "precision": 8,
+      "latest_recurrences": 31,
+      "older_recurrences": 55,
+      "targeted_recurrences": 2,
+      "tolerance": 1e-8,
+      "gap": {
+        "tr": 511.4,
+        "high_low": 511.3,
+        "previous_close": 74800,
+        "high": 74799.9,
+        "low": 74288.6,
+        "epoch": 1794200400,
+        "previous_atr": 475.39239196,
+        "observed": 477.96436396,
+        "computed": 477.96436396285713,
+        "error": 2.8571207622007933e-9,
+        "high_low_only": 477.9572211057143,
+        "high_low_only_error": -0.007142854285689282,
+        "pass": true
+      },
+      "status": "RECURRENCES_AND_PREVIOUS_CLOSE_GAP_BRANCH_DISCRIMINATED",
+      "evidence": [
+        "ev_011bbf67ef1b2911b917235385198eefec9a6ce4d0e3886d7d4612eeaba57b18",
+        "ev_6913633c345849b859ee27f14cc65897d2fbcb32fd5a508b818c291cfa1ecab2",
+        "ev_21df41776c6970add22c5393e699190d009bd52f88b5992496035b61e4210fc6",
+        "ev_7ee17cab5a4f0f12e9b58073ed204fc846f2fb2130575474278e7138981e6057",
+        "ev_308c5513bc282a6ab102b9431beffa49d6be153736a3f5212c78c2f55043ffb8"
+      ],
+      "limits": [
+        "One0.1 previous-close gap plus ordinary second recurrence",
+        "Rounded8-decimal UI, not hidden internal precision",
+        "No origin seed/warmup/NA/calendar acceptance"
+      ]
+    },
+    {
+      "id": "INTERVAL-LATE-REVISION-001",
+      "symbol": "BINANCE:BTCUSDT.P",
+      "interval": "1m/5m/1h",
+      "reports": [
+        "reports/rea-chart/interval-menu-transition-timeline-20261111.json",
+        "reports/rea-chart/interval-burst-transition-timeline-20261111.json"
+      ],
+      "status": "OLD_TURNAROUND_RECEIVED_AFTER_NEW_REQUEST_NOT_RENDER_REJECTION_PROOF",
+      "primary_late_events": 2,
+      "delay_ms": [
+        276,
+        111
+      ],
+      "rea_evidence": false,
+      "limits": [
+        "Receipt order only; no all-frame or cross-symbol rejection proof",
+        "Initial resolve may precede capture; null wire symbol retained"
+      ]
+    },
+    {
+      "id": "INTERVAL-BURST-CONTEXT-001",
+      "symbol": "BINANCE:BTCUSDT.P",
+      "report": "reports/rea-chart/interval-burst-transition-timeline-20261111.json",
+      "status": "SIX_ORDINARY_MENU_TRANSITIONS_MATCHED_REVISION_BATCH_SPACING",
+      "selections": 6,
+      "last_commit_ms": 2546,
+      "batch_rows": 300,
+      "rea_evidence": false,
+      "limits": [
+        "Not UI latency/FPS benchmark",
+        "No forced network delay or all-frame observation"
+      ]
+    },
+    {
+      "id": "SYMBOL-DRAWING-READINESS-001",
+      "report": "reports/rea-chart/symbol-transition-timeline-20261111.json",
+      "status": "MARKET_READY_BEFORE_DRAWING_RESTORATION_OBSERVED",
+      "transitions": 3,
+      "source_counts": [
+        3,
+        7
+      ],
+      "rea_evidence": false,
+      "limits": [
+        "Snapshots with intervening ETH transition; not single-transition load duration",
+        "Cached ETH resolve not captured; wire binding symbol stays null",
+        "No cross-symbol old-tag event; rejection not proved"
+      ]
+    },
+    {
+      "id": "CLIENT-TURNAROUND-GUARD-001",
+      "report": "docs/chart/REA-TRANSITIONS-REVISION-READINESS.md",
+      "status": "LOADED_HASH_MATCHED_STATIC_COMPONENT_NOT_ACTIVE_MAIN_CHART_TRACE",
+      "evidence": [
+        "ev_8261acdfe6abcba64f536bfc45fd52f7e40703d85e634f8b29d28d1ffbe015c6",
+        "ev_2869676b67f2d1828f5f6d0262d2fcf83e201c8d848d3d322000ca26857b63dc"
+      ],
+      "limits": [
+        "Undefined turnaround accepted by selected component",
+        "Selected sources partial; semantics unknown",
+        "No runtime call coverage or every-commit guard proof"
+      ]
+    },
+    {
+      "id": "RSI-FLAT-LIVE-RATIO-001",
+      "evidence": [
+        "ev_968b07ad171b4ca5aeb5e8a0aeb609072198a236aadc2ccbfd925cc6be69f975"
+      ],
+      "status": "FLAT_RATIO_DISPLAY100_VS_APP_SYNTHETIC50",
+      "display_rows": 33,
+      "closed_display_rows": 32,
+      "limits": [
+        "Synthetic ratio, displayed OHLC1; hidden numeric input not captured",
+        "Not origin seed or exchange symbol parity; product unchanged"
+      ]
+    },
+    {
+      "id": "RSI1-UP-DOWN-001",
+      "evidence": [
+        "ev_81e0b93c33b4460bc522db162e8ae1253f5f628a0326799742c73a5e21e719b2"
+      ],
+      "status": "CLOSED_ADJACENT_UP100_DOWN0_WITH_SMA1",
+      "checks": 30,
+      "limits": [
+        "Period1 only; not RSI14 origin seed or all-up history fixture"
+      ]
+    },
+    {
+      "id": "RSI-LARGE-PERIOD-STATES-001",
+      "evidence": [
+        "ev_95d7b921e10070d976ed745236c14e062ba34920d99723e989a178b201ff51d3",
+        "ev_70c6613cab13be584446f2a633e7496b231f9f7288d0403a2d8cbc86ddbb6d74"
+      ],
+      "status": "LENGTH10000_RUNTIME_ERROR_VS_LENGTH3000_BLANK_NO_ERROR",
+      "limits": [
+        "No exact supported maximum inferred",
+        "Warmup explanation for3000 is inference; full history origin not captured"
+      ]
+    },
+    {
+      "id": "COLD-RELOAD-RECOVERY-001",
+      "report": "reports/rea-chart/final-network-design-20261111.json",
+      "status": "OFFLINE_ERROR_PAGE_ONLINE_NEW300_DAILY_SNAPSHOT",
+      "rea_evidence": false,
+      "limits": [
+        "Cold reload only; established-socket outage/catchup/dedup not proved",
+        "Canvas/header presence not render readiness"
+      ]
+    },
+    {
+      "id": "DESKTOP-ACTUAL-WIDTHS-001",
+      "report": "reports/rea-chart/final-network-design-20261111.json",
+      "status": "ACTUAL1536_1280_1024_CSS_WIDTHS_NOT_STABLE_CHART_ACCEPTANCE",
+      "rea_evidence": false,
+      "limits": [
+        "DPR1.25 requested; screenshot width matches scale",
+        "1024 screenshot transient blank plot; no full responsive acceptance",
+        "Trace no DrawFrame; p95 remains unmeasured"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {annotationText,annotationLines} from '../src/annotations.ts';
+import {moveGeometry} from '../src/drag.ts';
+import {editGeometry} from '../src/editGeometry.ts';
+import {supportsView} from '../src/viewScale.ts';
+import type {Geometry} from '../src/drawings.ts';
+import type {Candle} from '../src/types.ts';
+const note=():Geometry=>({schema:'chart-annotation/1',kind:'note',symbol:'BTCUSDT',price_source:'LAST_PRICE',label:'Not',text:'İlk satır\nİkinci satır',anchors:[{time:1800000000,price:'100.25'}]});
+test('plain annotation body preserves unicode and markup as text while enforcing limits',()=>{assert.equal(annotationText('note','İlk\r\nİkinci'),'İlk\nİkinci');assert.equal(annotationText('text','<script>😀</script>'),'<script>😀</script>');assert.equal(annotationText('price_label',''),'');const unicode=Array(8).fill('😀'.repeat(120)).join('\n');assert.equal(annotationText('note',unicode),unicode);for(const text of ['','x\x00','a\n'.repeat(8),'x'.repeat(257)])assert.throws(()=>annotationText('note',text));assert.throws(()=>annotationText('price_label','a\nb'));});
+test('wrapping and visual ellipsis never alter persisted body',()=>{const g=note();g.text='😀'.repeat(100)+'\nSecond';const before=g.text,layout=annotationLines(g,28,s=>Array.from(s).length*7,3);assert.equal(layout.lines.length,3);assert.equal(layout.truncated,true);assert.ok(layout.lines[2].endsWith('…'));assert.equal(g.text,before);assert.equal(layout.lines.some(s=>s.includes('\ufffd')),false);});
+test('price label uses exact anchor price and caption independently',()=>{const g={...note(),kind:'price_label' as const,text:'Hedef',anchors:[{time:1800000000,price:'100.123456789'}]};assert.deepEqual(annotationLines(g,230,s=>s.length*6).lines,['Hedef','100.123456789']);for(const kind of ['text','note','price_label'])assert.equal(supportsView(kind,'LOG'),true);});
+test('single anchor numeric/drag edits keep text and move UTC with exact tick price',()=>{const g=note(),rows=Array.from({length:20},(_,i)=>({time:1800000000+i*900})) as Candle[];const moved=moveGeometry(g,rows,2,5,'0.25',900,0)!;assert.deepEqual(moved.anchors,[{time:1800001800,price:'105.25'}]);assert.equal(moved.text,g.text);const edited=editGeometry({...g,text:'Yeni\nNot'},'Not',['100.25'],['2027-01-15T08:00:00'],'0.25');assert.equal(edited.text,'Yeni\nNot');});
