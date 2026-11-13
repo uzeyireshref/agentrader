@@ -1,4 +1,6 @@
-export type AlertEvent={id:string;name:string;symbol:string;close:string;candle_time:number;created_at:number;message:string};
+import {selectedChannels} from './alertChannels';
+import type {NotificationGate} from './alertSchedule';
+export type AlertEvent={id:string;name:string;symbol:string;close:string;candle_time:number;created_at:number;message:string;notification_gate?:NotificationGate;definition?:{notification_schedule?:unknown;notification_channels?:unknown}};
 export type NotificationPreferences={inApp:boolean;sound:boolean;desktop:boolean};
 export const notificationKey='agentrader.alert-notifications.v1';
 export const receiptKey='agentrader.alert-receipts.v1';
@@ -13,12 +15,18 @@ export function receipts(raw:string|null):Receipts|null{
 export function validEvent(v:unknown):v is AlertEvent{
  const e=v as AlertEvent;return !!e&&typeof e.id==='string'&&e.id.length>0&&['name','symbol','close','message'].every(k=>typeof (e as unknown as Record<string,unknown>)[k]==='string')&&Number.isFinite(e.created_at)&&Number.isFinite(e.candle_time);
 }
+export function eventChannels(e:AlertEvent,prefs:NotificationPreferences){const p=selectedChannels(e.definition?.notification_channels);return {inApp:p.inApp&&prefs.inApp,sound:p.sound&&prefs.sound,desktop:p.desktop&&prefs.desktop};}
+export function notificationAllowed(e:AlertEvent){
+ const p=selectedChannels(e.definition?.notification_channels);if(!p.inApp&&!p.sound&&!p.desktop)return false;
+ if(e.notification_gate!==undefined)return e.notification_gate?.schema==='alert-notification-gate/1'&&e.notification_gate.allowed===true;
+ return e.definition?.notification_schedule===undefined;
+}
 // First installation baselines history. Later polls claim each event before delivery.
 export function collectEvents(previous:Receipts|null,events:AlertEvent[],now:number){
  const seen=new Set(previous?.seen??[]),unread=new Set(previous?.unread??[]),fresh:AlertEvent[]=[];
  for(const e of [...events].reverse()){
   if(seen.has(e.id))continue;seen.add(e.id);
-  if(previous){unread.add(e.id);if(e.created_at>=now-120&&e.created_at<=now+5)fresh.push(e);}
+  if(previous&&notificationAllowed(e)){unread.add(e.id);if(e.created_at>=now-120&&e.created_at<=now+5)fresh.push(e);}
  }
  return {state:{seen:[...seen].slice(-1000),unread:[...unread].slice(-100)},fresh};
 }

@@ -7,7 +7,7 @@ name = "agentrader"
 version = "0.1.0"
 description = "Kendi grafik terminali için yerel uygulama API katmanı ve Binance Futures demo işlem çekirdeği"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = ["tzdata>=2025.3"]
 
 [project.optional-dependencies]
 streams = ["websocket-client>=1.9,<2"]

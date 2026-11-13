@@ -1,3 +1,5 @@
+> 13 Kasım 2026 — Yeni entegrasyon kararı: grafik verisi ve bot yürütmesi Binance USD-M Demo üzerinde birleştirilecek. [Demo veri ve grafik–bot entegrasyon planı](26-DEMO-VERI-VE-GRAFIK-BOT-ENTEGRASYON-PLANI.md). Plan hazır; veri kaynağı geçişi henüz uygulanmadı. Gerçek ortam bağlantısı kapalı kalır.
+
 > Güncel grafik planı (10 Kasım 2026): [Çekirdek plan v2](docs/chart/PLAN.md). 21 paket, 5 tamamlandı. T03 kalıcı fiyat-zaman cetveli geçti: 735 Python / 161 frontend testi, derleme ve 11 gerçek App/SQLite kontrolü. Sıradaki T04 long/short planlama. [Cetvel kullanımı](docs/chart/RULER.md). B5 ertelenmiş/açık; bot ve emir bağlantısı sonraki kapsamdır.
 
 > Önceki A–E planı: 24/25 tamamlandı; CL01–CL03 kapandı. B5 tamamlanmadı; kullanıcı isteğiyle ertelendi. Güncel sıra için [v2 planını](docs/chart/PLAN.md) izleyin.

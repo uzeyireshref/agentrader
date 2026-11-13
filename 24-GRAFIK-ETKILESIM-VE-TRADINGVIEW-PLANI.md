@@ -181,3 +181,21 @@ REA price/BB frequency menus observed and editor draft dismissed without creatin
 Final13 targeted live tests,967 full backend regression (before two added targeted tests),312 frontend,36/36 chart evidence checks,7 new plus11 existing browser groups passed. Local production index-DnWt9qhF.js. Details: docs/chart/ALARM-FREQUENCIES-DELIVERY.md.
 
 Remaining alarm work: notification schedule/time zone, per-alarm delivery options, closed-browser external delivery and bot integration.
+
+
+## Per-alert notification schedule — 2026-11-13
+
+Delivered:24/7, weekday/workday/custom windows, IANA timezone, overnight/start-day ownership, DST handling, permanent per-event mute decision, muted history and smart single-use lifecycle. Separate Takvim editor tab and manager summary added. Monitoring remains active; muted events do not produce browser cards, sound, desktop or unread badge and never replay later. Existing alert schemas remain readable; schedule is a versioned optional field.
+
+REA draft custom night range observed, discarded without creating/applying an alarm; original24/7 default verified retained. Full978 backend /315 frontend tests;8 calendar,7 frequency,11 notification browser groups passed. Production index-D4BFG9TI.js verified. Details: docs/chart/ALARM-SCHEDULE-DELIVERY.md.
+
+Next agreed step: per-alarm channel preferences (current sound/desktop preferences are browser-wide). Bot integration remains after that.
+
+
+## Per-alert channel preferences — 2026-11-13
+
+Delivered: Kanallar editor tab, inheritance or independent card/sound/desktop selection, history-only mode, strict optional policy on all alert definition versions, immutable event-policy snapshots, and independent batch filtering for each delivery channel. Recorded schedule decision and current browser master preferences/permissions remain upper bounds. Older alarms retain inheritance.
+
+981 backend /319 frontend tests passed;7 channel and8 calendar Chrome acceptance groups passed. Production index-D8UGb9zW.js verified. Detailed delivery and limitations: docs/chart/ALARM-CHANNELS-DELIVERY.md.
+
+Next agreed phase: bot rule-system integration in no-order test mode, with event dedup and lifecycle controls.

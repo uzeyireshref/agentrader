@@ -8,11 +8,21 @@ from .chart_precision import decimal_text
 from .market_data import INTERVALS,SOURCE
 from .alert_timeframes import align,intervals
 from .alert_intrabar import step as intrabar_step
+from .alert_channels import validate_channels
+from .alert_schedule import validate_schedule,apply_notification_schedule
 from .alert_conditions import conditions,evaluate_all,ConditionUnavailable
 
 class AlertError(DrawingError):code='INVALID_ALERT'
 
 def _definition(v):
+    if isinstance(v,dict) and 'notification_channels' in v:
+        channels=validate_channels(v['notification_channels'])
+        checked=definition({k:x for k,x in v.items() if k!='notification_channels'})
+        return {**checked,'notification_channels':channels}
+    if isinstance(v,dict) and 'notification_schedule' in v:
+        schedule=validate_schedule(v['notification_schedule'])
+        checked=definition({k:x for k,x in v.items() if k!='notification_schedule'})
+        return {**checked,'notification_schedule':schedule}
     if isinstance(v,dict) and v.get('schema')=='technical-alert/4':
         if v.get('evaluation')!='intrabar' or v.get('frequency') not in ('once','bar','minute'):raise AlertError()
         checked=definition({k:x for k,x in v.items() if k!='evaluation'}|{'schema':'technical-alert/3','frequency':'bar_close'})
@@ -91,8 +101,12 @@ class PriceAlerts:
                 if decision:
                     event_id=hashlib.sha256(json.dumps([self.owner,alert_id,r['revision'],decision['token']],separators=(',',':')).encode()).hexdigest()
                     event=dict(id=event_id,alert_id=alert_id,revision=r['revision'],name=d['name'],symbol=d['symbol'],interval=d['interval'],operator='compound',level='',definition=d,created_at=now,message=d['message'],delivery='LOCAL_HISTORY',order_authority=False,evaluation='intrabar',**decision)
+                    allowed=apply_notification_schedule(event,d,now)
+                    if not allowed and d['frequency']=='once':
+                        if state.get('silent_once_bar')==decision['candle_time']:store();return
+                        state['silent_once_bar']=decision['candle_time']
                     db.execute('INSERT OR IGNORE INTO app_price_alert_events VALUES (?,?,?,?,?)',(self.owner,event_id,alert_id,now,json.dumps(event)))
-                    if d['frequency']=='once':db.execute("UPDATE app_price_alerts SET state='TRIGGERED' WHERE owner=? AND id=?",(self.owner,alert_id))
+                    if d['frequency']=='once' and allowed:db.execute("UPDATE app_price_alerts SET state='TRIGGERED' WHERE owner=? AND id=?",(self.owner,alert_id))
                 store();return
             if d.get('schema')=='technical-alert/3':context=align(d,(context or {}).get('_source_contexts',{}))
             if context and context.get('_alignment_wait'):
@@ -131,8 +145,9 @@ class PriceAlerts:
             if hit:
                 event_id=hashlib.sha256(json.dumps([self.owner,alert_id,r['revision'],latest],separators=(',',':')).encode()).hexdigest()
                 event=dict(id=event_id,alert_id=alert_id,revision=r['revision'],name=d['name'],symbol=d['symbol'],interval=d['interval'],operator=d.get('operator','compound'),level=d.get('price',''),conditions=checks,definition=d,source_closes={k:v[-1]['time'] for k,v in c.get('_aligned_rows',{}).items()},close=cur['exact']['close'],candle_time=latest,created_at=now,message=d['message'],delivery='LOCAL_HISTORY',order_authority=False)
+                allowed=apply_notification_schedule(event,d,now)
                 db.execute('INSERT OR IGNORE INTO app_price_alert_events VALUES (?,?,?,?,?)',(self.owner,event_id,alert_id,now,json.dumps(event)))
-                if d['frequency']=='once':db.execute("UPDATE app_price_alerts SET state='TRIGGERED' WHERE owner=? AND id=?",(self.owner,alert_id))
+                if d['frequency']=='once' and allowed:db.execute("UPDATE app_price_alerts SET state='TRIGGERED' WHERE owner=? AND id=?",(self.owner,alert_id))
             store()
 
 class PriceAlertWorker:

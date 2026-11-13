@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState} from 'react';
-import {AlertSound,collectEvents,notificationKey,preferences,receiptKey,receipts,validEvent,type AlertEvent,type NotificationPreferences,type Receipts} from './alertNotifications';
+import {AlertSound,collectEvents,eventChannels,notificationKey,preferences,receiptKey,receipts,validEvent,type AlertEvent,type NotificationPreferences,type Receipts} from './alertNotifications';
 
 export function useAlertNotifications(){
  const read=(key:string)=>{try{return localStorage.getItem(key);}catch{return null;}};
@@ -26,11 +26,11 @@ export function useAlertNotifications(){
     if(stopped)return;
     const fresh=await locked(()=>{if(stopped)return [];const previous=(storageOK.current?receipts(read(receiptKey)):null)??memory.current;const result=collectEvents(previous,d.events,Date.now()/1000);memory.current=result.state;write(receiptKey,result.state);setUnread(result.state.unread.length);return result.fresh;});
     if(stopped)return;setError(d.runtime_error?'Alarm izleyicisi hata bildirdi.':'');
-    if(fresh.length){const p=prefRef.current;if(p.inApp)setToasts(old=>[...fresh.reverse(),...old].slice(0,3));
-     if(p.sound)try{sound.current!.play();}catch{setSoundReady(false);setDeliveryError('Alarm sesi çalınamadı. Sesi dene düğmesiyle bu sekmede sesi etkinleştirin.');}
-     if(p.desktop&&typeof Notification!=='undefined'){
+    if(fresh.length){const p=prefRef.current,cards=fresh.filter(e=>eventChannels(e,p).inApp),desktop=fresh.filter(e=>eventChannels(e,p).desktop);if(cards.length)setToasts(old=>[...cards.reverse(),...old].slice(0,3));
+     if(fresh.some(e=>eventChannels(e,p).sound))try{sound.current!.play();}catch{setSoundReady(false);setDeliveryError('Alarm sesi çalınamadı. Sesi dene düğmesiyle bu sekmede sesi etkinleştirin.');}
+     if(desktop.length&&typeof Notification!=='undefined'){
       setPermission(Notification.permission);
-      if(Notification.permission==='granted')try{const e=fresh[0],n=new Notification(fresh.length>1?`${fresh.length} alarm tetiklendi`:e.name,{body:`${e.symbol} · ${e.close}${e.message?' · '+e.message:''}`,tag:'agentrader-alert-'+e.id});const timeout=window.setTimeout(()=>n.close(),15000);n.onclose=()=>clearTimeout(timeout);n.onerror=()=>{if(active.current)setDeliveryError('Masaüstü bildirimi gösterilemedi. Alarm geçmişi korunuyor.');};n.onclick=()=>{window.focus();window.dispatchEvent(new Event('agentrader:alert-history'));n.close();};}catch{setDeliveryError('Masaüstü bildirimi gösterilemedi. Alarm geçmişi korunuyor.');}
+      if(Notification.permission==='granted')try{const e=desktop[desktop.length-1],n=new Notification(desktop.length>1?`${desktop.length} alarm tetiklendi`:e.name,{body:`${e.symbol} · ${e.close}${e.message?' · '+e.message:''}`,tag:'agentrader-alert-'+e.id});const timeout=window.setTimeout(()=>n.close(),15000);n.onclose=()=>clearTimeout(timeout);n.onerror=()=>{if(active.current)setDeliveryError('Masaüstü bildirimi gösterilemedi. Alarm geçmişi korunuyor.');};n.onclick=()=>{window.focus();window.dispatchEvent(new Event('agentrader:alert-history'));n.close();};}catch{setDeliveryError('Masaüstü bildirimi gösterilemedi. Alarm geçmişi korunuyor.');}
      }
     }
    }catch{if(!stopped)setError('Alarm bildirimleri güncellenemiyor. Bağlantı yeniden denenecek.');}

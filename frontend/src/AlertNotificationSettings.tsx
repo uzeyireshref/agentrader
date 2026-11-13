@@ -1,6 +1,6 @@
 import type {AlertNotifications} from './useAlertNotifications';
 export default function AlertNotificationSettings({notifications:n}:{notifications:AlertNotifications}){
- return <section className="alert-notification-settings" aria-label="Alarm bildirim tercihleri"><h3>Bildirim tercihleri</h3><p>Bu tarayıcıdaki tüm alarmlar için geçerlidir. Değişiklikler hemen saklanır.</p>
+ return <section className="alert-notification-settings" aria-label="Alarm bildirim tercihleri"><h3>Bildirim tercihleri</h3><p>Bu tarayıcının genel tercihleridir; alarmın Kanallar seçimiyle birlikte uygulanır. Değişiklikler hemen saklanır.</p>
  <label className="alert-notification-option"><input type="checkbox" checked={n.prefs.inApp} onChange={e=>n.update({inApp:e.target.checked})}/><span>Uygulama içi bildirim<small>Grafik üzerinde yeni tetikleme kartı göster.</small></span></label>
  <label className="alert-notification-option"><input type="checkbox" checked={n.prefs.sound} onChange={e=>void n.toggleSound(e.target.checked)}/><span>Sesli uyarı<small>{n.prefs.sound&&!n.soundReady?'Bu sekmede sesi başlatmak için Sesi dene düğmesine basın.':'Yeni tetiklemelerde kısa bir uyarı sesi çal.'}</small></span></label>
  <button type="button" className="alert-secondary" onClick={()=>void n.testSound()}>Sesi dene</button>
