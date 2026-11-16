@@ -1,3 +1,4 @@
+from agentrader.application.environment import bind_demo_store
 from contextlib import closing
 import copy
 import json
@@ -5,8 +6,8 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from agentrader.drawings.service import DrawingService, DrawingError, DrawingConflict, DrawingLocked, DrawingNotFound, management
-from agentrader.drawings.calculations import canonical_hash
+from agentrader.chart.drawings.service import DrawingService, DrawingError, DrawingConflict, DrawingLocked, DrawingNotFound, management
+from agentrader.chart.drawings.calculations import canonical_hash
 from agentrader.migrations import migrate, connect
 from test_drawings import line
 
@@ -16,7 +17,7 @@ class DrawingManagementTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.path = Path(self.temp.name)/'app.db'
-        migrate(self.path)
+        bind_demo_store(self.path);migrate(self.path)
         self.s = DrawingService(self.path, 'owner')
         self.a = self.s.create('main', 'a', line())
         self.b = self.s.create('main', 'b', {**line(), 'label': 'second'})
@@ -37,7 +38,7 @@ class DrawingManagementTests(unittest.TestCase):
         self.assertTrue(hidden['management']['locked'])
         self.assertEqual(canonical_hash(hidden['geometry']), canonical_hash(self.a['geometry']))
         self.assertEqual(hidden['tracking'], 'NOT_IMPLEMENTED')
-        from agentrader.drawings.contracts import legacy_contract
+        from agentrader.chart.drawings.contracts import legacy_contract
         self.assertEqual(legacy_contract(hidden)['edit_state'], 'LOCKED')
         self.assertTrue(legacy_contract(hidden)['capabilities']['computable'])
         unlocked = self.s.operations('main', 'unlock', [self.op(hidden, management=hidden['management'] | {'locked': False})])['drawings'][0]

@@ -2,9 +2,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from agentrader.grid_shutdown import GridShutdown
-from agentrader.order_journal import OrderJournal
-from agentrader.state import StateStore
+from agentrader.bot.grid_shutdown import GridShutdown
+from agentrader.bot.order_journal import OrderJournal
+from agentrader.shared.state import StateStore
 
 
 class GridShutdownTests(unittest.TestCase):

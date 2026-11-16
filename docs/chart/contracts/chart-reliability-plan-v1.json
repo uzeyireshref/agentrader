@@ -15,8 +15,8 @@
       "title": "Kesin piyasa fiyatı ve provenans",
       "depends_on": [],
       "sources": [
-        "agentrader/chart_market.py",
-        "agentrader/market_feed.py"
+        "agentrader/chart/chart_market.py",
+        "agentrader/shared/market_feed.py"
       ],
       "deliverable": "Borsa metninden Decimal doğrulanan, üssüz OHLC/hacim ve tick_size DTO; grafik float görünümü ayrı türetilir. Float üzerinden kesin fiyat geri üretilmez. Eski cache provenansı yoksa yeniden edinilir veya engellenir.",
       "acceptance": [
@@ -34,7 +34,7 @@
         "P1"
       ],
       "sources": [
-        "agentrader/market_feed.py",
+        "agentrader/shared/market_feed.py",
         "frontend/src/freshness.ts"
       ],
       "deliverable": "Enjekte edilebilir monotonic/wall clock; upstream event zamanı ve server-time ölçüm aralığından offset/belirsizlik kanıtı. Consumer ve producer monotonic değerleri süreçler arasında doğrudan çıkarılmaz. Heartbeat taşıma yaşını güncelleyebilir, veri yaşını güncelleyemez. 10sn/10sn taslak eşikler ayrı sürümlü politika; belirsizlik limiti koddan önce açıkça seçilir.",
@@ -55,7 +55,7 @@
         "P2"
       ],
       "sources": [
-        "agentrader/market_feed.py"
+        "agentrader/shared/market_feed.py"
       ],
       "deliverable": "Her stream ömrüne yeni epoch; process restart/yeniden edinmede snapshot bariyeri. Immutable snapshot hash, quality, warmup, bar grid ve continuity kanıtı. Sequence atlaması tek başına gap değildir.",
       "acceptance": [
@@ -74,7 +74,7 @@
         "P3"
       ],
       "sources": [
-        "agentrader/drawings/service.py",
+        "agentrader/chart/drawings/service.py",
         "docs/chart/BOT-DATA-CONTRACT.md"
       ],
       "deliverable": "Ayrı binding şeması: owner/workspace/drawing revision, binding/rule version, tam market kimliği, interval, zaman penceresi ve geometry/grid hash. Mevcut strict çizim CRUD alanları değiştirilmez. UI sembol değişimi bağı değiştirmez. Trend yalnız doğrulanmış loaded-bar logical segment üzerinde; eksik grid veya segment dışı extrapolation yok.",
@@ -112,7 +112,7 @@
         "P5"
       ],
       "sources": [
-        "agentrader/drawings/service.py",
+        "agentrader/chart/drawings/service.py",
         "docs/chart/DRY-RUN-PLAN.md"
       ],
       "deliverable": "İzole test DB migration taslağı; event semantic key unique. Head revision aynı uygulama DB transaction içinde yeniden okunur; event+local intent birlikte commit edilir. Piyasa DB snapshotı donmuş kanıt olarak taşınır, çapraz DB atomiklik iddiası yapılmaz. Request_id semantik olay anahtarı değildir. Replay namespace ayrıdır.",

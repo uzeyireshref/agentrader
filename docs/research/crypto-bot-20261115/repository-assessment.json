@@ -1,0 +1,700 @@
+{
+  "reviewed_at_utc": "2026-11-15T19:26:26.133810+00:00",
+  "repository_count": 20,
+  "repositories": [
+    {
+      "repository": "ccxt/ccxt",
+      "commit": "3eef3f52e3310f5a3b74eba8806d6d7f3ad43005",
+      "metadata": {
+        "repository": "ccxt/ccxt",
+        "status": 200,
+        "remaining": "50",
+        "default_branch": "master",
+        "license": "MIT",
+        "archived": false,
+        "pushed_at": "2026-11-15T18:53:16Z",
+        "description": "A unified trading API with more than 100 crypto exchanges and prediction markets in JavaScript / TypeScript / Python / C# / PHP / Go / Java / Rust",
+        "url": "https://github.com/ccxt/ccxt"
+      },
+      "decision": "COMPARISON_REFERENCE",
+      "target_gap": "Ürün dispatch, hata normalizasyonu ve CM algo kaynak farkı",
+      "reuse_mode": "Bağımsız uygulama karşılaştırması. Doğrudan bot adaptörünü değiştirme kararı yok",
+      "integration_cost": "Runtime geçişi orta-yüksek, ortak API özel Binance alanlarını gizleyebilir",
+      "license_review": "MIT kaynak dosyası doğrulandı",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/ccxt/ccxt/3eef3f52e3310f5a3b74eba8806d6d7f3ad43005/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/ccxt__ccxt__README",
+          "sha256": "58b1df81eaf71e36427026d7820f9c3b34f0c0f7edf2d555b028dc9f76b40ecf"
+        },
+        {
+          "path": "python/ccxt/pro/binance.py",
+          "url": "https://raw.githubusercontent.com/ccxt/ccxt/3eef3f52e3310f5a3b74eba8806d6d7f3ad43005/python/ccxt/pro/binance.py",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/ccxt__ccxt__python__ccxt__pro__binance.py",
+          "sha256": "f06e42650d889ffbf294dcec1293aa1f225bbdc71a88f4b17f13db1e7d1fb3ab"
+        },
+        {
+          "path": "python/ccxt/binance.py",
+          "url": "https://raw.githubusercontent.com/ccxt/ccxt/3eef3f52e3310f5a3b74eba8806d6d7f3ad43005/python/ccxt/binance.py",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/ccxt__ccxt__python__ccxt__binance.py",
+          "sha256": "6ce2156ca133c497026e77f5cbda40cbf410b85402350b9b108c0a472332d22c"
+        },
+        {
+          "path": "LICENSE.txt",
+          "url": "https://raw.githubusercontent.com/ccxt/ccxt/3eef3f52e3310f5a3b74eba8806d6d7f3ad43005/LICENSE.txt",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/ccxt__ccxt__LICENSE.txt",
+          "sha256": "1086fddb6d4084c1d5ef1175ff9e524c574a4c5b27255258911a58d8b9efa39c"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "polakowo/vectorbt",
+      "commit": "9ac1b697166b00911def494cf95937274218aa54",
+      "metadata": {
+        "repository": "polakowo/vectorbt",
+        "status": 200,
+        "remaining": "49",
+        "default_branch": "master",
+        "license": "NOASSERTION",
+        "archived": false,
+        "pushed_at": "2026-11-11T17:29:25Z",
+        "description": "The research engine that gives you an unfair advantage. Run thousands of trading ideas before others finish one.",
+        "url": "https://github.com/polakowo/vectorbt"
+      },
+      "decision": "DEFER_STRATEGY_SCOPE",
+      "target_gap": "Vektörlü strateji simülasyonu",
+      "reuse_mode": "Sonraki strateji aşamasına bırak",
+      "integration_cost": "Orta, mevcut yürütme sözleşmelerini sağlamaz",
+      "license_review": "Commons Clause koşullu lisans, LICENSE.md doğrulandı",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/polakowo/vectorbt/9ac1b697166b00911def494cf95937274218aa54/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/polakowo__vectorbt__README",
+          "sha256": "4978449a5dd9b7ef15944b5d152ed72902b118697fd27fb4b93ed82947e4e3df"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "binance/binance-api-postman",
+      "commit": "1856d66cecd544191a01d60cdfbd99900d310547",
+      "metadata": {
+        "repository": "binance/binance-api-postman",
+        "status": 200,
+        "remaining": "46",
+        "default_branch": "master",
+        "license": "MIT",
+        "archived": false,
+        "pushed_at": "2026-11-12T13:54:25Z",
+        "description": "Postman collection for Binance Public API, including spot, margin, futures, etc.",
+        "url": "https://github.com/binance/binance-api-postman"
+      },
+      "decision": "PRIMARY_REFERENCE",
+      "target_gap": "İstek örnekleri ve endpoint karşılaştırması",
+      "reuse_mode": "Örnekleri araştırma fixture girdisi olarak kullan",
+      "integration_cost": "Düşük, örnek alan zorunluluğu ayrıca teyit edilir",
+      "license_review": "MIT",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/binance/binance-api-postman/1856d66cecd544191a01d60cdfbd99900d310547/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-api-postman__README",
+          "sha256": "15cdb95e5c20cf3b41b6159ab0ef35cb1b7f172e8ae83de37e582131d4d4518e"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "binance/binance-connector-python",
+      "commit": "6a75e7e5744904380ab0bfbd0bd3433b997010f5",
+      "metadata": {
+        "repository": "binance/binance-connector-python",
+        "status": 200,
+        "remaining": "48",
+        "default_branch": "master",
+        "license": "MIT",
+        "archived": false,
+        "pushed_at": "2026-11-12T11:17:51Z",
+        "description": "Simple connector to Binance Public API",
+        "url": "https://github.com/binance/binance-connector-python"
+      },
+      "decision": "PRIMARY_REFERENCE",
+      "target_gap": "Parametre, yanıt ve ürün adaptörü sözleşmeleri",
+      "reuse_mode": "Kaynak/model referansı. Runtime geçişi ayrı mimari karar",
+      "integration_cost": "Kaynak kullanımında düşük, runtime geçişinde orta",
+      "license_review": "MIT",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/binance/binance-connector-python/6a75e7e5744904380ab0bfbd0bd3433b997010f5/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-connector-python__README",
+          "sha256": "1eadcbb7d4ecbc7c1141bb44d6dabe78a0ae39a4baeeafda15e6c62529941b6e"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "optuna/optuna",
+      "commit": "abf8914d48571120574469575d37c4b0929b7f0f",
+      "metadata": {
+        "repository": "optuna/optuna",
+        "status": 200,
+        "remaining": "47",
+        "default_branch": "master",
+        "license": "MIT",
+        "archived": false,
+        "pushed_at": "2026-11-13T09:03:39Z",
+        "description": "A hyperparameter optimization framework",
+        "url": "https://github.com/optuna/optuna"
+      },
+      "decision": "DEFER_STRATEGY_SCOPE",
+      "target_gap": "Hiperparametre optimizasyonu",
+      "reuse_mode": "Strateji aşamasına bırak",
+      "integration_cost": "Düşük-orta, işlem yeteneği açığı kapatmaz",
+      "license_review": "MIT",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/optuna/optuna/abf8914d48571120574469575d37c4b0929b7f0f/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/optuna__optuna__README",
+          "sha256": "75ad3e0de21c5cade254143d329195cdeee8bdb5942bc7c66eedbb696f71ad24"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "hummingbot/hummingbot",
+      "commit": "9af100d6822da7d2d0291a906c730ef172284ee2",
+      "metadata": {
+        "repository": "hummingbot/hummingbot",
+        "status": 200,
+        "remaining": "44",
+        "default_branch": "master",
+        "license": "Apache-2.0",
+        "archived": false,
+        "pushed_at": "2026-11-13T16:17:13Z",
+        "description": "Open source software that helps you create and deploy high-frequency crypto trading bots",
+        "url": "https://github.com/hummingbot/hummingbot"
+      },
+      "decision": "ARCHITECTURE_REFERENCE",
+      "target_gap": "In-flight emir ve dolum uzlaştırması",
+      "reuse_mode": "Seçili adaptör ve test referansı",
+      "integration_cost": "Tüm altyapı yüksek. Eski Testnet host sabiti görüldü",
+      "license_review": "Apache-2.0",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/hummingbot/hummingbot/9af100d6822da7d2d0291a906c730ef172284ee2/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/hummingbot__hummingbot__README",
+          "sha256": "179e404ee85129a0b714d234246b0b9c13345f1ce19f50dd065e8c83af28c1c7"
+        },
+        {
+          "path": "hummingbot/connector/derivative/binance_perpetual/binance_perpetual_constants.py",
+          "url": "https://raw.githubusercontent.com/hummingbot/hummingbot/9af100d6822da7d2d0291a906c730ef172284ee2/hummingbot/connector/derivative/binance_perpetual/binance_perpetual_constants.py",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/hummingbot__hummingbot__hummingbot__connector__derivative__binance_perpetual__binance_perpetual_constants.py",
+          "sha256": "87b01351593360da9d61ccc97cad94b781949d6332c8b371693d105b1e38d100"
+        },
+        {
+          "path": "hummingbot/connector/derivative/binance_perpetual/binance_perpetual_derivative.py",
+          "url": "https://raw.githubusercontent.com/hummingbot/hummingbot/9af100d6822da7d2d0291a906c730ef172284ee2/hummingbot/connector/derivative/binance_perpetual/binance_perpetual_derivative.py",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/hummingbot__hummingbot__hummingbot__connector__derivative__binance_perpetual__binance_perpetual_derivative.py",
+          "sha256": "38aa4dd903f184c1cfeeb2c43114964494975d45cd77b383a7bab9b391876edd"
+        },
+        {
+          "path": "test/hummingbot/connector/derivative/binance_perpetual/test_binance_perpetual_derivative.py",
+          "url": "https://raw.githubusercontent.com/hummingbot/hummingbot/9af100d6822da7d2d0291a906c730ef172284ee2/test/hummingbot/connector/derivative/binance_perpetual/test_binance_perpetual_derivative.py",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/hummingbot__hummingbot__test__hummingbot__connector__derivative__binance_perpetual__test_binance_perpetual_derivative.py",
+          "sha256": "7e65ba1cc82c9daabb67b9b1cbbe5e6e2b00ef648f0152e8b357cb18e580460e"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "freqtrade/freqtrade",
+      "commit": "b6d30da09b6745065bf60d464286ebb1b889ccbe",
+      "metadata": {
+        "repository": "freqtrade/freqtrade",
+        "status": 200,
+        "remaining": "51",
+        "default_branch": "develop",
+        "license": "GPL-3.0",
+        "archived": false,
+        "pushed_at": "2026-11-15T14:57:48Z",
+        "description": "Free, open source crypto trading bot",
+        "url": "https://github.com/freqtrade/freqtrade"
+      },
+      "decision": "DEFER_STRATEGY_SCOPE",
+      "target_gap": "Strateji/backtest ve hazır bot örnekleri",
+      "reuse_mode": "Şimdilik referans listesi",
+      "integration_cost": "Tüm motor yüksek, mevcut emir journal yerine geçirilmez",
+      "license_review": "GPL-3.0",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/freqtrade/freqtrade/b6d30da09b6745065bf60d464286ebb1b889ccbe/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/freqtrade__freqtrade__README",
+          "sha256": "119d586166ae397b05f9763caf7f90e2d27792f90c8455c04ac3455e14a40d89"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "binance/binance-cli",
+      "commit": "f7c7e4ee5e36f27e7712cfa28c91b1bc2597ae87",
+      "metadata": {
+        "repository": "binance/binance-cli",
+        "status": 200,
+        "remaining": "43",
+        "default_branch": "master",
+        "archived": false,
+        "pushed_at": "2026-11-06T07:46:00Z",
+        "description": "Simple CLI to Binance API",
+        "url": "https://github.com/binance/binance-cli"
+      },
+      "decision": "COMMAND_REFERENCE",
+      "target_gap": "Komut ve argüman kapsamı, ortam profilleri",
+      "reuse_mode": "CLI tasarım karşılaştırması",
+      "integration_cost": "Çalışma zamanı kurulumunda ek ikili/profil yolu. Kurulmadı",
+      "license_review": "Repo metadata lisans belirtmiyor",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/binance/binance-cli/f7c7e4ee5e36f27e7712cfa28c91b1bc2597ae87/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-cli__README",
+          "sha256": "27ab22080f0642061d3f7618152286aeecaa01794e2e6ec8e3bc10c007eec482"
+        },
+        {
+          "path": "src/profile.rs",
+          "url": "https://raw.githubusercontent.com/binance/binance-cli/f7c7e4ee5e36f27e7712cfa28c91b1bc2597ae87/src/profile.rs",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-cli__src__profile.rs",
+          "sha256": "46f8b016c52b41510f50a192802bfb1962e0bfdd09f77f1d4254d6b4aac7e499"
+        },
+        {
+          "path": "src/derivatives_trading_coin_futures.rs",
+          "url": "https://raw.githubusercontent.com/binance/binance-cli/f7c7e4ee5e36f27e7712cfa28c91b1bc2597ae87/src/derivatives_trading_coin_futures.rs",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-cli__src__derivatives_trading_coin_futures.rs",
+          "sha256": "7c824757de8634a0cd3021e171971a65f9c98ba786f9e2dbc8d2b7742032ca0d"
+        },
+        {
+          "path": "src/derivatives_trading_usds_futures.rs",
+          "url": "https://raw.githubusercontent.com/binance/binance-cli/f7c7e4ee5e36f27e7712cfa28c91b1bc2597ae87/src/derivatives_trading_usds_futures.rs",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-cli__src__derivatives_trading_usds_futures.rs",
+          "sha256": "c721fc3e24dd7760c9c0d5fb68f8466116e8b5240a41429fe016c1eae92335de"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "bmoscon/cryptofeed",
+      "commit": "2b38da6f256feed158ee59612c159f6353b42592",
+      "metadata": {
+        "repository": "bmoscon/cryptofeed",
+        "status": 200,
+        "remaining": "42",
+        "default_branch": "master",
+        "license": "NOASSERTION",
+        "archived": false,
+        "pushed_at": "2026-11-15T01:19:47Z",
+        "description": "Cryptocurrency Exchange Websocket Data Feed Handler",
+        "url": "https://github.com/bmoscon/cryptofeed"
+      },
+      "decision": "DEFER_MARKET_DATA_STACK",
+      "target_gap": "Çoklu borsa veri akışı",
+      "reuse_mode": "Veri katmanı büyürse yeniden değerlendir",
+      "integration_cost": "Orta, emir/hesap mutasyon desteği sağlamaz",
+      "license_review": "AGPL-3.0-or-later LICENSE doğrulandı",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/bmoscon/cryptofeed/2b38da6f256feed158ee59612c159f6353b42592/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/bmoscon__cryptofeed__README",
+          "sha256": "14edd2579e11034d7cbdcea925afd24fa9fe71626f0c1bcd457e17143101538b"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "binance/binance-spot-api-docs",
+      "commit": "e5f8489162e79fa1da6d0ea3ded3ce810b3637a0",
+      "metadata": {
+        "repository": "binance/binance-spot-api-docs",
+        "status": 200,
+        "remaining": "40",
+        "default_branch": "master",
+        "archived": false,
+        "pushed_at": "2026-11-11T09:01:16Z",
+        "description": "Official Documentation for the Binance Spot APIs and Streams ",
+        "url": "https://github.com/binance/binance-spot-api-docs"
+      },
+      "decision": "PRIMARY_REFERENCE",
+      "target_gap": "Spot filtre, liste, cancel-replace, SOR ve akış sözleşmeleri",
+      "reuse_mode": "Sürümlü sözleşme ve kabul girdisi",
+      "integration_cost": "Düşük, çalışma zamanı bağımlılığı yok",
+      "license_review": "Repo metadata lisans belirtmiyor. Belge atfı korunur",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/binance/binance-spot-api-docs/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-spot-api-docs__README",
+          "sha256": "85d18214a27bb248d15722ed4e8221a28789bcc0aaa3632785a614a2e2fed0f2"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "nautechsystems/nautilus_trader",
+      "commit": "12982032fb970cabc085f00169c720792c3edecf",
+      "metadata": {
+        "repository": "nautechsystems/nautilus_trader",
+        "status": 200,
+        "remaining": "39",
+        "default_branch": "develop",
+        "license": "LGPL-3.0",
+        "archived": false,
+        "pushed_at": "2026-11-15T14:10:37Z",
+        "description": "Production-grade Rust-native trading engine with deterministic event-driven architecture",
+        "url": "https://github.com/nautechsystems/nautilus_trader"
+      },
+      "decision": "ARCHITECTURE_REFERENCE",
+      "target_gap": "Algo/child kimliği, ürün ayrımı ve recovery",
+      "reuse_mode": "Seçili adaptör kodundan tasarım örneği",
+      "integration_cost": "Tüm motor yüksek. İncelenen sürüm Python 3.13–3.15/Rust 1.100 ister, proje Python 3.12",
+      "license_review": "LGPL-3.0 metadata, dosya lisansı kopyalamadan önce kontrol",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/12982032fb970cabc085f00169c720792c3edecf/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/nautechsystems__nautilus_trader__README",
+          "sha256": "4d2338d78daea279f51d3e8d6e42bd954ca5964b6fbe4c88822300d84d1184fb"
+        },
+        {
+          "path": "crates/adapters/binance/src/config.rs",
+          "url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/12982032fb970cabc085f00169c720792c3edecf/crates/adapters/binance/src/config.rs",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/nautechsystems__nautilus_trader__crates__adapters__binance__src__config.rs",
+          "sha256": "a2b8b0194c9d69f9d4102f5a64e1e2cde48b2421a52d1ed28fcc4cca33f26a51"
+        },
+        {
+          "path": "crates/adapters/binance/src/spot/execution.rs",
+          "url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/12982032fb970cabc085f00169c720792c3edecf/crates/adapters/binance/src/spot/execution.rs",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/nautechsystems__nautilus_trader__crates__adapters__binance__src__spot__execution.rs",
+          "sha256": "049ba5b7afe998293ccb7e28c79fb8a5d69dd009d427ce88a2426e7933d3be9f"
+        },
+        {
+          "path": "crates/adapters/binance/src/futures/execution.rs",
+          "url": "https://raw.githubusercontent.com/nautechsystems/nautilus_trader/12982032fb970cabc085f00169c720792c3edecf/crates/adapters/binance/src/futures/execution.rs",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/nautechsystems__nautilus_trader__crates__adapters__binance__src__futures__execution.rs",
+          "sha256": "3320343f7e4616b8fcf3b3e2b64121b12a79c88f48837dd56a51550c1daa113f"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "timescale/timescaledb",
+      "commit": "fa570b9d607f0804f4b6eae6cc3b42bff69654c3",
+      "metadata": {
+        "repository": "timescale/timescaledb",
+        "status": 200,
+        "remaining": "45",
+        "default_branch": "main",
+        "license": "NOASSERTION",
+        "archived": false,
+        "pushed_at": "2026-11-15T09:52:34Z",
+        "description": "A time-series database for high-performance real-time analytics packaged as a Postgres extension",
+        "url": "https://github.com/timescale/timescaledb"
+      },
+      "decision": "DEFER_STORAGE_MIGRATION",
+      "target_gap": "Büyük zaman serisi verisi",
+      "reuse_mode": "Ölçek ihtiyacı kanıtlanırsa değerlendir",
+      "integration_cost": "Yüksek, PostgreSQL servis/taşıma ihtiyacı. Mevcut SQLite journal değiştirilmiyor",
+      "license_review": "Apache uyumlu/Timescale lisansları dosya ve dizine bağlı, LICENSE doğrulandı",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/timescale/timescaledb/fa570b9d607f0804f4b6eae6cc3b42bff69654c3/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/timescale__timescaledb__README",
+          "sha256": "562408f859986f347be3d08f9679ab1a14e8d4719b88272322cea083e2af360a"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "jesse-ai/jesse",
+      "commit": "9afc357a5675a44b31dbf5d7c5244112a2c262cb",
+      "metadata": {
+        "repository": "jesse-ai/jesse",
+        "status": 200,
+        "remaining": "41",
+        "default_branch": "master",
+        "license": "MIT",
+        "archived": false,
+        "pushed_at": "2026-11-10T10:05:34Z",
+        "description": "An advanced trading bot written in Python",
+        "url": "https://github.com/jesse-ai/jesse"
+      },
+      "decision": "DEFER_STRATEGY_SCOPE",
+      "target_gap": "Strateji araştırması ve hazır bot altyapısı",
+      "reuse_mode": "Şimdilik referans listesi",
+      "integration_cost": "Orta-yüksek, mevcut görevde doğrudan açık kapatmıyor",
+      "license_review": "MIT",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/jesse-ai/jesse/9afc357a5675a44b31dbf5d7c5244112a2c262cb/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/jesse-ai__jesse__README",
+          "sha256": "8920a92679daa006aa6664b8e849f148d0be54031ecc82d119668e43b3cc37a0"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "nkaz001/hftbacktest",
+      "commit": "5f3ec40b2afb764e0fea112f941ed85523ef4e88",
+      "metadata": {
+        "repository": "nkaz001/hftbacktest",
+        "status": 200,
+        "remaining": "38",
+        "default_branch": "master",
+        "license": "MIT",
+        "archived": false,
+        "pushed_at": "2025-12-23T15:57:58Z",
+        "description": "Free, open source, a high frequency trading and market making backtesting and trading bot, which accounts for limit orders, queue positions, and latencies, utilizing full tick data for trades and order books(Level-2 and Level-3), with real-world crypto trading examples for Binance and Bybit",
+        "url": "https://github.com/nkaz001/hftbacktest"
+      },
+      "decision": "DEFER_EXECUTION_SIMULATION",
+      "target_gap": "Kuyruk, gecikme ve limit dolum simülasyonu",
+      "reuse_mode": "İleride gerçekçi yürütme simülasyonu adayı",
+      "integration_cost": "Orta-yüksek, veri ve simülatör modeli gerekir",
+      "license_review": "MIT",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/nkaz001/hftbacktest/5f3ec40b2afb764e0fea112f941ed85523ef4e88/README.rst",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/nkaz001__hftbacktest__README",
+          "sha256": "b42c9f012bd71d2e1ecb000eb5c5af3e1d24817258b4a812beffbb953a752e42"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "ranaroussi/quantstats",
+      "commit": "d1a214fb906e76f974f45cdccf923b601c67a756",
+      "metadata": {
+        "repository": "ranaroussi/quantstats",
+        "status": 200,
+        "remaining": "36",
+        "default_branch": "main",
+        "license": "Apache-2.0",
+        "archived": false,
+        "pushed_at": "2026-11-02T14:00:34Z",
+        "description": "Portfolio analytics for quants, written in Python",
+        "url": "https://github.com/ranaroussi/quantstats"
+      },
+      "decision": "DEFER_ANALYTICS",
+      "target_gap": "Performans raporları",
+      "reuse_mode": "Strateji/performans aşamasına bırak",
+      "integration_cost": "Düşük-orta, borsa komut desteği sağlamaz",
+      "license_review": "Apache-2.0",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/ranaroussi/quantstats/d1a214fb906e76f974f45cdccf923b601c67a756/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/ranaroussi__quantstats__README",
+          "sha256": "9ba1cfc9fc64b4faa4e0846faeed3c1fd229a5c7748527f8e7fc112390f3c004"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "prometheus/client_python",
+      "commit": "c0f1bdf39755ee9b028a63a1330c60a2b3455b49",
+      "metadata": {
+        "repository": "prometheus/client_python",
+        "status": 200,
+        "remaining": "37",
+        "default_branch": "master",
+        "license": "Apache-2.0",
+        "archived": false,
+        "pushed_at": "2026-11-13T21:52:21Z",
+        "description": "Prometheus instrumentation library for Python applications",
+        "url": "https://github.com/prometheus/client_python"
+      },
+      "decision": "OPTIONAL_DEV_TOOL",
+      "target_gap": "UNKNOWN emir, uzlaştırma gecikmesi, WS ve limit gözlemi",
+      "reuse_mode": "Geliştirme planında gözlem bağımlılığı adayı",
+      "integration_cost": "Düşük, servis ve metrik sözleşmesi gerekir",
+      "license_review": "Apache-2.0",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/prometheus/client_python/c0f1bdf39755ee9b028a63a1330c60a2b3455b49/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/prometheus__client_python__README",
+          "sha256": "d6eccea8fce7d03bef7ff81963494d0053f6f02529307e06905b9ba11d464fc9"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "QuantConnect/Lean",
+      "commit": "388713e04209a47d25e48ce2365128fdcb79a46c",
+      "metadata": {
+        "repository": "QuantConnect/Lean",
+        "status": 200,
+        "remaining": "35",
+        "default_branch": "master",
+        "license": "Apache-2.0",
+        "archived": false,
+        "pushed_at": "2026-11-15T18:13:39Z",
+        "description": "Lean Algorithmic Trading Engine by QuantConnect (Python, C#)",
+        "url": "https://github.com/QuantConnect/Lean"
+      },
+      "decision": "DEFER_FRAMEWORK",
+      "target_gap": "Olay tabanlı tam işlem motoru",
+      "reuse_mode": "Mimari karşılaştırma listesi",
+      "integration_cost": "Yüksek, C#/Python motor geçişi mevcut amacın dışına taşar",
+      "license_review": "Apache-2.0",
+      "evidence": [
+        {
+          "path": "readme.md",
+          "url": "https://raw.githubusercontent.com/QuantConnect/Lean/388713e04209a47d25e48ce2365128fdcb79a46c/readme.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/QuantConnect__Lean__readme.md",
+          "sha256": "c93d2d649740ffdbfeca35ee5035eff668dc1f0a6b97873756addb70f4f4b91e"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "binance/binance-skills-hub",
+      "commit": "7d1b1f78d525f9e653b96819f91a549302fda1da",
+      "metadata": {
+        "repository": "binance/binance-skills-hub",
+        "status": 200,
+        "remaining": "33",
+        "default_branch": "main",
+        "archived": false,
+        "pushed_at": "2026-11-12T14:05:39Z",
+        "description": "Binance Skills Hub is an open skills marketplace that gives AI agents native access to crypto",
+        "url": "https://github.com/binance/binance-skills-hub"
+      },
+      "decision": "READY_SKILL_NOT_SELECTED",
+      "target_gap": "Ürün komut referansları",
+      "reuse_mode": "binance SKILL.md ve auth/UM/CM referansları okundu",
+      "integration_cost": "CLI kurmayı ve doğrudan işlem yapmayı merkeze alıyor. Özel geliştirme skilli seçildi",
+      "license_review": "İncelenen binance skill MIT LICENSE.md içeriyor",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/binance/binance-skills-hub/7d1b1f78d525f9e653b96819f91a549302fda1da/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-skills-hub__README",
+          "sha256": "83a1a1314ac07c4549e1f3bd95ac785200a4a15d88c1abdea03d38538f906c0f"
+        },
+        {
+          "path": "skills/binance/binance/references/auth.md",
+          "url": "https://raw.githubusercontent.com/binance/binance-skills-hub/7d1b1f78d525f9e653b96819f91a549302fda1da/skills/binance/binance/references/auth.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-skills-hub__skills__binance__binance__references__auth.md",
+          "sha256": "c06292630c7f0213dbb081ac71cfd568f268b54ae5cd40ba9129419773fc00d8"
+        },
+        {
+          "path": "skills/binance/binance/references/futures-usds.md",
+          "url": "https://raw.githubusercontent.com/binance/binance-skills-hub/7d1b1f78d525f9e653b96819f91a549302fda1da/skills/binance/binance/references/futures-usds.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-skills-hub__skills__binance__binance__references__futures-usds.md",
+          "sha256": "35f455a39cceefea2313e39ae43cd342206250212ae07adbcaa3b6e68f4bb745"
+        },
+        {
+          "path": "skills/binance/binance/LICENSE.md",
+          "url": "https://raw.githubusercontent.com/binance/binance-skills-hub/7d1b1f78d525f9e653b96819f91a549302fda1da/skills/binance/binance/LICENSE.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-skills-hub__skills__binance__binance__LICENSE.md",
+          "sha256": "f72b32bd41b493a04d1c4d6959639a0694991988f08b33d619e4133d37d1d3c7"
+        },
+        {
+          "path": "skills/binance/binance/references/futures-coin.md",
+          "url": "https://raw.githubusercontent.com/binance/binance-skills-hub/7d1b1f78d525f9e653b96819f91a549302fda1da/skills/binance/binance/references/futures-coin.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/binance__binance-skills-hub__skills__binance__binance__references__futures-coin.md",
+          "sha256": "e0ff1846ec83d4adc0a097f4cfba54bb179e60408c12b6d3daf77fe6bfba4d90"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "HypothesisWorks/hypothesis",
+      "commit": "9ab0be61aaaa27396fc1bbf4b34e7925cc68d1e2",
+      "metadata": {
+        "repository": "HypothesisWorks/hypothesis",
+        "status": 200,
+        "remaining": "34",
+        "default_branch": "master",
+        "license": "NOASSERTION",
+        "archived": false,
+        "pushed_at": "2026-11-15T00:05:31Z",
+        "description": "The property-based testing library for Python",
+        "url": "https://github.com/HypothesisWorks/hypothesis"
+      },
+      "decision": "PREFERRED_DEV_TOOL_CANDIDATE",
+      "target_gap": "Emir/dolum/iptal/restart sıra kombinasyonları",
+      "reuse_mode": "Geliştirme aşamasında stateful test bağımlılığı adayı",
+      "integration_cost": "Düşük-orta, model ve invariant yazımı gerekir",
+      "license_review": "MPL-2.0 kaynak dosyası doğrulandı",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/HypothesisWorks/hypothesis/9ab0be61aaaa27396fc1bbf4b34e7925cc68d1e2/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/HypothesisWorks__hypothesis__README",
+          "sha256": "bdea363861e973606d7728f0b7b893e0eb3efa2b3d8afa21a139d3ec8e80c003"
+        },
+        {
+          "path": "hypothesis/src/hypothesis/stateful.py",
+          "url": "https://raw.githubusercontent.com/HypothesisWorks/hypothesis/9ab0be61aaaa27396fc1bbf4b34e7925cc68d1e2/hypothesis/src/hypothesis/stateful.py",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/HypothesisWorks__hypothesis__hypothesis__src__hypothesis__stateful.py",
+          "sha256": "f40930d9a9f132f90af7968716f5928cb4bcd4872135118418dd6d8eea991b64"
+        },
+        {
+          "path": "hypothesis/LICENSE.txt",
+          "url": "https://raw.githubusercontent.com/HypothesisWorks/hypothesis/9ab0be61aaaa27396fc1bbf4b34e7925cc68d1e2/hypothesis/LICENSE.txt",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/HypothesisWorks__hypothesis__hypothesis__LICENSE.txt",
+          "sha256": "ac89037bac63550644dce8cf32c6765e5fab9dc1a1ce94b89f8a805f341a6750"
+        }
+      ],
+      "installed_runtime_dependency": false
+    },
+    {
+      "repository": "hummingbot/skills",
+      "commit": "01f776e7e2534e1862d163296d7f4fd4988a377b",
+      "metadata": {
+        "repository": "hummingbot/skills",
+        "status": 200,
+        "remaining": "32",
+        "default_branch": "main",
+        "archived": false,
+        "pushed_at": "2026-08-26T18:51:57Z",
+        "description": "Reusable skills for AI agents to interact with Hummingbot trading infrastructure",
+        "url": "https://github.com/hummingbot/skills"
+      },
+      "decision": "READY_SKILL_NOT_SELECTED",
+      "target_gap": "Hummingbot geliştirme ve connector keşfi",
+      "reuse_mode": "İki skill içeriği okundu",
+      "integration_cost": "Hummingbot API/conda/Docker altyapısı gerektiriyor, mevcut projeye katkısı sınırlı",
+      "license_review": "Repo metadata lisans belirtmiyor",
+      "evidence": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/hummingbot/skills/01f776e7e2534e1862d163296d7f4fd4988a377b/README.md",
+          "local_file": "reports/crypto-bot-research-20261115/repository-review/hummingbot__skills__README",
+          "sha256": "e7e38181972bc0f712782055de65c9aec01187cd9e69b6229f150a336cc61ced"
+        }
+      ],
+      "installed_runtime_dependency": false
+    }
+  ],
+  "selected_runtime_replacement": null,
+  "selected_skill": {
+    "name": "agentrader-exchange-development",
+    "kind": "PROJECT_SPECIFIC_CREATED_SKILL",
+    "source": "tools/skills/agentrader-exchange-development",
+    "installed_path": "C:/Users/asus/.codex/skills/agentrader-exchange-development",
+    "primary_upstream_reference": "binance/binance-connector-python",
+    "third_party_skill_installed": false,
+    "ccxt_python_reinstalled": false
+  }
+}

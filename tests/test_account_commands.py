@@ -3,10 +3,10 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.account_commands import AccountCommands
-from agentrader.config import Config
-from agentrader.exchange import ExchangeError
-from agentrader.state import StateStore
+from agentrader.bot.account_commands import AccountCommands
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import ExchangeError
+from agentrader.shared.state import StateStore
 
 
 class SettingsExchange:
@@ -14,12 +14,19 @@ class SettingsExchange:
         self.config=Config('key','secret');self.calls=[];self.leverage=10
         self.margin='CROSSED';self.dual=False;self.multi=False;self.burn=False
         self.positions=[];self.lose_response=False;self.reject=False
+        self.coin_positions=[];self.coin_orders=[];self.coin_algos=[];self.coin_read_error=False
     def sync_time(self):pass
     def get(self,path,params=None):
+        if path.startswith('/dapi/'):
+            if self.coin_read_error:raise ExchangeError('CM unavailable',delivery_status='NOT_SENT')
+            if path.endswith('positionRisk'):return self.coin_positions
+            if path.endswith('openOrders'):return self.coin_orders
+            if path.endswith('openAlgoOrders'):return self.coin_algos
+            if path.endswith('dual'):return {'dualSidePosition':self.dual}
         if path.endswith('positionRisk'):return self.positions
         if path.endswith('openOrders') or path.endswith('openAlgoOrders'):return []
         if path.endswith('symbolConfig'):return [{'symbol':'BTCUSDT','leverage':self.leverage,'marginType':self.margin}]
-        if path.endswith('leverageBracket'):return [{'symbol':'BTCUSDT','brackets':[{'initialLeverage':20}]}]
+        if path.endswith('leverageBracket'):return [{'symbol':'BTCUSDT','brackets':[{'initialLeverage':20,'notionalFloor':0,'notionalCap':100000,'maintMarginRatio':'.004','cum':0}]}]
         if path.endswith('dual'):return {'dualSidePosition':self.dual}
         if path.endswith('multiAssetsMargin'):return {'multiAssetsMargin':self.multi}
         if path.endswith('feeBurn'):return {'feeBurn':self.burn}
@@ -82,8 +89,10 @@ class AccountCommandTests(unittest.TestCase):
 
     def test_global_mode_change_requires_cross_product_checks(self):
         p=self.command('POSITION_MODE',True,None)
-        with self.assertRaises(ValueError):self.apply(p)
-        self.assertEqual(self.apply(p,cross_product_flat_verified=True)['state'],'APPLIED')
+        self.x.coin_read_error=True
+        with self.assertRaises(ExchangeError):self.apply(p,cross_product_flat_verified=True)
+        self.x.coin_read_error=False
+        self.assertEqual(self.apply(p)['state'],'APPLIED')
 
     def test_symbol_margin_and_fee_preferences(self):
         for kind,value,symbol in [('MARGIN_TYPE','ISOLATED','BTCUSDT'),('FEE_BURN',True,None)]:
@@ -92,7 +101,7 @@ class AccountCommandTests(unittest.TestCase):
 
     def test_expired_command_does_not_mutate(self):
         p=self.command()
-        with patch('agentrader.account_commands.time.time',return_value=p['expires_at']+1):
+        with patch('agentrader.bot.account_commands.time.time',return_value=p['expires_at']+1):
             self.assertEqual(self.apply(p)['state'],'EXPIRED')
         self.assertEqual(self.x.calls,[])
 

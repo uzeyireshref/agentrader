@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Request
 from .drawings import body
-from ..chart_profiles import ProfileService
+from agentrader.chart.chart_profiles import ProfileService
 
 def profile_router(service:ProfileService):
  router=APIRouter()

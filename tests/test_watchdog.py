@@ -5,10 +5,10 @@ from decimal import Decimal
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.config import Config
-from agentrader.exchange import ExchangeError
-from agentrader.state import StateStore
-from agentrader.watchdog import Watchdog, OwnershipError, watch_loop
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import ExchangeError
+from agentrader.shared.state import StateStore
+from agentrader.bot.watchdog import Watchdog, OwnershipError, watch_loop
 from test_positions import PositionExchange
 
 
@@ -157,7 +157,7 @@ class WatchdogTests(unittest.TestCase):
 
     def test_loop_checks_each_iteration(self):
         self.watch.open('BTCUSDT')
-        with patch('agentrader.watchdog.time.sleep') as sleep:
+        with patch('agentrader.bot.watchdog.time.sleep') as sleep:
             result = list(watch_loop(self.watch, True, iterations=3, interval=1))
         self.assertEqual(len(result), 3)
         self.assertEqual(sleep.call_count, 2)
@@ -171,7 +171,7 @@ class WatchdogTests(unittest.TestCase):
             if len(calls) == 1:
                 raise ExchangeError('Temporary network failure')
             return original(**kwargs)
-        with patch.object(self.watch, 'tick', side_effect=tick), patch('agentrader.watchdog.time.sleep'):
+        with patch.object(self.watch, 'tick', side_effect=tick), patch('agentrader.bot.watchdog.time.sleep'):
             result = list(watch_loop(self.watch, True, iterations=2, interval=1))
         self.assertEqual([r['status'] for r in result], ['alarm', 'protected'])
 

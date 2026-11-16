@@ -2,12 +2,12 @@ import copy
 import unittest
 from decimal import Decimal
 
-from agentrader.plan_v2 import validate_v2
-from agentrader.trailing import advance_trailing
-from agentrader.v2_runner import V2Runner
-from agentrader.plans import PlanService
-from agentrader.state import StateStore
-from agentrader.exchange import ExchangeError
+from agentrader.bot.plan_v2 import validate_v2
+from agentrader.bot.trailing import advance_trailing
+from agentrader.bot.v2_runner import V2Runner
+from agentrader.bot.plans import PlanService
+from agentrader.shared.state import StateStore
+from agentrader.shared.exchange import ExchangeError
 from test_plan_v2 import plan_v2
 import test_v2_runner as runner_fixtures
 

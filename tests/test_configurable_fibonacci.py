@@ -3,10 +3,10 @@ from fractions import Fraction
 from pathlib import Path
 import tempfile
 import unittest
-from agentrader.drawings.service import DrawingService, DrawingError, geometry, management
-from agentrader.drawings.fibonacci import levels, LEGACY_LEVELS
-from agentrader.drawings.calculations import query, CalculationBlocked, canonical_hash
-from agentrader.drawings.contracts import legacy_contract, capability
+from agentrader.chart.drawings.service import DrawingService, DrawingError, geometry, management
+from agentrader.chart.drawings.fibonacci import levels, LEGACY_LEVELS
+from agentrader.chart.drawings.calculations import query, CalculationBlocked, canonical_hash
+from agentrader.chart.drawings.contracts import legacy_contract, capability
 from agentrader.migrations import migrate
 
 START=1800000000
@@ -62,7 +62,7 @@ class ConfigurableFibonacciTests(unittest.TestCase):
             restored=s.operations('main','undo',[dict(drawing_id=old['drawing_id'],expected_revision=3,geometry=old['geometry'],management=management(),deleted=False)])['drawings'][0]
             self.assertEqual(DrawingService(db,'owner').show(old['drawing_id'])['geometry'],old['geometry'])
             self.assertNotIn('schema',restored['geometry'])
-            self.assertFalse(capability('drawing','fibonacci_projection')['readable'])
+            self.assertTrue(capability('drawing','fibonacci_projection')['readable'])
 
     def test_v7_isolation_preserves_legacy_record_and_blocks_old_client_promotion(self):
         from fastapi.testclient import TestClient

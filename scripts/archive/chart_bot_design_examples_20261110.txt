@@ -1,0 +1,5 @@
+# Historical design assertions; not executable current acceptance.
+# Source: docs/chart/contracts/chart-bot-input-v1.json
+            check('draft_has_no_activation_or_execution_authority',spec['status']=='DESIGN_ONLY_NOT_IMPLEMENTED' and not spec['production_adapter_implemented'] and not spec['runtime_activation_authorized'] and not spec['execution_authority'])
+            check('planned_readiness_requires_all_proofs',spec['eligibility_constraints']['all_future_capabilities_required'] and len(spec['future_required_capabilities'])==8 and 'CLOCK_UNTRUSTED' in spec['blocked_reasons'])
+            check('semantic_identity_excludes_feed_counters',all(k not in spec['event_identity_template'] for k in ['packet_sequence','packet_generation']) and 'drawing_revision' in spec['event_identity_template'])

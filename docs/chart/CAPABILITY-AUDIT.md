@@ -143,7 +143,7 @@ Her çekirdek araç fareyle çizilebilir, sayısal düzenlenebilir, kaydedilip y
 
 ## Kaynaklar ve inceleme kanıtı
 
-Kod: frontend/src/drawings.ts, DrawingLayer.tsx, DrawingPanel.tsx, editGeometry.ts, indicators.ts, types.ts, drag.ts; agentrader/drawings/service.py, chart_precision.py, analysis.py. Eski analysis.py ATR varlığı grafikte entegre ATR varlığı anlamına gelmez.
+Kod: frontend/src/drawings.ts, DrawingLayer.tsx, DrawingPanel.tsx, editGeometry.ts, indicators.ts, types.ts, drag.ts; agentrader/chart/drawings/service.py, chart_precision.py, analysis.py. Eski analysis.py ATR varlığı grafikte entegre ATR varlığı anlamına gelmez.
 
 Karşılaştırma yalnız araçların işlevini doğrular; hangilerinin bizim için öncelikli olduğu proje hedefinden yapılan mühendislik değerlendirmesidir:
 

@@ -7,11 +7,11 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.capabilities import load_catalog, list_capabilities, probe_capabilities, save_probe, latest_probe, PROBES
-from agentrader.capability_cli import main as capability_main
-from agentrader.config import Config
-from agentrader.exchange import ExchangeError, allowed_requests
-from agentrader.state import StateStore
+from agentrader.bot.capabilities import load_catalog, list_capabilities, probe_capabilities, save_probe, latest_probe, PROBES
+from agentrader.cli.capability_cli import main as capability_main
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import ExchangeError, allowed_requests
+from agentrader.shared.state import StateStore
 
 
 class ReadOnlyExchange:
@@ -66,7 +66,7 @@ class CapabilityTests(unittest.TestCase):
     def test_stale_snapshot_flags_never_grant_adapter_permission(self):
         catalog = load_catalog()
         for row in catalog['operations']: row['adapter_allowed'] = True
-        with patch('agentrader.capabilities.load_catalog',return_value=catalog):
+        with patch('agentrader.bot.capabilities.load_catalog',return_value=catalog):
             report = list_capabilities()
         missing = next(r for r in report['operations'] if (r['method'],r['path'])not in allowed_requests())
         self.assertFalse(missing['adapter_allowed'])
@@ -175,8 +175,8 @@ class CapabilityTests(unittest.TestCase):
             finally: reopened.close()
 
     def test_offline_cli_does_not_read_credentials_or_create_exchange(self):
-        with patch('agentrader.capability_cli.Config.load',side_effect=AssertionError('credentials read')), \
-             patch('agentrader.capability_cli.DemoExchange',side_effect=AssertionError('network created')), \
+        with patch('agentrader.cli.capability_cli.Config.load',side_effect=AssertionError('credentials read')), \
+             patch('agentrader.cli.capability_cli.DemoExchange',side_effect=AssertionError('network created')), \
              patch('sys.stdout',new_callable=io.StringIO) as output:
             self.assertEqual(capability_main(['list','--category','trade']),0)
             self.assertEqual(json.loads(output.getvalue())['count'],32)
@@ -199,8 +199,8 @@ class CapabilityTests(unittest.TestCase):
     def test_cli_public_probe_does_not_load_env_and_saves_incomplete_report(self):
         with tempfile.TemporaryDirectory(dir=Path.cwd()) as folder:
             path=Path(folder)
-            with patch('agentrader.capability_cli.Config.load',side_effect=AssertionError('credentials read')), \
-                 patch('agentrader.capability_cli.DemoExchange',return_value=ReadOnlyExchange('')), \
+            with patch('agentrader.cli.capability_cli.Config.load',side_effect=AssertionError('credentials read')), \
+                 patch('agentrader.cli.capability_cli.DemoExchange',return_value=ReadOnlyExchange('')), \
                  patch('sys.stdout',new_callable=io.StringIO):
                 code=capability_main(['probe','--database',str(path/'db.sqlite3'),'--output',str(path/'report.json')])
             self.assertEqual(code,0)

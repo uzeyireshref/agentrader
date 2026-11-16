@@ -1,6 +1,6 @@
 import unittest
 
-from agentrader.history import account_trades, income_history, IncompleteHistory
+from agentrader.bot.history import account_trades, income_history, IncompleteHistory
 
 
 def income(i, timestamp, kind='COMMISSION'):

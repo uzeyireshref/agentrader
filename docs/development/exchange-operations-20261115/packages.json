@@ -1,0 +1,421 @@
+{
+  "packages": {
+    "G00": {
+      "name": "Araştırma → plan, kanıt ve ilerleme kaydı",
+      "findings": [
+        "F32"
+      ],
+      "dependencies": [],
+      "effort": "0.5–1 gün",
+      "status": "PLAN_DELIVERED"
+    },
+    "G01": {
+      "name": "SINGLE normal girişinde ACK/RESULT seçimi",
+      "findings": [
+        "F03"
+      ],
+      "dependencies": [
+        "G00"
+      ],
+      "effort": "0.5–1 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED"
+    },
+    "G02": {
+      "name": "Güncel USD-M parametre ve filtre doğrulaması",
+      "findings": [
+        "F04",
+        "F10",
+        "F11",
+        "F12"
+      ],
+      "dependencies": [
+        "G01"
+      ],
+      "effort": "2–4 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G02.md"
+    },
+    "G03": {
+      "name": "Genel işlem komutu, niyet ve sonuç sözleşmesi",
+      "findings": [
+        "F01",
+        "F02",
+        "F28"
+      ],
+      "dependencies": [
+        "G02"
+      ],
+      "effort": "4–7 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G03.md",
+      "remaining": []
+    },
+    "G04": {
+      "name": "TIF/GTD, priceMatch ve STP normal komutları",
+      "findings": [
+        "F03"
+      ],
+      "dependencies": [
+        "G03"
+      ],
+      "effort": "3–5 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G04.md"
+    },
+    "G05": {
+      "name": "Native trailing emir yaşam döngüsü",
+      "findings": [
+        "F05",
+        "F04"
+      ],
+      "dependencies": [
+        "G03"
+      ],
+      "effort": "2–4 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G05.md"
+    },
+    "G06": {
+      "name": "Pozisyon artır/azalt/kapat/yön değiştir",
+      "findings": [
+        "F06"
+      ],
+      "dependencies": [
+        "G03",
+        "G04"
+      ],
+      "effort": "4–7 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G06.md"
+    },
+    "G07": {
+      "name": "Seçili/sembol/hesap normal-algo iptali ve timer",
+      "findings": [
+        "F07"
+      ],
+      "dependencies": [
+        "G03"
+      ],
+      "effort": "3–5 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G07.md"
+    },
+    "G08": {
+      "name": "Toplu create/amend/cancel çeşitliliği",
+      "findings": [
+        "F08"
+      ],
+      "dependencies": [
+        "G03",
+        "G04",
+        "G07"
+      ],
+      "effort": "3–5 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G08.md"
+    },
+    "G09": {
+      "name": "Dinamik leverage, hesap ayarları ve UM/CM etkisi",
+      "findings": [
+        "F09",
+        "F13"
+      ],
+      "dependencies": [
+        "G03"
+      ],
+      "effort": "3–5 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G09.md"
+    },
+    "G10": {
+      "name": "Eksik REST sorguları ve tam geçmiş",
+      "findings": [
+        "F15",
+        "F33",
+        "F34"
+      ],
+      "dependencies": [
+        "G03"
+      ],
+      "effort": "3–6 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G10.md"
+    },
+    "G11": {
+      "name": "Ürün/ortam adaptör kaydı ve hesap keşfi",
+      "findings": [
+        "F01",
+        "F26"
+      ],
+      "dependencies": [
+        "G03"
+      ],
+      "effort": "4–7 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G11.md"
+    },
+    "G12": {
+      "name": "Ortak rate budget ve WS işlem arabirimi",
+      "findings": [
+        "F14",
+        "F25"
+      ],
+      "dependencies": [
+        "G03",
+        "G11"
+      ],
+      "effort": "4–7 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G12.md"
+    },
+    "G13": {
+      "name": "Durum makinesi ve hata enjekte eden kabul araçları",
+      "findings": [
+        "F30",
+        "F31",
+        "F28"
+      ],
+      "dependencies": [
+        "G03"
+      ],
+      "effort": "3–5 gün, sonra ürünlere ek",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G13.md",
+      "priority": "CRITICAL_EXISTING_USDM_RELIABILITY",
+      "remaining": [
+        "F31_HISTORICAL_SXP_SNAPSHOT_GATE_NOT_CLOSED",
+        "NATIVE_ORDER_TEST_ROUTE_NOT_IMPLEMENTED_BY_OFFLINE_HARNESS",
+        "AUTHENTICATED_EXCHANGE_ACCEPTANCE_NOT_RUN"
+      ]
+    },
+    "G14": {
+      "name": "Spot normal/SOR/liste/özel emirler",
+      "findings": [
+        "F16"
+      ],
+      "dependencies": [
+        "G04",
+        "G07",
+        "G11",
+        "G13"
+      ],
+      "effort": "8–14 gün",
+      "status": "DEFERRED_BY_USER_SCOPE",
+      "implemented": false,
+      "deferred_reason": "Spot yeni bakiye/emir-listesi muhasebesidir; mevcut USD-M güvenilirliğinin önkoşulu değil.",
+      "decision_date": "2026-11-16",
+      "review": "PRIORITY-REVIEW.md"
+    },
+    "G15": {
+      "name": "Margin hesap, borç, faiz ve emir yan etkileri",
+      "findings": [
+        "F17"
+      ],
+      "dependencies": [
+        "G14",
+        "G19",
+        "G13"
+      ],
+      "effort": "8–14 gün",
+      "status": "DEFERRED_BY_USER_SCOPE",
+      "implemented": false,
+      "deferred_reason": "Margin borç/faiz ve G14/G19 bağımlılığı getirir; şimdilik yeni ürün kapsamı seçilmedi.",
+      "decision_date": "2026-11-16",
+      "review": "PRIORITY-REVIEW.md"
+    },
+    "G16": {
+      "name": "COIN-M inverse/teslim ve yeni algo",
+      "findings": [
+        "F18",
+        "F19"
+      ],
+      "dependencies": [
+        "G09",
+        "G11",
+        "G13"
+      ],
+      "effort": "6–10 gün",
+      "status": "DEFERRED_BY_USER_SCOPE",
+      "implemented": false,
+      "deferred_reason": "COIN-M inverse/coin/teslim yürütmesi ayrı ürün ve sözleşme kabulü ister; dar G09 CM okumaları finansal destek sayılmaz.",
+      "decision_date": "2026-11-16",
+      "review": "PRIORITY-REVIEW.md"
+    },
+    "G17": {
+      "name": "Options prim/vade/exercise/MMP/block trade",
+      "findings": [
+        "F20",
+        "F27"
+      ],
+      "dependencies": [
+        "G11",
+        "G13"
+      ],
+      "effort": "8–14 gün",
+      "status": "DEFERRED_BY_USER_SCOPE",
+      "implemented": false,
+      "deferred_reason": "Options prim/vade/exercise/MMP ve hesap/olay şeması kabulü ayrı kapsamdır.",
+      "decision_date": "2026-11-16",
+      "review": "PRIORITY-REVIEW.md"
+    },
+    "G18": {
+      "name": "PM/Pro/SPAN birleşik hesap",
+      "findings": [
+        "F21",
+        "F27"
+      ],
+      "dependencies": [
+        "G15",
+        "G16"
+      ],
+      "effort": "8–14 gün",
+      "status": "DEFERRED_BY_USER_SCOPE",
+      "implemented": false,
+      "deferred_reason": "PM/Pro/SPAN, G15/G16 ve hesap modeline özel risk kabulüne bağlıdır.",
+      "decision_date": "2026-11-16",
+      "review": "PRIORITY-REVIEW.md"
+    },
+    "G19": {
+      "name": "Wallet transfer/dust/deposit/withdraw/Travel Rule",
+      "findings": [
+        "F23",
+        "F27"
+      ],
+      "dependencies": [
+        "G03",
+        "G11",
+        "G13"
+      ],
+      "effort": "6–10 gün",
+      "status": "DEFERRED_BY_USER_SCOPE",
+      "implemented": false,
+      "deferred_reason": "Wallet transfer/çekim/ağ/adres/ücret ve iki hesap ayağı mevcut USD-M emir güvenilirliğinin önkoşulu değil.",
+      "decision_date": "2026-11-16",
+      "review": "PRIORITY-REVIEW.md"
+    },
+    "G20": {
+      "name": "Convert teklif/limit ve sonuç muhasebesi",
+      "findings": [
+        "F22"
+      ],
+      "dependencies": [
+        "G03",
+        "G11",
+        "G19"
+      ],
+      "effort": "3–5 gün",
+      "status": "DEFERRED_BY_USER_SCOPE",
+      "implemented": false,
+      "deferred_reason": "Convert teklif/kabul muhasebesi ve G19 bağımlılığı ayrı ürün ihtiyacıdır.",
+      "decision_date": "2026-11-16",
+      "review": "PRIORITY-REVIEW.md"
+    },
+    "G21": {
+      "name": "Master/sub/managed account işlemleri",
+      "findings": [
+        "F24"
+      ],
+      "dependencies": [
+        "G11",
+        "G19"
+      ],
+      "effort": "5–8 gün",
+      "status": "DEFERRED_BY_USER_SCOPE",
+      "implemented": false,
+      "deferred_reason": "Master/sub/VIP/izin ve iki hesap etkisi mevcut tek demo hesap yolunun önkoşulu değil.",
+      "decision_date": "2026-11-16",
+      "review": "PRIORITY-REVIEW.md"
+    },
+    "G22": {
+      "name": "İşlem durumu ve operasyon metrikleri",
+      "findings": [
+        "F29"
+      ],
+      "dependencies": [
+        "G03"
+      ],
+      "effort": "2–4 gün",
+      "status": "LOCAL_ACCEPTANCE_PASSED",
+      "delivery": "G22.md",
+      "priority": "CRITICAL_EXISTING_USDM_RELIABILITY",
+      "remaining": [
+        "LEGACY_EXECUTION_CONTEXT_UNVERIFIED",
+        "AUTHENTICATED_EXCHANGE_ACCEPTANCE_NOT_RUN"
+      ]
+    },
+    "G23": {
+      "name": "Nihai çapraz kapsam ve kabul kapanışı",
+      "findings": [
+        "F26",
+        "F27",
+        "F31",
+        "F32",
+        "F28"
+      ],
+      "dependencies": [],
+      "effort": "3–5 gün + dış kabul",
+      "status": "LOCAL_SCOPE_ACCEPTANCE_PASSED",
+      "delivery": "G23.md",
+      "priority": "CRITICAL_SCOPE_AND_EVIDENCE",
+      "scope_dependencies": [
+        "G13",
+        "G22"
+      ],
+      "remaining": [
+        "G14_G21_PRODUCT_EXECUTION_DEFERRED",
+        "AUTHENTICATED_ACCOUNT_ENVIRONMENT_ACCEPTANCE_NOT_RUN",
+        "LEGACY_DEFAULT_EXECUTION_CONTEXT_UNVERIFIED",
+        "SOURCE_AND_SXP_GATES_REMAIN_OPEN",
+        "ORIGINAL_FULL_PRODUCT_PLAN_NOT_CLOSED"
+      ]
+    }
+  },
+  "dependency_order": [
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10",
+    "G11",
+    "G12",
+    "G13",
+    "G14",
+    "G19",
+    "G15",
+    "G16",
+    "G17",
+    "G18",
+    "G20",
+    "G21",
+    "G22",
+    "G23"
+  ],
+  "current_selection": {
+    "phase": "EXISTING_USDM_RELIABILITY",
+    "selected_packages": [
+      "G13",
+      "G22",
+      "G23"
+    ],
+    "deferred_packages": [
+      "G14",
+      "G15",
+      "G16",
+      "G17",
+      "G18",
+      "G19",
+      "G20",
+      "G21"
+    ],
+    "automatic_next_package": null,
+    "status": "LOCAL_SCOPE_ACCEPTED_EXTERNAL_AND_LEGACY_CONTEXT_PENDING",
+    "review": "PRIORITY-REVIEW.md",
+    "full_original_plan_completed": false
+  }
+}

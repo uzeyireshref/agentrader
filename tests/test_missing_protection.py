@@ -4,9 +4,9 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock
 
-from agentrader.exchange import ExchangeError
-from agentrader.execution import DurableExchange, resolve_absent_flat
-from agentrader.state import StateStore
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.execution import DurableExchange, resolve_absent_flat
+from agentrader.shared.state import StateStore
 
 
 class MissingProtectionTests(unittest.TestCase):

@@ -2,14 +2,14 @@ from contextlib import closing
 import copy,tempfile,unittest
 from pathlib import Path
 from agentrader.migrations import migrate,connect
-from agentrader.price_alerts import PriceAlerts,PriceAlertWorker,AlertError
-from agentrader.drawings.service import DrawingConflict
-from agentrader.market_data import SOURCE
+from agentrader.chart.price_alerts import PriceAlerts,PriceAlertWorker,AlertError
+from agentrader.chart.drawings.service import DrawingConflict
+from agentrader.shared.market_data import SOURCE
 
 def definition(**kw):return dict(name='Test',symbol='BTCUSDT',interval='1m',operator='cross_up',price='100',frequency='bar_close',expires_at=None,message='Test',**kw)
 def context(n=0,old='98',new='99',epoch='epoch'):
     def row(t,p):return dict(time=t,closed=True,exact=dict(state='VERIFIED',close=p))
-    return dict(identity=dict(source=SOURCE,environment='live_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval='1m'),transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch=epoch,rows=[row(1800000000+n*60,old),row(1800000060+n*60,new)])
+    return dict(identity=dict(source=SOURCE,environment='demo_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval='1m'),transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch=epoch,rows=[row(1800000000+n*60,old),row(1800000060+n*60,new)])
 class PriceAlertTests(unittest.TestCase):
     def setUp(self):self.tmp=tempfile.TemporaryDirectory();self.db=Path(self.tmp.name)/'app.db';migrate(self.db);self.now=1800000200;self.s=PriceAlerts(self.db,'owner',lambda:self.now)
     def tearDown(self):self.tmp.cleanup()

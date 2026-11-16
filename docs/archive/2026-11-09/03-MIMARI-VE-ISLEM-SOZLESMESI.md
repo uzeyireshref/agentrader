@@ -1,4 +1,4 @@
-> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../../01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
+> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../project/history/01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
 
 # Mimari ve işlem sözleşmesi
 
@@ -6,7 +6,7 @@
 
 API kapsamı ürün, ortam, yöntem, yol, parametre şeması, hesap yetkisi ve
 iş akışı durumuyla kaydedilir. Referans:
-[güncel envanter](../../../06-BINANCE-DEMO-YETENEK-ENVANTERI-VE-GELISTIRME-SIRASI.md).
+[güncel envanter](../../bot/history/06-BINANCE-DEMO-YETENEK-ENVANTERI-VE-GELISTIRME-SIRASI.md).
 Bir uç noktanın adaptörde izinli olması yönetilen strateji desteği değildir.
 Secret genel hesap yetkisi değildir; public, API-key ve signed güvenlik türleri
 ayrı uygulanır. Demo tüm uçları destekliyor varsayılmaz.
@@ -19,7 +19,7 @@ açmasını engellemek zorunlu kabul ölçütüdür. Spot/COIN-M ve özel ürün
 adaptör/filtre/izin doğrulaması ister. Aşağıdaki v1 kapsamı henüz genişlemiş
 işlevlerin uygulanmış olduğu anlamına gelmez.
 
-Son plan güncellemesi: 5 Kasım 2026. Bu belge hedef sözleşmedir; mevcut kodun kapsamı [01-PROJE-VE-HEDEFLER.md](../../../01-PROJE-VE-HEDEFLER.md) ve [DOGRULAMA.md](../../../DOGRULAMA.md) ile sınırlıdır. Plan şeması v1 ve yerel Mod A/B yetkisi tek girişli demo LONG, 1–8 kademeli hedef ve izinli hedef sonrası girişe stop taşıma kapsamıyla uygulandı. Ayrı salt okunur canlı veri adaptörü ve temel çoklu zaman dilimi raporu vardır. TradingView, zengin haber/AI raporu, Telegram, SHORT/hedge ve diğer desteklenmeyen yönetim eylemleri henüz yoktur.
+Son plan güncellemesi: 5 Kasım 2026. Bu belge hedef sözleşmedir; mevcut kodun kapsamı [01-PROJE-VE-HEDEFLER.md](../../project/history/01-PROJE-VE-HEDEFLER.md) ve [DOGRULAMA.md](../../project/VALIDATION-HISTORY.md) ile sınırlıdır. Plan şeması v1 ve yerel Mod A/B yetkisi tek girişli demo LONG, 1–8 kademeli hedef ve izinli hedef sonrası girişe stop taşıma kapsamıyla uygulandı. Ayrı salt okunur canlı veri adaptörü ve temel çoklu zaman dilimi raporu vardır. TradingView, zengin haber/AI raporu, Telegram, SHORT/hedge ve diğer desteklenmeyen yönetim eylemleri henüz yoktur.
 
 ## Temel akış
 
@@ -186,7 +186,7 @@ işareti kaldırma → mevcut onay/risk kontrolleriyle yönetim sırası uygulan
 Yeniden bağlantı yeni işlem yetkisi vermez; belirsiz emir tekrar gönderilmez.
 430 test geçti. Gerçek demo bağlantısı ve ping/pong doğrulandı; gerçek
 fill/iptal/stop olayı ve uzun süreli kesinti kanıtı henüz tamamlanmadı.
-Ayrıntı: [12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md](../../../12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md).
+Ayrıntı: [12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md](../../bot/history/12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md).
 
 ## Takip stopu, teminat ve servis — 6 Kasım 2026
 
@@ -197,7 +197,7 @@ Grid yeniden girişte güncel kaldıraç basamaklarını kontrol eder.
 Kalıcı bildirim kuyruğu, Telegram göndericisi, sürekli servis, sağlık ve
 kontrollü durdurma komutları eklendi. Gerçek mesaj veya otomatik görev başlatılmadı.
 466 test geçti; gerçek demo yazma kanıtı ve kalan ürün kapsamı tamamlanmadı.
-[13-TAKIP-STOP-TEMINAT-VE-SERVIS.md](../../../13-TAKIP-STOP-TEMINAT-VE-SERVIS.md).
+[13-TAKIP-STOP-TEMINAT-VE-SERVIS.md](../../bot/history/13-TAKIP-STOP-TEMINAT-VE-SERVIS.md).
 
 ## Çoklu oturum sahipliği ve ortak risk — 6 Kasım 2026
 
@@ -208,32 +208,32 @@ geçer. Kapanışta yalnız ilgili oturumun rezervi atomik bırakılır; eş otu
 emirleri korunur. run-many ortak ön kontrol, manage-all/run-all tek süreçli
 yönetim sağlar. 497 test geçti; gerçek demo işlemi veya profil/bütçe değişikliği
 yapılmadı. Kalan kapsam ve kullanım:
-[14-COKLU-OTURUM-VE-ORTAK-RISK.md](../../../14-COKLU-OTURUM-VE-ORTAK-RISK.md).
+[14-COKLU-OTURUM-VE-ORTAK-RISK.md](../../bot/history/14-COKLU-OTURUM-VE-ORTAK-RISK.md).
 
 
 ## Neutral grid teslimi — 6 Kasım 2026
 
 NeutralGridRunner tek üst plan/oturum, iki positionSide ve bir risk rezervi kullanır. Hedge zorunludur. Açılış LIMIT, kapanış gerçekleşen miktara bağlıdır; global stop iki brüt tarafı kapatır. Belirsiz emirler kalıcı kimlikle uzlaştırılır. Bildirim işlem yetkisi oluşturmaz.
 
-Ayrıntı: [15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md](../../../15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md).
+Ayrıntı: [15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md](../../bot/history/15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md).
 
 
 ## Aktif teminat teslimi — 6 Kasım 2026
 
 İzole teminat komutları hedef oturuma bağlıdır. Çoklu oturum/grid sahipliği ve tüm açık tarafların stopları doğrulanır. Ekleme sonrası varsayımsal kullanılabilir USDT ile ortak kalıcı risk zarfları değerlendirilir. MARGIN bütçesi kalan refill kapasitesini içerir. Belirsiz artımlı POST tekrar edilmez.
 
-Ayrıntı: [16-COKLU-OTURUM-TEMINAT-YONETIMI.md](../../../16-COKLU-OTURUM-TEMINAT-YONETIMI.md).
+Ayrıntı: [16-COKLU-OTURUM-TEMINAT-YONETIMI.md](../../bot/history/16-COKLU-OTURUM-TEMINAT-YONETIMI.md).
 
 
 ## Grid takip stopu — 7 Kasım 2026
 
 Yönlü GRID için isteğe bağlı bot takip stopu eklendi. LONG/SHORT watermark ve eşik kalıcıdır; tetikte yeni girişler durur, gerçek kalan miktar kapanış akışına geçer. Native sabit stop korunur; hareketli eşik bot çalışırken izlenir. Neutral/native takip ve diğer politikalar bekliyor. 13 yeni senaryo dahil 573 test geçti; sonuç doğrulama raporuna kaydedildi. Gerçek demo yazma yapılmadı.
 
-Ayrıntı: [17-GRID-TAKIP-STOPU.md](../../../17-GRID-TAKIP-STOPU.md). Kanıt: `reports/development-validation-20261107.json`.
+Ayrıntı: [17-GRID-TAKIP-STOPU.md](../../bot/history/17-GRID-TAKIP-STOPU.md). Kanıt: `reports/development-validation-20261107.json`.
 
 
 ## Grid borsa stopunu yenileme — 7 Kasım 2026
 
 Yönlü GRID için isteğe bağlı `management.trailing.native_stop: true` eklendi. Yeni close-all stop GET ile doğrulanmadan önceki takip stopu kaldırılmaz; başlangıç sabit koruması tutulur. Eski planlar değişmez. 21 yeni senaryo eklendi; tam regresyon sonucu `reports/development-validation-20261107.json` içinde. Gerçek demo yazma kanıtı bekliyor.
 
-Ayrıntı: [18-GRID-BORSA-STOP-YENILEME.md](../../../18-GRID-BORSA-STOP-YENILEME.md).
+Ayrıntı: [18-GRID-BORSA-STOP-YENILEME.md](../../bot/history/18-GRID-BORSA-STOP-YENILEME.md).

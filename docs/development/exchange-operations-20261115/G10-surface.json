@@ -1,0 +1,1790 @@
+{
+  "schema": "g10-usdm-query-surface/1",
+  "review_date": "2026-11-16",
+  "dated_catalog_review": "2026-11-06",
+  "catalog_entries": 95,
+  "catalog_adapter_allowed": 85,
+  "named_query_contracts": 53,
+  "history_families": 7,
+  "export_families": 3,
+  "disposition_counts": {
+    "NAMED_SNAPSHOT": 53,
+    "PREVIOUS_PACKAGE_ADAPTER": 19,
+    "SINGLE_SHOT_EXPORT_JOB": 3,
+    "BOUND_EXPORT_STATUS": 3,
+    "BOUNDED_HISTORY": 7,
+    "G07_FROZEN_CANCEL_SUBSTITUTE": 2,
+    "DEFERRED_TRADFI": 1,
+    "DEFERRED_G13": 1,
+    "EXCLUDED_TRADFI_POLICY": 1,
+    "DEFERRED_G20": 4,
+    "DEFERRED_G18": 1
+  },
+  "operations": [
+    {
+      "catalog_id": "UM-018",
+      "method": "GET",
+      "path": "/fapi/v2/account",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "ACCOUNT_V2",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-019",
+      "method": "GET",
+      "path": "/fapi/v3/account",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "ACCOUNT_V3",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-020",
+      "method": "GET",
+      "path": "/fapi/v2/balance",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "BALANCE_V2",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-021",
+      "method": "GET",
+      "path": "/fapi/v3/balance",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "BALANCE_V3",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-022",
+      "method": "GET",
+      "path": "/fapi/v1/accountConfig",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "ACCOUNT_CONFIG",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-023",
+      "method": "GET",
+      "path": "/fapi/v1/apiTradingStatus",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "TRADING_STATUS",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-024",
+      "method": "GET",
+      "path": "/fapi/v1/feeBurn",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "FEE_BURN",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-025",
+      "method": "POST",
+      "path": "/fapi/v1/feeBurn",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-026",
+      "method": "GET",
+      "path": "/fapi/v1/multiAssetsMargin",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "MULTI_ASSETS_MODE",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-027",
+      "method": "GET",
+      "path": "/fapi/v1/positionSide/dual",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "POSITION_MODE",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-028",
+      "method": "GET",
+      "path": "/fapi/v1/order/asyn",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "SINGLE_SHOT_EXPORT_JOB",
+      "kind": "ORDERS"
+    },
+    {
+      "catalog_id": "UM-029",
+      "method": "GET",
+      "path": "/fapi/v1/trade/asyn",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "SINGLE_SHOT_EXPORT_JOB",
+      "kind": "TRADES"
+    },
+    {
+      "catalog_id": "UM-030",
+      "method": "GET",
+      "path": "/fapi/v1/income/asyn",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "SINGLE_SHOT_EXPORT_JOB",
+      "kind": "INCOME"
+    },
+    {
+      "catalog_id": "UM-031",
+      "method": "GET",
+      "path": "/fapi/v1/order/asyn/id",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUND_EXPORT_STATUS",
+      "kind": "ORDERS"
+    },
+    {
+      "catalog_id": "UM-032",
+      "method": "GET",
+      "path": "/fapi/v1/trade/asyn/id",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUND_EXPORT_STATUS",
+      "kind": "TRADES"
+    },
+    {
+      "catalog_id": "UM-033",
+      "method": "GET",
+      "path": "/fapi/v1/income/asyn/id",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUND_EXPORT_STATUS",
+      "kind": "INCOME"
+    },
+    {
+      "catalog_id": "UM-034",
+      "method": "GET",
+      "path": "/fapi/v1/income",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUNDED_HISTORY",
+      "kind": "INCOME"
+    },
+    {
+      "catalog_id": "UM-035",
+      "method": "GET",
+      "path": "/fapi/v1/leverageBracket",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "LEVERAGE_BRACKETS",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-036",
+      "method": "GET",
+      "path": "/fapi/v1/rateLimit/order",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "ORDER_RATE_LIMIT",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-037",
+      "method": "GET",
+      "path": "/fapi/v1/symbolConfig",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "SYMBOL_CONFIG",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-038",
+      "method": "GET",
+      "path": "/fapi/v1/commissionRate",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "COMMISSION_RATE",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-082",
+      "method": "POST",
+      "path": "/fapi/v1/multiAssetsMargin",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-083",
+      "method": "POST",
+      "path": "/fapi/v1/positionSide/dual",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-084",
+      "method": "GET",
+      "path": "/fapi/v1/userTrades",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUNDED_HISTORY",
+      "kind": "TRADES"
+    },
+    {
+      "catalog_id": "UM-085",
+      "method": "GET",
+      "path": "/fapi/v1/allOrders",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUNDED_HISTORY",
+      "kind": "ORDERS"
+    },
+    {
+      "catalog_id": "UM-086",
+      "method": "POST",
+      "path": "/fapi/v1/countdownCancelAll",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-087",
+      "method": "GET",
+      "path": "/fapi/v1/algoOrder",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "ALGO_ORDER",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-088",
+      "method": "POST",
+      "path": "/fapi/v1/algoOrder",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-089",
+      "method": "DELETE",
+      "path": "/fapi/v1/algoOrder",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-090",
+      "method": "DELETE",
+      "path": "/fapi/v1/algoOpenOrders",
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "G07_FROZEN_CANCEL_SUBSTITUTE",
+      "reason": "G07 fixed-member cancellation preserves managed core protections; native broad DELETE remains disabled."
+    },
+    {
+      "catalog_id": "UM-091",
+      "method": "DELETE",
+      "path": "/fapi/v1/allOpenOrders",
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "G07_FROZEN_CANCEL_SUBSTITUTE",
+      "reason": "G07 symbol/account preview freezes IDs; later orders are intentionally not swept."
+    },
+    {
+      "catalog_id": "UM-092",
+      "method": "PUT",
+      "path": "/fapi/v1/batchOrders",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-093",
+      "method": "POST",
+      "path": "/fapi/v1/batchOrders",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-094",
+      "method": "DELETE",
+      "path": "/fapi/v1/batchOrders",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-095",
+      "method": "GET",
+      "path": "/fapi/v1/order",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-096",
+      "method": "PUT",
+      "path": "/fapi/v1/order",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-097",
+      "method": "POST",
+      "path": "/fapi/v1/order",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-098",
+      "method": "DELETE",
+      "path": "/fapi/v1/order",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-099",
+      "method": "POST",
+      "path": "/fapi/v1/leverage",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-100",
+      "method": "POST",
+      "path": "/fapi/v1/marginType",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-101",
+      "method": "GET",
+      "path": "/fapi/v1/openAlgoOrders",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "OPEN_ALGO_ORDERS",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-102",
+      "method": "GET",
+      "path": "/fapi/v1/openOrders",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "OPEN_ORDERS",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-103",
+      "method": "POST",
+      "path": null,
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "DEFERRED_TRADFI",
+      "reason": "TradFi agreement write is outside crypto query scope; old navigation catalog has no path."
+    },
+    {
+      "catalog_id": "UM-104",
+      "method": "GET",
+      "path": "/fapi/v1/orderAmendment",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUNDED_HISTORY",
+      "kind": "AMENDMENTS"
+    },
+    {
+      "catalog_id": "UM-105",
+      "method": "GET",
+      "path": "/fapi/v1/positionMargin/history",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUNDED_HISTORY",
+      "kind": "POSITION_MARGIN"
+    },
+    {
+      "catalog_id": "UM-106",
+      "method": "POST",
+      "path": "/fapi/v1/positionMargin",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-107",
+      "method": "GET",
+      "path": "/fapi/v1/adlQuantile",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "ADL_QUANTILE",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-108",
+      "method": "GET",
+      "path": "/fapi/v2/positionRisk",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "POSITIONS_V2",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-109",
+      "method": "GET",
+      "path": "/fapi/v3/positionRisk",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "POSITIONS_V3",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-110",
+      "method": "GET",
+      "path": "/fapi/v1/allAlgoOrders",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUNDED_HISTORY",
+      "kind": "ALGO_ORDERS"
+    },
+    {
+      "catalog_id": "UM-111",
+      "method": "GET",
+      "path": "/fapi/v1/openOrder",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "OPEN_ORDER",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-112",
+      "method": "POST",
+      "path": "/fapi/v1/order/test",
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "DEFERRED_G13",
+      "reason": "POST order/test is a write-method validation operation; execution acceptance tooling is G13."
+    },
+    {
+      "catalog_id": "UM-113",
+      "method": "GET",
+      "path": "/fapi/v1/forceOrders",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "BOUNDED_HISTORY",
+      "kind": "FORCE_ORDERS"
+    },
+    {
+      "catalog_id": "UM-045",
+      "method": "GET",
+      "path": "/fapi/v1/symbolAdlRisk",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "SYMBOL_ADL_RISK",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-046",
+      "method": "GET",
+      "path": "/futures/data/basis",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "BASIS",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-047",
+      "method": "GET",
+      "path": "/fapi/v1/time",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "SERVER_TIME",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-048",
+      "method": "GET",
+      "path": "/fapi/v1/indexInfo",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "INDEX_INFO",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-049",
+      "method": "GET",
+      "path": "/fapi/v1/aggTrades",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "AGG_TRADES",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-050",
+      "method": "GET",
+      "path": "/fapi/v1/continuousKlines",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "CONTINUOUS_KLINES",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-051",
+      "method": "GET",
+      "path": "/fapi/v1/exchangeInfo",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "EXCHANGE_INFO",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-052",
+      "method": "GET",
+      "path": "/fapi/v1/fundingRate",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "FUNDING_RATE",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-053",
+      "method": "GET",
+      "path": "/fapi/v1/fundingInfo",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "FUNDING_INFO",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-054",
+      "method": "GET",
+      "path": "/fapi/v1/indexPriceKlines",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "INDEX_KLINES",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-055",
+      "method": "GET",
+      "path": "/fapi/v1/klines",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "KLINES",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-056",
+      "method": "GET",
+      "path": "/futures/data/globalLongShortAccountRatio",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "GLOBAL_LONG_SHORT",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-057",
+      "method": "GET",
+      "path": "/fapi/v1/premiumIndex",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "MARK_PRICE",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-058",
+      "method": "GET",
+      "path": "/fapi/v1/markPriceKlines",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "MARK_KLINES",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-059",
+      "method": "GET",
+      "path": "/fapi/v1/assetIndex",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "ASSET_INDEX",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-060",
+      "method": "GET",
+      "path": "/fapi/v1/historicalTrades",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "HISTORICAL_TRADES",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-061",
+      "method": "GET",
+      "path": "/fapi/v1/openInterest",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "OPEN_INTEREST",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-062",
+      "method": "GET",
+      "path": "/futures/data/openInterestHist",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "OPEN_INTEREST_HISTORY",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-063",
+      "method": "GET",
+      "path": "/fapi/v1/depth",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "DEPTH",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-064",
+      "method": "GET",
+      "path": "/fapi/v1/premiumIndexKlines",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "PREMIUM_KLINES",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-065",
+      "method": "GET",
+      "path": "/fapi/v1/deliveryPrice",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "DELIVERY_PRICE",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-066",
+      "method": "GET",
+      "path": "/fapi/v1/constituents",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "CONSTITUENTS",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-067",
+      "method": "GET",
+      "path": "/fapi/v1/insuranceBalance",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "INSURANCE_BALANCE",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-068",
+      "method": "GET",
+      "path": "/fapi/v1/trades",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "RECENT_TRADES",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-069",
+      "method": "GET",
+      "path": "/fapi/v1/rpiDepth",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "RPI_DEPTH",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-070",
+      "method": "GET",
+      "path": "/fapi/v1/ticker/bookTicker",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "BOOK_TICKER",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-071",
+      "method": "GET",
+      "path": "/fapi/v1/ticker/price",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "TICKER_PRICE_V1",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-072",
+      "method": "GET",
+      "path": "/fapi/v2/ticker/price",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "TICKER_PRICE_V2",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-073",
+      "method": "GET",
+      "path": "/futures/data/takerlongshortRatio",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "TAKER_LONG_SHORT",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-074",
+      "method": "GET",
+      "path": "/fapi/v1/ping",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "PING",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-075",
+      "method": "GET",
+      "path": "/fapi/v1/ticker/24hr",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "TICKER_24HR",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-076",
+      "method": "GET",
+      "path": "/futures/data/topLongShortAccountRatio",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "TOP_LONG_SHORT_ACCOUNTS",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-077",
+      "method": "GET",
+      "path": "/futures/data/topLongShortPositionRatio",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "NAMED_SNAPSHOT",
+      "query": "TOP_LONG_SHORT_POSITIONS",
+      "completeness": "NOT_FULL_HISTORY"
+    },
+    {
+      "catalog_id": "UM-078",
+      "method": "GET",
+      "path": "/fapi/v1/tradingSchedule",
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "EXCLUDED_TRADFI_POLICY",
+      "reason": "Trading Schedule excluded by the G10 plan; crypto eligibility is not inferred from a stocks calendar."
+    },
+    {
+      "catalog_id": "UM-115",
+      "method": "PUT",
+      "path": "/fapi/v1/listenKey",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-116",
+      "method": "POST",
+      "path": "/fapi/v1/listenKey",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-117",
+      "method": "DELETE",
+      "path": "/fapi/v1/listenKey",
+      "adapter_allowed": true,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "PREVIOUS_PACKAGE_ADAPTER",
+      "workflow_claim": "NOT_REASSESSED_BY_G10"
+    },
+    {
+      "catalog_id": "UM-040",
+      "method": "POST",
+      "path": "/fapi/v1/convert/acceptQuote",
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "DEFERRED_G20",
+      "reason": "Convert lifecycle belongs to G20."
+    },
+    {
+      "catalog_id": "UM-041",
+      "method": "GET",
+      "path": "/fapi/v1/convert/exchangeInfo",
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "DEFERRED_G20",
+      "reason": "Convert product query belongs to G20."
+    },
+    {
+      "catalog_id": "UM-042",
+      "method": "GET",
+      "path": "/fapi/v1/convert/orderStatus",
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "DEFERRED_G20",
+      "reason": "Convert order identity and reconciliation belong to G20."
+    },
+    {
+      "catalog_id": "UM-043",
+      "method": "POST",
+      "path": "/fapi/v1/convert/getQuote",
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "DEFERRED_G20",
+      "reason": "Convert quote lifecycle belongs to G20."
+    },
+    {
+      "catalog_id": "UM-080",
+      "method": "GET",
+      "path": "/fapi/v1/pmAccountInfo",
+      "adapter_allowed": false,
+      "authenticated_acceptance": "NOT_RUN",
+      "disposition": "DEFERRED_G18",
+      "reason": "Portfolio Margin is a separate account/risk model."
+    }
+  ],
+  "query_contracts": {
+    "ACCOUNT_V2": {
+      "path": "/fapi/v2/account",
+      "private": true,
+      "scope": "ACCOUNT",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "assets",
+        "availableBalance",
+        "canTrade",
+        "positions",
+        "totalMarginBalance",
+        "totalUnrealizedProfit",
+        "totalWalletBalance",
+        "updateTime"
+      ]
+    },
+    "ACCOUNT_V3": {
+      "path": "/fapi/v3/account",
+      "private": true,
+      "scope": "ACCOUNT",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "assets",
+        "availableBalance",
+        "positions",
+        "totalMarginBalance",
+        "totalUnrealizedProfit",
+        "totalWalletBalance",
+        "updateTime"
+      ]
+    },
+    "BALANCE_V2": {
+      "path": "/fapi/v2/balance",
+      "private": true,
+      "scope": "ACCOUNT",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "asset",
+        "availableBalance",
+        "balance",
+        "crossUnPnl",
+        "crossWalletBalance",
+        "marginAvailable",
+        "maxWithdrawAmount",
+        "updateTime"
+      ]
+    },
+    "BALANCE_V3": {
+      "path": "/fapi/v3/balance",
+      "private": true,
+      "scope": "ACCOUNT",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "asset",
+        "availableBalance",
+        "balance",
+        "crossUnPnl",
+        "crossWalletBalance",
+        "marginAvailable",
+        "maxWithdrawAmount",
+        "updateTime"
+      ]
+    },
+    "ORDER_RATE_LIMIT": {
+      "path": "/fapi/v1/rateLimit/order",
+      "private": true,
+      "scope": "ACCOUNT",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "count",
+        "interval",
+        "intervalNum",
+        "limit",
+        "rateLimitType"
+      ]
+    },
+    "POSITION_MODE": {
+      "path": "/fapi/v1/positionSide/dual",
+      "private": true,
+      "scope": "ACCOUNT",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "dualSidePosition"
+      ]
+    },
+    "MULTI_ASSETS_MODE": {
+      "path": "/fapi/v1/multiAssetsMargin",
+      "private": true,
+      "scope": "ACCOUNT",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "multiAssetsMargin"
+      ]
+    },
+    "FEE_BURN": {
+      "path": "/fapi/v1/feeBurn",
+      "private": true,
+      "scope": "ACCOUNT",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "feeBurn"
+      ]
+    },
+    "ACCOUNT_CONFIG": {
+      "path": "/fapi/v1/accountConfig",
+      "private": true,
+      "scope": "ACCOUNT",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "canTrade",
+        "dualSidePosition",
+        "feeTier",
+        "multiAssetsMargin",
+        "updateTime"
+      ]
+    },
+    "TRADING_STATUS": {
+      "path": "/fapi/v1/apiTradingStatus",
+      "private": true,
+      "scope": "OPTIONAL_SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "indicators",
+        "updateTime"
+      ]
+    },
+    "COMMISSION_RATE": {
+      "path": "/fapi/v1/commissionRate",
+      "private": true,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "makerCommissionRate",
+        "symbol",
+        "takerCommissionRate"
+      ]
+    },
+    "SYMBOL_CONFIG": {
+      "path": "/fapi/v1/symbolConfig",
+      "private": true,
+      "scope": "OPTIONAL_SYMBOL",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "isAutoAddMargin",
+        "leverage",
+        "marginType",
+        "maxNotionalValue",
+        "symbol"
+      ]
+    },
+    "LEVERAGE_BRACKETS": {
+      "path": "/fapi/v1/leverageBracket",
+      "private": true,
+      "scope": "OPTIONAL_SYMBOL",
+      "shape": "either",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "brackets",
+        "notionalCoef",
+        "symbol"
+      ]
+    },
+    "POSITIONS_V2": {
+      "path": "/fapi/v2/positionRisk",
+      "private": true,
+      "scope": "OPTIONAL_SYMBOL",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "breakEvenPrice",
+        "entryPrice",
+        "isolatedMargin",
+        "isolatedWallet",
+        "leverage",
+        "liquidationPrice",
+        "marginType",
+        "markPrice",
+        "positionAmt",
+        "positionSide",
+        "symbol",
+        "unRealizedProfit",
+        "updateTime"
+      ]
+    },
+    "POSITIONS_V3": {
+      "path": "/fapi/v3/positionRisk",
+      "private": true,
+      "scope": "OPTIONAL_SYMBOL",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "breakEvenPrice",
+        "entryPrice",
+        "initialMargin",
+        "isolatedWallet",
+        "liquidationPrice",
+        "maintMargin",
+        "marginAsset",
+        "markPrice",
+        "notional",
+        "positionAmt",
+        "positionSide",
+        "symbol",
+        "unrealizedProfit",
+        "updateTime"
+      ]
+    },
+    "OPEN_ORDERS": {
+      "path": "/fapi/v1/openOrders",
+      "private": true,
+      "scope": "OPTIONAL_SYMBOL",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": []
+    },
+    "OPEN_ALGO_ORDERS": {
+      "path": "/fapi/v1/openAlgoOrders",
+      "private": true,
+      "scope": "OPTIONAL_SYMBOL",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": []
+    },
+    "ADL_QUANTILE": {
+      "path": "/fapi/v1/adlQuantile",
+      "private": true,
+      "scope": "OPTIONAL_SYMBOL",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "adlQuantile",
+        "symbol"
+      ]
+    },
+    "OPEN_ORDER": {
+      "path": "/fapi/v1/openOrder",
+      "private": true,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [
+        "orderId",
+        "origClientOrderId"
+      ],
+      "required": [],
+      "projected_top_level_fields": []
+    },
+    "PING": {
+      "path": "/fapi/v1/ping",
+      "private": false,
+      "scope": "MARKET",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": []
+    },
+    "SERVER_TIME": {
+      "path": "/fapi/v1/time",
+      "private": false,
+      "scope": "MARKET",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "serverTime"
+      ]
+    },
+    "EXCHANGE_INFO": {
+      "path": "/fapi/v1/exchangeInfo",
+      "private": false,
+      "scope": "MARKET",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "assets",
+        "exchangeFilters",
+        "rateLimits",
+        "serverTime",
+        "symbols",
+        "timezone"
+      ]
+    },
+    "DEPTH": {
+      "path": "/fapi/v1/depth",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [
+        "limit"
+      ],
+      "required": [],
+      "projected_top_level_fields": [
+        "E",
+        "T",
+        "asks",
+        "bids",
+        "lastUpdateId"
+      ]
+    },
+    "RPI_DEPTH": {
+      "path": "/fapi/v1/rpiDepth",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [
+        "limit"
+      ],
+      "required": [],
+      "projected_top_level_fields": [
+        "E",
+        "T",
+        "asks",
+        "bids",
+        "lastUpdateId"
+      ]
+    },
+    "RECENT_TRADES": {
+      "path": "/fapi/v1/trades",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "list",
+      "arguments": [
+        "limit"
+      ],
+      "required": [],
+      "projected_top_level_fields": [
+        "id",
+        "isBuyerMaker",
+        "isRPITrade",
+        "price",
+        "qty",
+        "quoteQty",
+        "time"
+      ]
+    },
+    "HISTORICAL_TRADES": {
+      "path": "/fapi/v1/historicalTrades",
+      "private": true,
+      "scope": "SYMBOL",
+      "shape": "list",
+      "key_only": true,
+      "arguments": [
+        "fromId",
+        "limit"
+      ],
+      "required": [],
+      "projected_top_level_fields": [
+        "id",
+        "isBuyerMaker",
+        "isRPITrade",
+        "price",
+        "qty",
+        "quoteQty",
+        "time"
+      ]
+    },
+    "AGG_TRADES": {
+      "path": "/fapi/v1/aggTrades",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "list",
+      "arguments": [
+        "endTime",
+        "fromId",
+        "limit",
+        "startTime"
+      ],
+      "required": [],
+      "projected_top_level_fields": [
+        "T",
+        "a",
+        "f",
+        "l",
+        "m",
+        "nq",
+        "p",
+        "q"
+      ]
+    },
+    "KLINES": {
+      "path": "/fapi/v1/klines",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "candles",
+      "arguments": [
+        "endTime",
+        "interval",
+        "limit",
+        "startTime"
+      ],
+      "required": [
+        "interval"
+      ],
+      "projected_top_level_fields": []
+    },
+    "CONTINUOUS_KLINES": {
+      "path": "/fapi/v1/continuousKlines",
+      "private": false,
+      "scope": "PAIR",
+      "shape": "candles",
+      "arguments": [
+        "contractType",
+        "endTime",
+        "interval",
+        "limit",
+        "startTime"
+      ],
+      "required": [
+        "contractType",
+        "interval"
+      ],
+      "projected_top_level_fields": []
+    },
+    "INDEX_KLINES": {
+      "path": "/fapi/v1/indexPriceKlines",
+      "private": false,
+      "scope": "PAIR",
+      "shape": "candles",
+      "arguments": [
+        "endTime",
+        "interval",
+        "limit",
+        "startTime"
+      ],
+      "required": [
+        "interval"
+      ],
+      "projected_top_level_fields": []
+    },
+    "MARK_KLINES": {
+      "path": "/fapi/v1/markPriceKlines",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "candles",
+      "arguments": [
+        "endTime",
+        "interval",
+        "limit",
+        "startTime"
+      ],
+      "required": [
+        "interval"
+      ],
+      "projected_top_level_fields": []
+    },
+    "PREMIUM_KLINES": {
+      "path": "/fapi/v1/premiumIndexKlines",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "candles",
+      "arguments": [
+        "endTime",
+        "interval",
+        "limit",
+        "startTime"
+      ],
+      "required": [
+        "interval"
+      ],
+      "projected_top_level_fields": []
+    },
+    "MARK_PRICE": {
+      "path": "/fapi/v1/premiumIndex",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "estimatedSettlePrice",
+        "indexPrice",
+        "interestRate",
+        "lastFundingRate",
+        "markPrice",
+        "nextFundingTime",
+        "symbol",
+        "time"
+      ]
+    },
+    "FUNDING_RATE": {
+      "path": "/fapi/v1/fundingRate",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "list",
+      "arguments": [
+        "endTime",
+        "limit",
+        "startTime"
+      ],
+      "required": [],
+      "projected_top_level_fields": [
+        "fundingRate",
+        "fundingTime",
+        "markPrice",
+        "symbol"
+      ]
+    },
+    "FUNDING_INFO": {
+      "path": "/fapi/v1/fundingInfo",
+      "private": false,
+      "scope": "MARKET",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "adjustedFundingRateCap",
+        "adjustedFundingRateFloor",
+        "disclaimer",
+        "fundingIntervalHours",
+        "symbol"
+      ]
+    },
+    "TICKER_24HR": {
+      "path": "/fapi/v1/ticker/24hr",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "closeTime",
+        "count",
+        "firstId",
+        "highPrice",
+        "lastId",
+        "lastPrice",
+        "lastQty",
+        "lowPrice",
+        "openPrice",
+        "openTime",
+        "priceChange",
+        "priceChangePercent",
+        "quoteVolume",
+        "symbol",
+        "volume",
+        "weightedAvgPrice"
+      ]
+    },
+    "TICKER_PRICE_V1": {
+      "path": "/fapi/v1/ticker/price",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "price",
+        "symbol",
+        "time"
+      ]
+    },
+    "TICKER_PRICE_V2": {
+      "path": "/fapi/v2/ticker/price",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "price",
+        "symbol",
+        "time"
+      ]
+    },
+    "BOOK_TICKER": {
+      "path": "/fapi/v1/ticker/bookTicker",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "askPrice",
+        "askQty",
+        "bidPrice",
+        "bidQty",
+        "symbol",
+        "time"
+      ]
+    },
+    "OPEN_INTEREST": {
+      "path": "/fapi/v1/openInterest",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "openInterest",
+        "symbol",
+        "time"
+      ]
+    },
+    "OPEN_INTEREST_HISTORY": {
+      "path": "/futures/data/openInterestHist",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "list",
+      "arguments": [
+        "endTime",
+        "limit",
+        "period",
+        "startTime"
+      ],
+      "required": [
+        "period"
+      ],
+      "projected_top_level_fields": [
+        "CMCCirculatingSupply",
+        "sumOpenInterest",
+        "sumOpenInterestValue",
+        "symbol",
+        "timestamp"
+      ]
+    },
+    "TOP_LONG_SHORT_ACCOUNTS": {
+      "path": "/futures/data/topLongShortAccountRatio",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "list",
+      "arguments": [
+        "endTime",
+        "limit",
+        "period",
+        "startTime"
+      ],
+      "required": [
+        "period"
+      ],
+      "projected_top_level_fields": [
+        "longAccount",
+        "longShortRatio",
+        "shortAccount",
+        "symbol",
+        "timestamp"
+      ]
+    },
+    "TOP_LONG_SHORT_POSITIONS": {
+      "path": "/futures/data/topLongShortPositionRatio",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "list",
+      "arguments": [
+        "endTime",
+        "limit",
+        "period",
+        "startTime"
+      ],
+      "required": [
+        "period"
+      ],
+      "projected_top_level_fields": [
+        "longAccount",
+        "longShortRatio",
+        "shortAccount",
+        "symbol",
+        "timestamp"
+      ]
+    },
+    "GLOBAL_LONG_SHORT": {
+      "path": "/futures/data/globalLongShortAccountRatio",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "list",
+      "arguments": [
+        "endTime",
+        "limit",
+        "period",
+        "startTime"
+      ],
+      "required": [
+        "period"
+      ],
+      "projected_top_level_fields": [
+        "longAccount",
+        "longShortRatio",
+        "shortAccount",
+        "symbol",
+        "timestamp"
+      ]
+    },
+    "TAKER_LONG_SHORT": {
+      "path": "/futures/data/takerlongshortRatio",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "list",
+      "arguments": [
+        "endTime",
+        "limit",
+        "period",
+        "startTime"
+      ],
+      "required": [
+        "period"
+      ],
+      "projected_top_level_fields": [
+        "buySellRatio",
+        "buyVol",
+        "sellVol",
+        "timestamp"
+      ]
+    },
+    "BASIS": {
+      "path": "/futures/data/basis",
+      "private": false,
+      "scope": "PAIR",
+      "shape": "list",
+      "arguments": [
+        "contractType",
+        "endTime",
+        "limit",
+        "period",
+        "startTime"
+      ],
+      "required": [
+        "contractType",
+        "period"
+      ],
+      "projected_top_level_fields": [
+        "annualizedBasisRate",
+        "basis",
+        "basisRate",
+        "contractType",
+        "futuresPrice",
+        "indexPrice",
+        "pair",
+        "timestamp"
+      ]
+    },
+    "INDEX_INFO": {
+      "path": "/fapi/v1/indexInfo",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "baseAssetList",
+        "component",
+        "symbol",
+        "time"
+      ]
+    },
+    "ASSET_INDEX": {
+      "path": "/fapi/v1/assetIndex",
+      "private": false,
+      "scope": "MARKET",
+      "shape": "either",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "askBuffer",
+        "askRate",
+        "autoExchangeAskBuffer",
+        "autoExchangeBidBuffer",
+        "bidBuffer",
+        "bidRate",
+        "index",
+        "symbol",
+        "time"
+      ]
+    },
+    "DELIVERY_PRICE": {
+      "path": "/fapi/v1/deliveryPrice",
+      "private": false,
+      "scope": "PAIR",
+      "shape": "list",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "deliveryPrice",
+        "deliveryTime"
+      ]
+    },
+    "CONSTITUENTS": {
+      "path": "/fapi/v1/constituents",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "constituents",
+        "symbol",
+        "time"
+      ]
+    },
+    "INSURANCE_BALANCE": {
+      "path": "/fapi/v1/insuranceBalance",
+      "private": false,
+      "scope": "MARKET",
+      "shape": "either",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "assets",
+        "symbols"
+      ]
+    },
+    "SYMBOL_ADL_RISK": {
+      "path": "/fapi/v1/symbolAdlRisk",
+      "private": false,
+      "scope": "SYMBOL",
+      "shape": "either",
+      "arguments": [],
+      "required": [],
+      "projected_top_level_fields": [
+        "adlRisk",
+        "riskLevel",
+        "symbol"
+      ]
+    },
+    "ALGO_ORDER": {
+      "path": "/fapi/v1/algoOrder",
+      "private": true,
+      "scope": "SYMBOL",
+      "shape": "object",
+      "arguments": [
+        "algoId",
+        "clientAlgoId"
+      ],
+      "required": [],
+      "projected_top_level_fields": []
+    }
+  },
+  "note": "Adapter allowlisting is not authenticated exchange acceptance, full workflow coverage or complete account history. Original research snapshots are unchanged."
+}

@@ -2,8 +2,8 @@ import copy
 import unittest
 from unittest.mock import Mock
 
-from agentrader.plan_execution import market_guard_check
-from agentrader.plans import example_plan, validate_plan
+from agentrader.bot.plan_execution import market_guard_check
+from agentrader.bot.plans import example_plan, validate_plan
 
 
 class MarketGuardTests(unittest.TestCase):
@@ -29,3 +29,14 @@ class MarketGuardTests(unittest.TestCase):
             plan['market_guard'].update(change)
             with self.assertRaises(ValueError):
                 validate_plan(plan)
+
+
+    def test_legacy_live_guard_cannot_silently_compare_demo_to_itself(self):
+        from agentrader.bot.plan_execution import run_plan
+        from agentrader.bot.risk import RiskLimits
+        service, exchange = Mock(), Mock()
+        service.show.return_value = dict(state='AUTHORIZED', plan=self.plan)
+        with self.assertRaisesRegex(ValueError, 'yeni demo planı'):
+            run_plan(service, exchange, RiskLimits(), 'legacy-guard', 1, execute=True)
+        self.assertEqual(exchange.mock_calls, [])
+        service.claim.assert_not_called()

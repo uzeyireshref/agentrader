@@ -1,5 +1,7 @@
 # Profesyonel grafik geliştirme planı — v3
 
+15 Kasım 2026 — [Gezinme ve imzalı çizim düzeltmesi](REA-NAVIGATION-SIGNED-DRAWINGS-20261115.md): zorunlu görünüm kaydırması kaldırıldı; dikey pan, fiyat ekseni zoom/reset ve negatif lineer çizim kayıt/restore doğrulandı. Bu ek düzeltme 27/27 görev sayısını değiştirmez; eski QA01 kanıtları kendi derlemesine aittir.
+
 13 Kasım 2026 — **QA01 kontrollü masaüstü doğrulaması tamamlandı; uygulama planı 27/27.** [Kabul raporu](QA01-ACCEPTANCE.md): 920 Python/278 frontend testi, 18 raster durumu, 20 cleanup döngüsü, beş 60 saniyelik performans koşusu ve 10 temiz restore kontrolü geçti. rAF p95 her koşuda16,8 ms; wheel→frame-swap p95 78,487 ms. Genel sürüm/B5 fiziksel kabul açık; canlı entegrasyon kapalı. Sıradaki iş açık fiziksel kabul maddelerinin gözden geçirilmesi. Aşağıdaki önceki teslim kayıtları tarihseldir.
 
 13 Kasım 2026. **P7 izole replay/kuru çalışma tamamlandı; sıradaki QA01 genel kabul.** [P7 teslimi](P7-ISOLATED-REPLAY-DELIVERY.md):36/36 gerçek senaryo,20 tür/48 sorgu, kalıcı episode/checkpoint, E3 Python/TS kimliği, sınırlı fake delivery ve kaynak doğrulamalı sonuç paneli.920 Python,276 frontend testi, üretim derlemesi,11 yeni ve12 P6 regresyon tarayıcı kontrolü geçti. Canlı entegrasyon kapalı; B5/fiziksel kabul ve QA01 açık.

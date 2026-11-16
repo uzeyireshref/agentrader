@@ -14,7 +14,7 @@ test('tick validation is exact beyond binary float integer precision',()=>{
  assert.throws(()=>editGeometry(g,'bad',['9007199254740993.26','110'],times,'0.25'),/adım/);
 });
 test('invalid prices and rolled calendar dates never produce geometry',()=>{
- for(const price of ['NaN','Infinity','-1','0','1.2.3',''])assert.throws(()=>editGeometry(g,'bad',[price,'110'],times,'0.1'));
+ for(const price of ['NaN','Infinity','1.2.3',''])assert.throws(()=>editGeometry(g,'bad',[price,'110'],times,'0.1'));
  for(const date of ['2026-02-30T10:00:00','2026-01-01T25:00:00','bad','1970-01-01T00:00:00'])assert.throws(()=>editGeometry(g,'bad',['100','110'],[date,times[1]],'0.1'),/UTC/);
 });
 test('UTC editing is explicit and legacy coordinates remain untouched when renamed',()=>{

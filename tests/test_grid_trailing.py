@@ -1,12 +1,12 @@
 import copy
 import unittest
 
-from agentrader.grid_runner import GridRunner
-from agentrader.plan_v2 import validate_v2
-from agentrader.plans import PlanService
-from agentrader.risk import number
-from agentrader.state import StateStore
-from agentrader.exchange import ExchangeError
+from agentrader.bot.grid_runner import GridRunner
+from agentrader.bot.plan_v2 import validate_v2
+from agentrader.bot.plans import PlanService
+from agentrader.bot.risk import number
+from agentrader.shared.state import StateStore
+from agentrader.shared.exchange import ExchangeError
 import test_grid_runner as fixtures
 
 

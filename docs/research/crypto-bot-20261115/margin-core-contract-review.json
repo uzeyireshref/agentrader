@@ -1,0 +1,128 @@
+{
+  "review_date": "2026-11-15",
+  "product": "Margin",
+  "collection_operations": 69,
+  "production_support": "PRODUCT_GATE_BLOCKS_MARGIN",
+  "evidence": [
+    {
+      "file": "agentrader/bot/plan_v2.py",
+      "lines": [
+        22,
+        23,
+        46
+      ]
+    },
+    {
+      "file": "agentrader/shared/exchange.py",
+      "lines": [
+        14
+      ]
+    }
+  ],
+  "sources": [
+    "https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/trade",
+    "https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/borrow-repay"
+  ],
+  "contracts": [
+    {
+      "id": "M-01",
+      "operation": "BORROW_REPAY",
+      "path": "/sapi/v1/margin/borrow-repay",
+      "method": "POST",
+      "required": [
+        "asset",
+        "isIsolated",
+        "amount",
+        "type",
+        "timestamp"
+      ],
+      "conditional": {
+        "symbol": "Isolated Margin"
+      },
+      "values": {
+        "type": [
+          "BORROW",
+          "REPAY"
+        ],
+        "isIsolated": [
+          "TRUE",
+          "FALSE"
+        ]
+      },
+      "verification": "GET borrow-repay records plus outstanding liability",
+      "failure": "-3007 pending transaction serializes requests across all assets; auto repayment may need liability verification"
+    },
+    {
+      "id": "M-02",
+      "operation": "ORDER_SIDE_EFFECT",
+      "path": "/sapi/v1/margin/order",
+      "method": "POST",
+      "values": {
+        "sideEffectType": [
+          "NO_SIDE_EFFECT",
+          "MARGIN_BUY",
+          "AUTO_REPAY",
+          "AUTO_BORROW_REPAY"
+        ],
+        "timeInForce": [
+          "GTC",
+          "IOC",
+          "FOK"
+        ],
+        "newOrderRespType": [
+          "ACK",
+          "RESULT",
+          "FULL"
+        ]
+      },
+      "conditional": {
+        "autoRepayAtCancel": "MARGIN_BUY or AUTO_BORROW_REPAY"
+      },
+      "verification": "Order fills and debt/principal/interest must be reconciled independently"
+    }
+  ],
+  "scenarios": [
+    [
+      "BORROW_ACK_LOST",
+      "Submit borrow then lose reply",
+      "Find transaction and outstanding principal before retry"
+    ],
+    [
+      "REPAY_ACK_LOST",
+      "Repayment reply missing",
+      "Verify transaction and remaining principal/interest"
+    ],
+    [
+      "CROSS_ASSET_CONCURRENT",
+      "Borrow two assets concurrently",
+      "Handle account-wide pending transaction without duplicate financial effect"
+    ],
+    [
+      "AUTO_REPAY_SILENT",
+      "Sell succeeds but repayment incomplete",
+      "Report fill and outstanding liability separately"
+    ],
+    [
+      "PARTIAL_FILL_CANCEL",
+      "Auto-borrow order partly fills then cancels",
+      "Verify actual inventory and debt after autoRepayAtCancel"
+    ],
+    [
+      "ISOLATED_SCOPE",
+      "Same asset in cross and isolated accounts",
+      "Only requested account and symbol change"
+    ],
+    [
+      "INTEREST_BOUNDARY",
+      "Interest accrues while repaying",
+      "Residual debt remains visible"
+    ],
+    [
+      "BORROW_STOCK",
+      "Borrowable inventory or maximum changes",
+      "Fresh preflight and definite rejection preserve local state"
+    ]
+  ],
+  "exchange_mutations": 0,
+  "scope_status": "CORE_ORDER_AND_BORROW_CONTRACTS_REVIEWED_OTHER_MARGIN_AREAS_PENDING"
+}

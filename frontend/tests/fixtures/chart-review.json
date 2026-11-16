@@ -1,0 +1,199 @@
+{
+  "preview": {
+    "account_preflight": "NOT_CHECKED",
+    "approval_state": "NOT_REQUESTED",
+    "assumptions": {
+      "actual_account_fees": "NOT_CHECKED",
+      "fee_rate": "0.001",
+      "slippage_bps": "5",
+      "stop_trigger_price_type": "MARK_PRICE"
+    },
+    "binding_id": "binding",
+    "binding_revision": 1,
+    "content_hash": "4ec64ce1b905fd0157f1a992d7ce455c903da29ff075c123523f821abca3ca78",
+    "created_at": 1000.0,
+    "definition_hash": "fd193db135d3d6484edea9ceba042acaf64871a93aa1caf68a5c89f18fae99fa",
+    "environment": "demo_public",
+    "estimates": {
+      "margin_with_fee_reserve": "30.11981175000",
+      "net_rr": "1.608184759170762224309001172",
+      "notional": "59.8500",
+      "quantity": "0.5985",
+      "stop_loss_with_cost_reserve": "1.37475509850",
+      "target_pnl_with_cost_reserve": "2.21086019700"
+    },
+    "event_id": "f16ade859a8db6b644670e801c3513d5f011649ef357892055bec629dafde652",
+    "evidence": {
+      "current_snapshot_hash": "f07169a7f7833ea8341d233ad52a8347a260136ba13a622301f3399e1c77e2d8",
+      "demo_mark": {
+        "markPrice": "100",
+        "symbol": "BTCUSDT",
+        "time": 1000000
+      },
+      "event_hash": "cc5b1ccaf826b7d3ed7aff210637c83867b1dfa52a1fdd640b436442cb8a31c8",
+      "public_observed_at_ms": 1000000,
+      "symbol_filters_hash": "e0720ea109845ab16215bdc49cda7aa1eafe141fc4f2a8c72cc8da6155826753"
+    },
+    "execution_eligible": false,
+    "expires_at": 1120.0,
+    "order_authority": false,
+    "parameters": {
+      "direction": "LONG",
+      "entry_price": "100",
+      "leverage": 2,
+      "margin_mode": "ISOLATED",
+      "max_drift_bps": "25",
+      "notional": "60",
+      "position_mode": "one-way",
+      "stop": "98",
+      "target": "104",
+      "ttl_seconds": 120
+    },
+    "parameters_hash": "3fd6cde05a0c8828ae31c7125a71e805eb15fa68b8119811266e6f0842064935",
+    "plan": {
+      "analysis_ref": "shadow-event:f16ade859a8db6b644670e801c3513d5f011649ef357892055bec629dafde652",
+      "created_at": "1970-01-01T00:16:40+00:00",
+      "direction": "LONG",
+      "entry": {
+        "condition": "LIMIT",
+        "max_drift_bps": "25",
+        "reference_price": "100",
+        "trigger_price": "100"
+      },
+      "environment": "demo",
+      "exchange": "binance",
+      "execution": {
+        "leverage": 2,
+        "margin_mode": "ISOLATED",
+        "strategy": "SINGLE"
+      },
+      "expires_at": "1970-01-01T00:18:40+00:00",
+      "management": {
+        "allow_reentry": false,
+        "allow_reverse": false,
+        "allow_scale_in": false,
+        "break_even_after_target": null
+      },
+      "max_runs": 1,
+      "mode": "A",
+      "plan_id": "shadow-f16ade859a8db6b644670e80",
+      "position_mode": "one-way",
+      "product": "USD-M",
+      "rationale": "Kullanıcının açık parametreleriyle gölge sinyalden oluşturulan önizleme; işlem onayı değildir.",
+      "schema_version": 2,
+      "sizing": {
+        "amount": "60",
+        "currency": "USDT",
+        "kind": "NOTIONAL"
+      },
+      "stop": "98",
+      "symbol": "BTCUSDT",
+      "targets": [
+        {
+          "fraction": "1",
+          "price": "104"
+        }
+      ],
+      "version": 1
+    },
+    "plan_digest": "0e5f781b09e9eccab1f7651abcba5d5097b05fe2ed11fcdb9818fa1d0555657a",
+    "price_type": "LAST_PRICE",
+    "product": "USD-M",
+    "risk_limits": {
+      "max_age_seconds": "15",
+      "max_daily_loss": "25",
+      "max_notional": "100",
+      "max_positions": "1",
+      "max_total_loss": "10",
+      "max_trade_loss": "5"
+    },
+    "risk_profile_hash": "7cd0ecfafc87bc381afb2d79f371430346b9957a9156633c24014ab5e341c170",
+    "schema": "signal-preview/1",
+    "source": "binance_usdm_demo_trade_price",
+    "unchecked": [
+      "available_balance",
+      "account_mode_and_leverage",
+      "portfolio_and_daily_loss",
+      "ownership",
+      "liquidation",
+      "execution_quote_revalidation",
+      "future_funding",
+      "actual_commission_and_slippage"
+    ],
+    "version": 1,
+    "warnings": [],
+    "workspace_id": "main",
+    "state": "PREVIEW_ONLY",
+    "reasons": [],
+    "current_last_price": "98"
+  },
+  "review": {
+    "schema": "chart-plan-review/1",
+    "plan": {
+      "analysis_ref": "shadow-event:f16ade859a8db6b644670e801c3513d5f011649ef357892055bec629dafde652",
+      "created_at": "1970-01-01T00:16:40+00:00",
+      "direction": "LONG",
+      "entry": {
+        "condition": "LIMIT",
+        "max_drift_bps": "25",
+        "reference_price": "100",
+        "trigger_price": "100"
+      },
+      "environment": "demo",
+      "exchange": "binance",
+      "execution": {
+        "leverage": 2,
+        "margin_mode": "ISOLATED",
+        "strategy": "SINGLE"
+      },
+      "expires_at": "1970-01-01T00:18:40+00:00",
+      "management": {
+        "allow_reentry": false,
+        "allow_reverse": false,
+        "allow_scale_in": false,
+        "break_even_after_target": null
+      },
+      "max_runs": 1,
+      "mode": "A",
+      "plan_id": "chart-e7ed737aaff40e419e576d0ecd803abb",
+      "position_mode": "one-way",
+      "product": "USD-M",
+      "rationale": "Kullanıcının açık parametreleriyle gölge sinyalden oluşturulan önizleme; işlem onayı değildir.",
+      "schema_version": 2,
+      "sizing": {
+        "amount": "60",
+        "currency": "USDT",
+        "kind": "NOTIONAL"
+      },
+      "stop": "98",
+      "symbol": "BTCUSDT",
+      "targets": [
+        {
+          "fraction": "1",
+          "price": "104"
+        }
+      ],
+      "version": 1
+    },
+    "plan_digest": "afa263d6071f5b969b969da1e64da2fac222796a8e98474dc8191613eff84b16",
+    "source_binding_hash": "b5bed9d60b0d2c3e140d83617b7e3cf10a8ed560800bf78410a0d34abf9fc1f3",
+    "preview_hash": "4ec64ce1b905fd0157f1a992d7ce455c903da29ff075c123523f821abca3ca78",
+    "preview_version": 1,
+    "event_id": "f16ade859a8db6b644670e801c3513d5f011649ef357892055bec629dafde652",
+    "workspace": "main",
+    "account_ref": "c48a01f49fd0f2cc404bc3cbbc80e91457a3d41bb429a695243de4c61794155c",
+    "risk_profile_hash": "7cd0ecfafc87bc381afb2d79f371430346b9957a9156633c24014ab5e341c170",
+    "expires_at": 1120.0,
+    "account_preflight": {
+      "execution_authorized": false,
+      "quantity": "0.59",
+      "state": "READY"
+    },
+    "checked_at": 1000,
+    "review_hash": "1e4deec386d1d06ebb1c506913c72adde0b26ca30513c852395d0c745cb995a3",
+    "state": "PENDING_APPROVAL",
+    "approval_until": null,
+    "executed": false,
+    "order_authority": false
+  }
+}

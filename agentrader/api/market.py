@@ -5,17 +5,17 @@ import re
 
 from fastapi import APIRouter, Query, WebSocket, WebSocketDisconnect
 
-from ..chart_market import InvalidMarket, MarketUnavailable
-from ..market_feed import FeedUnavailable
-from ..higher_timeframe import higher_context
+from agentrader.chart.chart_market import InvalidMarket, MarketUnavailable
+from agentrader.shared.market_feed import FeedUnavailable
+from agentrader.chart.higher_timeframe import higher_context
 
 
-def market_router(market, hub):
+def market_router(market, hub, ui_policy=None):
     router = APIRouter()
 
     @router.get('/api/markets')
     def markets():
-        return market.catalog()
+        return {**market.catalog(), **({'ui_session_bridge': ui_policy} if ui_policy is not None else {})}
 
     @router.get('/api/candles')
     def candles(symbol: str = 'BTCUSDT', interval: str = '15m',

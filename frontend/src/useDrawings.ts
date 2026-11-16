@@ -1,6 +1,6 @@
 import {drawingWithDefault,type DrawingDefaults} from './chartProfiles';
 import {useEffect,useRef,useState} from 'react';
-import {drawingRequest,type Drawing,type Geometry,type Workspace,drawingManagement,drawingVisible,type Management} from './drawings';
+import {DrawingRequestError,drawingRequest,type Drawing,type Geometry,type Workspace,drawingManagement,drawingVisible,type Management} from './drawings';
 import {LatestRead} from './latestRead';
 import type {Interval} from './types';
 type Change={before:Drawing|null;after:Drawing};
@@ -20,7 +20,7 @@ export function useDrawings(symbol:string,interval:Interval,restore:(symbol:stri
   await reads.current.run(async()=>{
    await prefChain.current;
    const saved=await drawingRequest<Workspace>('/api/workspaces/main');
-   const response=await drawingRequest<{drawings:Drawing[]}>('/api/workspaces/main/drawings?symbol='+encodeURIComponent(requested)+'&format_version=9');
+   const response=await drawingRequest<{drawings:Drawing[]}>('/api/workspaces/main/drawings?symbol='+encodeURIComponent(requested)+'&format_version=10');
    return {saved,response};
   },({saved,response})=>{
    if(current.current!==requested)return;
@@ -39,7 +39,7 @@ export function useDrawings(symbol:string,interval:Interval,restore:(symbol:stri
   reads.current.invalidate();if(!available)return;
   setLoadedFor(null);setItems([]);setSelected(null);undo.current=[];redo.current=[];setHistoryVersion(v=>v+1);
   const requested=symbol;
-  void reads.current.run(()=>drawingRequest<{drawings:Drawing[]}>('/api/workspaces/main/drawings?symbol='+encodeURIComponent(requested)+'&format_version=9'),response=>{
+  void reads.current.run(()=>drawingRequest<{drawings:Drawing[]}>('/api/workspaces/main/drawings?symbol='+encodeURIComponent(requested)+'&format_version=10'),response=>{
    if(current.current!==requested)return;
    heads.current=new Map(response.drawings.map(d=>[d.drawing_id,d]));setItems(response.drawings);setLoadedFor(requested);
   },e=>setMessage(e instanceof Error?e.message:'Çizimler yüklenemedi.'));
@@ -61,13 +61,13 @@ export function useDrawings(symbol:string,interval:Interval,restore:(symbol:stri
   if(staleReadPending){reads.current.invalidate();setLoadedFor(null);queueMicrotask(()=>{if(relevant.length)void refresh();});}
  };
  const perform=async(operation:()=>Promise<Drawing|{drawings:Drawing[]}>,before:(Drawing|null)[],mode:'normal'|'undo'|'redo')=>{if(mutating.current)return;const run=async()=>{mutating.current=true;setBusy(true);try{const result=await operation();commit("drawings" in result?result.drawings:[result],before,mode);pending.current=null;setRetryable(false);}catch(e){setMessage(e instanceof Error?e.message:'Kayıt doğrulanamadı.');pending.current=run;setRetryable(true);}finally{mutating.current=false;setBusy(false);}};await run();};
- const create=async(geometry:Geometry)=>{if(!available||!ready||loadedFor!==symbol||pending.current||mutating.current||creationDefaults.current===null)return;const request_id=crypto.randomUUID(),template=creationDefaults.current?.[geometry.kind];if(template){const item=drawingWithDefault(geometry,template);await perform(()=>drawingRequest<{drawings:Drawing[]}>('/api/workspaces/main/drawing-operations?format_version=9','POST',{request_id,operations:[{drawing_id:null,expected_revision:0,geometry:item.geometry,management:item.management,deleted:false}]}),[null],'normal');}else await perform(()=>drawingRequest<Drawing>('/api/workspaces/main/drawings?format_version=9','POST',{request_id,geometry}),[null],'normal');};
+ const create=async(geometry:Geometry)=>{if(!available||!ready||loadedFor!==symbol||pending.current||mutating.current||creationDefaults.current===null)return;const request_id=crypto.randomUUID(),template=creationDefaults.current?.[geometry.kind];if(template){const item=drawingWithDefault(geometry,template);await perform(()=>drawingRequest<{drawings:Drawing[]}>('/api/workspaces/main/drawing-operations?format_version=10','POST',{request_id,operations:[{drawing_id:null,expected_revision:0,geometry:item.geometry,management:item.management,deleted:false}]}),[null],'normal');}else await perform(()=>drawingRequest<Drawing>('/api/workspaces/main/drawings?format_version=10','POST',{request_id,geometry}),[null],'normal');};
 
- const change=async(id:string,geometry:Geometry|null,mode:'normal'|'undo'|'redo'='normal')=>{if(!available||!ready||loadedFor!==symbol||mutating.current||(pending.current&&mode==='normal'))return;const previous=heads.current.get(id);if(!previous||drawingManagement(previous).locked)return;const request_id=crypto.randomUUID();await perform(()=>drawingRequest<Drawing>('/api/drawings/'+id+'?format_version=9',geometry===null?'DELETE':'PATCH',{request_id,expected_revision:previous.revision,...(geometry?{geometry}:{})}),[previous],mode);};
+ const change=async(id:string,geometry:Geometry|null,mode:'normal'|'undo'|'redo'='normal')=>{if(!available||!ready||loadedFor!==symbol||mutating.current||(pending.current&&mode==='normal'))return;const previous=heads.current.get(id);if(!previous||drawingManagement(previous).locked)return;const request_id=crypto.randomUUID();await perform(()=>drawingRequest<Drawing>('/api/drawings/'+id+'?format_version=10',geometry===null?'DELETE':'PATCH',{request_id,expected_revision:previous.revision,...(geometry?{geometry}:{})}),[previous],mode);};
  const transact=async(targets:{before:Drawing|null;geometry:Geometry;management:Management;deleted:boolean}[],mode:'normal'|'undo'|'redo'='normal')=>{
   if(!available||!ready||loadedFor!==symbol||mutating.current||pending.current||!targets.length||targets.some(t=>t.geometry.symbol!==symbol))return;
   const request_id=crypto.randomUUID();const operations=targets.map(t=>({drawing_id:t.before?.drawing_id??null,expected_revision:t.before?.revision??0,geometry:t.geometry,management:t.management,deleted:t.deleted}));
-  await perform(()=>drawingRequest<{drawings:Drawing[]}>('/api/workspaces/main/drawing-operations?format_version=9','POST',{request_id,operations}),targets.map(t=>t.before),mode);
+  await perform(()=>drawingRequest<{drawings:Drawing[]}>('/api/workspaces/main/drawing-operations?format_version=10','POST',{request_id,operations}),targets.map(t=>t.before),mode);
  };
  const properties=async(id:string,management:Management)=>{const d=heads.current.get(id);if(d)await transact([{before:d,geometry:d.geometry,management,deleted:d.deleted}]);};
  const duplicate=async(id:string)=>{const d=heads.current.get(id);if(d)await transact([{before:null,geometry:{...d.geometry,label:(d.geometry.label||'Çizim').slice(0,56)+' kopya'},management:{...drawingManagement(d),locked:false},deleted:false}]);};
@@ -78,7 +78,25 @@ export function useDrawings(symbol:string,interval:Interval,restore:(symbol:stri
   const targets=entry.map(c=>{const value=mode==='undo'?c.before:c.after;return {before:heads.current.get(c.after.drawing_id)!,geometry:value?.geometry??c.after.geometry,management:drawingManagement(value??c.after),deleted:value?.deleted??true};});await transact(targets,mode);
  };
  const undoLast=()=>history('undo');const redoLast=()=>history('redo');
- const retry=async()=>{if(pending.current&&!mutating.current)await pending.current();};
+ const retry=async()=>{if(pending.current&&!mutating.current)await pending.current();return pending.current===null;};
  void historyVersion;
- return {loading:!ready||loadedFor!==symbol,items,selected,selectedIds,setSelected,select,properties,duplicate,changeMany,removeSelected,available,busy,message,savedAt,retryable,refresh,create,change,undoLast,redoLast,retry,canUndo:undo.current.length>0,canRedo:redo.current.length>0};
+ const refreshRelatedNote=async(id:string)=>{
+  const current=heads.current.get(id);if(!current)return false;
+  try{const next=await drawingRequest<Drawing>('/api/drawings/'+encodeURIComponent(id)+'?format_version=10');
+   if(next.revision!==current.revision||heads.current.get(id)?.revision!==current.revision)return false;
+   heads.current.set(id,next);setItems(items=>items.map(d=>d.drawing_id===id&&d.revision===next.revision?next:d));return true;
+  }catch{return false;}
+ };
+ const pastePackage=async(packageValue:import('./drawingPackage').DrawingPackage)=>{
+  if(!available||!ready||loadedFor!==symbol||mutating.current||pending.current)return false;
+  const body={request_id:crypto.randomUUID(),symbol,interval,package:packageValue};
+  const run=async()=>{mutating.current=true;setBusy(true);try{
+   const result=await drawingRequest<{drawings:Drawing[]}>('/api/workspaces/main/drawing-packages/paste','POST',body);
+   commit(result.drawings,result.drawings.map(()=>null),'normal');pending.current=null;setRetryable(false);return true;
+  }catch(e){setMessage(e instanceof Error?e.message:'Yapıştırma doğrulanamadı.');const uncertain=!(e instanceof DrawingRequestError)||e.status>=500||e.status===429;pending.current=uncertain?async()=>{await run();}:null;setRetryable(uncertain);return false;
+  }finally{mutating.current=false;setBusy(false);}};
+  return run();
+ };
+ const summary=(entries:Change[][])=>(entries.at(-1)??[]).map(c=>({drawing_id:c.after.drawing_id,revision:heads.current.get(c.after.drawing_id)?.revision??c.after.revision}));
+ return {pastePackage,refreshRelatedNote,workspaceRevision:workspace.current.revision,historySummary:{undo_targets:summary(undo.current),redo_targets:summary(redo.current)},loading:!ready||loadedFor!==symbol,items,selected,selectedIds,setSelected,select,properties,duplicate,changeMany,removeSelected,available,busy,message,savedAt,retryable,refresh,create,change,undoLast,redoLast,retry,canUndo:undo.current.length>0,canRedo:redo.current.length>0};
 }

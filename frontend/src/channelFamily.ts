@@ -11,7 +11,7 @@ export const isPitchfork=(kind:string)=>['pitchfork','schiff_pitchfork','modifie
 export const familyDefaults=(kind:string):FamilyOptions=>({extend:isPitchfork(kind)?'right':'none',median:!['flat_channel','disjoint_channel'].includes(kind),background:true,fill_opacity:.2,prices:false,levels:['0.5','1'],source:'close',upper_deviation:'2',lower_deviation:'2',upper_enabled:true,lower_enabled:true,pearson:false});
 type Point={x:number;y:number};
 type Segment={a:Point;b:Point;mode:FamilyOptions['extend'];role:string};
-export type FamilyModel={lines:Segment[];fill:[Point,Point,Point,Point]|null;handles:Point[];pearson?:number;deviation?:number;message?:string};
+export type FamilyModel={lines:Segment[];fill:[Point,Point,Point,Point]|null;handles:Point[];pearson?:number;deviation?:number;message?:string;effectiveAnchorTimes?:number[];sampleCount?:number;openCandleUsed?:boolean;calculationVersion?:string};
 const add=(a:Point,b:Point):Point=>({x:a.x+b.x,y:a.y+b.y});
 const sub=(a:Point,b:Point):Point=>({x:a.x-b.x,y:a.y-b.y});
 const scale=(a:Point,k:number):Point=>({x:a.x*k,y:a.y*k});
@@ -21,13 +21,13 @@ export function validateFamily(g:Geometry){
  if(!isFamily(g))return;
  if(!familyKinds.includes(g.kind as FamilyKind)||g.anchors.length!==(g.kind==='regression_channel'?2:3))throw Error('Araç noktaları eksik.');
  const [a,b,c]=g.anchors.map(a=>({x:a.time,y:Number(a.price)}));
- if(g.anchors.some(a=>!Number.isSafeInteger(a.time)||a.time<=0||a.time>32503680000||!Number.isFinite(Number(a.price))||Number(a.price)<=0))throw Error('Noktaların zamanı ve fiyatı geçerli olmalı.');
- if(a.x===b.x)throw Error('İlk iki nokta farklı mumlarda olmalı.');
+ if(g.anchors.some(a=>!Number.isSafeInteger(a.time)||a.time<=0||a.time>32503680000||!Number.isFinite(Number(a.price))))throw Error('Noktaların zamanı ve fiyatı geçerli olmalı.');
+ if(a.x===b.x&&g.kind!=='regression_channel')throw Error('İlk iki nokta farklı mumlarda olmalı.');
  if(isPitchfork(g.kind)){
   if(degenerate(b,c))throw Error('İkinci ve üçüncü noktalar farklı olmalı.');
   const origin=g.kind==='schiff_pitchfork'?{x:a.x,y:(a.y+b.y)/2}:g.kind==='modified_schiff_pitchfork'?middle(a,b):a;
   if(g.kind==='inside_pitchfork'?degenerate(c,middle(a,b)):degenerate(origin,middle(b,c)))throw Error('Median yönü sıfır olamaz.');
- }else if(g.kind!=='regression_channel'){const offset=c.y-(a.y+(b.y-a.y)*(c.x-a.x)/(b.x-a.x));if(g.kind==='parallel_channel'&&(offset===0||Math.min(a.y+offset,b.y+offset)<=0)||a.y===b.y&&b.y===c.y||g.kind==='disjoint_channel'&&c.y+b.y-a.y<=0)throw Error('Kanal genişliği ve sınır fiyatları geçerli olmalı.');}
+ }else if(g.kind!=='regression_channel'){const offset=c.y-(a.y+(b.y-a.y)*(c.x-a.x)/(b.x-a.x));if(g.kind==='parallel_channel'&&(offset===0)||a.y===b.y&&b.y===c.y)throw Error('Kanal genişliği ve sınır fiyatları geçerli olmalı.');}
  const o=g.options??familyDefaults(g.kind);
  if(!['none','left','right','both'].includes(o.extend)||!Number.isFinite(o.fill_opacity)||o.fill_opacity<0||o.fill_opacity>1||o.levels.length>9||new Set(o.levels.map(Number)).size!==o.levels.length||o.levels.some(v=>!/^\d+(?:\.\d{1,12})?$/.test(v)||Number(v)<=0||Number(v)>10)||[o.upper_deviation,o.lower_deviation].some(v=>!/^\d+(?:\.\d{1,12})?$/.test(v)||Number(v)>10))throw Error('Kanal seçeneklerini kontrol et.');
  const styles=o.line_styles??{};if(Object.keys(styles).length>24||Object.entries(styles).some(([role,v])=>!(/^(median|base|offset|upper|lower|level:-?\d+(?:\.\d+)?)$/.test(role))||!/^#[0-9a-f]{6}$/i.test(v.color)||!Number.isInteger(v.width)||v.width<1||v.width>8||!['solid','dashed','dotted'].includes(v.style)))throw Error('Çizgi stillerini kontrol et.');
@@ -40,11 +40,18 @@ export function familyGeometry(kind:FamilyKind,symbol:string,anchors:Anchor[]):G
  return {schema:'chart-channel-family/1',kind,symbol,price_source:'LAST_PRICE',anchors:fixed,label:familyNames[kind],options:familyDefaults(kind),text:''};
 }
 const source=(r:Candle,key:FamilyOptions['source'])=>key==='hl2'?(r.high+r.low)/2:key==='hlc3'?(r.high+r.low+r.close)/3:key==='ohlc4'?(r.open+r.high+r.low+r.close)/4:r[key];
-/** Own OLS display contract: residual sample deviation, no bot query authority. */
+export class FamilyCalculationError extends Error {
+ constructor(public state:'WAITING_FOR_DATA'|'WARMUP'|'INVALID_INPUT',public code:string,message:string){super(message);}
+}
+/** OLS on real containing candles. Raw anchors are never rounded or rewritten. */
 function regression(g:Geometry,rows:Candle[],o:FamilyOptions):FamilyModel{
- const times=g.anchors.map(a=>a.time).sort((a,b)=>a-b),start=rows.findIndex(r=>r.time===times[0]),end=rows.findIndex(r=>r.time===times[1]);
- if(start<0||end<start+1)throw Error('Regresyon için iki nokta arasındaki mum geçmişi gerekli.');
- const sample=rows.slice(start,end+1);if(sample.some((r,i)=>!Number.isFinite(r.time)||i>0&&r.time<=sample[i-1].time||[source(r,o.source),r.high,r.low].some(v=>!Number.isFinite(v)||v<=0)))throw Error('Regresyon için geçerli ve sıralı mum geçmişi gerekli.');
+ const indices=g.anchors.map(a=>rows.findIndex(r=>r.time<=a.time&&a.time*1000<=r.close_time));
+ if(indices.some(i=>i<0))throw new FamilyCalculationError('WAITING_FOR_DATA','REGRESSION_HISTORY_REQUIRED','Regresyon için çapanın bulunduğu gerçek mum bekleniyor.');
+ const [start,end]=[...indices].sort((a,b)=>a-b);
+ if(start===end)throw new FamilyCalculationError('WARMUP','INSUFFICIENT_REGRESSION_SAMPLES','Regresyon için en az iki farklı mum gerekli.');
+ const sample=rows.slice(start,end+1),duration=(sample[0].close_time+1)/1000-sample[0].time;
+ if(!Number.isFinite(duration)||duration<=0||sample.some((r,i)=>(r.close_time+1)/1000-r.time!==duration||i>0&&r.time*1000!==sample[i-1].close_time+1))throw new FamilyCalculationError('WAITING_FOR_DATA','GRID_GAP','Regresyon aralığında eksik mum var; veri bekleniyor.');
+ if(sample.some(r=>[source(r,o.source),r.high,r.low].some(v=>!Number.isFinite(v)||v<=0)))throw new FamilyCalculationError('INVALID_INPUT','INVALID_REGRESSION_SOURCE','Regresyon için geçerli fiyat verisi gerekli.');
  const n=sample.length,values=sample.map(r=>source(r,o.source)),mx=(n-1)/2,my=values.reduce((a,b)=>a+b,0)/n;
  let xx=0,xy=0,yy=0;for(let i=0;i<n;i++){xx+=(i-mx)**2;xy+=(i-mx)*(values[i]-my);yy+=(values[i]-my)**2;}
  const slope=xy/xx,intercept=my-slope*mx,residual=values.reduce((s,y,i)=>s+(y-intercept-slope*i)**2,0),deviation=Math.sqrt(residual/(n-1));
@@ -52,9 +59,11 @@ function regression(g:Geometry,rows:Candle[],o:FamilyOptions):FamilyModel{
  const down=o.lower_enabled?deviation*Number(o.lower_deviation):Math.max(...sample.map((r,i)=>intercept+slope*i-r.low));
  const a={x:start,y:intercept},b={x:end,y:intercept+slope*(n-1)},u1={x:a.x,y:a.y+up},u2={x:b.x,y:b.y+up},l1={x:a.x,y:a.y-down},l2={x:b.x,y:b.y-down};
  const lines:Segment[]=[{a:u1,b:u2,mode:o.extend,role:'upper'},{a:l1,b:l2,mode:o.extend,role:'lower'}];if(o.median)lines.unshift({a,b,mode:o.extend,role:'median'});
- return {lines,fill:[u1,u2,l2,l1],handles:g.anchors[0].time<g.anchors[1].time?[a,b]:[b,a],pearson:yy===0?0:-xy/Math.sqrt(xx*yy),deviation};
+ return {lines,fill:[u1,u2,l2,l1],handles:g.anchors[0].time<g.anchors[1].time?[a,b]:[b,a],pearson:yy===0?0:-xy/Math.sqrt(xx*yy),deviation,effectiveAnchorTimes:indices.map(i=>rows[i].time),sampleCount:n,openCandleUsed:sample.some(r=>!r.closed),calculationVersion:'chart-channel-calculation/1'};
 }
 export type FamilyAxis={to:(price:number)=>number;from:(value:number)=>number};
+/** Geometry is independent of the engine's viewport-dependent log offset. */
+export const familyLogAxis:FamilyAxis={to:Math.log,from:Math.exp};
 export function familyModel(g:Geometry,rows:Candle[],axis?:FamilyAxis):FamilyModel{
  validateFamily(g);const o=g.options??familyDefaults(g.kind);if(g.kind==='regression_channel')return regression(g,rows,o);
  const finish=(model:FamilyModel):FamilyModel=>{if(!axis)return model;const point=(p:Point):Point=>({x:p.x,y:axis.from(p.y)});return {...model,lines:model.lines.map(l=>({...l,a:point(l.a),b:point(l.b)})),handles:model.handles.map(point),fill:model.fill?model.fill.map(point) as [Point,Point,Point,Point]:null};};

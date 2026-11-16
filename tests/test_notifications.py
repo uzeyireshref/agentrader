@@ -6,9 +6,9 @@ from pathlib import Path
 from unittest.mock import Mock
 from urllib.error import HTTPError,URLError
 
-from agentrader.notifications import NotificationQueue,TelegramSender,DeliveryError
-from agentrader.runtime import supervise_session
-from agentrader.state import StateStore
+from agentrader.chart.notifications import NotificationQueue,TelegramSender,DeliveryError
+from agentrader.shared.runtime import supervise_session
+from agentrader.shared.state import StateStore
 
 
 TOKEN='123456:'+('private-canary-'*3)

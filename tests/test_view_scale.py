@@ -2,9 +2,9 @@ import copy
 from pathlib import Path
 import tempfile
 import unittest
-from agentrader.drawings.calculations import query, canonical_hash, CalculationBlocked
-from agentrader.drawings.contracts import capability, registry
-from agentrader.drawings.service import DrawingService
+from agentrader.chart.drawings.calculations import query, canonical_hash, CalculationBlocked
+from agentrader.chart.drawings.contracts import capability, registry
+from agentrader.chart.drawings.service import DrawingService
 from agentrader.migrations import migrate
 
 
@@ -20,7 +20,7 @@ class ViewScaleTests(unittest.TestCase):
             self.assertFalse(policy['view_change_mutates_geometry'])
         for kind in ['horizontal','zone','fibonacci','fibonacci_extension','ruler']:
             self.assertEqual(capability('drawing',kind)['scale_policy']['LOG'],'PRICE_LEVELS_OR_ENDPOINT_MEASUREMENT')
-        self.assertEqual(capability('drawing','fibonacci_projection')['scale_policy']['LOG'],'NOT_IMPLEMENTED')
+        self.assertEqual(capability('drawing','fibonacci_projection')['scale_policy']['LOG'],'PRICE_LEVELS_OR_ENDPOINT_MEASUREMENT')
 
     def test_log_geometry_calculation_is_blocked_instead_of_silently_using_linear(self):
         with self.assertRaises(CalculationBlocked) as error:
@@ -41,5 +41,5 @@ class ViewScaleTests(unittest.TestCase):
 
     def test_registry_view_support_never_adds_order_or_tracking_authority(self):
         for tool in registry()['tools']:
-            self.assertEqual(tool['scale_policy']['log_geometry_query'],'BLOCKED_UNSUPPORTED_SCALE')
+            self.assertEqual(tool['scale_policy']['log_geometry_query'],'SUPPORTED' if tool['definition']['write_schema']=='chart-channel-family/1' else 'SUPPORTED_PRICE_DELTA' if tool['kind']=='fibonacci_projection' else 'BLOCKED_UNSUPPORTED_SCALE')
             self.assertFalse(tool['tracking_activation']);self.assertFalse(tool['order_authority'])

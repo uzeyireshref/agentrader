@@ -1,11 +1,11 @@
-> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../../01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
+> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../project/history/01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
 
 # Basitten karmaşığa geliştirme planı
 
 ## 6 Kasım 2026 öncelikli işlem altyapısı programı
 
 Yeni kullanıcı talebiyle genel demo işlem yetenekleri grid dahil tamamlanacak.
-Önce [yetenek envanteri ve A0–A12 teslim sırası](../../../06-BINANCE-DEMO-YETENEK-ENVANTERI-VE-GELISTIRME-SIRASI.md)
+Önce [yetenek envanteri ve A0–A12 teslim sırası](../../bot/history/06-BINANCE-DEMO-YETENEK-ENVANTERI-VE-GELISTIRME-SIRASI.md)
 esas alınır. A0 araştırması ve A1 sürümlü katalog/salt okunur keşif uygulaması
 tamamlandı. 12 GET kontrolü gerçek demoda geçti; toplam 150 test başarılı.
 A2 ortak istek/dayanıklılık katmanı sıradadır. Grid yürütücüsü henüz yoktur.
@@ -23,11 +23,11 @@ işlem onaylarını yeni girişler için tekrar kullanamaz.
 
 Her aşama küçük, çalıştırılabilir bir çıktı ve doğrulama raporuyla bitmeli. Önceki aşamanın temel belirsizliği çözülmeden kapsam büyütülmemeli.
 
-Son plan güncellemesi: 5 Kasım 2026. Hedefler [01-PROJE-VE-HEDEFLER.md](../../../01-PROJE-VE-HEDEFLER.md), yetki/işlem sözleşmesi [03-MIMARI-VE-ISLEM-SOZLESMESI.md](../../../03-MIMARI-VE-ISLEM-SOZLESMESI.md) içindedir. Yeni TradingView aşaması 9'dur; önceki değerlendirme ve sunucu aşamaları sırasıyla 10 ve 11'e taşınmıştır.
+Son plan güncellemesi: 5 Kasım 2026. Hedefler [01-PROJE-VE-HEDEFLER.md](../../project/history/01-PROJE-VE-HEDEFLER.md), yetki/işlem sözleşmesi [03-MIMARI-VE-ISLEM-SOZLESMESI.md](../../project/history/03-MIMARI-VE-ISLEM-SOZLESMESI.md) içindedir. Yeni TradingView aşaması 9'dur; önceki değerlendirme ve sunucu aşamaları sırasıyla 10 ve 11'e taşınmıştır.
 
 ## Mevcut durum ve yürütme ilkesi
 
-0–1 temel kapsamı çalışıyor. 2–3'ün tek LONG/one-way demo kapsamı, kalıcı kayıtları ve watchdog'u doğrulandı. Aşama 4'ün şema v1, yerel Mod A/B yetkisi, kademeli hedefler ve giriş fiyatına stop taşıması eklendi; bu kapsam o aşamada 86 ağsız testle doğrulandı. Aşama 5 ile toplam 105 teste ulaşıldı. Kanıt ve sınırlar [DOGRULAMA.md](../../../DOGRULAMA.md) içindedir. Yeni plan/kademeli çıkış yolu gerçek demo borsasında henüz onaylanıp yürütülmedi. SHORT/hedge, stop/TP tetiklenerek gerçekleşmesi, Pine/webhook, zengin analiz, Telegram ve canlı hesap kapsamı tamamlanmadı.
+0–1 temel kapsamı çalışıyor. 2–3'ün tek LONG/one-way demo kapsamı, kalıcı kayıtları ve watchdog'u doğrulandı. Aşama 4'ün şema v1, yerel Mod A/B yetkisi, kademeli hedefler ve giriş fiyatına stop taşıması eklendi; bu kapsam o aşamada 86 ağsız testle doğrulandı. Aşama 5 ile toplam 105 teste ulaşıldı. Kanıt ve sınırlar [DOGRULAMA.md](../../project/VALIDATION-HISTORY.md) içindedir. Yeni plan/kademeli çıkış yolu gerçek demo borsasında henüz onaylanıp yürütülmedi. SHORT/hedge, stop/TP tetiklenerek gerçekleşmesi, Pine/webhook, zengin analiz, Telegram ve canlı hesap kapsamı tamamlanmadı.
 
 Aşama 4'ün yerel plan/yetki/kademeli yönetim kapsamı kodlandı ve ağsız doğrulandı; gerçek demo senaryosu için somut kullanıcı planı/onayı gereklidir. Yeni sinyal akışı, uzaktan onay/yetkilendirme katmanı tamamlanmadan otomatik girişe bağlanmaz. Eski demo giriş deneyleri açık `--test-only` gerektirir; üretim sinyal yolu değildir. Bu planı kaydetmek yeni emir veya canlı işlem yetkisi vermez.
 
@@ -153,7 +153,7 @@ işareti kaldırma → mevcut onay/risk kontrolleriyle yönetim sırası uygulan
 Yeniden bağlantı yeni işlem yetkisi vermez; belirsiz emir tekrar gönderilmez.
 430 test geçti. Gerçek demo bağlantısı ve ping/pong doğrulandı; gerçek
 fill/iptal/stop olayı ve uzun süreli kesinti kanıtı henüz tamamlanmadı.
-Ayrıntı: [12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md](../../../12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md).
+Ayrıntı: [12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md](../../bot/history/12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md).
 
 ## Takip stopu, teminat ve servis — 6 Kasım 2026
 
@@ -164,7 +164,7 @@ Grid yeniden girişte güncel kaldıraç basamaklarını kontrol eder.
 Kalıcı bildirim kuyruğu, Telegram göndericisi, sürekli servis, sağlık ve
 kontrollü durdurma komutları eklendi. Gerçek mesaj veya otomatik görev başlatılmadı.
 466 test geçti; gerçek demo yazma kanıtı ve kalan ürün kapsamı tamamlanmadı.
-[13-TAKIP-STOP-TEMINAT-VE-SERVIS.md](../../../13-TAKIP-STOP-TEMINAT-VE-SERVIS.md).
+[13-TAKIP-STOP-TEMINAT-VE-SERVIS.md](../../bot/history/13-TAKIP-STOP-TEMINAT-VE-SERVIS.md).
 
 ## Çoklu oturum sahipliği ve ortak risk — 6 Kasım 2026
 
@@ -175,32 +175,32 @@ geçer. Kapanışta yalnız ilgili oturumun rezervi atomik bırakılır; eş otu
 emirleri korunur. run-many ortak ön kontrol, manage-all/run-all tek süreçli
 yönetim sağlar. 497 test geçti; gerçek demo işlemi veya profil/bütçe değişikliği
 yapılmadı. Kalan kapsam ve kullanım:
-[14-COKLU-OTURUM-VE-ORTAK-RISK.md](../../../14-COKLU-OTURUM-VE-ORTAK-RISK.md).
+[14-COKLU-OTURUM-VE-ORTAK-RISK.md](../../bot/history/14-COKLU-OTURUM-VE-ORTAK-RISK.md).
 
 
 ## Neutral grid teslimi — 6 Kasım 2026
 
 Gelişmiş grid aşamasında neutral yürütücü ve ortak iki taraflı bütçe tamamlandı. Gerçek demo kanıtı ve kalan politikalar bekliyor. Diğer aşamalar bütünüyle tamamlanmış sayılmaz; geliştirme için yeniden onay gerekmiyor.
 
-Ayrıntı: [15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md](../../../15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md).
+Ayrıntı: [15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md](../../bot/history/15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md).
 
 
 ## Aktif teminat teslimi — 6 Kasım 2026
 
 Portföy ve teminat aşamasında aktif USD-M çoklu oturum, yönlü grid ve neutral teminat entegrasyonu tamamlandı. Çapraz ürün değerleme, kalan grid politikaları ve gerçek demo kanıtları bekliyor.
 
-Ayrıntı: [16-COKLU-OTURUM-TEMINAT-YONETIMI.md](../../../16-COKLU-OTURUM-TEMINAT-YONETIMI.md).
+Ayrıntı: [16-COKLU-OTURUM-TEMINAT-YONETIMI.md](../../bot/history/16-COKLU-OTURUM-TEMINAT-YONETIMI.md).
 
 
 ## Grid takip stopu — 7 Kasım 2026
 
 Yönlü GRID için isteğe bağlı bot takip stopu eklendi. LONG/SHORT watermark ve eşik kalıcıdır; tetikte yeni girişler durur, gerçek kalan miktar kapanış akışına geçer. Native sabit stop korunur; hareketli eşik bot çalışırken izlenir. Neutral/native takip ve diğer politikalar bekliyor. 13 yeni senaryo dahil 573 test geçti; sonuç doğrulama raporuna kaydedildi. Gerçek demo yazma yapılmadı.
 
-Ayrıntı: [17-GRID-TAKIP-STOPU.md](../../../17-GRID-TAKIP-STOPU.md). Kanıt: `reports/development-validation-20261107.json`.
+Ayrıntı: [17-GRID-TAKIP-STOPU.md](../../bot/history/17-GRID-TAKIP-STOPU.md). Kanıt: `reports/development-validation-20261107.json`.
 
 
 ## Grid borsa stopunu yenileme — 7 Kasım 2026
 
 Yönlü GRID için isteğe bağlı `management.trailing.native_stop: true` eklendi. Yeni close-all stop GET ile doğrulanmadan önceki takip stopu kaldırılmaz; başlangıç sabit koruması tutulur. Eski planlar değişmez. 21 yeni senaryo eklendi; tam regresyon sonucu `reports/development-validation-20261107.json` içinde. Gerçek demo yazma kanıtı bekliyor.
 
-Ayrıntı: [18-GRID-BORSA-STOP-YENILEME.md](../../../18-GRID-BORSA-STOP-YENILEME.md).
+Ayrıntı: [18-GRID-BORSA-STOP-YENILEME.md](../../bot/history/18-GRID-BORSA-STOP-YENILEME.md).

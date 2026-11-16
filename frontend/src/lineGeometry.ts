@@ -3,9 +3,13 @@ import type {Geometry} from './drawings';
 import type {Candle,Interval} from './types';
 import {steps} from './evidence';
 export const isExtendedLine=(g:Geometry)=>['ray','extended_line','horizontal_ray'].includes(g.kind);
-export function verifiedLineGrid(g:Geometry,rows:Candle[],interval:Interval):boolean{
+/** Visual projection may extend beyond loaded bars; calculation evidence remains bounded. */
+export function continuousLineGrid(rows:Candle[],interval:Interval):boolean{
  const step=steps[interval],base=interval==='1w'?345600:0;
- return rows.length>=2&&rows.every((r,i)=>(r.time-base)%step===0&&(!i||r.time-rows[i-1].time===step))&&g.anchors.every(a=>a.time>=rows[0].time&&a.time<=rows.at(-1)!.time);
+ return rows.length>=2&&rows.every((r,i)=>(r.time-base)%step===0&&(!i||r.time-rows[i-1].time===step));
+}
+export function verifiedLineGrid(g:Geometry,rows:Candle[],interval:Interval):boolean{
+ return continuousLineGrid(rows,interval)&&g.anchors.every(a=>a.time>=rows[0].time&&a.time<=rows.at(-1)!.time);
 }
 export function linePriceAt(g:Geometry,rows:Candle[],time:number,interval:Interval):Rational{
  const [a,b]=g.anchors;if(!Number.isSafeInteger(time)||time<=0)throw Error('INVALID_UTC_SECONDS');

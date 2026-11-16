@@ -3,9 +3,9 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock
 
-from agentrader.runtime import stream_monitor_session
-from agentrader.state import StateStore
-from agentrader.user_stream import StreamProtocolError
+from agentrader.shared.runtime import stream_monitor_session
+from agentrader.shared.state import StateStore
+from agentrader.bot.user_stream import StreamProtocolError
 
 
 class DurableStreamRecoveryTests(unittest.TestCase):

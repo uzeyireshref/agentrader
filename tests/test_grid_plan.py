@@ -5,11 +5,11 @@ from dataclasses import replace
 from decimal import Decimal
 from pathlib import Path
 
-from agentrader.grid_plan import compile_grid
-from agentrader.portfolio import Exposure
-from agentrader.reservations import ReservationBook
-from agentrader.risk import RiskLimits
-from agentrader.state import StateStore
+from agentrader.bot.grid_plan import compile_grid
+from agentrader.bot.portfolio import Exposure
+from agentrader.bot.reservations import ReservationBook
+from agentrader.bot.risk import RiskLimits
+from agentrader.shared.state import StateStore
 from test_plan_v2 import plan_v2
 from test_v2_preflight import snapshot
 

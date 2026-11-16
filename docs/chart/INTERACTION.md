@@ -4,7 +4,7 @@
 
 ## Mevcut davranışın ölçümü
 
-`python scripts/measure_chart_interactions.py` kontrollü 300 mum, 1400×1000 viewport, gerçek fare ve wheel olaylarıyla çalışır. Native seçenekler ve mantıksal zaman aralığı okunur. Kullanıcı çalışma alanı/API'sine yazılmaz. Fiziksel trackpad/touch, raster ve çoklu DPR kabulü değildir. 13 gözlem, sıfır yakalanmamış sayfa hatası.
+`python scripts/chart/measure_chart_interactions.py` kontrollü 300 mum, 1400×1000 viewport, gerçek fare ve wheel olaylarıyla çalışır. Native seçenekler ve mantıksal zaman aralığı okunur. Kullanıcı çalışma alanı/API'sine yazılmaz. Fiziksel trackpad/touch, raster ve çoklu DPR kabulü değildir. 13 gözlem, sıfır yakalanmamış sayfa hatası.
 
 | Davranış | Ölçülen mevcut sonuç | Karar |
 | --- | --- | --- |

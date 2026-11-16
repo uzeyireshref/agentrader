@@ -15,7 +15,7 @@ EMA overlay ve RSI oluşturma/yazma yaşam döngüleri ayrıldı. EMA açmak RSI
 ## Kabul
 
 -167 frontend test, TypeScript kontrolü ve üretim derlemesi geçti. Son paket index-BM6SFYZH.js / index-rO-juNNy.css.
-- scripts/check_chart_g02.py gerçek üretim App, native motor, kontrollü300 mum ve izole SQLite ile **15 kontrol** geçti; page error0, dış istek0. Kullanıcı DB'si testte kullanılmadı.
+- scripts/chart/check_chart_g02.py gerçek üretim App, native motor, kontrollü300 mum ve izole SQLite ile **15 kontrol** geçti; page error0, dış istek0. Kullanıcı DB'si testte kullanılmadı.
 - Native separator hareketinde fiyat pane yüksekliği395.2→340 CSS px değişti; native priceToCoordinate ile SVG yatayı ve pane yüksekliği farkı<1 CSS px kaldı.1536/1280/1024, light/dark, DPR1.25/2 ve fullscreen geçişinde aynı hizalama doğrulandı.
 - Hacim gizle/göster, RSI indeks kayması, tekrarlı kaldır/ekle sonrası boş/çift pane yok. Hacim300 satırı ve manuel ölçek aralığı geri geldi. Pane kontrolleri tek market bağlantısını ve çizim revision1'i korudu.
 - RSI pane'inde crosshair aynı timestamp'teki fiyat OHLC'sini okudu. RSI'a cetvel aracıyla tıklamak fiyat çizimi başlatmadı. Yardımcı ölçeği manuel yapmak fiyat ölçeğini değiştirmedi; EMA toggle RSI manuel durumunu korudu.

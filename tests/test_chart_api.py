@@ -6,8 +6,8 @@ import unittest
 from unittest.mock import Mock
 
 from agentrader.application.settings import WebSettings
-from agentrader.chart_market import MarketUnavailable, InvalidMarket
-from agentrader.market_feed import FeedState
+from agentrader.chart.chart_market import MarketUnavailable, InvalidMarket
+from agentrader.shared.market_feed import FeedState
 from test_chart_feed import START, event
 
 HAS_WEB = all(importlib.util.find_spec(m) is not None for m in ('fastapi', 'httpx'))
@@ -26,7 +26,7 @@ class ChartAPITests(unittest.TestCase):
         self.settings = WebSettings(folder/'app.db', folder/'execution.db', market_database=folder/'chart.db')
         self.market = Mock()
         self.market.catalog.return_value = {'markets': [{'symbol': 'BTCUSDT'}]}
-        self.market.history.return_value = {'candles': [], 'source': 'binance_usdm_live_trade_price'}
+        self.market.history.return_value = {'candles': [], 'source': 'binance_usdm_demo_trade_price'}
         self.state = FeedState('BTCUSDT', '15m')
         self.hub = Mock()
         self.hub.acquire.return_value = SimpleNamespace(state=self.state)

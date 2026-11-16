@@ -1,3 +1,4 @@
+import {marketSource,marketEnvironment} from './marketEnvironment';
 import type {Candle,Market,Interval} from './types';
 export type DataProof={schema:'chart-data-proof/1';stream_epoch:string;generation:number;data_revision:number;state:'VERIFIED'|'BLOCKED';blocked_reasons:string[];snapshot_hash:string;grid_hash:string;first_time:number|null;last_time:number|null;valid:boolean;missing_bars:number;bar_count:number;closed_count:number;warmup_available_closed_bars:number;live_eligible:false;order_authority:false};
 export const steps:Record<Interval,number>={'1m':60,'5m':300,'30m':1800,'15m':900,'1h':3600,'4h':14400,'1d':86400,'1w':604800};
@@ -37,7 +38,7 @@ export function verifyEvidence(rows:Candle[],market:Market|null,quality:Record<s
   if(!window.every(r=>r.exact?.schema==='chart-exact-decimal/1'&&r.exact?.state==='VERIFIED')||market?.exact?.schema!=='chart-exact-decimal/1'||market?.exact?.state!=='VERIFIED')reasons.push('PRICE_PRECISION_UNPROVEN');
   if(market?.symbol!==symbol)reasons.push('MARKET_IDENTITY_UNPROVEN');
   if(proof.valid!==valid||proof.missing_bars!==missing||proof.closed_count!==window.filter(r=>r.closed).length||proof.warmup_available_closed_bars!==warmup||canonical(proof.blocked_reasons)!==canonical(reasons)||proof.state!==(reasons.length?'BLOCKED':'VERIFIED'))return false;
-  const payload={schema:'chart-data-snapshot/1',source:'binance_usdm_live_trade_price',environment:'live_public',product:'USD-M',price_type:'LAST_PRICE',symbol,interval,stream_epoch:epoch,generation,data_revision:proof.data_revision,market,quality,rows:window.map(canonicalRow)};
+  const payload={schema:'chart-data-snapshot/1',source:marketSource,environment:marketEnvironment,product:'USD-M',price_type:'LAST_PRICE',symbol,interval,stream_epoch:epoch,generation,data_revision:proof.data_revision,market,quality,rows:window.map(canonicalRow)};
   return sha256(canonical(payload))===proof.snapshot_hash&&sha256(canonical({interval,times:window.map(r=>r.time)}))===proof.grid_hash;
  }catch{return false;}
 }

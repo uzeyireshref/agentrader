@@ -19,8 +19,8 @@ chartCommands.ts desteklenen katalog araması, bounded preference okuma ve temiz
 ## Kanıt
 
 - **167/167 frontend test**:6 yeni arama/storage/odak/modal/IME/listener temizliği kabulü; mevcut161 kontrol korundu. TypeScript ve üretim derlemesi geçti.
-- scripts/check_chart_g06.py: gerçek production App,103 sözleşmeli kontrollü katalog, synthetic stream ve izole SQLite ile **12 kontrol** geçti. Favori marketi değiştirmiyor; panel kapalı Ctrl+K→ETH ve virgül→1h doğru bağlantıyı açıyor; boş sonuç/typing/modal nesting/focus/fullscreen/yenileme kabulü var. Page error0, dış istek0; kullanıcının DB'sine test yazısı yok.
-- scripts/check_chart_g01.py **14 kontrol** yeniden geçti: iki tema/üç genişlik, panel resize, kayıt/Undo/Redo/reload ve fullscreen/stale akışları.
+- scripts/chart/check_chart_g06.py: gerçek production App,103 sözleşmeli kontrollü katalog, synthetic stream ve izole SQLite ile **12 kontrol** geçti. Favori marketi değiştirmiyor; panel kapalı Ctrl+K→ETH ve virgül→1h doğru bağlantıyı açıyor; boş sonuç/typing/modal nesting/focus/fullscreen/yenileme kabulü var. Page error0, dış istek0; kullanıcının DB'sine test yazısı yok.
+- scripts/chart/check_chart_g01.py **14 kontrol** yeniden geçti: iki tema/üç genişlik, panel resize, kayıt/Undo/Redo/reload ve fullscreen/stale akışları.
 -1536/dark,1280/light,1024/light hızlı erişim ekranları kaydedilip görsel incelendi; son CSS çift focus çerçevesini kaldırır, dış arama focus ring'i korunur. Kanıt reports/chart-g06-validation-20261111.json; kaynak/build ve görüntü hashleri chart-g06-delivery-20261111.json.
 
 Bu teslim live exchange sayısal parity, fiziksel GPU/FPS, touch veya QA01 tamamlanması değildir. Yerel uygulama http://127.0.0.1:8765; açık sekme yeni paketi almak için yenilenir.

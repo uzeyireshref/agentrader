@@ -1,0 +1,56 @@
+{
+  "review_date": "2026-11-15",
+  "scenarios": [
+    [
+      "M-09",
+      "Cross hesap snapshotı",
+      "free, locked, borrowed ve interest alanlarını ayrı kaydet, borcu net bakiyeden türetme"
+    ],
+    [
+      "M-10",
+      "Isolated hesap kapsamı",
+      "Base ve quote varlıkların borç ve bakiyesini doğru symbol altında tut"
+    ],
+    [
+      "M-11",
+      "Teminat iskonto değişimi",
+      "Collateral oranı ve risk basamağı değiştiğinde kullanılabilir tutarı yeniden hesapla"
+    ],
+    [
+      "M-12",
+      "Transfer ön kontrolü",
+      "maxTransferable değerini ve hedef hesabı güncel sorgula"
+    ],
+    [
+      "M-13",
+      "Transfer yanıt kaybı",
+      "Hareket geçmişi ve bakiye etkisi doğrulanmadan ikinci transfer gönderme"
+    ],
+    [
+      "M-14",
+      "Akış kesintisi",
+      "Emir, bakiye ve borç snapshotlarıyla yeniden uzlaştır"
+    ],
+    [
+      "M-15",
+      "Akış sürümü",
+      "V1/V2 başlatma, keepalive ve kapatma kapsamını ayrı doğrula"
+    ],
+    [
+      "M-16",
+      "Isolated açma kapatma",
+      "Önkoşulları sorgula, sonuç durumunu tekrar oku"
+    ],
+    [
+      "M-17",
+      "Geçmiş sayfalama",
+      "Zaman ve ID sınırlarını koru, aynı kayıtları iki kez sayma"
+    ],
+    [
+      "M-18",
+      "Delist ve restricted asset",
+      "Yeni işlem uygunluğunu güncel varlık ve sembol bilgisiyle doğrula"
+    ]
+  ],
+  "exchange_acceptance": "NOT_RUN"
+}

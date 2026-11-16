@@ -35,8 +35,8 @@ class WebAPITests(unittest.TestCase):
             return db.execute('SELECT COUNT(*) FROM app_commands').fetchone()[0]
 
     def test_public_startup_and_catalog_do_not_load_binance_credentials_or_connect(self):
-        with patch('agentrader.config.Config.load', side_effect=AssertionError('credentials')), \
-             patch('agentrader.exchange.DemoExchange.request', side_effect=AssertionError('network')):
+        with patch('agentrader.shared.config.Config.load', side_effect=AssertionError('credentials')), \
+             patch('agentrader.shared.exchange.DemoExchange.request', side_effect=AssertionError('network')):
             response = self.client.get('/api/health')
             self.assertEqual(response.status_code, 200)
             self.assertFalse(response.json()['trading_commands_enabled'])

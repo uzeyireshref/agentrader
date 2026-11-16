@@ -3,17 +3,23 @@ import hmac
 import io
 import json
 import unittest
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
 from urllib.parse import urlsplit
 
-from agentrader.config import Config
-from agentrader.exchange import DemoExchange, ExchangeError
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import DemoExchange, ExchangeError
 from agentrader.__main__ import diagnose
+from agentrader.shared.transport import JsonTransport,RequestGovernor
 
 
 class DiagnosticsTests(unittest.TestCase):
+    def setUp(self):
+        self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
+        self.transport=JsonTransport(RequestGovernor(Path(self.temp.name)/'rate.db'))
+
     def test_environment_and_incomplete_credentials_rejected(self):
         for content in ('AGENTRADER_ENV=live', 'BINANCE_DEMO_API_KEY=test'):
             with patch.object(Path, 'exists', return_value=True), \
@@ -23,7 +29,7 @@ class DiagnosticsTests(unittest.TestCase):
 
     def test_signed_request_and_no_secret_in_repr(self):
         config = Config('test-key', 'test-secret')
-        client = DemoExchange(config)
+        client = DemoExchange(config,transport=self.transport)
         client.opener.open = lambda request, timeout: io.BytesIO(b'{}')
         with patch.object(client.opener, 'open', return_value=io.BytesIO(b'{}')) as opened:
             client.get('/fapi/v3/account')
@@ -39,7 +45,7 @@ class DiagnosticsTests(unittest.TestCase):
             DemoExchange(Config()).request('POST', '/fapi/v1/withdraw')
 
     def test_api_error_does_not_echo_sensitive_response(self):
-        client = DemoExchange(Config())
+        client = DemoExchange(Config(),transport=self.transport)
         error = HTTPError('https://demo-fapi.binance.com', 401, '', {},
                           io.BytesIO(json.dumps({'code': -2015, 'msg': 'secret-value'}).encode()))
         with patch.object(client.opener, 'open', side_effect=error):

@@ -5,10 +5,10 @@ import json
 from pathlib import Path
 import unittest
 
-from agentrader.chart_evidence import snapshot, canonical, require_warmup
-from agentrader.chart_market import candle
-from agentrader.chart_precision import exact_tick
-from agentrader.market_feed import FeedState
+from agentrader.chart.chart_evidence import snapshot, canonical, require_warmup
+from agentrader.chart.chart_market import candle
+from agentrader.chart.chart_precision import exact_tick
+from agentrader.shared.market_feed import FeedState
 from test_chart_feed import START, STEP, row, event
 
 
@@ -143,8 +143,8 @@ class ChartEvidenceTests(unittest.TestCase):
     def test_idle_feed_retirement_compares_only_monotonic_times(self):
         from types import SimpleNamespace
         from unittest.mock import Mock
-        from agentrader.chart_clock import measure_time
-        from agentrader.market_feed import SharedFeed
+        from agentrader.chart.chart_clock import measure_time
+        from agentrader.shared.market_feed import SharedFeed
         rows,market,quality=fixture(2)
         clock=Mock(return_value=1000000.);mono=Mock(return_value=10.)
         client=Mock();client.get.return_value={'serverTime':START+2000}

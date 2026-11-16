@@ -8,9 +8,9 @@ import {defaultPositionParams,positionMetrics} from './position';
 import {displayNumber} from './exactGeometry';
 
 /** A manually panned scale can put zero/negative prices under the pointer. */
-export function cursorPrice(price:number|null,tick:string):string|null{
- if(price===null||!Number.isFinite(price)||price<=0)return null;
- try{return roundPrice(price,tick);}catch{return null;}
+export function cursorPrice(price:number|null,tick:string,signed=false):string|null{
+ if(price===null||!Number.isFinite(price)||!signed&&price<=0)return null;
+ try{const value=roundPrice(price,tick);return !signed&&Number(value)<=0?null:value;}catch{return null;}
 }
 
 /** Transient geometry only. Never passed to the persistence or history API. */
@@ -26,6 +26,7 @@ export function creationPreview(tool:ToolKind,symbol:string,first:Anchor|null,se
   if(!second)return baseline;
   try{const g=familyGeometry(tool as FamilyKind,symbol,[first,second,cursor]);validateFamily(g);return g;}catch{return baseline;}
  }
+ if(tool==='fibonacci_projection'){if(!second)return baseline;return {...base,kind:tool,schema:'chart-fibonacci-projection/1',basis:'PRICE_DELTA',levels:extensionFibLevels,time_scope:'right',anchors:[first,second,cursor]};}
  if(tool==='long_plan'||tool==='short_plan'){
   if(!second)return baseline;
   const g:Geometry={...base,kind:tool,schema:'chart-position/1',anchors:[first,{...second,time:cursor.time},cursor],params:defaultPositionParams()};
@@ -40,7 +41,7 @@ export function drawingPriceExtent(g:Geometry,rows:Candle[]=[],axis?:import('./c
  try{
   const prices=isFamily(g)?familyModel(g,rows,axis).handles.map(p=>p.y):g.anchors.map(a=>Number(a.price));
   if(isChannel(g))for(const a of g.anchors.slice(0,2))prices.push(displayNumber(channelValues(g,a.time).other));
-  if(!prices.length||prices.some(p=>!Number.isFinite(p)||p<=0))return null;
+  if(!prices.length||prices.some(p=>!Number.isFinite(p)||!!axis&&p<=0))return null;
   return [Math.min(...prices),Math.max(...prices)];
  }catch{return null;}
 }

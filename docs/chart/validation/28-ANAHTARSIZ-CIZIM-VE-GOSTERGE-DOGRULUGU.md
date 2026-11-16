@@ -10,7 +10,7 @@ http://127.0.0.1:8765/ sayfasını yenile. Çalışma alanı ve çizimler otomat
 
 ## Bağımsız gösterge doğruluğu
 
-scripts/generate_indicator_reference.py ağ erişimi yapmadan Python Decimal precision=50 ile ayrı referans üretir. TypeScript gösterge fonksiyonlarını çağırmaz. EMA SMA seed + 2/(n+1), RSI Wilder ortalaması ve flat=50 sözleşmesini kullanır.
+scripts/chart/generate_indicator_reference.py ağ erişimi yapmadan Python Decimal precision=50 ile ayrı referans üretir. TypeScript gösterge fonksiyonlarını çağırmaz. EMA SMA seed + 2/(n+1), RSI Wilder ortalaması ve flat=50 sözleşmesini kullanır.
 
 Altı 300 mumluk senaryo: sabit, yükselen, düşen, karışık, zaman boşluğu ve son açık mum kapanışı değiştirilmiş dizi. EMA20/EMA50/RSI14 için toplam 4.908 nokta, zamanları ve warmup uzunlukları frontend ile karşılaştırıldı; mutlak 1e-8 toleransında tamamı geçti. [Referans](../../../reports/indicator-reference-20261109.json); test frontend/tests/indicatorReference.test.ts. Aynı seed/geçmiş sözleşmesine ait sayısal kanıttır; gerçek Canvas etiketlerinin fixture'la görsel karşılaştırması veya farklı seed kullanan her platformla eşitlik garantisi değildir.
 

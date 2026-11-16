@@ -1,21 +1,22 @@
+from agentrader.application.environment import bind_demo_store
 import copy,json,tempfile,unittest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
-from agentrader.binding_eligibility import evaluate_binding,inspect_binding
-from agentrader.binding_catalog import catalog
-from agentrader.chart_bindings import BindingService,binding_hash
-from agentrader.chart_evidence import snapshot
-from agentrader.chart_clock import POLICY
-from agentrader.drawings.service import DrawingService
-from agentrader.indicator_config import defaults_v4
-from agentrader.market_feed import MarketFeedHub,FeedState
+from agentrader.chart.binding_eligibility import evaluate_binding,inspect_binding
+from agentrader.chart.binding_catalog import catalog
+from agentrader.chart.chart_bindings import BindingService,binding_hash
+from agentrader.chart.chart_evidence import snapshot
+from agentrader.chart.chart_clock import POLICY
+from agentrader.chart.drawings.service import DrawingService
+from agentrader.chart.indicator_config import defaults_v4
+from agentrader.shared.market_feed import MarketFeedHub,FeedState
 from agentrader.migrations import migrate
 from test_chart_evidence import fixture,capture
 
 class EligibilityTests(unittest.TestCase):
  def setUp(self):
-  self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.db=Path(self.tmp.name)/'app.db';migrate(self.db);self.s=BindingService(self.db,'owner')
+  self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.db=Path(self.tmp.name)/'app.db';bind_demo_store(self.db);migrate(self.db);self.s=BindingService(self.db,'owner')
   rows,market,quality=fixture(60);self.rows=rows;self.market=market;self.quality=quality;grid=[r['time'] for r in rows]
   d=DrawingService(self.db,'owner').create('main','drawing',dict(kind='horizontal',symbol='BTCUSDT',price_source='LAST_PRICE',label='Hedef',anchors=[dict(time=grid[2],price='100')]))
   self.drawing_id=d['drawing_id'];self.b=self.s.save_binding('main','binding','create',0,dict(type='drawing',object_id=d['drawing_id'],revision=1),'BTCUSDT','15m','LINEAR',grid,None,dict(operation='priceAt',output='value',ratio=None),dict(schema='chart-rule-definition/1',kind='touch',direction='ANY',tolerance='0',closed_candle=True,rearm_policy='EXPLICIT'))
@@ -26,6 +27,11 @@ class EligibilityTests(unittest.TestCase):
  def rehash(self,b):b['definition_hash']=binding_hash(b['definition']);return b
  def test_valid_price_is_eligible_without_activation_or_order_authority(self):
   before=copy.deepcopy((self.b,self.context,self.target,self.evidence));r=self.run_eval();self.assertEqual(r['state'],'EVALUATION_ELIGIBLE_NOT_ORDER_AUTHORITY');self.assertEqual(r['reasons'],[]);self.assertTrue(all(c['passed'] for c in r['checks']));self.assertEqual(before,(self.b,self.context,self.target,self.evidence));self.assertEqual(r['activation'],'DISABLED');self.assertFalse(r['live_eligible']);self.assertFalse(r['rule_evaluated']);self.assertFalse(r['order_authority']);self.assertEqual(r,self.run_eval())
+ def test_signed_drawing_is_never_trade_eligible(self):
+  for value in ['0','-10']:
+   b=copy.deepcopy(self.b);b['definition']['target']['snapshot']['anchors'][0]['price']=value
+   b=self.rehash(b);target={**b['definition']['target'],'deleted':False};r=self.run_eval(b=b,t=target)
+   self.assertEqual(r['state'],'BLOCKED');self.assertIn('NON_POSITIVE_DRAWING_NOT_TRADE_ELIGIBLE',r['reasons']);self.assertFalse(r['order_authority'])
  def test_every_required_context_proof_missing_fails_closed(self):
   for key in self.context:
    with self.subTest(key=key):

@@ -5,15 +5,15 @@ import sys
 import os
 from decimal import Decimal
 
-from .config import Config
-from .exchange import BASE_URL, DemoExchange, ExchangeError
-from .orders import order_cycle
-from .positions import position_cycle
-from .execution import DurableExchange, reconcile
-from .state import StateStore
-from .locking import execution_lock
-from .risk import RiskLimits
-from .watchdog import Watchdog, watch_loop
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import BASE_URL, DemoExchange, ExchangeError
+from agentrader.bot.orders import order_cycle
+from agentrader.bot.positions import position_cycle
+from agentrader.bot.execution import DurableExchange, reconcile
+from agentrader.shared.state import StateStore
+from agentrader.shared.locking import execution_lock
+from agentrader.bot.risk import RiskLimits
+from agentrader.bot.watchdog import Watchdog, watch_loop
 
 
 def diagnose(config, symbol, account=False):
@@ -51,35 +51,44 @@ def main():
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8")
+    if len(sys.argv)>1 and sys.argv[1]=='discovery':
+        from agentrader.cli.discovery_cli import main as discovery_main
+        return discovery_main(sys.argv[2:])
+    if len(sys.argv)>1 and sys.argv[1]=='commands':
+        from agentrader.cli.exchange_command_cli import main as commands_main
+        return commands_main(sys.argv[2:])
+    if len(sys.argv)>1 and sys.argv[1]=='chart-bot':
+        from agentrader.cli.chart_bot_cli import main as chart_bot_main
+        return chart_bot_main(sys.argv[2:])
     if len(sys.argv)>1 and sys.argv[1]=='web':
-        from .web_cli import main as web_main
+        from agentrader.cli.web_cli import main as web_main
         return web_main(sys.argv[2:])
     if len(sys.argv)>1 and sys.argv[1]=='service':
-        from .service_cli import main as service_main
+        from agentrader.cli.service_cli import main as service_main
         return service_main(sys.argv[2:])
     if len(sys.argv)>1 and sys.argv[1]=='notifications':
-        from .notification_cli import main as notification_main
+        from agentrader.cli.notification_cli import main as notification_main
         return notification_main(sys.argv[2:])
     if len(sys.argv)>1 and sys.argv[1]=='orders':
-        from .order_cli import main as order_main
+        from agentrader.cli.order_cli import main as order_main
         return order_main(sys.argv[2:])
     if len(sys.argv)>1 and sys.argv[1]=='settings':
-        from .settings_cli import main as settings_main
+        from agentrader.cli.settings_cli import main as settings_main
         return settings_main(sys.argv[2:])
     if len(sys.argv) > 1 and sys.argv[1] == 'capabilities':
-        from .capability_cli import main as capability_main
+        from agentrader.cli.capability_cli import main as capability_main
         return capability_main(sys.argv[2:])
     if len(sys.argv) > 1 and sys.argv[1] == 'grid':
-        from .grid_cli import main as grid_main
+        from agentrader.cli.grid_cli import main as grid_main
         return grid_main(sys.argv[2:])
     if len(sys.argv) > 1 and sys.argv[1] == 'plans':
-        from .plan_cli import main as plan_main
+        from agentrader.cli.plan_cli import main as plan_main
         return plan_main(sys.argv[2:])
     if len(sys.argv) > 1 and sys.argv[1] == 'market':
-        from .market_cli import main as market_main
+        from agentrader.cli.market_cli import main as market_main
         return market_main(sys.argv[2:])
     parser = argparse.ArgumentParser(description="Binance USD-M Futures demo araçları")
-    parser.add_argument("command", choices=["web", "diagnose", "plans", "market", "grid", "capabilities", "settings", "orders", "order-cycle", "position-cycle", "recover", "managed-open", "watchdog", "managed-close", "managed-finalize"], help="Alt komutlar: plans, orders, market, grid, capabilities veya settings --help")
+    parser.add_argument("command", choices=["web", "diagnose", "plans", "commands", "market", "grid", "capabilities", "settings", "orders", "order-cycle", "position-cycle", "recover", "managed-open", "watchdog", "managed-close", "managed-finalize"], help="Alt komutlar: plans, commands, orders, market, grid, capabilities veya settings --help")
     parser.add_argument("--symbol", default="BTCUSDT")
     parser.add_argument("--account", action="store_true", help="Demo hesap bilgilerini de oku")
     parser.add_argument("--execute-demo", action="store_true", help="Demo limit emrini gönder, sorgula ve iptal et")

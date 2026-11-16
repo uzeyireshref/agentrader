@@ -1,0 +1,115 @@
+{
+  "schema": "channel-family-vectors/1",
+  "scope": "EXPLICIT_SYNTHETIC_INDEPENDENT_HAND_DERIVED_LINEAR_REFERENCES",
+  "start": 1800000000,
+  "step": 900,
+  "anchors": [
+    {
+      "time": 1800000000,
+      "price": "100"
+    },
+    {
+      "time": 1800009000,
+      "price": "140"
+    },
+    {
+      "time": 1800018000,
+      "price": "120"
+    }
+  ],
+  "options": {
+    "extend": "both",
+    "median": true,
+    "background": true,
+    "fill_opacity": 0.2,
+    "prices": true,
+    "levels": [
+      "0.5",
+      "1"
+    ],
+    "source": "close",
+    "upper_deviation": "2",
+    "lower_deviation": "2",
+    "upper_enabled": true,
+    "lower_enabled": true,
+    "pearson": true
+  },
+  "query_index": 25,
+  "cases": [
+    {
+      "kind": "parallel_channel",
+      "expected": {
+        "lower": "140",
+        "upper": "200",
+        "middle": "170"
+      }
+    },
+    {
+      "kind": "flat_channel",
+      "expected": {
+        "lower": "120",
+        "upper": "200",
+        "middle": "160"
+      }
+    },
+    {
+      "kind": "disjoint_channel",
+      "expected": {
+        "lower": "60",
+        "upper": "200",
+        "middle": "130"
+      }
+    },
+    {
+      "kind": "pitchfork",
+      "expected": {
+        "lower": "130",
+        "upper": "170",
+        "middle": "150"
+      }
+    },
+    {
+      "kind": "schiff_pitchfork",
+      "expected": {
+        "lower": "370/3",
+        "upper": "150",
+        "middle": "410/3"
+      }
+    },
+    {
+      "kind": "modified_schiff_pitchfork",
+      "expected": {
+        "lower": "125",
+        "upper": "155",
+        "middle": "140"
+      }
+    },
+    {
+      "kind": "inside_pitchfork",
+      "expected": {
+        "lower": "120",
+        "upper": "140",
+        "middle": "130"
+      }
+    }
+  ],
+  "regression": {
+    "close": [
+      100,
+      103,
+      102
+    ],
+    "intercept": "302/3",
+    "slope": "1",
+    "deviation_squared": "4/3",
+    "pearson": -0.6546536707079771,
+    "raw_times": [
+      1800000225,
+      1800002025
+    ],
+    "effective_times": [
+      1800000000,
+      1800001800
+    ]
+  }
+}

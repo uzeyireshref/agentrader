@@ -1,9 +1,9 @@
 import copy,json,tempfile,unittest
 from pathlib import Path
-from agentrader.indicator_config import IndicatorService,defaults,defaults_v2,series
-from agentrader.drawings.service import DrawingError
+from agentrader.chart.indicator_config import IndicatorService,defaults,defaults_v2,series
+from agentrader.chart.drawings.service import DrawingError
 from agentrader.migrations import migrate,connect
-from agentrader.analysis import ema,rsi,atr
+from agentrader.chart.analysis import ema,rsi,atr
 class T10Indicators(unittest.TestCase):
  def rows(self,n=80):return [dict(time=1800000000+i*900,close_time=1800000000000+(i+1)*900000-1,closed=i<n-1,open=100+i%7,high=120+i%11,low=80+i%3,close=103+(i*7)%19) for i in range(n)]
  def test_legacy_migration_is_explicit_and_old_clients_cannot_overwrite_v2(self):

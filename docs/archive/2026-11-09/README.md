@@ -1,6 +1,6 @@
 # 9 Kasım 2026 öncesi plan arşivi
 
-Bu metinler önceki ürün yönünü ve tarihsel uygulama durumunu korur. TradingView/Pine/webhook yönündeki görevler güncel hedef değildir. Aktif ürün ve sıra [01](../../../01-PROJE-VE-HEDEFLER.md), [02](../../../02-ASAMALI-GELISTIRME-PLANI.md), [03](../../../03-MIMARI-VE-ISLEM-SOZLESMESI.md) ve [19](../../../19-KENDI-GRAFIK-TERMINALI-VE-GECIS.md) içindedir.
+Bu metinler önceki ürün yönünü ve tarihsel uygulama durumunu korur. TradingView/Pine/webhook yönündeki görevler güncel hedef değildir. Aktif ürün ve sıra [01](../../project/history/01-PROJE-VE-HEDEFLER.md), [02](../../project/history/02-ASAMALI-GELISTIRME-PLANI.md), [03](../../project/history/03-MIMARI-VE-ISLEM-SOZLESMESI.md) ve [19](../../chart/history/19-KENDI-GRAFIK-TERMINALI-VE-GECIS.md) içindedir.
 
 Markdown bağlantıları yeni konum için düzeltilmiştir; tarihli kanıtlar güncel doğrulama sayılmaz. JSON eski ana programın değiştirilmemiş kopyasıdır.
 

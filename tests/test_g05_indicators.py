@@ -1,8 +1,8 @@
 import copy,json,tempfile,unittest
 from decimal import Decimal,localcontext
 from pathlib import Path
-from agentrader.indicator_config import defaults_v2,defaults_v3,multi_series,validate_v3,IndicatorService
-from agentrader.drawings.service import DrawingError,DrawingConflict
+from agentrader.chart.indicator_config import defaults_v2,defaults_v3,multi_series,validate_v3,IndicatorService
+from agentrader.chart.drawings.service import DrawingError,DrawingConflict
 from agentrader.migrations import migrate
 class G05Indicators(unittest.TestCase):
  def rows(self,n=80):return [dict(time=1800000000+i*900,close_time=1800000000000+(i+1)*900000-1,closed=True,open=100+i%7,high=125+i%11,low=80+i%3,close=103+(i*7)%19,volume=10,quote_volume=1000) for i in range(n)]
@@ -58,7 +58,7 @@ class G05Indicators(unittest.TestCase):
   data=json.loads((Path(__file__).resolve().parents[1]/'frontend/tests/fixtures/g05-multi-parity.json').read_text(encoding='utf-8'))
   for case in data['cases']:self.assertEqual(multi_series(data['rows'],case['config'],'15m'),case['outputs'])
 
- def test_registry_exposes_multi_output_display_model_without_bot_queries(self):
-  from agentrader.drawings.contracts import capability
+ def test_registry_exposes_multi_outputs_without_geometry_or_order_authority(self):
+  from agentrader.chart.drawings.contracts import capability
   for kind,outputs in [('macd',['macd','signal','histogram']),('bb',['basis','upper','lower'])]:
    tool=capability('indicator',kind);self.assertEqual(tool['display_model']['outputs'],outputs);self.assertEqual(tool['display_model']['schema'],'chart-indicators/4');self.assertEqual(tool['canonical_queries'],[]);self.assertFalse(tool['computable']);self.assertFalse(tool['tracking_activation']);self.assertFalse(tool['order_authority'])

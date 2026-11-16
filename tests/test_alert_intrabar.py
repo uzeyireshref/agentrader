@@ -2,10 +2,10 @@ import copy
 import tempfile
 import unittest
 from pathlib import Path
-from agentrader.price_alerts import PriceAlerts, PriceAlertWorker, definition, AlertError
-from agentrader.market_data import SOURCE, INTERVALS
+from agentrader.chart.price_alerts import PriceAlerts, PriceAlertWorker, definition, AlertError
+from agentrader.shared.market_data import SOURCE, INTERVALS
 from agentrader.migrations import migrate
-from agentrader.indicator_config import defaults_v4
+from agentrader.chart.indicator_config import defaults_v4
 
 T = 1800057600
 
@@ -29,7 +29,7 @@ def context(offset=1, price=101, interval='5m', epoch='a'):
         rows.append(dict(time=time, close_time=(time+step)*1000-1, closed=i<0,
                          open=99, high=max(102,p), low=min(98,p), close=p, volume=10,
                          quote_volume=1000, exact=dict(state='VERIFIED', **exact)))
-    return dict(identity=dict(source=SOURCE, environment='live_public', product='USD-M',
+    return dict(identity=dict(source=SOURCE, environment='demo_public', product='USD-M',
                               price_type='LAST_PRICE', symbol='BTCUSDT', interval=interval),
                 rows=rows, transport_state='LIVE', timing=dict(state='FRESH'), quality=dict(state='OK'),
                 stream_epoch=epoch, event_time=(T+offset)*1000, data_revision=offset+1)

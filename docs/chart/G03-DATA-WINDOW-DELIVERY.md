@@ -15,7 +15,7 @@ Stale/reconnect/gap durumunda son alınan değerler açık uyarıyla sunulur. Ge
 ## Kabul
 
 - **173/173 frontend test**, TypeScript ve üretim derlemesi geçti.6 yeni model/component testi; sıfır/unavailable, boşLIVE/blocked proof, eski context, pointer exit/pin, queued callback, warmup/stale/renderError ayrımı var.
-- scripts/check_chart_g03.py: gerçek production App, kontrollü WebSocket/read sırası ve izole SQLite ile **14 kontrol** geçti. Piyasa hazır/çizim beklemesi, açık-kapalı mum,0 hacim, pin/latest, aynı bağlamlı gösterge, stale uyarısı, yanlış sembollü packet ve A→B→A geç çizim yanıtı sınandı.
+- scripts/chart/check_chart_g03.py: gerçek production App, kontrollü WebSocket/read sırası ve izole SQLite ile **14 kontrol** geçti. Piyasa hazır/çizim beklemesi, açık-kapalı mum,0 hacim, pin/latest, aynı bağlamlı gösterge, stale uyarısı, yanlış sembollü packet ve A→B→A geç çizim yanıtı sınandı.
 - Read503→açık retry→ready ve history503 sonrası mevcut mumun korunması doğrulandı. Native candle setData/update testte kontrollü olarak hata verdi: RENDER_ERROR, sayısal kapanış/EMA unavailable; yöntemler geri alınıp başarılı repaint ile değerler döndü. Bu, yalnız sahte UI status gösterimi değildir.
 - Boş yeni1h snapshot ve10 mum warmup sayısal0'a dönüşmedi. İki genişlik/iki tema ekranı kaydedilip incelendi. Page error0, dış istek0. Seed çizim revision'ları1 olarak kaldı; kullanıcı DB'si testte kullanılmadı.
 - G01/G06/G02 **41 regresyon tarayıcı kontrolü** geçti:14+12+15. Testler fiziksel GPU/touch, live exchange parity veya uzun ağ blackout/catchup QA01 kabulü değildir; bu açıklar yerinde durur.

@@ -2,8 +2,15 @@ import type {Geometry} from './drawings';
 import {clipFamilyLine,familyDefaults,type FamilyModel} from './channelFamily';
 type Point={x:number;y:number};
 const ns='http://www.w3.org/2000/svg';
+export function renderFamilyUnavailable(node:SVGGElement,label:string,state:string,reason:string,message:string){
+ const content=node.querySelector('.family-shapes');if(!content)return;
+ node.setAttribute('data-family-state',state);node.setAttribute('data-family-reason',reason);
+ const width=Math.max(120,(node.ownerSVGElement?.clientWidth??800)-24),background=document.createElementNS(ns,'rect');background.setAttribute('x','8');background.setAttribute('y','140');background.setAttribute('width',String(width));background.setAttribute('height','28');background.setAttribute('rx','4');background.setAttribute('fill','var(--panel, #151c27)');
+ const text=document.createElementNS(ns,'text');text.setAttribute('class','shape-label family-unavailable');text.setAttribute('x','16');text.setAttribute('y','158');text.setAttribute('role','status');text.textContent=label+': '+message;content.replaceChildren(background,text);
+}
 /** Only this empty SVG subgroup is imperative; React owns selection and events. */
 export function renderFamily(node:SVGGElement,handles:SVGGElement|null,g:Geometry,model:FamilyModel,project:(p:Point)=>Point|null,width:number,height:number){
+ node.setAttribute('data-family-state','READY');node.removeAttribute('data-family-reason');
  const content=node.querySelector('.family-shapes');if(!content)return;
  const options=g.options??familyDefaults(g.kind),nodes:SVGElement[]=[];
  const element=(tag:string,attrs:Record<string,string|number>)=>{const e=document.createElementNS(ns,tag);for(const [k,v]of Object.entries(attrs))e.setAttribute(k,String(v));return e as SVGElement;};

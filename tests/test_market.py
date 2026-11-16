@@ -6,10 +6,11 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.analysis import ema, rsi, atr, timeframe_report, daily_volume
-from agentrader.market_data import PublicMarket, CandleStore, INTERVALS, bucket, normalize, fetch_candles
-from agentrader.market_cli import build_report, markdown_report
-from agentrader.exchange import ExchangeError
+from agentrader.chart.analysis import ema, rsi, atr, timeframe_report, daily_volume
+from agentrader.shared.market_data import PublicMarket, CandleStore, INTERVALS, bucket, normalize, fetch_candles
+from agentrader.cli.market_cli import build_report, markdown_report
+from agentrader.shared.exchange import ExchangeError
+from agentrader.shared.transport import JsonTransport,RequestGovernor
 
 ASOF = 1793838000123
 
@@ -108,20 +109,24 @@ class IndicatorTests(unittest.TestCase):
 
 
 class MarketDataTests(unittest.TestCase):
+    def setUp(self):
+        self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
+        self.transport=JsonTransport(RequestGovernor(Path(self.temp.name)/'rate.db'))
+
     def test_public_client_blocks_account_trade_and_secret_parameters(self):
-        client = PublicMarket()
+        client = PublicMarket(transport=self.transport)
         for path, params in [('/fapi/v3/account', {}), ('/fapi/v1/order', {}),
                              ('/fapi/v1/time', {'signature': 'never-send'})]:
             with self.assertRaises(ValueError):
                 client.get(path, params)
 
     def test_public_client_only_sends_unsigned_get_to_live_data_host(self):
-        client = PublicMarket()
+        client = PublicMarket(transport=self.transport)
         with patch.object(client.opener, 'open', return_value=io.BytesIO(b'{"serverTime": 1}')) as opened:
             self.assertEqual(client.get('/fapi/v1/time')['serverTime'], 1)
         request = opened.call_args.args[0]
         self.assertEqual(request.method, 'GET')
-        self.assertEqual(request.full_url, 'https://fapi.binance.com/fapi/v1/time')
+        self.assertEqual(request.full_url, 'https://demo-fapi.binance.com/fapi/v1/time')
         self.assertNotIn('X-mbx-apikey', request.headers)
 
     def test_identical_duplicates_are_counted_conflicts_rejected(self):
@@ -211,11 +216,11 @@ class MarketDataTests(unittest.TestCase):
                 store.close()
 
     def test_cli_creates_reports_without_loading_account_credentials(self):
-        from agentrader.market_cli import main
+        from agentrader.cli.market_cli import main
         with tempfile.TemporaryDirectory(dir=Path.cwd()) as folder:
             database, output = Path(folder) / 'market.db', Path(folder) / 'reports'
-            with patch('agentrader.market_cli.PublicMarket', return_value=FakeMarket()), \
-                 patch('agentrader.config.Config.load', side_effect=AssertionError('Account secrets must not be loaded')), \
+            with patch('agentrader.cli.market_cli.PublicMarket', return_value=FakeMarket()), \
+                 patch('agentrader.shared.config.Config.load', side_effect=AssertionError('Account secrets must not be loaded')), \
                  patch('sys.stdout', new_callable=io.StringIO):
                 result = main(['report', '--bars', '60', '--database', str(database), '--output-dir', str(output)])
             self.assertEqual(result, 0)

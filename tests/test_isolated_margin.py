@@ -3,12 +3,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from agentrader.account_commands import AccountCommands
-from agentrader.config import Config
-from agentrader.exchange import ExchangeError
-from agentrader.isolated_margin import IsolatedMarginCommands,PATH
-from agentrader.risk import number
-from agentrader.state import StateStore
+from agentrader.bot.account_commands import AccountCommands
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.isolated_margin import IsolatedMarginCommands,PATH
+from agentrader.bot.risk import number
+from agentrader.shared.state import StateStore
 
 
 class MarginExchange:

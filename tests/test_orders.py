@@ -4,9 +4,9 @@ from decimal import Decimal
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.config import Config
-from agentrader.exchange import ExchangeError
-from agentrader.orders import build_limit, order_cycle
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.orders import build_limit, order_cycle
 
 SYMBOL = {'symbol': 'BTCUSDT', 'status': 'TRADING', 'quoteAsset': 'USDT', 'filters': [
     {'filterType': 'PRICE_FILTER', 'tickSize': '0.10', 'minPrice': '1', 'maxPrice': '1000000'},
@@ -58,7 +58,7 @@ class OrderTests(unittest.TestCase):
     def test_preview_and_zero_balance_never_submit(self):
         fake = FakeExchange(Config())
         fake.balance = '0'
-        with patch('agentrader.orders.DemoExchange', return_value=fake):
+        with patch('agentrader.bot.orders.DemoExchange', return_value=fake):
             self.assertEqual(order_cycle(Config())['status'], 'preview')
             with self.assertRaisesRegex(ValueError, 'bakiye'):
                 order_cycle(Config(), execute=True)
@@ -69,7 +69,7 @@ class OrderTests(unittest.TestCase):
             fake = FakeExchange(Config())
             fake.timeout = timeout
             with tempfile.TemporaryDirectory(dir=Path.cwd()) as folder:
-                with patch('agentrader.orders.DemoExchange', return_value=fake):
+                with patch('agentrader.bot.orders.DemoExchange', return_value=fake):
                     result = order_cycle(Config(), execute=True, journal=Path(folder) / 'events.jsonl')
                 self.assertEqual(result['status'], 'passed')
                 self.assertEqual(fake.calls, ['POST', 'DELETE'])

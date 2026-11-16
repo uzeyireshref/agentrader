@@ -8,6 +8,34 @@ from pathlib import Path
 
 
 class PlanCLITests(unittest.TestCase):
+    def test_v2_response_preference_is_imported_and_visible_in_normal_cli(self):
+        from test_plan_v2 import plan_v2
+        root=Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory(dir=root) as folder:
+            env=os.environ.copy();env['PYTHONPATH']=str(root)
+            env['AGENTRADER_EXECUTION_DATABASE']=str(Path(folder)/'selected.sqlite3')
+            plan=plan_v2();plan['entry']['order_response_type']='RESULT'
+            Path(folder,'plan.json').write_text(json.dumps(plan),encoding='utf-8')
+            for args in (['create','plan.json'],['show',plan['plan_id'],'1']):
+                result=subprocess.run([sys.executable,'-m','agentrader','plans',*args],
+                                      cwd=folder,env=env,capture_output=True,text=True,encoding='utf-8',timeout=20)
+                self.assertEqual(result.returncode,0,result.stderr)
+                shown=json.loads(result.stdout)
+                self.assertEqual(shown['plan']['entry']['order_response_type'],'RESULT')
+
+    def test_configured_execution_database_is_shared_with_web_review(self):
+        root = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory(dir=root) as folder:
+            env = os.environ.copy()
+            env['PYTHONPATH'] = str(root)
+            selected = Path(folder) / 'selected.sqlite3'
+            env['AGENTRADER_EXECUTION_DATABASE'] = str(selected)
+            result = subprocess.run([sys.executable, '-m', 'agentrader', 'plans', 'list'],
+                                    cwd=folder, env=env, capture_output=True, text=True, timeout=20)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertTrue(selected.is_file())
+            self.assertFalse((Path(folder) / 'data/execution.sqlite3').exists())
+
     def test_local_create_approve_show_cancel_without_network_or_real_database(self):
         root = Path(__file__).resolve().parents[1]
         with tempfile.TemporaryDirectory(dir=root) as folder:

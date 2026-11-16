@@ -1,5 +1,5 @@
 import unittest
-from agentrader.order_rules import validate_order
+from agentrader.bot.order_rules import validate_order
 from test_orders import SYMBOL
 
 
@@ -8,7 +8,8 @@ class OrderRuleTests(unittest.TestCase):
         self.order={'symbol':'BTCUSDT','side':'BUY','positionSide':'BOTH','type':'LIMIT',
                     'price':'75000','quantity':'.001','timeInForce':'GTC'}
     def build(self,p=None,mode='one-way',operation='OPEN'):
-        return validate_order(p or self.order,SYMBOL,mode,operation,'75000',1000000)
+        return validate_order(p or self.order,SYMBOL,mode,operation,'75000',1000000,
+                              contract_price={'symbol':'BTCUSDT','price':'75000','time':1000000})
     def test_long_and_short_open_orders(self):
         self.assertEqual(self.build()['path'],'/fapi/v1/order')
         self.assertEqual(self.build(self.order|{'side':'SELL'})['operation'],'OPEN')
@@ -39,14 +40,25 @@ class OrderRuleTests(unittest.TestCase):
         p={'symbol':'BTCUSDT','side':'SELL','positionSide':'BOTH','type':'TRAILING_STOP_MARKET',
            'quantity':'.001','reduceOnly':'true','callbackRate':'1','activatePrice':'76000'}
         self.build(p,operation='REDUCE')
-        with self.assertRaises(ValueError):self.build(p|{'callbackRate':'20'},operation='REDUCE')
+        self.build(p|{'callbackRate':'20'},operation='REDUCE')
+        with self.assertRaises(ValueError):self.build(p|{'callbackRate':'20.1'},operation='REDUCE')
         with self.assertRaises(ValueError):self.build(p|{'activatePrice':'74000'},operation='REDUCE')
     def test_stop_limit_and_take_profit_limit_are_conditional(self):
-        for kind in ('STOP','TAKE_PROFIT'):
-            p=self.order|{'type':kind,'triggerPrice':'74500'}
+        for kind,trigger in (('STOP','76000'),('TAKE_PROFIT','74500')):
+            p=self.order|{'type':kind,'triggerPrice':trigger}
             self.assertEqual(self.build(p)['path'],'/fapi/v1/algoOrder')
     def test_output_is_only_a_proposal_without_execution_permission(self):
         self.assertFalse(self.build()['execution_authorized'])
+
+    def test_response_type_is_checked_and_preserved_for_normal_and_algo_orders(self):
+        for value in ('ACK','RESULT'):
+            for order in (self.order,self.order|{'type':'STOP','triggerPrice':'76000'}):
+                proposal=self.build(order|{'newOrderRespType':value})
+                self.assertEqual(proposal['params']['newOrderRespType'],value)
+                self.assertFalse(proposal['execution_authorized'])
+        for value in ('FULL','ack',None,True,[],{}):
+            with self.subTest(value=value),self.assertRaises(ValueError):
+                self.build(self.order|{'newOrderRespType':value})
 
     def test_integer_does_not_count_as_boolean(self):
         with self.assertRaises(ValueError):

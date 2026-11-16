@@ -1,9 +1,9 @@
 import unittest
 from unittest.mock import Mock
 
-from agentrader.exchange import ExchangeError
-from agentrader.runtime import monitor_session,supervise_session,stream_monitor_session
-from agentrader.user_stream import StreamUnavailable, StreamProtocolError
+from agentrader.shared.exchange import ExchangeError
+from agentrader.shared.runtime import monitor_session,supervise_session,stream_monitor_session
+from agentrader.bot.user_stream import StreamUnavailable, StreamProtocolError
 
 
 class RuntimeTests(unittest.TestCase):

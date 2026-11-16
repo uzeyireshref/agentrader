@@ -3,10 +3,10 @@ from fractions import Fraction
 from pathlib import Path
 import tempfile
 import unittest
-from agentrader.drawings.service import DrawingService, DrawingError, geometry, management
-from agentrader.drawings.position import metrics
-from agentrader.drawings.calculations import query, canonical_hash, CalculationBlocked
-from agentrader.drawings.contracts import legacy_contract, capability
+from agentrader.chart.drawings.service import DrawingService, DrawingError, geometry, management
+from agentrader.chart.drawings.position import metrics
+from agentrader.chart.drawings.calculations import query, canonical_hash, CalculationBlocked
+from agentrader.chart.drawings.contracts import legacy_contract, capability
 from agentrader.migrations import migrate
 
 

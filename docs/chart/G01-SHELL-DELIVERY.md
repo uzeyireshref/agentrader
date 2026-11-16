@@ -11,7 +11,7 @@ Açık/koyu tema tokenları canvas/grid/axis/crosshair ile arayüzde birlikte uy
 ## Doğrulama
 
 - Frontend161/161 test geçti; TypeScript kontrolü ve üretim derlemesi geçti. Son JS index-DMe-D6JO.js, CSS index-AGrNkzLm.css.
-- scripts/check_chart_g01.py: gerçek production App, kontrollü300 mum WebSocket, izole SQLite;14 kontrol geçti, page error0, dış istek0. Kullanıcının DB'si testte kullanılmadı.
+- scripts/chart/check_chart_g01.py: gerçek production App, kontrollü300 mum WebSocket, izole SQLite;14 kontrol geçti, page error0, dış istek0. Kullanıcının DB'si testte kullanılmadı.
 -1536/1280/1024 CSS viewport, DPR1.25, iki temada6 ekran; yatay document taşması yok. Panel/tema/resize sırasında market socket aynı kaldı. İlk panel kapanışında boş40px sütun bulundu ve düzeltildi.
 - Gerçek numeric edit74100→74125.25 SQLite'a yazıldı; Undo/Redo, reload ve aynı çizim kimliği korundu. Gruplu trend seçimi/Escape, disclosure focus dönüşü, arama filtresi, fullscreen ve loading/stale durumları geçti.
 

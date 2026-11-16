@@ -1,4 +1,4 @@
-> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../../01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
+> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../project/history/01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
 
 # Agentrader
 
@@ -221,7 +221,7 @@ Geliştirici demo kesinti testi (süreç koruma doğrulanınca aniden sonlanır)
 
 ```powershell
 python -m agentrader managed-open --execute-demo --test-only --crash-after-ready
-python scripts/check_demo_restart.py
+python scripts/bot/check_demo_restart.py
 ```
 
 İkinci komut yeni giriş açmadan iki yeni süreçte devralmayı kontrol eder,
@@ -466,7 +466,7 @@ fiyat farkı, onay bitişi ve bekleme/koşul sağlandı/engellendi nedeni.
 Kontrol sonuçları izleyicinin JSONL çıktısında da görünür. Bu, aralıksız fiyat
 kaydı değildir; REST kontrolleri arasındaki kısa dokunuşlar kaçırılabilir.
 
-Onaylı planı izlemek için `python scripts/watch_approved_demo.py PLAN_ID 1`
+Onaylı planı izlemek için `python scripts/bot/watch_approved_demo.py PLAN_ID 1`
 kullanılır. Bu betik onay oluşturmaz veya süresini yenilemez.
 `--restart-after-stop` açıkça istenen demo kesinti testi içindir. İlk hedef
 sonrası stop geçişi APPLIED ve korumalar borsada doğrulanmışsa kontrol noktası
@@ -520,7 +520,7 @@ A1'de 12/12 demo okuması ve toplam 150 test doğrulandı. Grid yürütücüsü 
 doğrulandı. A2 uygulandı; A3–A8 için risk, ayar komutları, emir doğrulama,
 kalıcı gerçekleşme defteri ve grid durdurma temelleri eklendi. Bunların tamamı
 henüz ortak emir/grid yürütücüsüne bağlanmadı. Grid yürütme kapalıdır.
-Paket bazında kesin sınırlar ve kalan işler: [07-GELISTIRME-DURUMU.md](../../../07-GELISTIRME-DURUMU.md).
+Paket bazında kesin sınırlar ve kalan işler: [07-GELISTIRME-DURUMU.md](../../project/history/07-GELISTIRME-DURUMU.md).
 
 `python -m agentrader settings --help` ayar komutlarını gösterir.
 `prepare` borsada değişiklik yapmaz; `apply` yalnız somut, geçerli komutu
@@ -585,7 +585,7 @@ pozisyonu korumayla bırakmayı dener. Ağ kesintisinde bu garanti edilemez.
 
 Yeni girişleri durdurur. Mevcut pozisyonu da kapatmak için açıkça
 `--close-position` eklenir. Tam sözleşme ve eksikler:
-[08-GRID-YURUTME-VE-REZERVASYON.md](../../../08-GRID-YURUTME-VE-REZERVASYON.md).
+[08-GRID-YURUTME-VE-REZERVASYON.md](../../bot/history/08-GRID-YURUTME-VE-REZERVASYON.md).
 
 ### İzole teminat ve native toplu iptal
 
@@ -598,7 +598,7 @@ grid emirlerinin gereksiz tekrar sorguları da azaltıldı.
 `python -m agentrader settings margin-prepare --help`
 
 Yeni komutlar, sınırlar ve kalan işler:
-[09-TEMINAT-VE-TOPLU-IPTAL.md](../../../09-TEMINAT-VE-TOPLU-IPTAL.md).
+[09-TEMINAT-VE-TOPLU-IPTAL.md](../../bot/history/09-TEMINAT-VE-TOPLU-IPTAL.md).
 Bu yazma yeteneklerinin gerçek demo doğrulaması henüz yapılmadı.
 
 ### Native amend ve toplu oluşturma/değiştirme
@@ -614,7 +614,7 @@ Gridin hazır hücreleri native toplu oluşturma ile en fazla beşer emir halind
 gönderilir. Bütün kimlikler atomik ayrılır; kısmi ret ve belirsiz yanıt ayrı
 uzlaştırılır. Aynı PUT/POST kayıp yanıttan sonra yeniden gönderilmez.
 Kapsam, komutlar ve eksikler:
-[10-NATIVE-EMIR-DEGISTIRME-VE-TOPLU-OLUSTURMA.md](../../../10-NATIVE-EMIR-DEGISTIRME-VE-TOPLU-OLUSTURMA.md).
+[10-NATIVE-EMIR-DEGISTIRME-VE-TOPLU-OLUSTURMA.md](../../bot/history/10-NATIVE-EMIR-DEGISTIRME-VE-TOPLU-OLUSTURMA.md).
 Bu geliştirmede gerçek demo hesabına yazma yapılmadı.
 
 ## REST geçmiş sayfalaması
@@ -622,7 +622,7 @@ Bu geliştirmede gerçek demo hesabına yazma yapılmadı.
 Gelir/komisyon/fonlama geçmişi zaman aralıklarıyla, gerçekleşmeler işlem kimliğiyle
 sayfalanır. Yoğun geçmişte eksik risk veya sahiplik görünümü kullanılmaz.
 386 test geçti; bu çalışmada demo hesabına istek gönderilmedi.
-Ayrıntı: [11-GECMIS-SAYFALAMA-VE-UZLASTIRMA.md](../../../11-GECMIS-SAYFALAMA-VE-UZLASTIRMA.md).
+Ayrıntı: [11-GECMIS-SAYFALAMA-VE-UZLASTIRMA.md](../../bot/history/11-GECMIS-SAYFALAMA-VE-UZLASTIRMA.md).
 
 ## Kullanıcı akışı ve yeniden uzlaştırma — 6 Kasım 2026
 
@@ -632,7 +632,7 @@ işareti kaldırma → mevcut onay/risk kontrolleriyle yönetim sırası uygulan
 Yeniden bağlantı yeni işlem yetkisi vermez; belirsiz emir tekrar gönderilmez.
 430 test geçti. Gerçek demo bağlantısı ve ping/pong doğrulandı; gerçek
 fill/iptal/stop olayı ve uzun süreli kesinti kanıtı henüz tamamlanmadı.
-Ayrıntı: [12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md](../../../12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md).
+Ayrıntı: [12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md](../../bot/history/12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md).
 
 ## Takip stopu, teminat ve servis — 6 Kasım 2026
 
@@ -643,7 +643,7 @@ Grid yeniden girişte güncel kaldıraç basamaklarını kontrol eder.
 Kalıcı bildirim kuyruğu, Telegram göndericisi, sürekli servis, sağlık ve
 kontrollü durdurma komutları eklendi. Gerçek mesaj veya otomatik görev başlatılmadı.
 466 test geçti; gerçek demo yazma kanıtı ve kalan ürün kapsamı tamamlanmadı.
-[13-TAKIP-STOP-TEMINAT-VE-SERVIS.md](../../../13-TAKIP-STOP-TEMINAT-VE-SERVIS.md).
+[13-TAKIP-STOP-TEMINAT-VE-SERVIS.md](../../bot/history/13-TAKIP-STOP-TEMINAT-VE-SERVIS.md).
 
 ## Çoklu oturum sahipliği ve ortak risk — 6 Kasım 2026
 
@@ -654,32 +654,32 @@ geçer. Kapanışta yalnız ilgili oturumun rezervi atomik bırakılır; eş otu
 emirleri korunur. run-many ortak ön kontrol, manage-all/run-all tek süreçli
 yönetim sağlar. 497 test geçti; gerçek demo işlemi veya profil/bütçe değişikliği
 yapılmadı. Kalan kapsam ve kullanım:
-[14-COKLU-OTURUM-VE-ORTAK-RISK.md](../../../14-COKLU-OTURUM-VE-ORTAK-RISK.md).
+[14-COKLU-OTURUM-VE-ORTAK-RISK.md](../../bot/history/14-COKLU-OTURUM-VE-ORTAK-RISK.md).
 
 
 ## Neutral grid teslimi — 6 Kasım 2026
 
 Neutral grid artık tek plan altında iki hedge tarafını ve ortak bütçeyi yönetir. Varsayılan risk limitleri değişmedi. 541 çevrimdışı test geçti; gerçek demo neutral işlemi doğrulanmadı.
 
-Ayrıntı: [15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md](../../../15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md).
+Ayrıntı: [15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md](../../bot/history/15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md).
 
 
 ## Aktif teminat teslimi — 6 Kasım 2026
 
 Aktif çoklu oturum, yönlü grid ve neutral taraf için izole teminat entegrasyonu eklendi. Teminat değişiklikleri somut komutla yetkilendirilir; bütçeler otomatik artırılmaz. 560 test geçti; gerçek demo teminat kanıtı bekliyor.
 
-Ayrıntı: [16-COKLU-OTURUM-TEMINAT-YONETIMI.md](../../../16-COKLU-OTURUM-TEMINAT-YONETIMI.md).
+Ayrıntı: [16-COKLU-OTURUM-TEMINAT-YONETIMI.md](../../bot/history/16-COKLU-OTURUM-TEMINAT-YONETIMI.md).
 
 
 ## Grid takip stopu — 7 Kasım 2026
 
 Yönlü GRID için isteğe bağlı bot takip stopu eklendi. LONG/SHORT watermark ve eşik kalıcıdır; tetikte yeni girişler durur, gerçek kalan miktar kapanış akışına geçer. Native sabit stop korunur; hareketli eşik bot çalışırken izlenir. Neutral/native takip ve diğer politikalar bekliyor. 13 yeni senaryo dahil 573 test geçti; sonuç doğrulama raporuna kaydedildi. Gerçek demo yazma yapılmadı.
 
-Ayrıntı: [17-GRID-TAKIP-STOPU.md](../../../17-GRID-TAKIP-STOPU.md). Kanıt: `reports/development-validation-20261107.json`.
+Ayrıntı: [17-GRID-TAKIP-STOPU.md](../../bot/history/17-GRID-TAKIP-STOPU.md). Kanıt: `reports/development-validation-20261107.json`.
 
 
 ## Grid borsa stopunu yenileme — 7 Kasım 2026
 
 Yönlü GRID için isteğe bağlı `management.trailing.native_stop: true` eklendi. Yeni close-all stop GET ile doğrulanmadan önceki takip stopu kaldırılmaz; başlangıç sabit koruması tutulur. Eski planlar değişmez. 21 yeni senaryo eklendi; tam regresyon sonucu `reports/development-validation-20261107.json` içinde. Gerçek demo yazma kanıtı bekliyor.
 
-Ayrıntı: [18-GRID-BORSA-STOP-YENILEME.md](../../../18-GRID-BORSA-STOP-YENILEME.md).
+Ayrıntı: [18-GRID-BORSA-STOP-YENILEME.md](../../bot/history/18-GRID-BORSA-STOP-YENILEME.md).

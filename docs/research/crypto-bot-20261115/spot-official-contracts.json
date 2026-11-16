@@ -1,0 +1,1069 @@
+{
+  "commit": "e5f8489162e79fa1da6d0ea3ded3ce810b3637a0",
+  "count": 48,
+  "contracts": [
+    {
+      "name": "Test connectivity",
+      "method": "GET",
+      "path": "/api/v3/ping",
+      "parameter_rows": [],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Check server time",
+      "method": "GET",
+      "path": "/api/v3/time",
+      "parameter_rows": [],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Exchange information",
+      "method": "GET",
+      "path": "/api/v3/exchangeInfo",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | NO | Example: curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?symbol=BNBBTC\"",
+        "symbols | ARRAY OF STRING | NO | Examples: curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?symbols=%5B%22BNBBTC%22,%22BTCUSDT%22%5D\" or curl -g -X GET 'https://api.binance.com/api/v3/exchangeInfo?symbols=[\"BTCUSDT\",\"BNBBTC\"]'",
+        "permissions | ENUM | NO | Examples: curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?permissions=SPOT\" <br/> curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?permissions=%5B%22MARGIN%22%2C%22LEVERAGED%22%5D\" <br/> or <br/> curl -g -X GET 'https://api.binance.com/api/v3/exchangeInfo?permissions=[\"MARGIN\",\"LEVERAGED\"]'",
+        "showPermissionSets | BOOLEAN | NO | Default: true. <br/> Controls whether the content of the `permissionSets` field is populated or not.",
+        "symbolStatus | ENUM | NO | Filters for symbols that have this `tradingStatus`. Cannot be used in combination with `symbols` or `symbol`."
+      ],
+      "rules": [
+        "* If the value provided to `symbol` or `symbols` do not exist, the endpoint will throw an error saying the symbol is invalid.",
+        "* All parameters are optional.",
+        "* `permissions` can support single or multiple values (e.g. `SPOT`, `[\"MARGIN\",\"LEVERAGED\"]`). This cannot be used in combination with `symbol` or `symbols`.",
+        "* If `permissions` parameter not provided, all symbols that have either `SPOT`, `MARGIN`, or `LEVERAGED` permission will be exposed.",
+        "* `[[\"A\",\"B\"]]` means you may place an order if your account has either permission \"A\" **or** permission \"B\".",
+        "* `[[\"A\"],[\"B\"]]` means you can place an order if your account has permission \"A\" **and** permission \"B\".",
+        "* `[[\"A\"],[\"B\",\"C\"]]` means you can place an order if your account has permission \"A\" **and** permission \"B\" or permission \"C\". (Inclusive or is applied here, not exclusive or, so your account may have both permission \"B\" and permission \"C\".)"
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Execution Rules",
+      "method": "GET",
+      "path": "/api/v3/executionRules",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | NO | Query for specified symbol.",
+        "symbols | ARRAY OF STRING | NO | Query for multiple symbols.",
+        "symbolStatus | ENUM | NO | Query for all symbols with the specified status."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Order book",
+      "method": "GET",
+      "path": "/api/v3/depth",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "limit | INT | NO | Default: 100; Maximum: 5000. <br/> If limit > 5000, only 5000 entries will be returned.",
+        "symbolStatus | ENUM | NO | Filters for symbols that have this `tradingStatus`. <br/> A status mismatch returns error `-1220 SYMBOL_DOES_NOT_MATCH_STATUS`."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Recent trades list",
+      "method": "GET",
+      "path": "/api/v3/trades",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "limit | INT | NO | Default: 500; Maximum: 1000."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Old trade lookup",
+      "method": "GET",
+      "path": "/api/v3/historicalTrades",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "limit | INT | NO | Default: 500; Maximum: 1000.",
+        "fromId | LONG | NO | TradeId to fetch from. Default gets most recent trades."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Historical Block Trades",
+      "method": "GET",
+      "path": "/api/v3/historicalBlockTrades",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "fromId | LONG | YES | Block trade ID to fetch from",
+        "limit | LONG | NO | Default: 500; Maximum: 1000"
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Compressed/Aggregate trades list",
+      "method": "GET",
+      "path": "/api/v3/aggTrades",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "fromId | LONG | NO | ID to get aggregate trades from INCLUSIVE.",
+        "startTime | LONG | NO | Timestamp in ms to get aggregate trades from INCLUSIVE.",
+        "endTime | LONG | NO | Timestamp in ms to get aggregate trades until INCLUSIVE.",
+        "limit | INT | NO | Default: 500; Maximum: 1000."
+      ],
+      "rules": [
+        "- If fromId, startTime, and endTime are not sent, the most recent aggregate trades will be returned."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Kline/Candlestick data",
+      "method": "GET",
+      "path": "/api/v3/klines",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "interval | ENUM | YES |",
+        "startTime | LONG | NO |",
+        "endTime | LONG | NO |",
+        "timeZone | STRING | NO | Default: 0 (UTC)",
+        "limit | INT | NO | Default: 500; Maximum: 1000."
+      ],
+      "rules": [
+        "* If `startTime` and `endTime` are not sent, the most recent klines are returned.",
+        "* Supported values for `timeZone`:",
+        "* If `timeZone` provided, kline intervals are interpreted in that timezone instead of UTC.",
+        "* Note that `startTime` and `endTime` are always interpreted in UTC, regardless of `timeZone`."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "UIKlines",
+      "method": "GET",
+      "path": "/api/v3/uiKlines",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "interval | ENUM | YES |",
+        "startTime | LONG | NO |",
+        "endTime | LONG | NO |",
+        "timeZone | STRING | NO | Default: 0 (UTC)",
+        "limit | INT | NO | Default: 500; Maximum: 1000."
+      ],
+      "rules": [
+        "- If `startTime` and `endTime` are not sent, the most recent klines are returned.",
+        "- Supported values for `timeZone`:",
+        "- If `timeZone` provided, kline intervals are interpreted in that timezone instead of UTC.",
+        "- Note that `startTime` and `endTime` are always interpreted in UTC, regardless of `timeZone`."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Current average price",
+      "method": "GET",
+      "path": "/api/v3/avgPrice",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |"
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "24hr ticker price change statistics",
+      "method": "GET",
+      "path": "/api/v3/ticker/24hr",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | NO | Either `symbol` or `symbols` must be provided",
+        "symbols | ARRAY OF STRING | NO | Either `symbol` or `symbols` must be provided <br/> Examples of accepted format for the `symbols` parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D <br/> The maximum number of symbols allowed in a request is 100.",
+        "type | ENUM | NO | Default: FULL.",
+        "symbolStatus | ENUM | NO |"
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Trading Day Ticker",
+      "method": "GET",
+      "path": "/api/v3/ticker/tradingDay",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | NO | Either `symbol` or `symbols` must be provided.",
+        "symbols | ARRAY OF STRING | NO | Either `symbol` or `symbols` must be provided. <br/> Examples of accepted format for the `symbols` parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D. <br/> The maximum number of `symbols` allowed in a request is 100.",
+        "timeZone | STRING | NO | Default: 0 (UTC)",
+        "type | ENUM | NO | Default: FULL.",
+        "symbolStatus | ENUM | NO | Filters for symbols that have this `tradingStatus`. <br/> For a single symbol, a status mismatch returns error `-1220 SYMBOL_DOES_NOT_MATCH_STATUS`. <br/> For multiple symbols, non-matching ones are simply excluded from the response."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Symbol price ticker",
+      "method": "GET",
+      "path": "/api/v3/ticker/price",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | NO | Parameter symbol and symbols cannot be used in combination. <br/> If neither parameter is sent, prices for all symbols will be returned in an array.",
+        "symbols | ARRAY OF STRING | NO | Parameter symbol and symbols cannot be used in combination. <br/> If neither parameter is sent, prices for all symbols will be returned in an array. <br/> Examples of accepted format for the symbols parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D",
+        "symbolStatus | ENUM | NO | Filters for symbols that have this `tradingStatus`. <br/> For a single symbol, a status mismatch returns error `-1220 SYMBOL_DOES_NOT_MATCH_STATUS`. <br/> For multiple or all symbols, non-matching ones are simply excluded from the response."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Symbol order book ticker",
+      "method": "GET",
+      "path": "/api/v3/ticker/bookTicker",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | NO | Parameter symbol and symbols cannot be used in combination. <br/> If neither parameter is sent, `bookTickers` for all symbols will be returned in an array.",
+        "symbols | ARRAY OF STRING | NO | Parameter symbol and symbols cannot be used in combination. <br/> If neither parameter is sent, `bookTickers` for all symbols will be returned in an array. <br/> Examples of accepted format for the symbols parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D",
+        "symbolStatus | ENUM | NO | Filters for symbols that have this `tradingStatus`. <br/> For a single symbol, a status mismatch returns error `-1220 SYMBOL_DOES_NOT_MATCH_STATUS`. <br/> For multiple or all symbols, non-matching ones are simply excluded from the response."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Rolling window price change statistics",
+      "method": "GET",
+      "path": "/api/v3/ticker",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | NO | Either `symbol` or `symbols` must be provided",
+        "symbols | ARRAY OF STRING | NO | Either `symbol` or `symbols` must be provided <br/> Examples of accepted format for the `symbols` parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D <br/> The maximum number of symbols allowed in a request is 100.",
+        "windowSize | ENUM | NO | Default: 1d. <br/> Units cannot be combined (e.g. `1d2h` is not allowed).",
+        "type | ENUM | NO | Default: FULL.",
+        "symbolStatus | ENUM | NO |"
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Reference Price",
+      "method": "GET",
+      "path": "/api/v3/referencePrice",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |"
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Reference Price Calculation",
+      "method": "GET",
+      "path": "/api/v3/referencePrice/calculation",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "symbolStatus | ENUM | NO | Supported values: `TRADING`, `HALT`, `BREAK`, `CANCEL_ONLY`"
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "New order (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/order",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "side | ENUM | YES | Please see [Enums](enums.md#side) for supported values.",
+        "type | ENUM | YES | Please see [Enums](enums.md#ordertypes) for supported values.",
+        "timeInForce | ENUM | NO | Please see [Enums](enums.md#timeinforce) for supported values.",
+        "quantity | DECIMAL | NO |",
+        "quoteOrderQty | DECIMAL | NO |",
+        "price | DECIMAL | NO |",
+        "newClientOrderId | STRING | NO | A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+        "strategyId | LONG | NO |",
+        "strategyType | INT | NO | The value cannot be less than `1000000`.",
+        "stopPrice | DECIMAL | NO | Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
+        "trailingDelta | LONG | NO | See Trailing Stop order FAQ",
+        "icebergQty | DECIMAL | NO | Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
+        "newOrderRespType | ENUM | NO | `MARKET` and `LIMIT` order types default to `FULL`, all other orders default to `ACK`.",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol.",
+        "pegPriceType | ENUM | NO | See Pegged Orders Info",
+        "pegOffsetValue | INT | NO | Maximum: 100. <br/> Price level to peg the price to (max: 100). See Pegged Orders Info",
+        "pegOffsetType | ENUM | NO | Only `PRICE_LEVEL` is supported. See Pegged Orders Info",
+        "quoteNotionalLimit | DECIMAL | NO | For orders on the BUY side only. Maximum quote-asset notional the order may consume. See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "* These parameters are allowed for `LIMIT`, `LIMIT_MAKER`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT_LIMIT` orders.",
+        "* If `pegPriceType` is specified, `price` becomes optional. Otherwise, it is still mandatory.",
+        "* `pegPriceType=PRIMARY_PEG` means the primary peg, that is the best price on the same side of the order book as your order.",
+        "* `pegPriceType=MARKET_PEG` means the market peg, that is the best price on the opposite side of the order book from your order.",
+        "* Use `pegOffsetType` and `pegOffsetValue` to request a price level other than the best one. These parameters must be specified together.",
+        "* Any `LIMIT` or `LIMIT_MAKER` type order can be made an iceberg order by sending an `icebergQty`.",
+        "* Any order with an `icebergQty` MUST have `timeInForce` set to `GTC`.",
+        "* For `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT_LIMIT` and `TAKE_PROFIT` orders, `trailingDelta` can be combined with `stopPrice`.",
+        "* `MARKET` orders using `quoteOrderQty` will not break `LOT_SIZE` filter rules; the order will execute a `quantity` that will have the notional value as close as possible to `quoteOrderQty`. Trigger order price rules against market price for both MARKET and LIMIT versions:"
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Test new order (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/order/test",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "computeCommissionRates | BOOLEAN | NO | Default: `false` <br> See [Commissions FAQ](faqs/commission_faq.md#test-order-diferences) to learn more.",
+        "symbol | STRING | YES |",
+        "side | ENUM | YES | Please see [Enums](enums.md#side) for supported values.",
+        "type | ENUM | YES | Please see [Enums](enums.md#ordertypes) for supported values.",
+        "timeInForce | ENUM | NO | Please see [Enums](enums.md#timeinforce) for supported values.",
+        "quantity | DECIMAL | NO |",
+        "quoteOrderQty | DECIMAL | NO |",
+        "price | DECIMAL | NO |",
+        "newClientOrderId | STRING | NO | A unique id among open orders. Automatically generated if not sent. Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+        "strategyId | LONG | NO |",
+        "strategyType | INT | NO | The value cannot be less than `1000000`.",
+        "stopPrice | DECIMAL | NO | Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
+        "trailingDelta | LONG | NO | See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md)",
+        "icebergQty | DECIMAL | NO | Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
+        "newOrderRespType | ENUM | NO | Set the response JSON. `ACK`, `RESULT`, or `FULL`; `MARKET` and `LIMIT` order types default to `FULL`, all other orders default to `ACK`.",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](enums.md#stpmodes)",
+        "pegPriceType | ENUM | NO | `PRIMARY_PEG` or `MARKET_PEG`. See [Pegged Orders](faqs/pegged_orders.md)",
+        "pegOffsetValue | INT | NO | Price level for pegging (max: 100). See [Pegged Orders](faqs/pegged_orders.md)",
+        "pegOffsetType | ENUM | NO | Only `PRICE_LEVEL` is supported. See [Pegged Orders](faqs/pegged_orders.md)",
+        "quoteNotionalLimit | DECIMAL | NO | For orders on the BUY side only. Maximum quote-asset notional the order may consume. See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Cancel order (TRADE)",
+      "method": "DELETE",
+      "path": "/api/v3/order",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "orderId | LONG | NO |",
+        "origClientOrderId | STRING | NO |",
+        "newClientOrderId | STRING | NO | Used to uniquely identify this cancel. Automatically generated by default.",
+        "cancelRestrictions | ENUM | NO | Supported values: <br>`ONLY_NEW` - Cancel will succeed if the order status is `NEW`.<br> `ONLY_PARTIALLY_FILLED` - Cancel will succeed if order status is `PARTIALLY_FILLED`. For more information please refer to [Regarding `cancelRestrictions`](#regarding-cancelrestrictions).",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- Either `orderId` or `origClientOrderId` must be sent.",
+        "- If both `orderId` and `origClientOrderId` are provided, the `orderId` is searched first, then the `origClientOrderId` from that result is checked against that order. If both conditions are not met the request will be rejected."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Cancel All Open Orders on a Symbol (TRADE)",
+      "method": "DELETE",
+      "path": "/api/v3/openOrders",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Cancel an Existing Order and Send a New Order (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/order/cancelReplace",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "side | ENUM | YES |",
+        "type | ENUM | YES |",
+        "cancelReplaceMode | ENUM | YES | The allowed values are: <br/> `STOP_ON_FAILURE` - If the cancel request fails, the new order placement will not be attempted. <br/> `ALLOW_FAILURE` - new order placement will be attempted even if cancel request fails.",
+        "timeInForce | ENUM | NO |",
+        "quantity | DECIMAL | NO |",
+        "quoteOrderQty | DECIMAL | NO |",
+        "price | DECIMAL | NO |",
+        "cancelNewClientOrderId | STRING | NO | Used to uniquely identify this cancel. Automatically generated by default.",
+        "cancelOrigClientOrderId | STRING | NO | Either `cancelOrderId` or `cancelOrigClientOrderId` must be sent. <br></br> If both `cancelOrderId` and `cancelOrigClientOrderId` parameters are provided, the `cancelOrderId` is searched first, then the `cancelOrigClientOrderId` from that result is checked against that order. <br></br> If both conditions are not met the request will be rejected.",
+        "cancelOrderId | LONG | NO | Either `cancelOrderId` or `cancelOrigClientOrderId` must be sent. <br></br>If both `cancelOrderId` and `cancelOrigClientOrderId` parameters are provided, the `cancelOrderId` is searched first, then the `cancelOrigClientOrderId` from that result is checked against that order. <br></br>If both conditions are not met the request will be rejected.",
+        "newClientOrderId | STRING | NO | Used to identify the new order.",
+        "strategyId | LONG | NO |",
+        "strategyType | INT | NO | The value cannot be less than `1000000`.",
+        "stopPrice | DECIMAL | NO |",
+        "trailingDelta | LONG | NO | See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md)",
+        "icebergQty | DECIMAL | NO |",
+        "newOrderRespType | ENUM | NO | Allowed values: <br/> `ACK`, `RESULT`, `FULL` <br/> `MARKET` and `LIMIT` orders types default to `FULL`; all other orders default to `ACK`",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol. The possible supported values are: [STP Modes](enums.md#stpmodes).",
+        "cancelRestrictions | ENUM | NO | Supported values: <br>`ONLY_NEW` - Cancel will succeed if the order status is `NEW`.<br> `ONLY_PARTIALLY_FILLED ` - Cancel will succeed if order status is `PARTIALLY_FILLED`. For more information please refer to [Regarding `cancelRestrictions`](#regarding-cancelrestrictions).",
+        "orderRateLimitExceededMode | ENUM | NO | Supported values: <br> `DO_NOTHING` (default)- will only attempt to cancel the order if account has not exceeded the unfilled order rate limit<br> `CANCEL_ONLY` - will always cancel the order",
+        "pegPriceType | ENUM | NO | `PRIMARY_PEG` or `MARKET_PEG` <br> See Pegged Orders",
+        "pegOffsetValue | INT | NO | Price level to peg the price to (max: 100) <br> See Pegged Orders",
+        "pegOffsetType | ENUM | NO | Only `PRICE_LEVEL` is supported <br> See Pegged Orders.",
+        "quoteNotionalLimit | DECIMAL | NO | For replacement orders on the BUY side only. Maximum quote-asset notional the replacement order may consume. See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- Cancels an existing order and places a new order on the same symbol.",
+        "- Filters and Order Count are evaluated before the processing of the cancellation and order placement occurs.",
+        "- A new order that was not attempted (i.e. when `newOrderResult: NOT_ATTEMPTED`), will still increase the unfilled order count by 1.",
+        "- You can only cancel an individual order from an orderList using this endpoint, but the result is the same as canceling the entire orderList."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Order Amend Keep Priority (TRADE)",
+      "method": "PUT",
+      "path": "/api/v3/order/amend/keepPriority",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "orderId | LONG | NO | `orderId` or `origClientOrderId` must be sent",
+        "origClientOrderId | STRING | NO | `orderId` or `origClientOrderId` must be sent",
+        "newClientOrderId | STRING | NO | The new client order ID for the order after being amended. <br> If not sent, one will be randomly generated. <br> It is possible to reuse the current clientOrderId by sending it as the `newClientOrderId`.",
+        "newQty | DECIMAL | YES | `newQty` must be greater than 0 and less than the order's quantity.",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "New OCO - Deprecated (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/order/oco",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "listClientOrderId | STRING | NO | A unique Id for the entire orderList",
+        "side | ENUM | YES |",
+        "quantity | DECIMAL | YES |",
+        "limitClientOrderId | STRING | NO | A unique Id for the limit order",
+        "price | DECIMAL | YES |",
+        "limitStrategyId | LONG | NO |",
+        "limitStrategyType | INT | NO | The value cannot be less than `1000000`.",
+        "limitIcebergQty | DECIMAL | NO | Used to make the `LIMIT_MAKER` leg an iceberg order.",
+        "trailingDelta | LONG | NO |",
+        "stopClientOrderId | STRING | NO | A unique Id for the stop loss/stop loss limit leg",
+        "stopPrice | DECIMAL | YES |",
+        "stopStrategyId | LONG | NO |",
+        "stopStrategyType | INT | NO | The value cannot be less than `1000000`.",
+        "stopLimitPrice | DECIMAL | NO | If provided, `stopLimitTimeInForce` is required.",
+        "stopIcebergQty | DECIMAL | NO | Used with `STOP_LOSS_LIMIT` leg to make an iceberg order.",
+        "stopLimitTimeInForce | ENUM | NO | Valid values are `GTC`/`FOK`/`IOC`",
+        "newOrderRespType | ENUM | NO | Format of the JSON response. Supported values: [Order Response Type](enums.md#orderresponsetype)",
+        "selfTradePreventionMode | ENUM | NO | The allowed values are dependent on what is configured on the symbol. Supported values: [STP Modes](enums.md#stpmodes)",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- Price Restrictions:",
+        "- Quantity Restrictions:",
+        "- `OCO` adds **2 orders** to the `EXCHANGE_MAX_ORDERS` filter and the `MAX_NUM_ORDERS` filter."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "New Order list - OCO (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/orderList/oco",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "listClientOrderId | STRING | NO | Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `aboveClientOrderId` and the `belowClientOrderId`.",
+        "side | ENUM | YES |",
+        "quantity | DECIMAL | YES | Quantity for both orders of the order list.",
+        "aboveType | ENUM | YES |",
+        "aboveClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the above order. Automatically generated if not sent.",
+        "aboveIcebergQty | LONG | NO | Note that this can only be used if `aboveTimeInForce` is `GTC`.",
+        "abovePrice | DECIMAL | NO | Can be used if `aboveType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
+        "aboveStopPrice | DECIMAL | NO | Can be used if `aboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `aboveStopPrice` or `aboveTrailingDelta` or both, must be specified.",
+        "aboveTrailingDelta | LONG | NO | See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md)",
+        "aboveTimeInForce | ENUM | NO | Required if `aboveType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
+        "aboveStrategyId | LONG | NO | Arbitrary numeric value identifying the above order within an order strategy.",
+        "aboveStrategyType | INT | NO | Arbitrary numeric value identifying the above order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "abovePegPriceType | ENUM | NO | `PRIMARY_PEG` or `MARKET_PEG`. See [Pegged Orders](faqs/pegged_orders.md)",
+        "abovePegOffsetType | ENUM | NO |",
+        "abovePegOffsetValue | INT | NO |",
+        "belowType | ENUM | YES | Supported values: `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
+        "belowClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the below order. Automatically generated if not sent.",
+        "belowIcebergQty | LONG | NO | Note that this can only be used if `belowTimeInForce` is `GTC`.",
+        "belowPrice | DECIMAL | NO | Can be used if `belowType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
+        "belowStopPrice | DECIMAL | NO | Can be used if `belowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `belowStopPrice` or `belowTrailingDelta` or both, must be specified.",
+        "belowTrailingDelta | LONG | NO | See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md)",
+        "belowTimeInForce | ENUM | NO | Required if `belowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
+        "belowStrategyId | LONG | NO | Arbitrary numeric value identifying the below order within an order strategy.",
+        "belowStrategyType | INT | NO | Arbitrary numeric value identifying the below order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "belowPegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "belowPegOffsetType | ENUM | NO |",
+        "belowPegOffsetValue | INT | NO |",
+        "newOrderRespType | ENUM | NO | Select response format: `ACK`, `RESULT`, `FULL`.",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](enums.md#stpmodes)",
+        "aboveQuoteNotionalLimit | DECIMAL | NO | Quote notional limit for the above order (only for orders on the BUY side). See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "belowQuoteNotionalLimit | DECIMAL | NO | Quote notional limit for the below order (only for orders on the BUY side). See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- An OCO has 2 orders called the **above order** and **below order**.",
+        "- One of the orders must be a `LIMIT_MAKER/TAKE_PROFIT/TAKE_PROFIT_LIMIT` order and the other must be `STOP_LOSS` or `STOP_LOSS_LIMIT` order.",
+        "- Price restrictions",
+        "- OCOs add 2 orders to the `EXCHANGE_MAX_ORDERS` filter and the `MAX_NUM_ORDERS` filter."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "New Order list - OTO (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/orderList/oto",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "listClientOrderId | STRING | NO | Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.",
+        "newOrderRespType | ENUM | NO | Format of the JSON response. Supported values: [Order Response Type](enums.md#orderresponsetype)",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](enums.md#stpmodes)",
+        "workingType | ENUM | YES | Supported values: `LIMIT`, `LIMIT_MAKER`",
+        "workingSide | ENUM | YES | Supported values: [Order Side](enums.md#side)",
+        "workingClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.",
+        "workingPrice | DECIMAL | YES |",
+        "workingQuantity | DECIMAL | YES | Sets the quantity for the working order.",
+        "workingIcebergQty | DECIMAL | NO | This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
+        "workingTimeInForce | ENUM | NO | Supported values: [Time In Force](enums.md#timeinforce)",
+        "workingStrategyId | LONG | NO | Arbitrary numeric value identifying the working order within an order strategy.",
+        "workingStrategyType | INT | NO | Arbitrary numeric value identifying the working order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "pendingType | ENUM | YES | Supported values: [Order Types](enums.md#ordertypes). Note that `MARKET` orders using `quoteOrderQty` are not supported.",
+        "workingPegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "workingPegOffsetType | ENUM | NO |",
+        "workingPegOffsetValue | INT | NO |",
+        "pendingSide | ENUM | YES | Supported values: [Order Side](enums.md#side)",
+        "pendingClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the pending order. Automatically generated if not sent.",
+        "pendingPrice | DECIMAL | NO |",
+        "pendingStopPrice | DECIMAL | NO |",
+        "pendingTrailingDelta | DECIMAL | NO |",
+        "pendingQuantity | DECIMAL | YES | Sets the quantity for the pending order.",
+        "pendingIcebergQty | DECIMAL | NO | This can only be used if `pendingTimeInForce` is `GTC` or if `pendingType` is `LIMIT_MAKER`.",
+        "pendingTimeInForce | ENUM | NO | Supported values: [Time In Force](enums.md#timeinforce)",
+        "pendingStrategyId | LONG | NO | Arbitrary numeric value identifying the pending order within an order strategy.",
+        "pendingStrategyType | INT | NO | Arbitrary numeric value identifying the pending order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "pendingPegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "pendingPegOffsetType | ENUM | NO |",
+        "pendingPegOffsetValue | INT | NO |",
+        "workingQuoteNotionalLimit | DECIMAL | NO | Quote notional limit for the working order (only for orders on the BUY side). See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "pendingQuoteNotionalLimit | DECIMAL | NO | Quote notional limit for the pending order (only for orders on the BUY side). See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- An OTO (One-Triggers-the-Other) is an order list comprised of 2 orders.",
+        "- The first order is called the **working order** and must be `LIMIT` or `LIMIT_MAKER`. Initially, only the working order goes on the order book.",
+        "- The second order is called the **pending order**. It can be any order type except for `MARKET` orders using parameter `quoteOrderQty`. The pending order is only placed on the order book when the working order gets **fully filled**.",
+        "- If either the working order or the pending order is cancelled individually, the other order in the order list will also be canceled or expired.",
+        "- When the order list is placed, if the working order gets **immediately fully filled**, the placement response will show the working order as `FILLED` but the pending order will still appear as `PENDING_NEW`. You need to query the status of the pending order again to see its updated status.",
+        "- OTOs add **2 orders** to the `EXCHANGE_MAX_NUM_ORDERS` filter and `MAX_NUM_ORDERS` filter."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "New Order list - OTOCO (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/orderList/otoco",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "listClientOrderId | STRING | NO | Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+        "newOrderRespType | ENUM | NO | Format of the JSON response. Supported values: [Order Response Type](enums.md#orderresponsetype)",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](enums.md#stpmodes)",
+        "workingType | ENUM | YES | Supported values: `LIMIT`, `LIMIT_MAKER`",
+        "workingSide | ENUM | YES | Supported values: [Order Side](enums.md#side)",
+        "workingClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.",
+        "workingPrice | DECIMAL | YES |",
+        "workingQuantity | DECIMAL | YES | Sets the quantity for the working order.",
+        "workingIcebergQty | DECIMAL | NO | This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
+        "workingTimeInForce | ENUM | NO | Supported values: [Time In Force](enums.md#timeinforce)",
+        "workingStrategyId | LONG | NO | Arbitrary numeric value identifying the working order within an order strategy.",
+        "workingStrategyType | INT | NO | Arbitrary numeric value identifying the working order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "workingPegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "workingPegOffsetType | ENUM | NO |",
+        "workingPegOffsetValue | INT | NO |",
+        "pendingSide | ENUM | YES | Supported values: [Order Side](enums.md#side)",
+        "pendingQuantity | DECIMAL | YES | Sets the quantity for the pending orders.",
+        "pendingAboveType | ENUM | YES | Supported values: `STOP_LOSS_LIMIT`, `STOP_LOSS`, `LIMIT_MAKER`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
+        "pendingAboveClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the pending above order. Automatically generated if not sent.",
+        "pendingAbovePrice | DECIMAL | NO | Can be used if `pendingAboveType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
+        "pendingAboveStopPrice | DECIMAL | NO | Can be used if `pendingAboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`.",
+        "pendingAboveTrailingDelta | DECIMAL | NO | See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md)",
+        "pendingAboveIcebergQty | DECIMAL | NO | This can only be used if `pendingAboveTimeInForce` is `GTC` or if `pendingAboveType` is `LIMIT_MAKER`.",
+        "pendingAboveTimeInForce | ENUM | NO | Required if `pendingAboveType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
+        "pendingAboveStrategyId | LONG | NO | Arbitrary numeric value identifying the pending above order within an order strategy.",
+        "pendingAboveStrategyType | INT | NO | Arbitrary numeric value identifying the pending above order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "pendingAbovePegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "pendingAbovePegOffsetType | ENUM | NO |",
+        "pendingAbovePegOffsetValue | INT | NO |",
+        "pendingBelowType | ENUM | NO | Supported values: `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
+        "pendingBelowClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the pending below order. Automatically generated if not sent.",
+        "pendingBelowPrice | DECIMAL | NO | Can be used if `pendingBelowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT` to specify the limit price.",
+        "pendingBelowStopPrice | DECIMAL | NO | Can be used if `pendingBelowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `pendingBelowStopPrice` or `pendingBelowTrailingDelta` or both, must be specified.",
+        "pendingBelowTrailingDelta | DECIMAL | NO | See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md)",
+        "pendingBelowIcebergQty | DECIMAL | NO | This can only be used if `pendingBelowTimeInForce` is `GTC`, or if `pendingBelowType` is `LIMIT_MAKER`.",
+        "pendingBelowTimeInForce | ENUM | NO | Required if `pendingBelowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
+        "pendingBelowStrategyId | LONG | NO | Arbitrary numeric value identifying the pending below order within an order strategy.",
+        "pendingBelowStrategyType | INT | NO | Arbitrary numeric value identifying the pending below order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "pendingBelowPegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "pendingBelowPegOffsetType | ENUM | NO |",
+        "pendingBelowPegOffsetValue | INT | NO |",
+        "workingQuoteNotionalLimit | DECIMAL | NO | Quote notional limit for the working order (only for orders on the BUY side). See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "pendingAboveQuoteNotionalLimit | DECIMAL | NO | Quote notional limit for the pending above order (only for orders on the BUY side). See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "pendingBelowQuoteNotionalLimit | DECIMAL | NO | Quote notional limit for the pending below order (only for orders on the BUY side). See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- An OTOCO (One-Triggers-One-Cancels-the-Other) is an order list comprised of 3 orders.",
+        "- The first order is called the **working order** and must be `LIMIT` or `LIMIT_MAKER`. Initially, only the working order goes on the order book.",
+        "- OTOCO has 2 pending orders (pending above and pending below), forming an OCO pair. The pending orders are only placed on the order book when the working order gets **fully filled**.",
+        "- OTOCOs add **3 orders** to the `EXCHANGE_MAX_NUM_ORDERS` filter and `MAX_NUM_ORDERS` filter."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "New Order List - OPO (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/orderList/opo",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "listClientOrderId | STRING | NO | Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.",
+        "newOrderRespType | ENUM | NO | Format of the JSON response. Supported values: [Order Response Type](enums.md#orderresponsetype)",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](enums.md#stpmodes)",
+        "workingType | ENUM | YES | Supported values: `LIMIT`, `LIMIT_MAKER`",
+        "workingSide | ENUM | YES | Supported values: [Order Side](enums.md#side)",
+        "workingClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.",
+        "workingPrice | DECIMAL | YES | Price for the working order.",
+        "workingQuantity | DECIMAL | YES | Sets the quantity for the working order.",
+        "workingIcebergQty | DECIMAL | NO | This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
+        "workingTimeInForce | ENUM | NO | Supported values: [Time In Force](enums.md#timeinforce)",
+        "workingStrategyId | LONG | NO | Arbitrary numeric value identifying the working order within an order strategy.",
+        "workingStrategyType | INT | NO | Arbitrary numeric value identifying the working order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "workingPegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "workingPegOffsetType | ENUM | NO |",
+        "workingPegOffsetValue | INT | NO |",
+        "pendingType | ENUM | YES | Supported values: [Order Types](enums.md#ordertypes). Note that `MARKET` orders using `quoteOrderQty` are not supported.",
+        "pendingSide | ENUM | YES | Supported values: [Order Side](enums.md#side)",
+        "pendingClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the pending order. Automatically generated if not sent.",
+        "pendingPrice | DECIMAL | NO | Price for the pending order.",
+        "pendingStopPrice | DECIMAL | NO | Stop price for the pending order.",
+        "pendingTrailingDelta | DECIMAL | NO | Trailing delta for the pending order.",
+        "pendingIcebergQty | DECIMAL | NO | This can only be used if `pendingTimeInForce` is `GTC` or if `pendingType` is `LIMIT_MAKER`.",
+        "pendingTimeInForce | ENUM | NO | Supported values: [Time In Force](enums.md#timeinforce)",
+        "pendingStrategyId | LONG | NO | Arbitrary numeric value identifying the pending order within an order strategy.",
+        "pendingStrategyType | INT | NO | Arbitrary numeric value identifying the pending order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "pendingPegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "pendingPegOffsetType | ENUM | NO |",
+        "pendingPegOffsetValue | INT | NO |",
+        "workingQuoteNotionalLimit | DECIMAL | NO | Quote notional limit for the working LIMIT order on the BUY side. See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- The working order must be `LIMIT` or `LIMIT_MAKER`.",
+        "- OPOs add 2 orders to the `EXCHANGE_MAX_NUM_ORDERS` filter and `MAX_NUM_ORDERS` filter."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "New Order List - OPOCO (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/orderList/opoco",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "listClientOrderId | STRING | NO | Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+        "newOrderRespType | ENUM | NO | Format of the JSON response. Supported values: [Order Response Type](enums.md#orderresponsetype)",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](enums.md#stpmodes)",
+        "workingType | ENUM | YES | Supported values: `LIMIT`, `LIMIT_MAKER`",
+        "workingSide | ENUM | YES | Supported values: [Order Side](enums.md#side)",
+        "workingClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.",
+        "workingPrice | DECIMAL | YES | Price for the working order.",
+        "workingQuantity | DECIMAL | YES | Sets the quantity for the working order.",
+        "workingIcebergQty | DECIMAL | NO | This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
+        "workingTimeInForce | ENUM | NO | Supported values: [Time In Force](enums.md#timeinforce)",
+        "workingStrategyId | LONG | NO | Arbitrary numeric value identifying the working order within an order strategy.",
+        "workingStrategyType | INT | NO | Arbitrary numeric value identifying the working order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "workingPegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "workingPegOffsetType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "workingPegOffsetValue | INT | NO | Price level for pegging (max: 100). See [Pegged Orders](faqs/pegged_orders.md)",
+        "pendingSide | ENUM | YES | Supported values: [Order Side](enums.md#side)",
+        "pendingAboveType | ENUM | YES | Supported values: `STOP_LOSS_LIMIT`, `STOP_LOSS`, `LIMIT_MAKER`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
+        "pendingAboveClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the pending above order. Automatically generated if not sent.",
+        "pendingAbovePrice | DECIMAL | NO | Can be used if `pendingAboveType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
+        "pendingAboveStopPrice | DECIMAL | NO | Can be used if `pendingAboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`.",
+        "pendingAboveTrailingDelta | DECIMAL | NO | See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md)",
+        "pendingAboveIcebergQty | DECIMAL | NO | This can only be used if `pendingAboveTimeInForce` is `GTC` or `pendingAboveType` is `LIMIT_MAKER`.",
+        "pendingAboveTimeInForce | ENUM | NO | Required if `pendingAboveType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
+        "pendingAboveStrategyId | LONG | NO | Arbitrary numeric value identifying the pending above order within an order strategy.",
+        "pendingAboveStrategyType | INT | NO | Arbitrary numeric value identifying the pending above order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "pendingAbovePegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "pendingAbovePegOffsetType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "pendingAbovePegOffsetValue | INT | NO | Price level for pegging (max: 100). See [Pegged Orders](faqs/pegged_orders.md)",
+        "pendingBelowType | ENUM | NO | Supported values: `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
+        "pendingBelowClientOrderId | STRING | NO | Arbitrary unique ID among open orders for the pending below order. Automatically generated if not sent.",
+        "pendingBelowPrice | DECIMAL | NO | Can be used if `pendingBelowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT` to specify the limit price.",
+        "pendingBelowStopPrice | DECIMAL | NO | Can be used if `pendingBelowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `pendingBelowStopPrice` or `pendingBelowTrailingDelta` or both, must be specified.",
+        "pendingBelowTrailingDelta | DECIMAL | NO | See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md)",
+        "pendingBelowIcebergQty | DECIMAL | NO | This can only be used if `pendingBelowTimeInForce` is `GTC` or `pendingBelowType` is `LIMIT_MAKER`.",
+        "pendingBelowTimeInForce | ENUM | NO | Supported values: [Time In Force](enums.md#timeinforce)",
+        "pendingBelowStrategyId | LONG | NO | Arbitrary numeric value identifying the pending below order within an order strategy.",
+        "pendingBelowStrategyType | INT | NO | Arbitrary numeric value identifying the pending below order strategy. Values smaller than `1000000` are reserved and cannot be used.",
+        "pendingBelowPegPriceType | ENUM | NO | See [Pegged Orders](faqs/pegged_orders.md)",
+        "pendingBelowPegOffsetType | ENUM | NO |",
+        "pendingBelowPegOffsetValue | INT | NO |",
+        "workingQuoteNotionalLimit | DECIMAL | NO | Quote notional limit for the working LIMIT order on the BUY side. See [Quote Notional Limit](faqs/quoteNotionalLimit.md).",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- The working order must be `LIMIT` or `LIMIT_MAKER`."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Cancel Order list (TRADE)",
+      "method": "DELETE",
+      "path": "/api/v3/orderList",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "orderListId | LONG | NO | Either `orderListId` or `listClientOrderId` must be provided",
+        "listClientOrderId | STRING | NO | Either `orderListId` or `listClientOrderId` must be provided",
+        "newClientOrderId | STRING | NO | Used to uniquely identify this cancel. Automatically generated by default.",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "New order using SOR (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/sor/order",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "side | ENUM | YES |",
+        "type | ENUM | YES |",
+        "timeInForce | ENUM | NO |",
+        "quantity | DECIMAL | YES |",
+        "price | DECIMAL | NO |",
+        "newClientOrderId | STRING | NO | A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+        "strategyId | LONG | NO |",
+        "strategyType | INT | NO | The value cannot be less than `1000000`.",
+        "icebergQty | DECIMAL | NO | Used with `LIMIT` to create an iceberg order.",
+        "newOrderRespType | ENUM | NO | Set the response JSON. `ACK`, `RESULT`, or `FULL`. Default to `FULL`",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol. The possible supported values are: [STP Modes](enums.md#stpmodes).",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Test new order using SOR (TRADE)",
+      "method": "POST",
+      "path": "/api/v3/sor/order/test",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "computeCommissionRates | BOOLEAN | NO | Default: false.",
+        "symbol | STRING | YES |",
+        "side | ENUM | YES | Please see [Enums](enums.md#side) for supported values.",
+        "type | ENUM | YES | Please see [Enums](enums.md#ordertypes) for supported values.",
+        "timeInForce | ENUM | NO | Please see [Enums](enums.md#timeinforce) for supported values.",
+        "quantity | DECIMAL | YES |",
+        "price | DECIMAL | NO |",
+        "newClientOrderId | STRING | NO | A unique id among open orders. Automatically generated if not sent. Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+        "strategyId | LONG | NO |",
+        "strategyType | INT | NO | The value cannot be less than `1000000`.",
+        "icebergQty | DECIMAL | NO | Used with `LIMIT` to create an iceberg order.",
+        "newOrderRespType | ENUM | NO | Set the response JSON. `ACK`, `RESULT`, or `FULL`. Default to `FULL`.",
+        "selfTradePreventionMode | ENUM | NO | The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](enums.md#stpmodes)",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client <br/> time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Account information (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/account",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "omitZeroBalances | BOOLEAN | NO | Default: false. <br/> When set to `true`, emits only the non-zero balances of an account.",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query order (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/order",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "orderId | LONG | NO |",
+        "origClientOrderId | STRING | NO |",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- Either `orderId` or `origClientOrderId` must be sent.",
+        "- If both `orderId` and `origClientOrderId` are provided, the `orderId` is searched first, then the `origClientOrderId` from that result is checked against that order. If both conditions are not met the request will be rejected.",
+        "- For some historical orders `cummulativeQuoteQty` will be < 0, meaning the data is not available at this time."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Current open orders (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/openOrders",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | NO |",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- If the symbol is not sent, orders for all symbols will be returned in an array."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "All orders (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/allOrders",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "orderId | LONG | NO |",
+        "startTime | LONG | NO |",
+        "endTime | LONG | NO |",
+        "limit | INT | NO | Default: 500; Maximum: 1000.",
+        "recvWindow | DECIMAL | NO | The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- If `orderId` is set, it will get orders >= that `orderId`. Otherwise most recent orders are returned.",
+        "- For some historical orders `cummulativeQuoteQty` will be < 0, meaning the data is not available at this time.",
+        "- If `startTime` and/or `endTime` provided, `orderId` is not required.",
+        "- The time between `startTime` and `endTime` can't be longer than 24 hours."
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Order list (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/orderList",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "orderListId | LONG | NO | Query order list by `orderListId`. `orderListId` or `origClientOrderId` must be provided.",
+        "origClientOrderId | STRING | NO | Query order list by `listClientOrderId`. `orderListId` or `origClientOrderId` must be provided.",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query all Order lists (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/allOrderList",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "fromId | LONG | NO | If supplied, neither startTime or endTime can be provided",
+        "startTime | LONG | NO |",
+        "endTime | LONG | NO |",
+        "limit | INT | NO | Default: 500; Maximum: 1000.",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Open Order lists (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/openOrderList",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Account trade list (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/myTrades",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "orderId | LONG | NO | This can only be used in combination with `symbol`.",
+        "startTime | LONG | NO |",
+        "endTime | LONG | NO |",
+        "fromId | LONG | NO | TradeId to fetch from. Default gets most recent trades.",
+        "limit | INT | NO | Default: 500; Maximum: 1000.",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [
+        "- If `fromId` is set, it will get trades >= that `fromId`. Otherwise most recent trades are returned.",
+        "- The time between `startTime` and `endTime` can't be longer than 24 hours.",
+        "- These are the supported combinations of all parameters:"
+      ],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Unfilled Order Count (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/rateLimit/order",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Prevented Matches (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/myPreventedMatches",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "preventedMatchId | LONG | NO |",
+        "orderId | LONG | NO |",
+        "fromPreventedMatchId | LONG | NO |",
+        "limit | INT | NO | Default: 500; Maximum: 1000.",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Allocations (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/myAllocations",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "startTime | LONG | NO |",
+        "endTime | LONG | NO |",
+        "fromAllocationId | INT | NO |",
+        "limit | INT | NO | Default: 500; Maximum: 1000.",
+        "orderId | LONG | NO |",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Commission Rates (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/account/commission",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query Order Amendments (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/order/amendments",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "orderId | LONG | YES |",
+        "fromExecutionId | LONG | NO |",
+        "limit | LONG | NO | Default: 500; Maximum: 1000.",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    },
+    {
+      "name": "Query relevant filters (USER_DATA)",
+      "method": "GET",
+      "path": "/api/v3/myFilters",
+      "parameter_rows": [
+        "Name | Type | Mandatory | Description",
+        "symbol | STRING | YES |",
+        "recvWindow | DECIMAL | NO | Maximum: 60000. <br/> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+        "timestamp | LONG | YES | Unix timestamp used to sign the request, in milliseconds or microseconds. The value must reflect the current client time and is validated by the server for signed endpoints."
+      ],
+      "rules": [],
+      "source": "https://github.com/binance/binance-spot-api-docs/blob/e5f8489162e79fa1da6d0ea3ded3ce810b3637a0/rest-api.md",
+      "collection_present": true
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 import copy,json,sys,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
-from run_chart_p7 import Harness,run_suite,execute
-from agentrader.chart_replay import ReplayEngine,PROFILE,event_identity
-from agentrader.binding_catalog import catalog
-from agentrader.indicator_config import defaults_v4,IndicatorService
-from agentrader.drawings.service import DrawingService
+from scripts.chart.run_chart_p7 import Harness,run_suite,execute
+from agentrader.chart.chart_replay import ReplayEngine,PROFILE,event_identity
+from agentrader.chart.binding_catalog import catalog
+from agentrader.chart.indicator_config import defaults_v4,IndicatorService
+from agentrader.chart.drawings.service import DrawingService
 
 class ScenarioTests(unittest.TestCase):
  @classmethod
@@ -62,12 +62,12 @@ class ReplayAdditionalTests(unittest.TestCase):
 
 class ReplayReportTests(unittest.TestCase):
  def test_packaged_result_source_hashes_and_no_auto_integration(self):
-  from agentrader.replay_report import replay_summary
+  from agentrader.chart.replay_report import replay_summary
   r=replay_summary();self.assertEqual(r['state'],'VERIFIED_ISOLATED');self.assertEqual(r['passed_count'],36);self.assertFalse(r['runtime_connected']);self.assertFalse(r['order_authority'])
  def test_missing_stale_or_inconsistent_report_fails_closed(self):
   import tempfile
   from unittest.mock import patch
-  import agentrader.replay_report as module
+  import agentrader.chart.replay_report as module
   original=json.loads(module.REPORT.read_text(encoding='utf-8'))
   with tempfile.TemporaryDirectory() as folder:
    path=Path(folder)/'report.json'

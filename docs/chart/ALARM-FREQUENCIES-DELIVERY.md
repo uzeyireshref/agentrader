@@ -39,7 +39,7 @@ Initial startup, reconnect/epoch change, stale/invalid data and sample gaps over
 - Full frontend312 passed; TypeScript and production build passed (existing bundle-size warning).
 - Chart P7 evidence check36/36 passed after regenerating binding_evidence.json for the market_feed context metadata addition.
 - New production Chrome acceptance7 groups passed; existing multi-condition editor11 groups passed. No page errors. Dark/light/600px screenshots reviewed. All browser API writes use isolated fixtures, not personal workspace data.
-- Actual real-engine forming event generated in a temporary migrated database by python -m scripts.create_intrabar_fixture. Browser acceptance: scripts/check_alert_frequencies.mts. Evidence: reports/alert-frequencies-ui-20261113/result.json and screenshots. Test logs: reports/alert-frequencies-backend-tests.log and reports/alert-frequencies-frontend-tests.log.
+- Actual real-engine forming event generated in a temporary migrated database by python -m scripts.create_intrabar_fixture. Browser acceptance: scripts/chart/check_alert_frequencies.mts. Evidence: reports/alert-frequencies-ui-20261113/result.json and screenshots. Test logs: reports/alert-frequencies-backend-tests.log and reports/alert-frequencies-frontend-tests.log.
 
 ## Primary references
 

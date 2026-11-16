@@ -1,0 +1,1673 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-15",
+  "scope": "Kod ve mevcut regresyon eşlemesi, uçtan uca geliştirme açıkları",
+  "runtime_exchange_acceptance": "NOT_RUN",
+  "scenario_count": 128,
+  "scenarios": [
+    {
+      "id": "CB-001",
+      "category": "Emir doğrulama",
+      "name": "Long ve short emir parametreleri",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/order_rules.py"
+      ],
+      "test_file": "tests/test_order_rules.py",
+      "test_method": "test_long_and_short_open_orders",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-002",
+      "category": "Emir doğrulama",
+      "name": "Hedge positionSide ve reduceOnly kuralları",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/order_rules.py"
+      ],
+      "test_file": "tests/test_order_rules.py",
+      "test_method": "test_hedge_side_and_reduce_only_rules",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-003",
+      "category": "Emir doğrulama",
+      "name": "Minimum nominalin altında pozisyon azaltma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/order_rules.py"
+      ],
+      "test_file": "tests/test_order_rules.py",
+      "test_method": "test_reducing_market_exit_can_be_below_entry_minimum",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-004",
+      "category": "Emir doğrulama",
+      "name": "Close-all stop ile miktar çakışması",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/order_rules.py"
+      ],
+      "test_file": "tests/test_order_rules.py",
+      "test_method": "test_stop_close_all_and_quantity_conflict",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-005",
+      "category": "Emir doğrulama",
+      "name": "Tick, lot ve bilinmeyen alan reddi",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/order_rules.py"
+      ],
+      "test_file": "tests/test_order_rules.py",
+      "test_method": "test_minimum_steps_and_unknown_fields",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-006",
+      "category": "Emir doğrulama",
+      "name": "Market emrine limit alanı ekleme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/order_rules.py"
+      ],
+      "test_file": "tests/test_order_rules.py",
+      "test_method": "test_market_does_not_accept_limit_fields",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-007",
+      "category": "Emir doğrulama",
+      "name": "GTD vadesi ve saat kontrolü",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/order_rules.py"
+      ],
+      "test_file": "tests/test_order_rules.py",
+      "test_method": "test_gtd_requires_a_valid_future_time",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-008",
+      "category": "Emir doğrulama",
+      "name": "Native trailing yönü ve callback doğrulama",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/order_rules.py"
+      ],
+      "test_file": "tests/test_order_rules.py",
+      "test_method": "test_trailing_stop_direction_and_callback",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-009",
+      "category": "Tek pozisyon yürütme",
+      "name": "Onaylı long giriş ve korumalar",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/v2_runner.py"
+      ],
+      "test_file": "tests/test_v2_runner.py",
+      "test_method": "test_authorized_long_protects_and_restart_never_reenters",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-010",
+      "category": "Tek pozisyon yürütme",
+      "name": "Short hedge giriş ve korumalar",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/v2_runner.py"
+      ],
+      "test_file": "tests/test_v2_runner.py",
+      "test_method": "test_short_hedge_uses_correct_entry_and_protection_sides",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-011",
+      "category": "Tek pozisyon yürütme",
+      "name": "Kaybolan giriş yanıtında çift emir önleme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/v2_runner.py"
+      ],
+      "test_file": "tests/test_v2_runner.py",
+      "test_method": "test_lost_entry_response_is_recovered_without_second_entry",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-012",
+      "category": "Tek pozisyon yürütme",
+      "name": "Kısmi girişin kalanını iptal ve koruma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/v2_runner.py"
+      ],
+      "test_file": "tests/test_v2_runner.py",
+      "test_method": "test_partial_entry_is_canceled_before_protection",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-013",
+      "category": "Tek pozisyon yürütme",
+      "name": "Bekleyen limit emrinin restart sonrası yönetimi",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/v2_runner.py"
+      ],
+      "test_file": "tests/test_v2_runner.py",
+      "test_method": "test_limit_pending_restart_does_not_cancel_or_reenter",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-014",
+      "category": "Tek pozisyon yürütme",
+      "name": "Limit emrin vade sonunda iptali",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/v2_runner.py"
+      ],
+      "test_file": "tests/test_v2_runner.py",
+      "test_method": "test_limit_expiry_cancels_without_opening_position",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-015",
+      "category": "Tek pozisyon yürütme",
+      "name": "Kademeli long hedefte artık miktarı koruma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/v2_runner.py"
+      ],
+      "test_file": "tests/test_v2_runner.py",
+      "test_method": "test_staged_long_exit_leaves_residual_and_keeps_final_target",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-016",
+      "category": "Tek pozisyon yürütme",
+      "name": "Break-even stopu doğrulayarak değiştirme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/v2_runner.py"
+      ],
+      "test_file": "tests/test_v2_runner.py",
+      "test_method": "test_break_even_verifies_new_quantity_stop_before_canceling_old",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-017",
+      "category": "Grid yürütme",
+      "name": "Başlangıç grid hücreleri ve seed koruması",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/grid_runner.py"
+      ],
+      "test_file": "tests/test_grid_runner.py",
+      "test_method": "test_grid_initializes_four_slots_and_protects_seed",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-018",
+      "category": "Grid yürütme",
+      "name": "Al-sat-yenile döngüsünde kapasite",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/grid_runner.py"
+      ],
+      "test_file": "tests/test_grid_runner.py",
+      "test_method": "test_fill_sell_refill_cycle_preserves_slot_capacity",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-019",
+      "category": "Grid yürütme",
+      "name": "Kısmi alışta gerçek dolan miktarı satma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/grid_runner.py"
+      ],
+      "test_file": "tests/test_grid_runner.py",
+      "test_method": "test_partial_buy_cancels_remaining_then_sells_actual_fill",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-020",
+      "category": "Grid yürütme",
+      "name": "Kısmi satış tamamlanmadan yenilememe",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/grid_runner.py"
+      ],
+      "test_file": "tests/test_grid_runner.py",
+      "test_method": "test_partial_sell_never_refills_before_residual_is_sold",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-021",
+      "category": "Grid yürütme",
+      "name": "Grid restart sonrası çift emir önleme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/grid_runner.py"
+      ],
+      "test_file": "tests/test_grid_runner.py",
+      "test_method": "test_restart_queries_existing_orders_without_duplicate_posts",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-022",
+      "category": "Grid yürütme",
+      "name": "Short hedge geometrik grid",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/grid_runner.py"
+      ],
+      "test_file": "tests/test_grid_runner.py",
+      "test_method": "test_short_hedge_and_geometric_grid_use_inverse_sides",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-023",
+      "category": "Grid yürütme",
+      "name": "Native stop dolunca ikinci kapanış göndermeme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/grid_runner.py"
+      ],
+      "test_file": "tests/test_grid_runner.py",
+      "test_method": "test_native_stop_fill_closes_grid_without_another_market_exit",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-024",
+      "category": "Grid yürütme",
+      "name": "Düşen kaldıraç sınırında refill engeli",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/grid_runner.py"
+      ],
+      "test_file": "tests/test_grid_runner.py",
+      "test_method": "test_lowered_exchange_leverage_cap_blocks_refill_before_new_open",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-025",
+      "category": "Çoklu coin ve hesap riski",
+      "name": "İki sembolün sahipli emirlerle eşzamanlı yönetimi",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_multi_session.py",
+      "test_method": "test_two_symbols_open_and_manage_without_adopting_each_others_orders",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-026",
+      "category": "Çoklu coin ve hesap riski",
+      "name": "Toplam nominal bütçenin paylaşılması",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_multi_session.py",
+      "test_method": "test_individually_valid_plans_cannot_exceed_shared_notional",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-027",
+      "category": "Çoklu coin ve hesap riski",
+      "name": "Bir oturum kapanınca diğer korumaların korunması",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_multi_session.py",
+      "test_method": "test_closing_one_session_preserves_peer_protections_and_reservation",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-028",
+      "category": "Çoklu coin ve hesap riski",
+      "name": "Restart sonrası ortak rezervasyon",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_multi_session.py",
+      "test_method": "test_restart_preserves_ownership_and_full_reservations",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-029",
+      "category": "Çoklu coin ve hesap riski",
+      "name": "Dolmamış girişlerin risk ayırması",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_multi_session.py",
+      "test_method": "test_two_pending_entries_reserve_capacity_even_with_no_fills",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-030",
+      "category": "Çoklu coin ve hesap riski",
+      "name": "Single ve grid oturumlarının birlikte çalışması",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_multi_session.py",
+      "test_method": "test_single_and_grid_coexist_and_stop_only_cancels_grid_symbol",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-031",
+      "category": "Çoklu coin ve hesap riski",
+      "name": "İki grid oturumunun bağımsız kapanması",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_multi_session.py",
+      "test_method": "test_two_grids_manage_and_close_independently",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-032",
+      "category": "Çoklu coin ve hesap riski",
+      "name": "Hesap genelinde günlük kayıp bütçesi",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_multi_session.py",
+      "test_method": "test_joint_stop_loss_and_daily_loss_are_account_wide",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-033",
+      "category": "Portföy ve teminat",
+      "name": "Nominal, teminat ve stop zararını ayrı hesaplama",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_portfolio.py",
+      "test_method": "test_nominal_margin_and_stop_are_different",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-034",
+      "category": "Portföy ve teminat",
+      "name": "Long/short hedge riskini koruma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_portfolio.py",
+      "test_method": "test_long_and_short_hedge_risk_is_not_netted",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-035",
+      "category": "Portföy ve teminat",
+      "name": "Bekleyen girişlerin riskini toplama",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_portfolio.py",
+      "test_method": "test_pending_entries_aggregate_instead_of_releasing_risk",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-036",
+      "category": "Portföy ve teminat",
+      "name": "Likidasyon ötesi stopu reddetme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_portfolio.py",
+      "test_method": "test_isolated_stop_beyond_liquidation_is_rejected",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-037",
+      "category": "Portföy ve teminat",
+      "name": "Doğrulanmış ek izole teminat etkisi",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_portfolio.py",
+      "test_method": "test_verified_extra_isolated_margin_can_move_liquidation",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-038",
+      "category": "Portföy ve teminat",
+      "name": "Eski portföy görünümünde giriş engeli",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_portfolio.py",
+      "test_method": "test_insufficient_margin_and_stale_snapshot_block",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-039",
+      "category": "Portföy ve teminat",
+      "name": "Değerlenmemiş teminatı reddetme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_portfolio.py",
+      "test_method": "test_unvalued_collateral_never_assumed_usdt",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-040",
+      "category": "Portföy ve teminat",
+      "name": "Kaldıraçtan bağımsız kayıp bütçesi",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/portfolio.py"
+      ],
+      "test_file": "tests/test_portfolio.py",
+      "test_method": "test_loss_budget_is_not_multiplied_by_leverage",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-041",
+      "category": "Takip stopu",
+      "name": "Yalnız iyileşen watermark ve tick yuvarlama",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/trailing.py"
+      ],
+      "test_file": "tests/test_trailing.py",
+      "test_method": "test_watermark_is_monotonic_and_tick_rounding_is_conservative",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-042",
+      "category": "Takip stopu",
+      "name": "Aktivasyon öncesinde stopu koruma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/trailing.py"
+      ],
+      "test_file": "tests/test_trailing.py",
+      "test_method": "test_before_activation_and_small_steps_do_not_replace_stop",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-043",
+      "category": "Takip stopu",
+      "name": "Short takip hesabı",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/trailing.py"
+      ],
+      "test_file": "tests/test_trailing.py",
+      "test_method": "test_short_watermark_and_rounding_are_mirrored",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-044",
+      "category": "Takip stopu",
+      "name": "Long stopu bir kez sıkılaştırma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/trailing.py"
+      ],
+      "test_file": "tests/test_trailing.py",
+      "test_method": "test_long_tightens_once_and_never_moves_back",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-045",
+      "category": "Takip stopu",
+      "name": "Restart sonrası watermark koruma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/trailing.py"
+      ],
+      "test_file": "tests/test_trailing.py",
+      "test_method": "test_restart_preserves_watermark_and_replaces_only_on_new_high",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-046",
+      "category": "Takip stopu",
+      "name": "Kaybolan stop POST/DELETE yanıtlarında uzlaştırma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/trailing.py"
+      ],
+      "test_file": "tests/test_trailing.py",
+      "test_method": "test_lost_post_and_lost_cancel_are_never_repeated",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-047",
+      "category": "Takip stopu",
+      "name": "Kademeli çıkışta takip stopu miktarı",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/trailing.py"
+      ],
+      "test_file": "tests/test_trailing.py",
+      "test_method": "test_staged_exit_resizes_without_break_even_loosening_trailing",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-048",
+      "category": "Takip stopu",
+      "name": "Stop geçilince yalnız artık miktarı kapatma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/trailing.py"
+      ],
+      "test_file": "tests/test_trailing.py",
+      "test_method": "test_retrace_below_effective_stop_closes_residual_only",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-049",
+      "category": "Kullanıcı akışı ve taşıma",
+      "name": "Yinelenen akış olayını tek sayma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/user_stream.py"
+      ],
+      "test_file": "tests/test_user_stream.py",
+      "test_method": "test_duplicate_delivery_does_not_wake_or_double_count",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-050",
+      "category": "Kullanıcı akışı ve taşıma",
+      "name": "Aynı zamanlı farklı hesap olaylarını ayırt etme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/user_stream.py"
+      ],
+      "test_file": "tests/test_user_stream.py",
+      "test_method": "test_same_time_account_changes_have_distinct_identity",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-051",
+      "category": "Kullanıcı akışı ve taşıma",
+      "name": "Bozuk olayın projeksiyonu değiştirmemesi",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/user_stream.py"
+      ],
+      "test_file": "tests/test_user_stream.py",
+      "test_method": "test_invalid_event_cannot_change_projection",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-052",
+      "category": "Kullanıcı akışı ve taşıma",
+      "name": "Algo olayından REST uzlaştırması",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/user_stream.py"
+      ],
+      "test_file": "tests/test_user_stream.py",
+      "test_method": "test_algo_and_unknown_events_wake_rest_without_inventing_inventory",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-053",
+      "category": "Kullanıcı akışı ve taşıma",
+      "name": "Keepalive ve anahtar rotasyonu",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/user_stream.py"
+      ],
+      "test_file": "tests/test_user_stream.py",
+      "test_method": "test_keepalive_after_30_minutes_and_23_hour_rotation",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-054",
+      "category": "Kullanıcı akışı ve taşıma",
+      "name": "Yinelenen olay selini sınırlama",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/user_stream.py"
+      ],
+      "test_file": "tests/test_user_stream.py",
+      "test_method": "test_duplicate_flood_is_bounded",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-055",
+      "category": "Kullanıcı akışı ve taşıma",
+      "name": "Sessiz WebSocket kopmasını algılama",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/user_stream.py"
+      ],
+      "test_file": "tests/test_user_stream.py",
+      "test_method": "test_silent_connection_is_detected_after_ping_deadline",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-056",
+      "category": "Kullanıcı akışı ve taşıma",
+      "name": "Özel bağlantı hatalarında hassas veriyi gizleme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/bot/user_stream.py"
+      ],
+      "test_file": "tests/test_user_stream.py",
+      "test_method": "test_closed_socket_is_not_idle_and_errors_hide_private_url",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-057",
+      "category": "Grafik ve sinyal entegrasyonu",
+      "name": "Bot kimliği ve yetenek kataloğu",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/integration/chart_bot.py"
+      ],
+      "test_file": "tests/test_chart_bot.py",
+      "test_method": "test_identity_catalog_namespace_and_explicit_snapshot",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-058",
+      "category": "Grafik ve sinyal entegrasyonu",
+      "name": "Kalıcı çizim işlemlerinde tekrar güvenliği",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/integration/chart_bot.py"
+      ],
+      "test_file": "tests/test_chart_bot.py",
+      "test_method": "test_create_cached_replay_changed_payload_conflict_and_restart_discovery",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-059",
+      "category": "Grafik ve sinyal entegrasyonu",
+      "name": "Yanıt kaybında çizimi çift oluşturmama",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/integration/chart_bot.py"
+      ],
+      "test_file": "tests/test_chart_bot.py",
+      "test_method": "test_response_lost_after_commit_pending_survives_adapter_restart",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-060",
+      "category": "Grafik ve sinyal entegrasyonu",
+      "name": "Manuel çizim ve not sahipliğini koruma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/integration/chart_bot.py"
+      ],
+      "test_file": "tests/test_chart_bot.py",
+      "test_method": "test_manual_object_and_note_preserved_adapter_and_server_protection",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-061",
+      "category": "Grafik ve sinyal entegrasyonu",
+      "name": "Revizyon çakışmasını görünür kılma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/integration/chart_bot.py"
+      ],
+      "test_file": "tests/test_chart_bot.py",
+      "test_method": "test_explicit_revision_conflict_and_race_do_not_rebase",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-062",
+      "category": "Grafik ve sinyal entegrasyonu",
+      "name": "Çizim matematiği ve gösterge okuma",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/integration/chart_bot.py"
+      ],
+      "test_file": "tests/test_chart_bot.py",
+      "test_method": "test_calculation_structured_blocks_explicit_time_context_and_indicator_reads",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-063",
+      "category": "Grafik ve sinyal entegrasyonu",
+      "name": "Eşzamanlı aynı işlemde tek nesne",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/integration/chart_bot.py"
+      ],
+      "test_file": "tests/test_chart_bot.py",
+      "test_method": "test_concurrent_duplicate_operation_has_one_object",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-064",
+      "category": "Grafik ve sinyal entegrasyonu",
+      "name": "Güvensiz uzak çizim API erişimini reddetme",
+      "assessment": "CODE_AND_REGRESSION_PRESENT",
+      "source_files": [
+        "agentrader/integration/chart_bot.py"
+      ],
+      "test_file": "tests/test_chart_bot.py",
+      "test_method": "test_local_transport_rejects_remote_credentials_urls_and_unsafe_paths",
+      "priority": "P0",
+      "applicability": "USD-M Demo",
+      "acceptance": "İlgili regresyon geçmeli. Sembol bazında borsa kabulü ayrıca ölçülür."
+    },
+    {
+      "id": "CB-065",
+      "category": "Coin evreni ve tarayıcı",
+      "name": "528 sembollük evreni otomatik yenileme",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "exchangeInfo değiştiğinde listeleme/delist farkı ve evren sürümü kaydedilmeli"
+    },
+    {
+      "id": "CB-066",
+      "category": "Coin evreni ve tarayıcı",
+      "name": "Hacim ve spread tabanlı coin seçimi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Hacmi yüksek fakat spreadi geniş coin elenmeli"
+    },
+    {
+      "id": "CB-067",
+      "category": "Coin evreni ve tarayıcı",
+      "name": "Listeleme yaşı ve yeterli geçmiş filtresi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Yeni coin warmup tamamlanmadan sinyale alınmamalı"
+    },
+    {
+      "id": "CB-068",
+      "category": "Coin evreni ve tarayıcı",
+      "name": "Likidite ve emir defteri derinliği filtresi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Hedef miktarın tahmini kayması limite uymazsa aday elenmeli"
+    },
+    {
+      "id": "CB-069",
+      "category": "Coin evreni ve tarayıcı",
+      "name": "Volatiliteye göre dinamik evren",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "ATR yüzdesi eşiği ve seçim zamanı tekrar üretilebilmeli"
+    },
+    {
+      "id": "CB-070",
+      "category": "Coin evreni ve tarayıcı",
+      "name": "Çoklu coin sinyal sıralaması",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Aynı kapanışta gelen adaylar puan ve eşitlik kuralıyla seçilmeli"
+    },
+    {
+      "id": "CB-071",
+      "category": "Coin evreni ve tarayıcı",
+      "name": "Yüzlerce sembol için abonelik bütçesi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "REST ağırlığı ve WebSocket bağlantı sınırları ölçülmeli"
+    },
+    {
+      "id": "CB-072",
+      "category": "Coin evreni ve tarayıcı",
+      "name": "500+ sembol yük ve dayanıklılık kabulü",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Gecikme, bellek ve atlanan olaylar uzun süre ölçülmeli"
+    },
+    {
+      "id": "CB-073",
+      "category": "Yönlü strateji araştırması",
+      "name": "EMA trend kesişimiyle giriş çıkış",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Kapalı mum sinyali, stop, hedef ve maliyet modeli birlikte sınanmalı"
+    },
+    {
+      "id": "CB-074",
+      "category": "Yönlü strateji araştırması",
+      "name": "Donchian kanal kırılımı",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Geçmiş kanal sınırı yalnız karar anındaki mumlardan oluşmalı"
+    },
+    {
+      "id": "CB-075",
+      "category": "Yönlü strateji araştırması",
+      "name": "RSI ortalamaya dönüş",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Trend filtresi ve stopla örnek dışı dönem sınanmalı"
+    },
+    {
+      "id": "CB-076",
+      "category": "Yönlü strateji araştırması",
+      "name": "Bollinger bant dönüşü",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Bant dışı kapanış ve yeniden giriş kuralları tek anlamlı olmalı"
+    },
+    {
+      "id": "CB-077",
+      "category": "Yönlü strateji araştırması",
+      "name": "VWAP sapmasıyla gün içi strateji",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Session ve anchored VWAP kaynakları ayrı tanımlanmalı"
+    },
+    {
+      "id": "CB-078",
+      "category": "Yönlü strateji araştırması",
+      "name": "ATR volatilite kırılımı",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Pozisyon miktarı ve stop volatiliteye göre hesaplanmalı"
+    },
+    {
+      "id": "CB-079",
+      "category": "Yönlü strateji araştırması",
+      "name": "Çoklu zaman dilimli trend teyidi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Üst zaman diliminde son kapanmış mum kullanılmalı"
+    },
+    {
+      "id": "CB-080",
+      "category": "Yönlü strateji araştırması",
+      "name": "Rejim bazlı strateji seçimi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Trend, yatay ve yüksek volatilite geçişlerinde maliyet sonrası sonuç ölçülmeli"
+    },
+    {
+      "id": "CB-081",
+      "category": "Gelişmiş yürütme",
+      "name": "Takvimli DCA alım yürütücüsü",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Dilim sayısı, toplam bütçe ve iptal davranışı tanımlanmalı"
+    },
+    {
+      "id": "CB-082",
+      "category": "Gelişmiş yürütme",
+      "name": "TWAP dilimleme",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Zaman dilimleri, kısmi dolum ve son kalan miktar bütçeyi aşmamalı"
+    },
+    {
+      "id": "CB-083",
+      "category": "Gelişmiş yürütme",
+      "name": "Hacme katılım yürütmesi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "POV oranı ve gözlenen hacim gecikmesi sınırlanmalı"
+    },
+    {
+      "id": "CB-084",
+      "category": "Gelişmiş yürütme",
+      "name": "VWAP hedefli yürütme",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Geçmiş hacim profili ve gerçekleşen fiyat farkı ölçülmeli"
+    },
+    {
+      "id": "CB-085",
+      "category": "Gelişmiş yürütme",
+      "name": "Iceberg emir dilimleri",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Görünür miktar ve toplam artık miktar tutarlı kalmalı"
+    },
+    {
+      "id": "CB-086",
+      "category": "Gelişmiş yürütme",
+      "name": "Limitten markete kontrollü geçiş",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Süre ve spread koşulunda kalan miktar bir kez gönderilmeli"
+    },
+    {
+      "id": "CB-087",
+      "category": "Gelişmiş yürütme",
+      "name": "Yürütme maliyeti analizi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Arrival price karşısında ücret, kayma ve implementation shortfall raporlanmalı"
+    },
+    {
+      "id": "CB-088",
+      "category": "Gelişmiş yürütme",
+      "name": "Çoklu borsa akıllı yönlendirme",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Maliyet, derinlik, bakiye ve eksik dolum birlikte yönetilmeli"
+    },
+    {
+      "id": "CB-089",
+      "category": "Arbitraj ve piyasa yapıcılık",
+      "name": "Borsalar arası fiyat arbitrajı",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "İki bacak ücret ve kayma sonrası pozitif eşik sağlamalı"
+    },
+    {
+      "id": "CB-090",
+      "category": "Arbitraj ve piyasa yapıcılık",
+      "name": "Üçgen arbitraj",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Üç işlemde lot yuvarlaması ve artık varlık takip edilmeli"
+    },
+    {
+      "id": "CB-091",
+      "category": "Arbitraj ve piyasa yapıcılık",
+      "name": "Spot-perpetual baz işlemi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Spot ve perpetual miktarı ile funding nakit akışı eşlenmeli"
+    },
+    {
+      "id": "CB-092",
+      "category": "Arbitraj ve piyasa yapıcılık",
+      "name": "Borsalar arası funding farkı",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Ödeme zamanı, oran değişimi ve hedge sapması ölçülmeli"
+    },
+    {
+      "id": "CB-093",
+      "category": "Arbitraj ve piyasa yapıcılık",
+      "name": "Vadeli kontrat taşıma işlemi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Vade, uzlaşma ve rollover maliyeti hesaba katılmalı"
+    },
+    {
+      "id": "CB-094",
+      "category": "Arbitraj ve piyasa yapıcılık",
+      "name": "Envanter kontrollü piyasa yapıcılık",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Kotasyon fiyatı envanter ve adverse selection sınırlarına uymalı"
+    },
+    {
+      "id": "CB-095",
+      "category": "Arbitraj ve piyasa yapıcılık",
+      "name": "Cross-exchange market making",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Maker dolumu sonrası hedge zaman aşımı ve artığı yönetilmeli"
+    },
+    {
+      "id": "CB-096",
+      "category": "Arbitraj ve piyasa yapıcılık",
+      "name": "DEX LP ve CEX hedge",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Gas, onay, MEV, aralık dışına çıkma ve zincir riski modellenmeli"
+    },
+    {
+      "id": "CB-097",
+      "category": "Backtest ve istatistik",
+      "name": "Çoklu coin portföy PnL backtesti",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Emir, dolum, nakit, ücret ve pozisyon defteri aynı olay saatini kullanmalı"
+    },
+    {
+      "id": "CB-098",
+      "category": "Backtest ve istatistik",
+      "name": "Spread ve kayma modeli",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Maliyetin iki katına çıktığı duyarlılık testi raporlanmalı"
+    },
+    {
+      "id": "CB-099",
+      "category": "Backtest ve istatistik",
+      "name": "Funding muhasebesi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Gerçek ödeme zamanları ve pozisyon yönü uygulanmalı"
+    },
+    {
+      "id": "CB-100",
+      "category": "Backtest ve istatistik",
+      "name": "Aynı mum stop ve hedef belirsizliği",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Alt zaman dilimi veya ihtiyatlı öncelik politikası açık olmalı"
+    },
+    {
+      "id": "CB-101",
+      "category": "Backtest ve istatistik",
+      "name": "Lookahead analizi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Gelecek veri kesilince geçmiş sinyaller değişmemeli"
+    },
+    {
+      "id": "CB-102",
+      "category": "Backtest ve istatistik",
+      "name": "Recursive warmup analizi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Geçmiş uzunluğu değişince göstergedeki sapma raporlanmalı"
+    },
+    {
+      "id": "CB-103",
+      "category": "Backtest ve istatistik",
+      "name": "Walk-forward örnek dışı değerlendirme",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Eğitim, seçim ve test pencereleri kronolojik ayrılmalı"
+    },
+    {
+      "id": "CB-104",
+      "category": "Backtest ve istatistik",
+      "name": "Çoklu deneme ve bootstrap sağlamlığı",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P1",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Parametre araması sayısı ve blok bootstrap dağılımı kaydedilmeli"
+    },
+    {
+      "id": "CB-105",
+      "category": "Portföy araştırması ve maliyet",
+      "name": "Korelasyon kümeleri için risk bütçesi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Aynı yöne korele coin grubu toplam limiti aşmamalı"
+    },
+    {
+      "id": "CB-106",
+      "category": "Portföy araştırması ve maliyet",
+      "name": "Volatilite hedefli pozisyon büyüklüğü",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Sakin ve stres rejimlerinde toplam risk hedefi ölçülmeli"
+    },
+    {
+      "id": "CB-107",
+      "category": "Portföy araştırması ve maliyet",
+      "name": "Drawdown devre kesici",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Equity tepesinden düşüşte yeni giriş durmalı ve dönüş kuralı tanımlanmalı"
+    },
+    {
+      "id": "CB-108",
+      "category": "Portföy araştırması ve maliyet",
+      "name": "Portföy yeniden dengeleme",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Hedef ağırlık, minimum işlem ve maliyet eşiği birlikte çalışmalı"
+    },
+    {
+      "id": "CB-109",
+      "category": "Portföy araştırması ve maliyet",
+      "name": "VaR ve expected shortfall stres raporu",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Aşırı olaylar ve korelasyon yükselişi ayrı senaryolanmalı"
+    },
+    {
+      "id": "CB-110",
+      "category": "Portföy araştırması ve maliyet",
+      "name": "Stablecoin depeg stresi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Teminat iskonto değişiminde marj ve stop mesafesi yeniden ölçülmeli"
+    },
+    {
+      "id": "CB-111",
+      "category": "Portföy araştırması ve maliyet",
+      "name": "Strateji ve sektör bazlı atıf",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "PnL ücret ve funding dahil strateji/sektör bazında uzlaşmalı"
+    },
+    {
+      "id": "CB-112",
+      "category": "Portföy araştırması ve maliyet",
+      "name": "Kapasite ve piyasa etkisi analizi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Artan emir büyüklüğünde net performans ve dolum değişimi ölçülmeli"
+    },
+    {
+      "id": "CB-113",
+      "category": "Veri ve yeni pazarlar",
+      "name": "L2 defter snapshot-delta yeniden kurma",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Sequence boşluğu resnapshot ile kapatılmalı"
+    },
+    {
+      "id": "CB-114",
+      "category": "Veri ve yeni pazarlar",
+      "name": "Tick geçmişi ve deterministik replay",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Girdi hashleriyle aynı sonuç yeniden üretilebilmeli"
+    },
+    {
+      "id": "CB-115",
+      "category": "Veri ve yeni pazarlar",
+      "name": "Delist dahil tarihsel evren",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Geçmişte işlem gören ve sonradan kaldırılan coinler korunmalı"
+    },
+    {
+      "id": "CB-116",
+      "category": "Veri ve yeni pazarlar",
+      "name": "Spot hesap ve envanter yürütmesi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Spot bakiye ve satış limiti için ayrı adaptör sözleşmesi olmalı"
+    },
+    {
+      "id": "CB-117",
+      "category": "Veri ve yeni pazarlar",
+      "name": "COIN-M ters kontrat muhasebesi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Kontrat çarpanı ve coin cinsi PnL doğru hesaplanmalı"
+    },
+    {
+      "id": "CB-118",
+      "category": "Veri ve yeni pazarlar",
+      "name": "Opsiyon işlemleri ve Greeks riski",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Vade ve delta/gamma/vega bütçesi tanımlanmalı"
+    },
+    {
+      "id": "CB-119",
+      "category": "Veri ve yeni pazarlar",
+      "name": "On-chain ve haber veri bağlama",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Yayın zamanı, elde edilme zamanı ve gecikme kaydedilmeli"
+    },
+    {
+      "id": "CB-120",
+      "category": "Veri ve yeni pazarlar",
+      "name": "ML eğitim ve model yaşam döngüsü",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P3",
+      "applicability": "Ürün/ortam genişletmesi gerekir",
+      "acceptance": "Veri sızıntısı, drift, model sürümü ve geri alma sınanmalı"
+    },
+    {
+      "id": "CB-121",
+      "category": "Operasyon ve ölçülebilir kabul",
+      "name": "Paper işlem için tam dolum simülatörü",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Gerçek hesaba bağlanmadan emir defteri ve portföy yürütülmeli"
+    },
+    {
+      "id": "CB-122",
+      "category": "Operasyon ve ölçülebilir kabul",
+      "name": "Prometheus operasyon metrikleri",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Veri yaşı, kuyruk, rate limit ve korumasız pozisyon ölçülmeli"
+    },
+    {
+      "id": "CB-123",
+      "category": "Operasyon ve ölçülebilir kabul",
+      "name": "Yedekten geri dönüş tatbikatı",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Plan, rezervasyon ve order journal tutarlı geri yüklenmeli"
+    },
+    {
+      "id": "CB-124",
+      "category": "Operasyon ve ölçülebilir kabul",
+      "name": "Çok makineli lider seçimi",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "İki makine aynı hesabın yürütücülüğünü eşzamanlı alamamalı"
+    },
+    {
+      "id": "CB-125",
+      "category": "Operasyon ve ölçülebilir kabul",
+      "name": "Uzun süreli hata enjeksiyonu",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Ağ bölünmesi, disk dolması ve süreç öldürme zincirleri raporlanmalı"
+    },
+    {
+      "id": "CB-126",
+      "category": "Operasyon ve ölçülebilir kabul",
+      "name": "Canary ve sürüm geri alma",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Eski kayıtların yeni/eski sürümde okunabilirliği doğrulanmalı"
+    },
+    {
+      "id": "CB-127",
+      "category": "Operasyon ve ölçülebilir kabul",
+      "name": "Sembol bazlı kabul panosu",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Her coin için doğrulama, simülasyon ve borsa kabulü ayrı gösterilmeli"
+    },
+    {
+      "id": "CB-128",
+      "category": "Operasyon ve ölçülebilir kabul",
+      "name": "Net performans karşılaştırma raporu",
+      "assessment": "END_TO_END_GAP_IDENTIFIED",
+      "source_files": [],
+      "test_file": null,
+      "test_method": null,
+      "priority": "P2",
+      "applicability": "Araştırma veya geliştirme",
+      "acceptance": "Buy-and-hold, nakit ve basit strateji kıyasları aynı maliyetle sunulmalı"
+    }
+  ]
+}

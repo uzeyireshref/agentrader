@@ -4,9 +4,9 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.batch_cancel import OwnedBatchCancel
-from agentrader.exchange import ExchangeError
-from agentrader.state import StateStore
+from agentrader.bot.batch_cancel import OwnedBatchCancel
+from agentrader.shared.exchange import ExchangeError
+from agentrader.shared.state import StateStore
 from test_grid_runner import GridExchange
 
 

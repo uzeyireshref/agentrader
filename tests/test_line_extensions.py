@@ -1,9 +1,9 @@
 import copy,json,tempfile,unittest
 from pathlib import Path
 from fractions import Fraction
-from agentrader.drawings.service import geometry,DrawingError,DrawingService
-from agentrader.drawings.calculations import query,CalculationBlocked,canonical_hash
-from agentrader.drawings.contracts import legacy_contract,capability
+from agentrader.chart.drawings.service import geometry,DrawingError,DrawingService
+from agentrader.chart.drawings.calculations import query,CalculationBlocked,canonical_hash
+from agentrader.chart.drawings.contracts import legacy_contract,capability
 from agentrader.migrations import migrate
 
 START=1800000000

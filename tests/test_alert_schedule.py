@@ -3,8 +3,8 @@ import tempfile
 import unittest
 from datetime import datetime
 from pathlib import Path
-from agentrader.alert_schedule import validate_schedule,notification_gate
-from agentrader.price_alerts import PriceAlerts,definition,AlertError
+from agentrader.chart.alert_schedule import validate_schedule,notification_gate
+from agentrader.chart.price_alerts import PriceAlerts,definition,AlertError
 from agentrader.migrations import migrate
 from test_price_alerts import definition as legacy,context as closed_context
 from test_alert_intrabar import draft as live,context as live_context

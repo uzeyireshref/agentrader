@@ -6,13 +6,13 @@ from decimal import Decimal
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.exchange import ExchangeError
-from agentrader.management import split_targets
-from agentrader.plan_execution import run_plan, prepare
-from agentrader.plans import PlanService, example_plan, validate_plan
-from agentrader.risk import RiskLimits
-from agentrader.state import StateStore
-from agentrader.watchdog import Watchdog, OwnershipError
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.management import split_targets
+from agentrader.bot.plan_execution import run_plan, prepare
+from agentrader.bot.plans import PlanService, example_plan, validate_plan
+from agentrader.bot.risk import RiskLimits
+from agentrader.shared.state import StateStore
+from agentrader.bot.watchdog import Watchdog, OwnershipError
 from test_plans import PlanExchange
 from test_orders import SYMBOL
 

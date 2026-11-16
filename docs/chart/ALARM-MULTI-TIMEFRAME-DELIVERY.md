@@ -19,6 +19,6 @@ The worker owns and deduplicates every required symbol/interval feed and release
 - Six dedicated backend tests: definition validation and minimum clock, future exclusion and exact boundary, weekly anchoring, stale/identity/epoch guards, delayed close exactly-once plus restart suppression, and feed ownership/release.
 - Full backend: 956 passed. Full frontend: 307 passed. TypeScript and production build passed.
 - Chrome production browser: 11 acceptance groups including independent 1h/15m selection, save/reload/edit, return to inherited interval, 600px layout, dark/light views, expiry and existing lifecycle. No browser console errors; isolated API fixtures, no personal workspace writes.
-- Evidence: reports/alerts-conditions-ui-20261113/result.json and screenshots. scripts/check_alert_conditions.mts reproduces acceptance.
+- Evidence: reports/alerts-conditions-ui-20261113/result.json and screenshots. scripts/chart/check_alert_conditions.mts reproduces acceptance.
 
 Closed-bar evaluation only. Multi-symbol conditions, intrabar evaluation, external notification delivery and automatic orders remain separate work. New channel/pitchfork-family display-only sources are still excluded from alarm operands.

@@ -1,12 +1,12 @@
 from fastapi import APIRouter,Request
 from .drawings import body
-from ..chart_bindings import BindingService
-from ..binding_catalog import catalog
-from ..binding_eligibility import inspect_binding
-from ..local_chart_events import LocalChartEvents
-from ..replay_report import replay_summary
+from agentrader.chart.chart_bindings import BindingService
+from agentrader.chart.binding_catalog import catalog
+from agentrader.chart.binding_eligibility import inspect_binding
+from agentrader.chart.local_chart_events import LocalChartEvents
+from agentrader.chart.replay_report import replay_summary
 
-def binding_router(service:BindingService,hub):
+def binding_router(service:BindingService,hub,*,shadow=None,previews=None):
  router=APIRouter()
  events=LocalChartEvents(service.database,service.owner)
  @router.get('/api/replay-validation')
@@ -25,4 +25,18 @@ def binding_router(service:BindingService,hub):
  async def save(workspace_id:str,binding_id:str,request:Request):
   data=await body(request,'request_id expected_binding_revision target symbol interval scale grid_times data_snapshot_hash query rule',limit=65536)
   return service.save_binding(workspace_id,binding_id,**data)
+ if shadow is not None:
+  @router.get('/api/workspaces/{workspace_id}/bindings/{binding_id}/shadow')
+  def shadow_status(workspace_id:str,binding_id:str):return shadow.status(workspace_id,binding_id)
+  @router.post('/api/workspaces/{workspace_id}/bindings/{binding_id}/shadow')
+  async def shadow_command(workspace_id:str,binding_id:str,request:Request):
+   data=await body(request,'expected_revision definition_hash action ttl_seconds',limit=4096)
+   return shadow.command(workspace_id,binding_id,**data)
+ if previews is not None:
+  @router.get('/api/workspaces/{workspace_id}/shadow-events/{event_id}/preview')
+  def preview_show(workspace_id:str,event_id:str,version:int=0):return previews.show(workspace_id,event_id,version)
+  @router.post('/api/workspaces/{workspace_id}/shadow-events/{event_id}/preview')
+  async def preview_create(workspace_id:str,event_id:str,request:Request):
+   data=await body(request,'expected_version inputs',limit=4096)
+   return previews.create(workspace_id,event_id,**data)
  return router

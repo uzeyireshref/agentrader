@@ -1,8 +1,8 @@
 import copy
 import unittest
 
-from agentrader.plans import example_plan,validate_plan
-from agentrader.plan_v2 import validate_v2
+from agentrader.bot.plans import example_plan,validate_plan
+from agentrader.bot.plan_v2 import validate_v2
 
 
 def plan_v2():
@@ -11,6 +11,24 @@ def plan_v2():
 
 
 class PlanV2Tests(unittest.TestCase):
+    def test_single_response_type_is_optional_and_does_not_mutate_old_plans(self):
+        old=plan_v2();before=copy.deepcopy(old)
+        validate_plan(old)
+        self.assertEqual(old,before)
+        for response in ('ACK','RESULT'):
+            p=plan_v2();p['entry']['order_response_type']=response
+            self.assertEqual(validate_plan(p)['entry']['order_response_type'],response)
+        for value in ('FULL','ack',None,False,[],{}):
+            p=plan_v2();p['entry']['order_response_type']=value
+            with self.subTest(value=value),self.assertRaises(ValueError):validate_plan(p)
+
+    def test_response_type_is_not_silently_ignored_by_grid(self):
+        p=plan_v2();p['execution']['strategy']='GRID'
+        p['grid']={'lower':'73000','upper':'82500','intervals':8,'spacing':'ARITHMETIC'}
+        p['management'].update(allow_scale_in=True,allow_reentry=True)
+        p['entry']['order_response_type']='RESULT'
+        with self.assertRaisesRegex(ValueError,'SINGLE'):validate_plan(p)
+
     def test_existing_v1_and_v2_single_contracts_are_distinct(self):
         self.assertEqual(validate_plan(example_plan())['schema_version'],1)
         self.assertEqual(validate_plan(plan_v2())['execution']['leverage'],20)

@@ -2,15 +2,15 @@ import copy
 import unittest
 from unittest.mock import patch
 
-from agentrader.exchange import ExchangeError
-from agentrader.grid_runner import GridRunner
-from agentrader.plan_v2 import validate_v2
-from agentrader.plans import PlanService
-from agentrader.risk import number
-from agentrader.state import StateStore
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.grid_runner import GridRunner
+from agentrader.bot.plan_v2 import validate_v2
+from agentrader.bot.plans import PlanService
+from agentrader.bot.risk import number
+from agentrader.shared.state import StateStore
 import test_grid_runner as fixtures
 import test_multi_session as multi
-from agentrader.account_ownership import AccountOwnership
+from agentrader.bot.account_ownership import AccountOwnership
 
 
 class GridNativeStopTests(unittest.TestCase):
@@ -117,7 +117,7 @@ class GridNativeStopTests(unittest.TestCase):
         self.plan['management']['trailing']=[]
         with self.assertRaises(ValueError):validate_v2(self.plan)
     def test_amend_cannot_bypass_the_advanced_stop(self):
-        from agentrader.order_amend import OrderAmendments
+        from agentrader.bot.order_amend import OrderAmendments
         sid=self.first();cid=self.cell(1,'OPEN');p=self.x.orders[cid]
         self.x.price='77000';before=len(self.x.calls)
         with self.assertRaisesRegex(ValueError,'Amend öncesi stop'):

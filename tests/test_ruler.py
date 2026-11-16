@@ -7,9 +7,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from agentrader.drawings.calculations import measure_ruler, query, CalculationBlocked
-from agentrader.drawings.service import DrawingService, DrawingError, DrawingConflict, geometry
-from agentrader.drawings.contracts import legacy_contract, capability
+from agentrader.chart.drawings.calculations import measure_ruler, query, CalculationBlocked
+from agentrader.chart.drawings.service import DrawingService, DrawingError, DrawingConflict, geometry
+from agentrader.chart.drawings.contracts import legacy_contract, capability
 from agentrader.migrations import migrate
 from agentrader.application.settings import WebSettings
 
@@ -81,7 +81,7 @@ class RulerTests(unittest.TestCase):
         from fastapi.testclient import TestClient
         with tempfile.TemporaryDirectory() as folder:
             settings=WebSettings(Path(folder)/'app.db',Path(folder)/'execution.db',market_database=Path(folder)/'market.db')
-            with TestClient(create_app(settings),base_url='http://127.0.0.1') as client,patch('agentrader.exchange.DemoExchange.request',side_effect=AssertionError('exchange access')):
+            with TestClient(create_app(settings),base_url='http://127.0.0.1') as client,patch('agentrader.shared.exchange.DemoExchange.request',side_effect=AssertionError('exchange access')):
                 data={'request_id':'ruler-create','geometry':self.cases[0]['geometry']}
                 response=client.post('/api/workspaces/main/drawings',json=data);self.assertEqual(response.status_code,201)
                 saved=response.json();path='/api/drawings/'+saved['drawing_id']
@@ -102,6 +102,6 @@ class RulerTests(unittest.TestCase):
                 self.assertEqual(client.get('/api/workspaces/main/drawings?format_version=7').status_code,200)
                 self.assertEqual(client.get('/api/workspaces/main/drawings?format_version=8').status_code,200)
                 self.assertEqual(client.get('/api/workspaces/main/drawings?format_version=9').status_code,200)
-                self.assertEqual(client.get('/api/workspaces/main/drawings?format_version=10').status_code,422)
+                self.assertEqual(client.get('/api/workspaces/main/drawings?format_version=10').status_code,200)
                 self.assertEqual(client.get('/api/workspaces/main/drawings?symbol=ETHUSDT&format_version=2').json()['drawings'],[])
             self.assertFalse(settings.execution_database.exists())

@@ -1,11 +1,11 @@
 import copy,unittest,tempfile
 from pathlib import Path
 from decimal import Decimal
-from agentrader.alert_conditions import conditions,evaluate_all,values,ConditionUnavailable
-from agentrader.indicator_config import defaults_v4,series,multi_series
-from agentrader.price_alerts import PriceAlerts,definition,AlertError
+from agentrader.chart.alert_conditions import conditions,evaluate_all,values,ConditionUnavailable
+from agentrader.chart.indicator_config import defaults_v4,series,multi_series
+from agentrader.chart.price_alerts import PriceAlerts,definition,AlertError
 from agentrader.migrations import migrate
-from agentrader.market_data import SOURCE
+from agentrader.shared.market_data import SOURCE
 T=1800057600 # UTC midnight
 
 def rows(prices):
@@ -58,7 +58,7 @@ class ConditionTests(unittest.TestCase):
     def test_engine_compound_persists_snapshot_results_and_deduplicates(self):
         with tempfile.TemporaryDirectory() as folder:
             db=Path(folder)/'app.db';migrate(db);s=PriceAlerts(db,'owner');d=alert([condition('above'),condition('above',left=op('volume'),right=val(5))]);a=s.save(d)
-            def ctx(ps):return dict(identity=dict(source=SOURCE,environment='live_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval='1m'),transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch='a',rows=rows(ps))
+            def ctx(ps):return dict(identity=dict(source=SOURCE,environment='demo_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval='1m'),transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch='a',rows=rows(ps))
             s.process(a['id'],ctx([99,100]),'b');s.process(a['id'],ctx([99,100,101]),'b');s.process(a['id'],ctx([99,100,101]),'b');self.assertEqual(len(s.events()),1);e=s.events()[0];self.assertEqual(e['conditions'],[True,True]);self.assertEqual(e['definition']['conditions'],d['conditions']);self.assertFalse(e['order_authority'])
 
 
@@ -82,7 +82,7 @@ class CompoundApiTests(unittest.TestCase):
                 r=client.post('/api/alerts',json={'definition':d});self.assertEqual(r.status_code,201);a=r.json()
                 saved=client.get('/api/alerts').json()['alerts'][0];self.assertEqual(saved['definition'],d)
                 service=PriceAlerts(settings.application_database,settings.owner)
-                def ctx(ps):return dict(identity=dict(source=SOURCE,environment='live_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval='1m'),transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch='a',rows=rows(ps))
+                def ctx(ps):return dict(identity=dict(source=SOURCE,environment='demo_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval='1m'),transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch='a',rows=rows(ps))
                 service.process(a['id'],ctx([100,101,102]),'manual');service.process(a['id'],ctx([100,101,102,105]),'manual');events=client.get('/api/alerts').json()['events'];self.assertEqual(len(events),1);self.assertEqual(events[0]['conditions'],[True,True]);self.assertFalse(settings.execution_database.exists())
                 bad=alert([condition('enter')]);self.assertEqual(client.post('/api/alerts',json={'definition':bad}).status_code,422)
                 self.assertEqual(client.put('/api/alerts/'+a['id'],json={'definition':d,'revision':1}).status_code,200)
@@ -121,5 +121,5 @@ class WarmupReadinessTests(unittest.TestCase):
     def test_calculation_waiting_survives_heartbeat_without_false_ready(self):
         with tempfile.TemporaryDirectory() as folder:
             db=Path(folder)/'app.db';migrate(db);s=PriceAlerts(db,'x');c=defaults_v4()[2];a=s.save(alert([condition(left=dict(type='indicator',config=c,output='value'))]))
-            ctx=dict(identity=dict(source=SOURCE,environment='live_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval='1m'),transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch='a',rows=rows([100,101]))
+            ctx=dict(identity=dict(source=SOURCE,environment='demo_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval='1m'),transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch='a',rows=rows([100,101]))
             s.process(a['id'],ctx,'boot');self.assertEqual(s.list()[0]['readiness'],'WAITING_CALCULATION');s.process(a['id'],ctx,'boot');self.assertEqual(s.list()[0]['readiness'],'WAITING_CALCULATION');self.assertEqual(s.events(),[])

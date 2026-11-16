@@ -3,9 +3,9 @@ import unittest
 from unittest.mock import Mock, patch
 from urllib.parse import urlsplit
 
-from agentrader.config import Config
-from agentrader.exchange import DemoExchange, ExchangeError
-from agentrader.user_stream import (DemoUserStream, LISTEN_PATH, STREAM_BASE,
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import DemoExchange, ExchangeError
+from agentrader.bot.user_stream import (DemoUserStream, LISTEN_PATH, STREAM_BASE,
                                     StreamProtocolError, StreamUnavailable, normalize_event, _Socket)
 
 KEY = 'private-listen-key-canary-0123456789'
@@ -188,7 +188,7 @@ class SocketBoundaryTests(unittest.TestCase):
             return result
 
     def test_heartbeat_pong_is_required_and_not_treated_as_event(self):
-        with patch('agentrader.user_stream.time.monotonic', side_effect=[0, 30]):
+        with patch('agentrader.bot.user_stream.time.monotonic', side_effect=[0, 30]):
             socket = self.connect()
             self.assertIsNone(socket.receive(1))
         self.connection.ping.assert_called_once_with(b'agentrader')
@@ -197,7 +197,7 @@ class SocketBoundaryTests(unittest.TestCase):
     def test_silent_connection_is_detected_after_ping_deadline(self):
         import websocket
         self.connection.recv_data.side_effect = websocket.WebSocketTimeoutException()
-        with patch('agentrader.user_stream.time.monotonic', side_effect=[0, 30, 41]):
+        with patch('agentrader.bot.user_stream.time.monotonic', side_effect=[0, 30, 41]):
             socket = self.connect()
             self.assertIsNone(socket.receive(1))
             with self.assertRaises(StreamUnavailable): socket.receive(1)

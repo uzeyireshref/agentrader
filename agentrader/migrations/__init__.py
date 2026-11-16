@@ -95,6 +95,53 @@ MIGRATIONS = (
         "CREATE TABLE app_price_alerts (owner TEXT NOT NULL,id TEXT NOT NULL,revision INTEGER NOT NULL,body TEXT NOT NULL,state TEXT NOT NULL,checkpoint TEXT NOT NULL,PRIMARY KEY(owner,id))",
         "CREATE TABLE app_price_alert_events (owner TEXT NOT NULL,id TEXT NOT NULL,alert_id TEXT NOT NULL,created_at REAL NOT NULL,body TEXT NOT NULL,PRIMARY KEY(owner,id))",
     )),
+    (10, "demo_shadow_tracking", (
+        """CREATE TABLE app_shadow_runs (owner TEXT NOT NULL,workspace_id TEXT NOT NULL,
+            binding_id TEXT NOT NULL,binding_revision INTEGER NOT NULL,definition_hash TEXT NOT NULL,
+            state TEXT NOT NULL,reason TEXT,expires_at REAL NOT NULL,checkpoint TEXT NOT NULL,
+            updated_at REAL NOT NULL,PRIMARY KEY(owner,workspace_id,binding_id,binding_revision))""",
+        """CREATE TABLE app_shadow_events (event_id TEXT PRIMARY KEY,owner TEXT NOT NULL,
+            workspace_id TEXT NOT NULL,binding_id TEXT NOT NULL,binding_revision INTEGER NOT NULL,
+            created_at REAL NOT NULL,body TEXT NOT NULL,evidence TEXT NOT NULL)""",
+        "CREATE INDEX app_shadow_event_history ON app_shadow_events(owner,workspace_id,created_at)",
+        "CREATE TABLE app_shadow_worker (name TEXT PRIMARY KEY,state TEXT NOT NULL,observed_at REAL NOT NULL)",
+    )),
+
+    (11, "shadow_signal_plan_previews", (
+        """CREATE TABLE app_signal_previews (owner TEXT NOT NULL,workspace_id TEXT NOT NULL,
+            event_id TEXT NOT NULL,version INTEGER NOT NULL,parameters_hash TEXT NOT NULL,
+            body TEXT NOT NULL,PRIMARY KEY(owner,event_id,version))""",
+        "CREATE TABLE app_signal_preview_heads (owner TEXT NOT NULL,event_id TEXT NOT NULL,version INTEGER NOT NULL,PRIMARY KEY(owner,event_id))",
+    )),
+    (12, "explicit_chart_approval_requests", (
+        """CREATE TABLE app_chart_approvals (owner TEXT NOT NULL,request_id TEXT NOT NULL,
+            payload TEXT NOT NULL,payload_hash TEXT NOT NULL,state TEXT NOT NULL,
+            created_at REAL NOT NULL,expires_at REAL NOT NULL,updated_at REAL NOT NULL,
+            result TEXT,error_code TEXT,PRIMARY KEY(owner,request_id))""",
+        """CREATE TABLE app_chart_approval_worker (owner TEXT PRIMARY KEY,
+            updated_at REAL NOT NULL,mode TEXT NOT NULL)""",
+    )),
+
+    (13, 'drawing_origins_and_linked_notes', (
+        """CREATE TABLE app_drawing_origins (owner TEXT NOT NULL,drawing_id TEXT NOT NULL,
+            body TEXT NOT NULL,PRIMARY KEY(owner,drawing_id))""",
+        """CREATE TABLE app_drawing_audit (owner TEXT NOT NULL,drawing_id TEXT NOT NULL,
+            revision INTEGER NOT NULL,body TEXT NOT NULL,PRIMARY KEY(owner,drawing_id,revision))""",
+        """CREATE TABLE app_drawing_notes (owner TEXT NOT NULL,drawing_id TEXT NOT NULL,
+            note_id TEXT NOT NULL,revision INTEGER NOT NULL,text TEXT NOT NULL,deleted INTEGER NOT NULL,
+            updated_at REAL NOT NULL,actor TEXT NOT NULL,target_revision INTEGER NOT NULL,PRIMARY KEY(owner,drawing_id,revision))""",
+        """INSERT INTO app_drawing_origins SELECT r.owner,r.drawing_id,
+            json_object('schema','drawing-origin/1','kind','manual','source','legacy','actor_id',owner,
+            'bot_id',NULL,'strategy_id',NULL,'created_at',updated_at)
+            FROM app_drawing_revisions r WHERE revision=(SELECT MIN(x.revision) FROM app_drawing_revisions x WHERE x.owner=r.owner AND x.drawing_id=r.drawing_id)""",
+        """INSERT INTO app_drawing_audit SELECT owner,drawing_id,revision,
+            json_object('kind','manual','actor_id',owner,'bot_id',NULL,'strategy_id',NULL,'source','legacy')
+            FROM app_drawing_revisions""",
+        """CREATE TRIGGER app_drawing_origin_immutable_update BEFORE UPDATE ON app_drawing_origins
+            BEGIN SELECT RAISE(ABORT,'DRAWING_ORIGIN_IMMUTABLE'); END""",
+        """CREATE TRIGGER app_drawing_origin_immutable_delete BEFORE DELETE ON app_drawing_origins
+            BEGIN SELECT RAISE(ABORT,'DRAWING_ORIGIN_IMMUTABLE'); END""",
+    )),
 )
 
 

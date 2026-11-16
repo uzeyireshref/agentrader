@@ -17,7 +17,7 @@ Python/Node/npm ve Python dağıtım sürümleri manifestte, frontend bağımlı
 Proje kökünden:
 
 ```powershell
-python scripts/verify_chart_candidate.py releases/chart-candidate-20261110-02.zip
+python scripts/chart/verify_chart_candidate.py releases/chart-candidate-20261110-02.zip
 ```
 
 Araç arşivi açıp manifestteki tüm dosya hash’lerini denetler; kaynak/anahtar yazmaz. Bozulmuş checksum veya manifest dışı dosya başarısızdır. E2 doğrulaması ayrıca geçici klasöre güvenli çıkarma, oradan izole localhost HTTP/çizim/restart ve yeniden başlatmada aynı bundle kontrolünü uygular.

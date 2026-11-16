@@ -28,7 +28,7 @@ Gerçek yerel WebSocket ve üretim FeedState/P2/P3 zincirinde 7 kontrol geçti: 
 
 Kaynak aday: `releases/chart-candidate-20261113-01.zip`. Dosya hash'leri MANIFEST.json içinde, arşiv hash'i dış makbuzdadır. Kullanıcı veritabanı, kimlik bilgisi, node_modules veya kurulu ortam içermez. Sürüm kilitleri mevcut ortamı kaydeder; temiz ağ kurulumu veya her platformda wheel kabulü değildir.
 
-Proje kökünden `python scripts/verify_chart_candidate.py releases/chart-candidate-20261113-01.zip` ile doğrulayın. `python scripts/restore_qa01_candidate.py releases/chart-candidate-20261113-01.zip` yeni geçici köke çıkarır; ayrı depolarla gerçek sunucuyu başlatır, HTTP asset hash'leri, rapor kaynak doğrulaması, kayıt/restart, schema7→8 ve önceki yedeği kontrol eder, değiştirilmiş arşivi reddeder. Kullanıcı veritabanına restore yapmaz. Sonuç: `reports/chart-candidate-20261113-01-restore.json`.
+Proje kökünden `python scripts/chart/verify_chart_candidate.py releases/chart-candidate-20261113-01.zip` ile doğrulayın. `python scripts/chart/restore_qa01_candidate.py releases/chart-candidate-20261113-01.zip` yeni geçici köke çıkarır; ayrı depolarla gerçek sunucuyu başlatır, HTTP asset hash'leri, rapor kaynak doğrulaması, kayıt/restart, schema7→8 ve önceki yedeği kontrol eder, değiştirilmiş arşivi reddeder. Kullanıcı veritabanına restore yapmaz. Sonuç: `reports/chart-candidate-20261113-01-restore.json`.
 
 ## Açık kabul
 

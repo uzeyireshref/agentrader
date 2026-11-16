@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from agentrader.drawings.service import DrawingService, DrawingError, DrawingConflict, DrawingNotFound
+from agentrader.chart.drawings.service import DrawingService, DrawingError, DrawingConflict, DrawingNotFound
 from agentrader.migrations import migrate, MIGRATIONS
 from agentrader.application.commands import CommandQueue
 
@@ -99,7 +99,7 @@ class DrawingTests(unittest.TestCase):
                 self.service.update(created['drawing_id'], 'r2', 1, value)
 
     def test_invalid_geometry_has_no_persisted_effect(self):
-        for price in ['NaN', 'Infinity', '-1', '0', 80000]:
+        for price in ['NaN', 'Infinity', '--1', '1_000', 80000]:
             value = line()
             value['anchors'][0]['price'] = price
             with self.assertRaises(DrawingError):

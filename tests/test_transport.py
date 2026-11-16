@@ -7,9 +7,9 @@ from unittest.mock import Mock,patch
 from urllib.error import HTTPError,URLError
 from urllib.request import Request
 
-from agentrader.config import Config
-from agentrader.exchange import DemoExchange,ExchangeError
-from agentrader.transport import JsonTransport,RequestGovernor,retry_after_seconds,rate_headers
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import DemoExchange,ExchangeError
+from agentrader.shared.transport import JsonTransport,RequestGovernor,retry_after_seconds,rate_headers
 
 
 def http(status,code=-1000,message='secret-canary',headers=None):
@@ -103,7 +103,7 @@ class TransportTests(unittest.TestCase):
         x=DemoExchange(Config('key','secret'),transport=self.transport)
         x.opener=self.opener
         self.opener.open.side_effect=[URLError('offline'),io.BytesIO(b'{}')]
-        with patch('agentrader.exchange.time.time',side_effect=[1,2]):
+        with patch('agentrader.shared.exchange.time.time',side_effect=[1,2]):
             x.get('/fapi/v3/account')
         urls=[c.args[0].full_url for c in self.opener.open.call_args_list]
         self.assertIn('timestamp=1000',urls[0]);self.assertIn('timestamp=2000',urls[1])

@@ -15,7 +15,7 @@ REA araştırması: [geometri ve sınırlar](REA-CHANNEL-FAMILY-GEOMETRY.md). Ca
 - 304 frontend testi; TypeScript ve üretim derlemesi başarılı.
 - 927 backend testi başarılı; izole replay 36/36. Kaynak hash kanıtları projenin üreticileriyle yenilendi.
 - Gerçek Chrome: sekiz araç için aşamalı önizleme, oluşturma, ayarlar/metin/fiyat etiketleri, dairesel tutamaç düzenlemesi, undo ve yeniden yükleme. API/WebSocket test verileriyle izole; kişisel çalışma alanına sıfır test yazımı.
-- Kanıtlar: reports/channel-family-20261113/result.json ve sekiz PNG; scripts/check_channel_family.mts tekrar çalıştırılabilir.
+- Kanıtlar: reports/channel-family-20261113/result.json ve sekiz PNG; scripts/chart/check_channel_family.mts tekrar çalıştırılabilir.
 - Yerel sunucu yeni backend ile yeniden başlatıldı; format9 HTTP200. Üretim bundle: index-o0Yz17kL.js.
 
 ## Açık sınırlar

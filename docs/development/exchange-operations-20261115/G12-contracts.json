@@ -1,0 +1,118 @@
+{
+  "schema": "g12-transport-contracts/1",
+  "review_date": "2026-11-16",
+  "execution_context": "usdm-demo",
+  "ws_url": "wss://testnet.binancefuture.com/ws-fapi/v1",
+  "authenticated_exchange_acceptance": "NOT_RUN",
+  "production_execution_enabled": false,
+  "cli_entries": [
+    "commands --order-transport ws",
+    "orders --order-transport ws"
+  ],
+  "ws_routes": [
+    {
+      "rest_method": "POST",
+      "rest_path": "/fapi/v1/order",
+      "ws_method": "order.place",
+      "documented_ws_weight": 0,
+      "local_minimum_ws_weight": 1,
+      "order_cost": 1
+    },
+    {
+      "rest_method": "PUT",
+      "rest_path": "/fapi/v1/order",
+      "ws_method": "order.modify",
+      "documented_ws_weight": 0,
+      "local_minimum_ws_weight": 1,
+      "order_cost": 1
+    },
+    {
+      "rest_method": "DELETE",
+      "rest_path": "/fapi/v1/order",
+      "ws_method": "order.cancel",
+      "documented_ws_weight": 1,
+      "local_minimum_ws_weight": 1,
+      "order_cost": 0
+    },
+    {
+      "rest_method": "GET",
+      "rest_path": "/fapi/v1/order",
+      "ws_method": "order.status",
+      "documented_ws_weight": 1,
+      "local_minimum_ws_weight": 1,
+      "order_cost": 0
+    },
+    {
+      "rest_method": "POST",
+      "rest_path": "/fapi/v1/algoOrder",
+      "ws_method": "algoOrder.place",
+      "documented_ws_weight": 0,
+      "local_minimum_ws_weight": 1,
+      "order_cost": 1
+    },
+    {
+      "rest_method": "DELETE",
+      "rest_path": "/fapi/v1/algoOrder",
+      "ws_method": "algoOrder.cancel",
+      "documented_ws_weight": 1,
+      "local_minimum_ws_weight": 1,
+      "order_cost": 0
+    }
+  ],
+  "host_pools": {
+    "demo-fapi.binance.com": {
+      "environment": "demo",
+      "channel": "REST"
+    },
+    "demo-dapi.binance.com": {
+      "environment": "demo",
+      "channel": "REST"
+    },
+    "fapi.binance.com": {
+      "environment": "production",
+      "channel": "REST"
+    },
+    "dapi.binance.com": {
+      "environment": "production",
+      "channel": "REST"
+    },
+    "testnet.binancefuture.com": {
+      "environment": "demo",
+      "channel": "WS"
+    },
+    "ws-fapi.binance.com": {
+      "environment": "production",
+      "channel": "WS"
+    }
+  },
+  "quota_scopes": {
+    "REST_IP": "UM_CM_SHARED_PER_ENVIRONMENT",
+    "WS_IP": "SEPARATE_FROM_REST_WITH_REST_TRADE_OVERLAP",
+    "ORDERS": "REST_WS_UM_CM_LOCAL_ALL_KEYS_CONSERVATIVE",
+    "OTHER_PRODUCT_PRE_RESERVATION": "NOT_IMPLEMENTED"
+  },
+  "initial_limits": {
+    "weight_1m": 2400,
+    "orders_10s": 300,
+    "orders_1m": 1200,
+    "statistics_5m": 1000,
+    "funding_5m": 500,
+    "ws_handshake_weight": 5
+  },
+  "unknown_futures_rest_cost": 100,
+  "no_mutation_refund": true,
+  "observations_add_to_local_reservations": true,
+  "higher_reported_limits_do_not_raise_capacity": true,
+  "special_character_signing": "BLOCKED_WHEN_RAW_AND_URLENCODE_DIFFER",
+  "native_ws_batch": "NOT_REGISTERED_NO_FALLBACK",
+  "financial_retry": "NEVER_BLIND_REPOST",
+  "existing_dependency": "websocket-client streams/web optional extra",
+  "sources": [
+    "https://developers.binance.com/en/docs/products/derivatives-trading-coin-futures/Important-CM-UM-Integration-Notice",
+    "https://developers.binance.com/en/docs/products/derivatives-trading-usds-futures/websocket-api-general-info",
+    "https://developers.binance.com/en/docs/catalog/core-trading-derivatives-trading-usd-s-m-futures/api/ws-api/trade",
+    "https://developers.binance.com/en/docs/products/derivatives-trading-usds-futures/general-info",
+    "https://raw.githubusercontent.com/binance/binance-connector-python/master/common/src/binance_common/utils.py",
+    "https://developers.binance.com/en/docs/products/spot/web-socket-api"
+  ]
+}

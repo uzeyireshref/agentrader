@@ -1,6 +1,6 @@
 # Grafik performans ölçüm düzeni
 
-D1 — 10 Kasım 2026. Ölçüm aracı: `scripts/measure_chart_performance.py`. Bu düzen headless Chromium üzerinde üretim paketinin rAF callback aralıklarını ölçer. Görünür Windows/GPU FPS veya fiziksel trackpad kabulü değildir.
+D1 — 10 Kasım 2026. Ölçüm aracı: `scripts/chart/measure_chart_performance.py`. Bu düzen headless Chromium üzerinde üretim paketinin rAF callback aralıklarını ölçer. Görünür Windows/GPU FPS veya fiziksel trackpad kabulü değildir.
 
 ## Sabit yük ve ortam
 
@@ -15,13 +15,13 @@ D1 — 10 Kasım 2026. Ölçüm aracı: `scripts/measure_chart_performance.py`. 
 Proje kökünden kısa kurulum doğrulaması:
 
 ```powershell
-python scripts/measure_chart_performance.py --seconds 10 --runs 1
+python scripts/chart/measure_chart_performance.py --seconds 10 --runs 1
 ```
 
 D2 görevi için aynı düzenle üç uzun koşu:
 
 ```powershell
-python scripts/measure_chart_performance.py --seconds 60 --runs 3
+python scripts/chart/measure_chart_performance.py --seconds 60 --runs 3
 ```
 
 Üretim kodu değişmişse önce frontend dizininde `npm.cmd run build` çalıştırılır. Ölçüm paket hash’leri farklıysa sonuçlar aynı paket gibi karşılaştırılmaz. Aynı süreli yeni çalıştırma ilgili JSON raporunu günceller; karşılaştırma için önceki raporu başka adla koru. 10 sn ve 60 sn raporları ayrı dosyalardır.
@@ -43,7 +43,7 @@ D2 hedefi üç ayrı geçerli 60 saniyelik koşunun her birinde p95 ≤33,34 ms;
 ## D3 kaynak ölçümü
 
 ```powershell
-python scripts/check_chart_resources.py
+python scripts/chart/check_chart_resources.py
 ```
 
 Üretim paketi, 4.000 mum/200 yatay çizim, BTC/ETH ve 15m/1h ile 3 ısınma +10 ölçüm +20 tanı döngüsü. Yerel gerçek WebSocket sunucusu kurulur; test sonunda kapanır. Her örnekte iki forced GC ve CDP DOM/listener sayımı; başlangıç/son heap snapshot türü karşılaştırması yapılır. Raw snapshot metinleri diske yığılmaz, tür farkları rapora yazılır. Post-GC heap tarama sınırı max(1 MiB, başlangıcın %5’i), doğrusal eğim sınırı 64 KiB/döngü; monoton artış ayrıca başarısızdır. Bunlar tarama kurallarıdır, genel sızıntısızlık ispatı değildir.
@@ -54,8 +54,8 @@ Son koşuda kaynak sayıları sabit kaldı. Heap yaklaşık 1 MB arttı; snapsho
 ## D4 uzun oturum düzeni
 
 ```powershell
-python scripts/check_chart_soak.py --smoke
-python scripts/check_chart_soak.py
+python scripts/chart/check_chart_soak.py --smoke
+python scripts/chart/check_chart_soak.py
 ```
 
 `--smoke` yalnız kısa araç doğrulamasıdır, D4 kabulüne uygun değildir. Parametresiz koşu gerçek monotonic saatle en az 1.800 saniye çalışır. 4.000 mum ve dört türden 50’şer toplam 200 çizim; yerel gerçek WebSocket sunucusu iki saniyede bir açık mumu günceller. Kontrollü piyasa saatinde sınırlar 60. ve 960. saniyelerde, gerçek 900 saniye arayla geçilir. Yeni muma geçerken önceki mum kapanır ve pencere 4.000 mumda tutulur. 300. ve 1.200. saniyelerde bağlantı sunucudan kapatılır; RECONNECTING ve tekrar LIVE gözlenir.
@@ -73,7 +73,7 @@ Heap tarama bütçesi net artışta max(2 MiB, başlangıcın %20’si); başlan
 ## D5 kapı sonucu
 
 ```powershell
-python scripts/check_chart_performance_gate.py
+python scripts/chart/check_chart_performance_gate.py
 ```
 
 16 kayıtlı kanıt/güncel paket kontrolü geçti. 123 frontend testi ve üretim derlemesi ayrıca yeniden geçti; hash’ler ölçülen paketle aynı. **Kontrollü headless performans kapısı kapandı**; fiziksel cihaz/genel grafik sürüm kabulü kapanmadı.

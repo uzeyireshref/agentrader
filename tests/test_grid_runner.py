@@ -6,11 +6,11 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.exchange import ExchangeError
-from agentrader.grid_runner import GridRunner
-from agentrader.plans import PlanService
-from agentrader.risk import number
-from agentrader.state import StateStore
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.grid_runner import GridRunner
+from agentrader.bot.plans import PlanService
+from agentrader.bot.risk import number
+from agentrader.shared.state import StateStore
 from test_grid_plan import grid_plan, grid_snapshot, limits
 from test_v2_runner import ExecutionExchange
 
@@ -26,7 +26,7 @@ class GridExchange(ExecutionExchange):
         if path=='/fapi/v1/leverageBracket':return [{'symbol':'BTCUSDT','brackets':copy.deepcopy(self.brackets)}]
         if path=='/fapi/v3/account':
             return {'availableBalance':'5000','assets':[{'asset':'USDT','availableBalance':'5000',
-                     'marginAvailable':True,'unrealizedProfit':'0'}],'positions':[]}
+                     'walletBalance':'5000','initialMargin':'0','marginAvailable':True,'unrealizedProfit':'0'}],'positions':[]}
         if path=='/fapi/v1/accountConfig':return {'canTrade':True,'multiAssetsMargin':True}
         if path=='/fapi/v1/assetIndex':return {'symbol':'USDTUSD','index':'1','askRate':'1','time':int(time.time()*1000)}
         if path=='/fapi/v1/income':return []
@@ -67,7 +67,7 @@ class GridRunnerTests(unittest.TestCase):
         self.plan=grid_plan();self.snap=grid_snapshot()
         self.snap.update(observed_at=time.time(),finished_at=time.time(),now_ms=int(time.time()*1000))
         self.x=GridExchange();self.runner=GridRunner(self.service,self.x,limits())
-        self.mock=patch('agentrader.grid_runner.collect_flat_snapshot',side_effect=lambda *a:copy.deepcopy(self.snap));self.mock.start()
+        self.mock=patch('agentrader.bot.grid_runner.collect_flat_snapshot',side_effect=lambda *a:copy.deepcopy(self.snap));self.mock.start()
 
     def tearDown(self):self.mock.stop();self.store.close();self.temp.cleanup()
 
@@ -102,7 +102,7 @@ class GridRunnerTests(unittest.TestCase):
 
     def test_stream_restart_reconciles_durable_fill_before_submitting_partner(self):
         from unittest.mock import Mock
-        from agentrader.runtime import stream_monitor_session
+        from agentrader.shared.runtime import stream_monitor_session
         sid=self.start();cid=self.cell(1,'OPEN');self.x.fill(cid)
         order=self.x.orders[cid]
         event=dict(kind='ORDER_TRADE_UPDATE', event_id='durable-fill', symbol='BTCUSDT',

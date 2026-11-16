@@ -1046,5 +1046,17 @@
     "restore_checks": 10,
     "report": "docs/chart/QA01-ACCEPTANCE.md",
     "integration_decision": "KEEP_LIVE_DISABLED_PHYSICAL_AND_GENERAL_ACCEPTANCE_OPEN"
+  },
+  "latest_followup": {
+    "date": "2026-11-15",
+    "task": "NAVIGATION_SIGNED_DRAWINGS",
+    "status": "COMPLETED",
+    "report": "docs/chart/REA-NAVIGATION-SIGNED-DRAWINGS-20261115.md",
+    "browser_checks": 6,
+    "frontend_tests": 362,
+    "python_full_suite": 1261,
+    "additional_safety_tests": 18,
+    "replay_scenarios": 36,
+    "physical_acceptance": false
   }
 }

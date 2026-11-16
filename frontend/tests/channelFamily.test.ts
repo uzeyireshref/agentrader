@@ -44,9 +44,9 @@ test('invalid and empty-band configurations fail or retain median safely',()=>{
 });
 
 
-test('live TradingView closed-bar fixtures match all seven sources, sample deviation, Pearson sign and extrema fallback',async()=>{
+test('archived REA price vectors on explicit synthetic continuous bars match all seven sources and statistics',async()=>{
  const {readFile}=await import('node:fs/promises');const fixture=JSON.parse(await readFile(new URL('./fixtures/regression-rea-20261113.json',import.meta.url),'utf8'));
- for(const c of fixture.cases){const r=c.rows.map((v:number[])=>({time:v[0],open:v[1],high:v[2],low:v[3],close:v[4],volume:v[5],quote_volume:0,close_time:0,closed:true})) as Candle[];
+ for(const c of fixture.cases){const r=c.rows.map((v:number[],i:number)=>({time:t+i*604800,open:v[1],high:v[2],low:v[3],close:v[4],volume:v[5],quote_volume:0,close_time:(t+(i+1)*604800)*1000-1,closed:true})) as Candle[];
  const g=familyGeometry('regression_channel','BTCUSDT',[{time:r[0].time,price:'1'},{time:r.at(-1)!.time,price:'2'}]);g.options={...g.options!,source:c.inputs.source,upper_enabled:c.inputs['use upper diviation'],lower_enabled:c.inputs['use lower diviation']};
  const m=familyModel(g,r);for(const [role,key]of [['median','baseLine'],['upper','upLine'],['lower','downLine']]){const l=m.lines.find(l=>l.role===role)!;assert.ok(Math.abs(l.a.y-c.trend[key].startPrice)<1e-6,c.inputs.source+' '+role+' start');assert.ok(Math.abs(l.b.y-c.trend[key].endPrice)<1e-6,c.inputs.source+' '+role+' end');}assert.ok(Math.abs(m.pearson!-c.trend.pearsons)<1e-10,c.inputs.source+' Pearson');}
 });

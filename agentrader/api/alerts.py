@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Request
 from .drawings import body
-from ..price_alerts import definition
+from agentrader.chart.price_alerts import definition
 
 def alert_router(service,market,worker):
     router=APIRouter()

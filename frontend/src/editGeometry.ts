@@ -3,10 +3,10 @@ import {validateFibonacci} from './fibonacci';
 import {isFamily,validateFamily} from './channelFamily';
 import {isChannel,channelBasis} from './channel';
 import {isPosition,positionMetrics} from './position';
-import {onTick} from './exactGeometry';
+import {onTick,onDrawingTick} from './exactGeometry';
 import type {Geometry} from './drawings';
-function decimal(value:string):{units:bigint;places:number}{
- if(value.length>64||!/^\d+(?:\.\d+)?$/.test(value)||!Number.isFinite(Number(value))||Number(value)<=0)throw Error('Fiyat pozitif bir ondalık sayı olmalı.');
+function decimal(value:string,signed=false):{units:bigint;places:number}{
+ if(value.length>64||!/^-?\d+(?:\.\d+)?$/.test(value)||!Number.isFinite(Number(value))||!signed&&Number(value)<=0)throw Error('Fiyat pozitif bir ondalık sayı olmalı.');
  return {units:BigInt(value.replace('.','')),places:value.split('.')[1]?.length??0};
 }
 function equal(a:ReturnType<typeof decimal>,b:ReturnType<typeof decimal>):boolean{
@@ -16,11 +16,11 @@ export function editGeometry(original:Geometry,label:string,prices:string[],time
  if(prices.length!==original.anchors.length||times.length!==prices.length)throw Error('Çizim noktaları yüklenemedi.');
  const values:ReturnType<typeof decimal>[]=[];
  const anchors=original.anchors.map((anchor,i)=>{
-  const price=prices[i].trim().replace(',','.');const value=decimal(price);values.push(value);
+  const price=prices[i].trim().replace(',','.');const value=decimal(price,!isPosition(original));values.push(value);
   // Existing stored levels may predate tick rules; renaming must not change them.
   if(price!==anchor.price){
    try{decimal(tick);}catch{throw Error('Piyasanın fiyat adımı henüz yüklenmedi.');}
-   if(!onTick(price,tick))throw Error('Fiyat '+tick+' adımına uymalı.');
+   if(!(isPosition(original)?onTick:onDrawingTick)(price,tick))throw Error('Fiyat '+tick+' adımına uymalı.');
   }
   const date=times[i].length===16?times[i]+':00':times[i];
   if(!/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d$/.test(date))throw Error('Geçerli bir UTC zamanı gir.');

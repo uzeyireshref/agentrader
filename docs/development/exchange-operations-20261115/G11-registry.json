@@ -1,0 +1,430 @@
+{
+  "schema": "product-environment-registry/1",
+  "profiles": [
+    {
+      "id": "usdm-demo",
+      "product": "USD-M",
+      "environment": "demo",
+      "api_family": "FAPI",
+      "base_url": "https://demo-fapi.binance.com",
+      "credential_prefix": "BINANCE_DEMO",
+      "account_model": "USD_M_LINEAR",
+      "time_path": "/fapi/v1/time",
+      "public_reads": [
+        "/fapi/v1/time",
+        "/fapi/v1/exchangeInfo"
+      ],
+      "private_reads": [
+        "/fapi/v3/account",
+        "/fapi/v1/accountConfig",
+        "/fapi/v1/positionSide/dual"
+      ],
+      "order_lookup": "/fapi/v1/order",
+      "source": "https://developers.binance.com/en/docs/products/derivatives-trading-usds-futures/general-info",
+      "execution_registered": true,
+      "note": "Legacy execution remains demo USD-M only.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "usdm-production",
+      "product": "USD-M",
+      "environment": "production",
+      "api_family": "FAPI",
+      "base_url": "https://fapi.binance.com",
+      "credential_prefix": "BINANCE_USDM_PRODUCTION",
+      "account_model": "USD_M_LINEAR",
+      "time_path": "/fapi/v1/time",
+      "public_reads": [
+        "/fapi/v1/time",
+        "/fapi/v1/exchangeInfo"
+      ],
+      "private_reads": [
+        "/fapi/v3/account",
+        "/fapi/v1/accountConfig",
+        "/fapi/v1/positionSide/dual"
+      ],
+      "order_lookup": "/fapi/v1/order",
+      "source": "https://developers.binance.com/en/docs/products/derivatives-trading-usds-futures/general-info",
+      "execution_registered": false,
+      "note": "Legacy execution remains demo USD-M only.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "coinm-demo",
+      "product": "COIN-M",
+      "environment": "demo",
+      "api_family": "DAPI",
+      "base_url": "https://demo-dapi.binance.com",
+      "credential_prefix": "BINANCE_COINM_DEMO",
+      "account_model": "COIN_M_INVERSE",
+      "time_path": "/dapi/v1/time",
+      "public_reads": [
+        "/dapi/v1/time",
+        "/dapi/v1/exchangeInfo"
+      ],
+      "private_reads": [
+        "/dapi/v1/account",
+        "/dapi/v1/positionSide/dual"
+      ],
+      "order_lookup": "/dapi/v1/order",
+      "source": "https://developers.binance.com/en/docs/products/derivatives-trading-coin-futures/general-info",
+      "execution_registered": false,
+      "note": "",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "coinm-production",
+      "product": "COIN-M",
+      "environment": "production",
+      "api_family": "DAPI",
+      "base_url": "https://dapi.binance.com",
+      "credential_prefix": "BINANCE_COINM_PRODUCTION",
+      "account_model": "COIN_M_INVERSE",
+      "time_path": "/dapi/v1/time",
+      "public_reads": [
+        "/dapi/v1/time",
+        "/dapi/v1/exchangeInfo"
+      ],
+      "private_reads": [
+        "/dapi/v1/account",
+        "/dapi/v1/positionSide/dual"
+      ],
+      "order_lookup": "/dapi/v1/order",
+      "source": "https://developers.binance.com/en/docs/products/derivatives-trading-coin-futures/general-info",
+      "execution_registered": false,
+      "note": "",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "spot-testnet",
+      "product": "SPOT",
+      "environment": "testnet",
+      "api_family": "API",
+      "base_url": "https://testnet.binance.vision",
+      "credential_prefix": "BINANCE_SPOT_TESTNET",
+      "account_model": "SPOT",
+      "time_path": "/api/v3/time",
+      "public_reads": [
+        "/api/v3/time",
+        "/api/v3/exchangeInfo"
+      ],
+      "private_reads": [
+        "/api/v3/account"
+      ],
+      "order_lookup": "/api/v3/order",
+      "source": "https://developers.binance.com/en/docs/products/spot/testnet/general-info",
+      "execution_registered": false,
+      "note": "Testnet supports /api only; absent historical data is not a rejected order.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "spot-production",
+      "product": "SPOT",
+      "environment": "production",
+      "api_family": "API",
+      "base_url": "https://api.binance.com",
+      "credential_prefix": "BINANCE_SPOT_PRODUCTION",
+      "account_model": "SPOT",
+      "time_path": "/api/v3/time",
+      "public_reads": [
+        "/api/v3/time",
+        "/api/v3/exchangeInfo"
+      ],
+      "private_reads": [
+        "/api/v3/account"
+      ],
+      "order_lookup": "/api/v3/order",
+      "source": "https://developers.binance.com/en/docs/products/spot/testnet/general-info",
+      "execution_registered": false,
+      "note": "Testnet supports /api only; absent historical data is not a rejected order.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "options-demo",
+      "product": "OPTIONS",
+      "environment": "demo",
+      "api_family": "EAPI",
+      "base_url": "https://demo-fapi.binance.com",
+      "credential_prefix": "BINANCE_OPTIONS_DEMO",
+      "account_model": "OPTIONS_MARGIN",
+      "time_path": "/eapi/v1/time",
+      "public_reads": [
+        "/eapi/v1/time",
+        "/eapi/v1/exchangeInfo"
+      ],
+      "private_reads": [
+        "/eapi/v1/marginAccount"
+      ],
+      "order_lookup": null,
+      "source": "https://developers.binance.com/en/docs/products/derivatives-trading-options/general-info",
+      "execution_registered": false,
+      "note": "Documented demo host is shared with UM, not a shared credential or account model. Access errors prove no eligibility.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "options-production",
+      "product": "OPTIONS",
+      "environment": "production",
+      "api_family": "EAPI",
+      "base_url": "https://eapi.binance.com",
+      "credential_prefix": "BINANCE_OPTIONS_PRODUCTION",
+      "account_model": "OPTIONS_MARGIN",
+      "time_path": "/eapi/v1/time",
+      "public_reads": [
+        "/eapi/v1/time",
+        "/eapi/v1/exchangeInfo"
+      ],
+      "private_reads": [
+        "/eapi/v1/marginAccount"
+      ],
+      "order_lookup": null,
+      "source": "https://developers.binance.com/en/docs/products/derivatives-trading-options/general-info",
+      "execution_registered": false,
+      "note": "Documented demo host is shared with UM, not a shared credential or account model. Access errors prove no eligibility.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "margin-production",
+      "product": "MARGIN",
+      "environment": "production",
+      "api_family": "SAPI",
+      "base_url": "https://api.binance.com",
+      "credential_prefix": "BINANCE_MARGIN_PRODUCTION",
+      "account_model": "MARGIN_CROSS",
+      "time_path": "/api/v3/time",
+      "public_reads": [
+        "/api/v3/time"
+      ],
+      "private_reads": [
+        "/sapi/v1/margin/account"
+      ],
+      "order_lookup": null,
+      "source": "https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/account",
+      "execution_registered": false,
+      "note": "",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "margin-isolated-production",
+      "product": "MARGIN",
+      "environment": "production",
+      "api_family": "SAPI",
+      "base_url": "https://api.binance.com",
+      "credential_prefix": "BINANCE_MARGIN_ISOLATED_PRODUCTION",
+      "account_model": "MARGIN_ISOLATED",
+      "time_path": "/api/v3/time",
+      "public_reads": [
+        "/api/v3/time"
+      ],
+      "private_reads": [
+        "/sapi/v1/margin/isolated/account"
+      ],
+      "order_lookup": null,
+      "source": "https://developers.binance.com/en/docs/catalog/core-trading-margin-trading/api/rest-api/account",
+      "execution_registered": false,
+      "note": "",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "portfolio-margin-production",
+      "product": "PORTFOLIO_MARGIN",
+      "environment": "production",
+      "api_family": "PAPI",
+      "base_url": "https://papi.binance.com",
+      "credential_prefix": "BINANCE_PM_PRODUCTION",
+      "account_model": "PM",
+      "time_path": null,
+      "public_reads": [
+        "/papi/v1/ping"
+      ],
+      "private_reads": [
+        "/papi/v1/account"
+      ],
+      "order_lookup": null,
+      "source": "https://developers.binance.com/en/docs/products/derivatives-trading-portfolio-margin/general-info",
+      "execution_registered": false,
+      "note": "",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "portfolio-margin-pro-production",
+      "product": "PORTFOLIO_MARGIN_PRO",
+      "environment": "production",
+      "api_family": "SAPI",
+      "base_url": "https://api.binance.com",
+      "credential_prefix": "BINANCE_PM_PRO_PRODUCTION",
+      "account_model": "PM_PRO_V1",
+      "time_path": "/api/v3/time",
+      "public_reads": [
+        "/api/v3/time"
+      ],
+      "private_reads": [
+        "/sapi/v1/portfolio/account"
+      ],
+      "order_lookup": null,
+      "source": "https://developers.binance.com/en/docs/products/derivatives-trading-portfolio-margin-pro/general-info",
+      "execution_registered": false,
+      "note": "PM_1 has version-dependent descriptions; do not normalize it to a linear risk model.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "portfolio-margin-span-production",
+      "product": "PORTFOLIO_MARGIN_PRO",
+      "environment": "production",
+      "api_family": "SAPI",
+      "base_url": "https://api.binance.com",
+      "credential_prefix": "BINANCE_PM_SPAN_PRODUCTION",
+      "account_model": "PM_PRO_SPAN_V2",
+      "time_path": "/api/v3/time",
+      "public_reads": [
+        "/api/v3/time"
+      ],
+      "private_reads": [
+        "/sapi/v2/portfolio/account"
+      ],
+      "order_lookup": null,
+      "source": "https://developers.binance.com/en/docs/products/derivatives-trading-portfolio-margin-pro/general-info",
+      "execution_registered": false,
+      "note": "",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "READ_ONLY"
+    },
+    {
+      "id": "convert-production",
+      "product": "CONVERT",
+      "environment": "production",
+      "api_family": "SAPI",
+      "base_url": "https://api.binance.com",
+      "credential_prefix": "BINANCE_CONVERT_PRODUCTION",
+      "account_model": "CONVERT",
+      "time_path": null,
+      "public_reads": [],
+      "private_reads": [],
+      "order_lookup": null,
+      "source": "docs/research/crypto-bot-20261115/ENVIRONMENT-REVIEW.md",
+      "execution_registered": false,
+      "note": "Registered boundary only; product-specific discovery and execution remain in G19/G20/G21.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "DESCRIBED_ONLY"
+    },
+    {
+      "id": "wallet-production",
+      "product": "WALLET",
+      "environment": "production",
+      "api_family": "SAPI",
+      "base_url": "https://api.binance.com",
+      "credential_prefix": "BINANCE_WALLET_PRODUCTION",
+      "account_model": "WALLET",
+      "time_path": null,
+      "public_reads": [],
+      "private_reads": [],
+      "order_lookup": null,
+      "source": "docs/research/crypto-bot-20261115/ENVIRONMENT-REVIEW.md",
+      "execution_registered": false,
+      "note": "Registered boundary only; product-specific discovery and execution remain in G19/G20/G21.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "DESCRIBED_ONLY"
+    },
+    {
+      "id": "sub-account-production",
+      "product": "SUB_ACCOUNT",
+      "environment": "production",
+      "api_family": "SAPI",
+      "base_url": "https://api.binance.com",
+      "credential_prefix": "BINANCE_SUB_ACCOUNT_PRODUCTION",
+      "account_model": "SUB_ACCOUNT",
+      "time_path": null,
+      "public_reads": [],
+      "private_reads": [],
+      "order_lookup": null,
+      "source": "docs/research/crypto-bot-20261115/ENVIRONMENT-REVIEW.md",
+      "execution_registered": false,
+      "note": "Registered boundary only; product-specific discovery and execution remain in G19/G20/G21.",
+      "exchange": "binance",
+      "discovery_read_only": true,
+      "write_permission": "NOT_VERIFIED",
+      "private_authentication": "HMAC_SHA256",
+      "absence_is_rejection": false,
+      "discovery_support": "DESCRIBED_ONLY"
+    }
+  ],
+  "execution_contexts": [
+    "usdm-demo"
+  ],
+  "production_execution_enabled": false,
+  "no_implicit_host_or_credential_fallback": true,
+  "review_date": "2026-11-16",
+  "authenticated_exchange_acceptance": "NOT_RUN"
+}

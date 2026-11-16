@@ -7,15 +7,15 @@ from dataclasses import replace
 from decimal import Decimal
 from pathlib import Path
 
-from agentrader.account_ownership import AccountOwnership
-from agentrader.account_runtime import prepare_many,start_many,monitor_account,supervise_account
-from agentrader.config import Config
-from agentrader.exchange import ExchangeError
-from agentrader.grid_runner import GridRunner
-from agentrader.plans import PlanService
-from agentrader.risk import RiskLimits,number
-from agentrader.state import StateStore
-from agentrader.v2_runner import V2Runner
+from agentrader.bot.account_ownership import AccountOwnership
+from agentrader.bot.account_runtime import prepare_many,start_many,monitor_account,supervise_account
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.grid_runner import GridRunner
+from agentrader.bot.plans import PlanService
+from agentrader.bot.risk import RiskLimits,number
+from agentrader.shared.state import StateStore
+from agentrader.bot.v2_runner import V2Runner
 from test_orders import SYMBOL
 from test_plan_v2 import plan_v2
 
@@ -273,7 +273,7 @@ class MultiSessionTests(unittest.TestCase):
         self.assertEqual(len(self.x.calls),before)
 
     def test_one_service_stop_does_not_resume_or_stop_peer(self):
-        from agentrader.service_cli import request_stop
+        from agentrader.cli.service_cli import request_stop
         btc=self.open('BTCUSDT');eth=self.open('ETHUSDT');before=len(self.x.calls)
         request_stop(self.store,btc,'local:test')
         rows=list(monitor_account(self.service,self.x,self.limits,execute=True,iterations=2,sleep=lambda _:None))
@@ -304,7 +304,7 @@ class MultiSessionTests(unittest.TestCase):
         self.assertEqual(self.x.amounts,amounts)
 
     def test_corrupted_peer_risk_envelope_cannot_reduce_shared_budget(self):
-        from agentrader.plans import canonical,digest
+        from agentrader.bot.plans import canonical,digest
         btc=self.open('BTCUSDT');eth=self.open('ETHUSDT');before=len(self.x.calls)
         row=self.store.db.execute('SELECT body FROM risk_reservations WHERE reservation_id=?',(btc,)).fetchone()
         body=json.loads(row['body']);body['exposures'][0]['quantity']='0.0001'
@@ -325,8 +325,8 @@ class MultiSessionTests(unittest.TestCase):
         self.assertEqual(len(self.x.calls),count)
 
     def test_pre_claim_crash_can_release_unused_budget_and_cancel_plan_atomically(self):
-        from agentrader.v2_preflight import prepare_single
-        from agentrader.portfolio import Exposure
+        from agentrader.bot.v2_preflight import prepare_single
+        from agentrader.bot.portfolio import Exposure
         p=self.authorize('BTCUSDT');row=self.service.show(p['plan_id'],1)
         snap=self.runner._snapshot(p['symbol']);prepared=prepare_single(p,snap,self.limits)
         self.runner.book.reserve('unused',self.service.owner,row['digest'],[Exposure(**e) for e in prepared['exposures']],snap,self.limits)

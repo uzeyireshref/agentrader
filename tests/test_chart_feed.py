@@ -6,9 +6,9 @@ import time
 import unittest
 from unittest.mock import Mock, patch
 
-from agentrader.chart_market import ChartMarket, InvalidMarket, MarketUnavailable, normalize_kline
-from agentrader.market_data import INTERVALS
-from agentrader.market_feed import FeedState, FeedUnavailable, MarketFeedHub, PublicSocket
+from agentrader.chart.chart_market import ChartMarket, InvalidMarket, MarketUnavailable, normalize_kline
+from agentrader.shared.market_data import INTERVALS
+from agentrader.shared.market_feed import FeedState, FeedUnavailable, MarketFeedHub, PublicSocket
 
 STEP = INTERVALS['15m']
 START = 1800000000000 // STEP * STEP
@@ -126,7 +126,7 @@ class ChartFeedTests(unittest.TestCase):
     def test_socket_uses_routed_public_market_endpoint(self):
         with patch('websocket.create_connection') as create:
             socket = PublicSocket('BTCUSDT', '15m')
-            self.assertEqual(create.call_args.args[0], 'wss://fstream.binance.com/market/ws/btcusdt@kline_15m')
+            self.assertEqual(create.call_args.args[0], 'wss://demo-fstream.binance.com/market/ws/btcusdt@kline_15m')
             socket.close()
 
     def test_two_clients_share_one_feed_and_shutdown_closes_it(self):

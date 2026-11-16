@@ -1,0 +1,3727 @@
+{
+  "observed_at_utc": "2026-11-15T17:05:05.509Z",
+  "source_url": "https://demo-fapi.binance.com/fapi/v1/premiumIndex",
+  "purpose": "Offline order-contract fixtures",
+  "prices": [
+    {
+      "symbol": "CCUSDT",
+      "mark_price": "0.08260000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000SHIBUSDC",
+      "mark_price": "0.00389100",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BELUSDT",
+      "mark_price": "0.08569384",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ENAUSDT",
+      "mark_price": "0.11990000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FISUSDT",
+      "mark_price": "0.01964500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SXTUSDT",
+      "mark_price": "0.00826455",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FLOWUSDT",
+      "mark_price": "0.01714419",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HUMAUSDT",
+      "mark_price": "0.00648247",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000CATUSDT",
+      "mark_price": "0.00140159",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SANTOSUSDT",
+      "mark_price": "0.34100000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AEROUSDT",
+      "mark_price": "0.43305266",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BEAMXUSDT",
+      "mark_price": "0.00409200",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "JSTUSDT",
+      "mark_price": "0.14404000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ELSAUSDT",
+      "mark_price": "0.05907545",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SOLUSDT",
+      "mark_price": "71.31018830",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FLUXUSDT",
+      "mark_price": "0.04680000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TOWNSUSDT",
+      "mark_price": "0.00100069",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "METAUSDT",
+      "mark_price": "634.28130669",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "ETHUSDT_250926",
+      "mark_price": "1812.84393592",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HBARUSDT",
+      "mark_price": "0.05788279",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ICXUSDT",
+      "mark_price": "0.01288500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SUIUSDC",
+      "mark_price": "0.71763560",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VELVETUSDT",
+      "mark_price": "0.04838259",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NEOUSDT",
+      "mark_price": "1.56418750",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SYRUPUSDT",
+      "mark_price": "0.10190000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XMRUSDT",
+      "mark_price": "493.37375000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SOXLUSDT",
+      "mark_price": "55.55678940",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "WIFUSDT",
+      "mark_price": "0.13280000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BNBUSDC",
+      "mark_price": "591.52138965",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DIAUSDT",
+      "mark_price": "0.11940000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSDT",
+      "mark_price": "1815.82600775",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SPACEUSDT",
+      "mark_price": "0.00276038",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CETUSUSDT",
+      "mark_price": "0.01630662",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BIOUSDT",
+      "mark_price": "0.01624004",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RUNEUSDT",
+      "mark_price": "0.51051815",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "QTUMUSDT",
+      "mark_price": "0.65245981",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "POWERUSDT",
+      "mark_price": "0.05593000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OMUSDT",
+      "mark_price": "0.06694500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MEWUSDT",
+      "mark_price": "0.00029548",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LINKUSDC",
+      "mark_price": "9.17892526",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HOMEUSDT",
+      "mark_price": "0.00409500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OGUSDT",
+      "mark_price": "1.85437000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OBOLUSDT",
+      "mark_price": "0.00280500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WOOUSDT",
+      "mark_price": "0.00904961",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSDT_260626",
+      "mark_price": "1812.84393592",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OLUSDT",
+      "mark_price": "0.00440860",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ARIAUSDT",
+      "mark_price": "0.24924942",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDC",
+      "mark_price": "64706.63855270",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BOMEUSDC",
+      "mark_price": "0.00048969",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HOLOUSDT",
+      "mark_price": "0.04545031",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HUSDT",
+      "mark_price": "0.01706411",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MAGICUSDT",
+      "mark_price": "0.06794828",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CRVUSDC",
+      "mark_price": "0.20021048",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHU",
+      "mark_price": "1813.59596386",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LRCUSDT",
+      "mark_price": "0.00851500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DEFUSDT",
+      "mark_price": "225.20000000",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "ZAMAUSDT",
+      "mark_price": "0.05400862",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DUSKUSDT",
+      "mark_price": "0.06266705",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KNCUSDT",
+      "mark_price": "0.09445062",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MASKUSDT",
+      "mark_price": "0.30231707",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IDEXUSDT",
+      "mark_price": "0.00239100",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CARVUSDT",
+      "mark_price": "0.02249490",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "mark_price": "0.05843239",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NEIROETHUSDT",
+      "mark_price": "0.00303728",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WLDUSDT",
+      "mark_price": "0.26367510",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GIGGLEUSDT",
+      "mark_price": "22.60000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MSTRUSDT",
+      "mark_price": "106.06896689",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "CRVUSDT",
+      "mark_price": "0.20027033",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CHRUSDT",
+      "mark_price": "0.01252000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PAXGUSDT",
+      "mark_price": "3827.49136727",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BMTUSDT",
+      "mark_price": "0.02078681",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SUSDT",
+      "mark_price": "0.03322787",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RAYSOLUSDT",
+      "mark_price": "1.40304936",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SAHARAUSDT",
+      "mark_price": "0.00540048",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AXSUSDT",
+      "mark_price": "0.68345857",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VFYUSDT",
+      "mark_price": "0.00642000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CELOUSDT",
+      "mark_price": "0.05964914",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ROBOUSDT",
+      "mark_price": "0.00393863",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BROCCOLIF3BUSDT",
+      "mark_price": "0.00438600",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ROSEUSDT",
+      "mark_price": "0.00459233",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BADGERUSDT",
+      "mark_price": "0.89331429",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HYPEUSDT",
+      "mark_price": "66.86330887",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ALPACAUSDT",
+      "mark_price": "0.01901082",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SONICUSDT",
+      "mark_price": "0.01719119",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MKRUSDT",
+      "mark_price": "1813.70000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZENUSDT",
+      "mark_price": "4.10737500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "COMBOUSDT",
+      "mark_price": "0.00475821",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HANAUSDT",
+      "mark_price": "0.01365619",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XPDUSDT",
+      "mark_price": "995.99321234",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "TONUSDT",
+      "mark_price": "1.59970000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PROMPTUSDT",
+      "mark_price": "0.01317518",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BNXUSDT",
+      "mark_price": "1.55006699",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSD1",
+      "mark_price": "1817.12656660",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MMTUSDT",
+      "mark_price": "0.10166435",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SKLUSDT",
+      "mark_price": "0.00311100",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EDGEUSDT",
+      "mark_price": "0.28261295",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PIXELUSDT",
+      "mark_price": "0.00335768",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDT",
+      "mark_price": "64725.52054760",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WALUSDT",
+      "mark_price": "0.02412956",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ERAUSDT",
+      "mark_price": "0.06967861",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "JASMYUSDT",
+      "mark_price": "0.00321069",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CTKUSDT",
+      "mark_price": "0.07384595",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ASTRUSDT",
+      "mark_price": "0.00441789",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AIXBTUSDT",
+      "mark_price": "0.01295649",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000000MOGUSDT",
+      "mark_price": "0.07585129",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SPXUSDT",
+      "mark_price": "0.29990000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SAMSUNGUSDT",
+      "mark_price": "150.36030580",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "ALLOUSDT",
+      "mark_price": "0.15162758",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LYNUSDT",
+      "mark_price": "0.01758273",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TOKENUSDT",
+      "mark_price": "0.00228550",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STXUSDT",
+      "mark_price": "0.26730000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "mark_price": "106.89942106",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MANTRAUSDT",
+      "mark_price": "0.00226929",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EPICUSDT",
+      "mark_price": "0.07300000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STOUSDT",
+      "mark_price": "0.02251356",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CAKEUSDT",
+      "mark_price": "1.58782712",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SPORTFUNUSDT",
+      "mark_price": "0.01099659",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ANKRUSDT",
+      "mark_price": "0.00323000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XAGUSDT",
+      "mark_price": "47.75528528",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "UBUSDT",
+      "mark_price": "0.10537916",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "mark_price": "1.07437798",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LQTYUSDT",
+      "mark_price": "0.14299698",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BIGTIMEUSDT",
+      "mark_price": "0.00431000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SKHYNIXUSDT",
+      "mark_price": "884.71665468",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "VINEUSDT",
+      "mark_price": "0.01771500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BANANAUSDT",
+      "mark_price": "2.63900000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FTTUSDT",
+      "mark_price": "0.20200873",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CELRUSDT",
+      "mark_price": "0.00193272",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "METUSDT",
+      "mark_price": "0.26720000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TRXUSDT",
+      "mark_price": "0.30438005",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "COMMONUSDT",
+      "mark_price": "0.00045250",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RAYUSDT",
+      "mark_price": "1.40303711",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SPYUSDT",
+      "mark_price": "750.11777575",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "KDAUSDT",
+      "mark_price": "0.01149000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MUUSDT",
+      "mark_price": "761.56336359",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "AKTUSDT",
+      "mark_price": "0.48320000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GLMUSDT",
+      "mark_price": "0.09117000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BSBUSDT_260625",
+      "mark_price": "0.07041623",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "QQQUSDT",
+      "mark_price": "673.02851220",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "AERGOUSDT",
+      "mark_price": "0.01260959",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IPUSDC",
+      "mark_price": "0.29900000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HFTUSDT",
+      "mark_price": "0.00619500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EVAAUSDT",
+      "mark_price": "2.55626917",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DOTUSDT",
+      "mark_price": "0.73109410",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1MBABYDOGEUSDT",
+      "mark_price": "0.00025510",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LDOUSDT",
+      "mark_price": "0.27090833",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BAKEUSDT",
+      "mark_price": "0.01246000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DYMUSDT",
+      "mark_price": "0.01251646",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CTSIUSDT",
+      "mark_price": "0.02141483",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XRPUSDT",
+      "mark_price": "0.95075935",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ONGUSDT",
+      "mark_price": "0.05526745",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FORTHUSDT",
+      "mark_price": "0.26804167",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FOOTBALLUSDT",
+      "mark_price": "50.20978065",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ACUUSDT",
+      "mark_price": "0.11747000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SUIUSDT",
+      "mark_price": "0.71779536",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LAYERUSDT",
+      "mark_price": "0.04354971",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ESPORTSUSDT",
+      "mark_price": "0.00957304",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XANUSDT",
+      "mark_price": "0.00767000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DGBUSDT",
+      "mark_price": "0.00271831",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ALPINEUSDT",
+      "mark_price": "0.25421180",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LTCUSDT",
+      "mark_price": "44.80681414",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IDOLUSDT",
+      "mark_price": "0.02000473",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DENTUSDT",
+      "mark_price": "0.00004475",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TENCENTUSDT",
+      "mark_price": "49.30690650",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "PUNDIXUSDT",
+      "mark_price": "0.07400000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BSVUSDT",
+      "mark_price": "14.46497292",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSDT_260925",
+      "mark_price": "1812.84393592",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STRKUSDT",
+      "mark_price": "0.03401943",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OMGUSDT",
+      "mark_price": "0.15874868",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PLAYUSDT",
+      "mark_price": "0.00678999",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CHESSUSDT",
+      "mark_price": "0.00306000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ARKMUSDT",
+      "mark_price": "0.08811841",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000XUSDT",
+      "mark_price": "0.02084583",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ASTERUSDT",
+      "mark_price": "0.53420000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000BONKUSDC",
+      "mark_price": "0.00235924",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LUNA2USDT",
+      "mark_price": "0.03140035",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VTHOUSDT",
+      "mark_price": "0.00044042",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CYBERUSDT",
+      "mark_price": "0.22444067",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TIAUSDC",
+      "mark_price": "0.35810000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EGLDUSDT",
+      "mark_price": "2.59780800",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "APEUSDT",
+      "mark_price": "0.07899314",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ARBUSDC",
+      "mark_price": "0.13607583",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSDT_250627",
+      "mark_price": "1812.84393592",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BLZUSDT",
+      "mark_price": "0.04453792",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AKEUSDT",
+      "mark_price": "0.01153000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KMNOUSDT",
+      "mark_price": "0.02863115",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LINKUSDT",
+      "mark_price": "9.18287241",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZECUSDT",
+      "mark_price": "900.63000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HYPERUSDT",
+      "mark_price": "0.04038826",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MAGMAUSDT",
+      "mark_price": "0.25567256",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WAVESUSDT",
+      "mark_price": "0.75753636",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TAGUSDT",
+      "mark_price": "0.00055952",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSDT_261225",
+      "mark_price": "1825.48547481",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SNXUSDT",
+      "mark_price": "0.14470360",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SKRUSDT",
+      "mark_price": "0.00875254",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NTRNUSDT",
+      "mark_price": "0.00329250",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AUSDT",
+      "mark_price": "0.06594984",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PUMPUSDT",
+      "mark_price": "0.00287907",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BBUSDT",
+      "mark_price": "0.00535349",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MEGAUSDT",
+      "mark_price": "0.04925288",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "REIUSDT",
+      "mark_price": "0.00377125",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "mark_price": "0.03510000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DAMUSDT",
+      "mark_price": "0.01348250",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LUMIAUSDT",
+      "mark_price": "0.07590000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZKCUSDT",
+      "mark_price": "0.02340075",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "THETAUSDT",
+      "mark_price": "0.13020000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PLUMEUSDT",
+      "mark_price": "0.01229175",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SWARMSUSDT",
+      "mark_price": "0.00577572",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DYDXUSDT",
+      "mark_price": "0.07824160",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DEEPUSDT",
+      "mark_price": "0.01240879",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STGUSDT",
+      "mark_price": "0.11730000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DASHUSDT",
+      "mark_price": "37.51496379",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LOKAUSDT",
+      "mark_price": "0.15213819",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "B2USDT",
+      "mark_price": "0.40730000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "UAIUSDT",
+      "mark_price": "0.03358608",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "mark_price": "0.00204700",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BDXNUSDT",
+      "mark_price": "0.00184010",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "QUICKUSDT",
+      "mark_price": "0.00321390",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "POPCATUSDT",
+      "mark_price": "0.02850000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "UNIUSDT",
+      "mark_price": "5.15400000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ATAUSDT",
+      "mark_price": "0.00062500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AGTUSDT",
+      "mark_price": "0.02953523",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DOGSUSDT",
+      "mark_price": "0.00002562",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MILKUSDT",
+      "mark_price": "0.00119110",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AIUSDT",
+      "mark_price": "0.01473000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FORMUSDT",
+      "mark_price": "0.16571249",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BANDUSDT",
+      "mark_price": "0.14500000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000WHYUSDT",
+      "mark_price": "0.00000180",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZRXUSDT",
+      "mark_price": "0.07867968",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "UNIUSDC",
+      "mark_price": "5.15000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RONINUSDT",
+      "mark_price": "0.03782956",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PNUTUSDC",
+      "mark_price": "0.02875018",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PNUTUSDT",
+      "mark_price": "0.02879000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ARBUSDT",
+      "mark_price": "0.13600000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MINIMAXUSDT",
+      "mark_price": "19.42608436",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "ICNTUSDT",
+      "mark_price": "0.23200000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SUPERUSDT",
+      "mark_price": "0.13530000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LOOMUSDT",
+      "mark_price": "0.00142546",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000CHEEMSUSDT",
+      "mark_price": "0.00031001",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "4USDT",
+      "mark_price": "0.00833978",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ENSUSDT",
+      "mark_price": "3.84896396",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "YFIUSDT",
+      "mark_price": "1693.91666667",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AVNTUSDT",
+      "mark_price": "0.06950000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SPKUSDT",
+      "mark_price": "0.01356000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZKUSDT",
+      "mark_price": "0.00788000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VELODROMEUSDT",
+      "mark_price": "0.02625042",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DMCUSDT",
+      "mark_price": "0.00113900",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LTCUSDC",
+      "mark_price": "44.79525468",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XCNUSDT",
+      "mark_price": "0.00333003",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VICUSDT",
+      "mark_price": "0.00661250",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FIOUSDT",
+      "mark_price": "0.00066083",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BRUSDT",
+      "mark_price": "0.43598854",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DEGOUSDT",
+      "mark_price": "0.02095344",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ENSOUSDT",
+      "mark_price": "0.37186567",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BNBUSDT",
+      "mark_price": "591.83000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KEYUSDT",
+      "mark_price": "0.00055757",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GRASSUSDT",
+      "mark_price": "0.38640000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FOLKSUSDT",
+      "mark_price": "2.12449712",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RESOLVUSDT",
+      "mark_price": "0.01232000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TRUMPUSDT",
+      "mark_price": "0.94779035",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BALUSDT",
+      "mark_price": "1.23250000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MEMEFIUSDT",
+      "mark_price": "0.00155131",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CFXUSDT",
+      "mark_price": "0.03346000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BUSDT",
+      "mark_price": "0.09235863",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SCRTUSDT",
+      "mark_price": "0.00820000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AVAAIUSDT",
+      "mark_price": "0.00583000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LSKUSDT",
+      "mark_price": "0.14528763",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STORJUSDT",
+      "mark_price": "0.03078500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KAIAUSDT",
+      "mark_price": "0.02911079",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GRTUSDT",
+      "mark_price": "0.01658990",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MDTUSDT",
+      "mark_price": "0.00348700",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FLOCKUSDT",
+      "mark_price": "0.03064054",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SYSUSDT",
+      "mark_price": "0.00239042",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "INTCUSDT",
+      "mark_price": "57.89359229",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "CLANKERUSDT",
+      "mark_price": "11.76000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DOLOUSDT",
+      "mark_price": "0.01904625",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ENJUSDT",
+      "mark_price": "0.01904000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "mark_price": "1.31000357",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "QNTUSDT",
+      "mark_price": "153.76435457",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NIGHTUSDT",
+      "mark_price": "0.05021134",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AMZNUSDT",
+      "mark_price": "263.67083451",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "BIOUSDC",
+      "mark_price": "0.01627394",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "UXLINKUSDT",
+      "mark_price": "0.03666000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PUFFERUSDT",
+      "mark_price": "0.02729500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SANDUSDT",
+      "mark_price": "0.03580629",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VOXELUSDT",
+      "mark_price": "0.01218500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FFUSDT",
+      "mark_price": "0.10232735",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "龙虾USDT",
+      "mark_price": "0.01377600",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "测试测试USDT",
+      "mark_price": "0.15115762",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LAUSDT",
+      "mark_price": "0.04144537",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CYSUSDT",
+      "mark_price": "0.05950000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MAVIAUSDT",
+      "mark_price": "0.02085768",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HIGHUSDT",
+      "mark_price": "0.02240000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZORAUSDT",
+      "mark_price": "0.00438309",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ORDERUSDT",
+      "mark_price": "0.02726559",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ATHUSDT",
+      "mark_price": "0.00398433",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NVDAUSDT",
+      "mark_price": "161.21512702",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "PROVEUSDT",
+      "mark_price": "0.13736443",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LPTUSDT",
+      "mark_price": "1.09747059",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MIRAUSDT",
+      "mark_price": "0.03034857",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XAUUSDT",
+      "mark_price": "3841.80520315",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "COSUSDT",
+      "mark_price": "0.00024221",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZILUSDT",
+      "mark_price": "0.00116940",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WLFIUSDC",
+      "mark_price": "0.04670251",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BLUAIUSDT",
+      "mark_price": "0.00589659",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PTBUSDT",
+      "mark_price": "0.00007339",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AI16ZUSDT",
+      "mark_price": "0.05690000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EULUSDT",
+      "mark_price": "0.80177529",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RDNTUSDT",
+      "mark_price": "0.00248816",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SAGAUSDT",
+      "mark_price": "0.01390000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NULSUSDT",
+      "mark_price": "0.01000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SCRUSDT",
+      "mark_price": "0.01844661",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CUDISUSDT",
+      "mark_price": "0.00824083",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "COINUSDT",
+      "mark_price": "122.47734100",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "AZTECUSDT",
+      "mark_price": "0.01037155",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XRPUSDC",
+      "mark_price": "0.95065391",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BRETTUSDT",
+      "mark_price": "0.00327111",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WETUSDT",
+      "mark_price": "0.03741000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AUCTIONUSDT",
+      "mark_price": "2.59205772",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PIPPINUSDT",
+      "mark_price": "0.01106000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NXPCUSDT",
+      "mark_price": "0.13718087",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHBTC",
+      "mark_price": "0.02802800",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GHSTUSDT",
+      "mark_price": "0.11020000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "YGGUSDT",
+      "mark_price": "0.01859654",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSDT_270326",
+      "mark_price": "1814.84674419",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDT_270326",
+      "mark_price": "64719.92586957",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WAXPUSDT",
+      "mark_price": "0.00340955",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HK0700USDT",
+      "mark_price": "386.82500824",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "BCHUSDT",
+      "mark_price": "207.77635059",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TAOUSDT",
+      "mark_price": "190.07000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RSRUSDT",
+      "mark_price": "0.00133000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTRUSDT",
+      "mark_price": "0.04061000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RIFUSDT",
+      "mark_price": "0.05012827",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZECUSDC",
+      "mark_price": "900.77451709",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CUSDT",
+      "mark_price": "0.06296146",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KORUUSDT",
+      "mark_price": "483.32190000",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "XVGUSDT",
+      "mark_price": "0.00172392",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "42USDT",
+      "mark_price": "0.00193000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SOLVUSDT",
+      "mark_price": "0.00436599",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BANANAS31USDT",
+      "mark_price": "0.00471700",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SXPUSDT",
+      "mark_price": "0.00006630",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GWEIUSDT",
+      "mark_price": "0.01482000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MTLUSDT",
+      "mark_price": "0.21443333",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FRONTUSDT",
+      "mark_price": "0.45001945",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NEIROUSDT",
+      "mark_price": "0.00004712",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DEGENUSDT",
+      "mark_price": "0.00107450",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RECALLUSDT",
+      "mark_price": "0.02499633",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TRIAUSDT",
+      "mark_price": "0.00221496",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ALPHAUSDT",
+      "mark_price": "0.01692043",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KGENUSDT",
+      "mark_price": "0.07446906",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BANUSDT",
+      "mark_price": "0.03771000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MONUSDT",
+      "mark_price": "0.01538099",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EOSUSDT",
+      "mark_price": "0.78020000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TANSSIUSDT",
+      "mark_price": "0.00097915",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TRUUSDT",
+      "mark_price": "0.00072500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "COLLECTUSDT",
+      "mark_price": "0.02450206",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "JTOUSDT",
+      "mark_price": "0.26578264",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LIGHTUSDT",
+      "mark_price": "0.24070000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VIDTUSDT",
+      "mark_price": "0.00028500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ACXUSDT",
+      "mark_price": "0.04201500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XNYUSDT",
+      "mark_price": "0.00442086",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "INXUSDT",
+      "mark_price": "0.00337800",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SPCXUSDT",
+      "mark_price": "138.81377358",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "DOODUSDT",
+      "mark_price": "0.00141900",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "UNFIUSDT",
+      "mark_price": "0.69862500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "mark_price": "1.37400000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BROCCOLI714USDT",
+      "mark_price": "0.01429000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCU",
+      "mark_price": "64687.21849222",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GALAUSDT",
+      "mark_price": "0.00134332",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GTCUSDT",
+      "mark_price": "0.13450000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DODOXUSDT",
+      "mark_price": "0.03224082",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ASRUSDT",
+      "mark_price": "0.65564335",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DUSDT",
+      "mark_price": "0.00267000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KAITOUSDT",
+      "mark_price": "0.17010000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GOOGLUSDT",
+      "mark_price": "292.39223173",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "TOMOUSDT",
+      "mark_price": "1.38190000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BULLAUSDT",
+      "mark_price": "0.02743514",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PORT3USDT",
+      "mark_price": "0.00399000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PYTHUSDT",
+      "mark_price": "0.05590000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000FLOKIUSDT",
+      "mark_price": "0.01837238",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XPLUSDT",
+      "mark_price": "0.04340000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CHILLGUYUSDT",
+      "mark_price": "0.00711670",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "YALAUSDT",
+      "mark_price": "0.00152000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STBLUSDT",
+      "mark_price": "0.01972118",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZEREBROUSDT",
+      "mark_price": "0.02100582",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RAVEUSDT",
+      "mark_price": "0.10289684",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MELANIAUSDT",
+      "mark_price": "0.04580000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ANTUSDT",
+      "mark_price": "5.85863333",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LITUSDT",
+      "mark_price": "2.87428852",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FLMUSDT",
+      "mark_price": "0.00653480",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GMTUSDT",
+      "mark_price": "0.00548964",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TREEUSDT",
+      "mark_price": "0.02851899",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDT_250627",
+      "mark_price": "64629.31830580",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ACHUSDT",
+      "mark_price": "0.00373052",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "COTIUSDT",
+      "mark_price": "0.00833100",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000000BOBUSDT",
+      "mark_price": "0.00498584",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MYXUSDT",
+      "mark_price": "0.03909000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MITOUSDT",
+      "mark_price": "0.00634000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LISTAUSDT",
+      "mark_price": "0.06690000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BATUSDT",
+      "mark_price": "0.09372000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CKBUSDT",
+      "mark_price": "0.00082555",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDT_251226",
+      "mark_price": "64629.31830580",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "USUALUSDT",
+      "mark_price": "0.01004000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MLNUSDT",
+      "mark_price": "1.43650000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TNSRUSDT",
+      "mark_price": "0.02232481",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BOMEUSDT",
+      "mark_price": "0.00048991",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STPTUSDT",
+      "mark_price": "0.07024000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FUNUSDT",
+      "mark_price": "0.00062808",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RLCUSDT",
+      "mark_price": "0.34267285",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCSTUSDT",
+      "mark_price": "1.11614824",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AIAUSDT",
+      "mark_price": "0.06944000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZRCUSDT",
+      "mark_price": "0.00176500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "INJUSDT",
+      "mark_price": "7.02112844",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "INITUSDT",
+      "mark_price": "0.11430000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TOSHIUSDT",
+      "mark_price": "0.00007730",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MINAUSDT",
+      "mark_price": "0.04550000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CROSSUSDT",
+      "mark_price": "0.10758942",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "0GUSDT",
+      "mark_price": "0.12803652",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TSTUSDT",
+      "mark_price": "0.01031000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HIVEUSDT",
+      "mark_price": "0.03881000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WUSDT",
+      "mark_price": "0.00855000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CLOUSDT",
+      "mark_price": "0.02943753",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "C98USDT",
+      "mark_price": "0.00996578",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SYNUSDT",
+      "mark_price": "0.11622000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "USELESSUSDT",
+      "mark_price": "0.10095529",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "USUSDT",
+      "mark_price": "0.00349308",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GAIBUSDT",
+      "mark_price": "0.03160772",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NFPUSDT",
+      "mark_price": "0.00049900",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SAPIENUSDT",
+      "mark_price": "0.03743425",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FHEUSDT",
+      "mark_price": "0.01374758",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SAFEUSDT",
+      "mark_price": "0.07570000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ORDIUSDT",
+      "mark_price": "2.73878990",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IOSTUSDT",
+      "mark_price": "0.00056480",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RAREUSDT",
+      "mark_price": "0.00846000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OCEANUSDT",
+      "mark_price": "0.60700000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "QNTXUSDT",
+      "mark_price": "34.57000000",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "NOTUSDT",
+      "mark_price": "0.00029840",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BARDUSDT",
+      "mark_price": "0.10384952",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PERPUSDT",
+      "mark_price": "0.02743708",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZBTUSDT",
+      "mark_price": "0.05020543",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MOVEUSDT",
+      "mark_price": "0.00479091",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BABYUSDT",
+      "mark_price": "0.00826538",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "JOEUSDT",
+      "mark_price": "0.02174000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000LUNCUSDT",
+      "mark_price": "0.03456000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZKPUSDT",
+      "mark_price": "0.02957615",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MATICUSDT",
+      "mark_price": "0.19800856",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "YBUSDT",
+      "mark_price": "0.04214887",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HAEDALUSDT",
+      "mark_price": "0.02056000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LINAUSDT",
+      "mark_price": "0.00011530",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OGNUSDT",
+      "mark_price": "0.01965707",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SOONUSDT",
+      "mark_price": "0.21920000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AIOUSDT",
+      "mark_price": "0.03397000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHWUSDT",
+      "mark_price": "0.17948694",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GOATUSDT",
+      "mark_price": "0.01077631",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "REEFUSDT",
+      "mark_price": "0.00049446",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NKNUSDT",
+      "mark_price": "0.00814635",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "COAIUSDT",
+      "mark_price": "0.17550000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "METISUSDT",
+      "mark_price": "2.30549071",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XPTUSDT",
+      "mark_price": "1476.58791341",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "BTCUSD1",
+      "mark_price": "64700.60603820",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHFIUSDT",
+      "mark_price": "0.50048363",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FXSUSDT",
+      "mark_price": "0.28908000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XYZUSDT",
+      "mark_price": "822.90278400",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "我踏马来了USDT",
+      "mark_price": "0.00680300",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PHBUSDT",
+      "mark_price": "0.00470417",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SCUSDT",
+      "mark_price": "0.00057382",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RIVERUSDT",
+      "mark_price": "0.63171629",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "POLUSDT",
+      "mark_price": "0.08007892",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BASUSDT",
+      "mark_price": "0.01160293",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AEVOUSDT",
+      "mark_price": "0.01666614",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BSWUSDT",
+      "mark_price": "0.00692350",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ACTUSDT",
+      "mark_price": "0.00889000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TUTUSDT",
+      "mark_price": "0.01315302",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SIRENUSDT",
+      "mark_price": "0.02665209",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ARPAUSDT",
+      "mark_price": "0.00807957",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000SHIBUSDT",
+      "mark_price": "0.00389200",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KASUSDT",
+      "mark_price": "0.02693000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "哈基米USDT",
+      "mark_price": "0.01189800",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OMNIUSDT",
+      "mark_price": "3.88000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PIEVERSEUSDT",
+      "mark_price": "1.74570973",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ONEUSDT",
+      "mark_price": "0.00136063",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ESPUSDT",
+      "mark_price": "0.07017000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NMRUSDT",
+      "mark_price": "7.86945387",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EDENUSDT",
+      "mark_price": "0.04392827",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XEMUSDT",
+      "mark_price": "0.00194654",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HEIUSDT",
+      "mark_price": "0.07610000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HBARUSDC",
+      "mark_price": "0.05786840",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SKATEUSDT",
+      "mark_price": "0.00253000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STEEMUSDT",
+      "mark_price": "0.04294000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ORBSUSDT",
+      "mark_price": "0.01794220",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GUAUSDT",
+      "mark_price": "0.02456000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SIGNUSDT",
+      "mark_price": "0.00870058",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DRIFTUSDT",
+      "mark_price": "0.00940000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PARTIUSDT",
+      "mark_price": "0.03524798",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ICPUSDT",
+      "mark_price": "2.17197295",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AVAXUSDC",
+      "mark_price": "7.16525316",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KITEUSDT",
+      "mark_price": "0.13679000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDT_260925",
+      "mark_price": "64629.31830580",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "INUSDT",
+      "mark_price": "0.02141000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OXTUSDT",
+      "mark_price": "0.01051529",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "USDCUSDT",
+      "mark_price": "0.99991000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SLPUSDT",
+      "mark_price": "0.00041222",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SKYUSDT",
+      "mark_price": "0.05426635",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BOBUSDT",
+      "mark_price": "0.00391521",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CATIUSDT",
+      "mark_price": "0.03250297",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EWJUSDT",
+      "mark_price": "90.94061834",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "SSVUSDT",
+      "mark_price": "1.83800000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MANTAUSDT",
+      "mark_price": "0.04110000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VVVUSDT",
+      "mark_price": "20.10787869",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DEFIUSDT",
+      "mark_price": "321.93117465",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ONUSDT",
+      "mark_price": "0.08980000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SHELLUSDT",
+      "mark_price": "0.02504999",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IOTXUSDT",
+      "mark_price": "0.00245982",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HIFIUSDT",
+      "mark_price": "0.04460875",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MUBARAKUSDT",
+      "mark_price": "0.02916944",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TRUMPUSDC",
+      "mark_price": "0.94734287",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CGPTUSDT",
+      "mark_price": "0.01519000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SUSHIUSDT",
+      "mark_price": "0.15370000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSDT_251226",
+      "mark_price": "1812.84393592",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MANAUSDT",
+      "mark_price": "0.06055919",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000PEPEUSDT",
+      "mark_price": "0.00392291",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "COOKIEUSDT",
+      "mark_price": "0.00782000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BSBUSDT",
+      "mark_price": "0.07028137",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EPTUSDT",
+      "mark_price": "0.00083650",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IPUSDT",
+      "mark_price": "0.29907585",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LEVERUSDT",
+      "mark_price": "0.00006050",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KERNELUSDT",
+      "mark_price": "0.03875272",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SNTUSDT",
+      "mark_price": "0.02533500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ATUSDT",
+      "mark_price": "0.09240000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GRIFFAINUSDT",
+      "mark_price": "0.00935000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ARCUSDT",
+      "mark_price": "0.02536958",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HEMIUSDT",
+      "mark_price": "0.00341352",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ACEUSDT",
+      "mark_price": "0.09280000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IMXUSDT",
+      "mark_price": "0.09800000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SOLUSDC",
+      "mark_price": "71.30887111",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STMXUSDT",
+      "mark_price": "0.00010975",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XLMUSDT",
+      "mark_price": "0.13811511",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "2ZUSDT",
+      "mark_price": "0.01610052",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BREVUSDT",
+      "mark_price": "0.05870000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NOMUSDT",
+      "mark_price": "0.00120808",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KLAYUSDT",
+      "mark_price": "0.15115000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TSLAUSDT",
+      "mark_price": "387.86070175",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "TAIKOUSDT",
+      "mark_price": "0.05800000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LABUSDT",
+      "mark_price": "0.03195319",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "UMAUSDT",
+      "mark_price": "0.26151618",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BONDUSDT",
+      "mark_price": "0.15796000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FIGHTUSDT",
+      "mark_price": "0.00300912",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TRBUSDT",
+      "mark_price": "13.04700000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SWELLUSDT",
+      "mark_price": "0.00061050",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHFIUSDC",
+      "mark_price": "0.50008256",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BLUEBIRDUSDT",
+      "mark_price": "10.39984954",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OPENAIUSDT",
+      "mark_price": "1268.04535714",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "FILUSDC",
+      "mark_price": "0.61008537",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SFPUSDT",
+      "mark_price": "0.17291895",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZETAUSDT",
+      "mark_price": "0.02843317",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PAYPUSDT",
+      "mark_price": "14.14429608",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "ALICEUSDT",
+      "mark_price": "0.10350000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WIFUSDC",
+      "mark_price": "0.13266579",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FOGOUSDT",
+      "mark_price": "0.00177000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "APRUSDT",
+      "mark_price": "0.03241000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HOOKUSDT",
+      "mark_price": "0.00815042",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XVSUSDT",
+      "mark_price": "2.31500000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GUNUSDT",
+      "mark_price": "0.00147027",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "THEUSDT",
+      "mark_price": "0.02874725",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FRAXUSDT",
+      "mark_price": "0.21489261",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "COMPUSDT",
+      "mark_price": "17.73710542",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ORCAUSDT",
+      "mark_price": "1.20887661",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "mark_price": "7.16000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FIDAUSDT",
+      "mark_price": "0.01334000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AXLUSDT",
+      "mark_price": "0.03245009",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MBOXUSDT",
+      "mark_price": "0.00065000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NEARUSDC",
+      "mark_price": "3.13845783",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HOODUSDT",
+      "mark_price": "74.71603201",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "ORDIUSDC",
+      "mark_price": "2.73793054",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CRCLUSDT",
+      "mark_price": "59.54994900",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "MOVRUSDT",
+      "mark_price": "0.86303782",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "JUPUSDT",
+      "mark_price": "0.26048391",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SOPHUSDT",
+      "mark_price": "0.00122800",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000XECUSDT",
+      "mark_price": "0.00526832",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MEMEUSDT",
+      "mark_price": "0.00032846",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FARTCOINUSDT",
+      "mark_price": "0.09246191",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BIRBUSDT",
+      "mark_price": "0.06605243",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EIGENUSDT",
+      "mark_price": "0.13011642",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ADAUSDC",
+      "mark_price": "0.15281013",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PROMUSDT",
+      "mark_price": "5.18424841",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDT_250926",
+      "mark_price": "64629.31830580",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MORPHOUSDT",
+      "mark_price": "1.73120000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MOCAUSDT",
+      "mark_price": "0.00612481",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SLERFUSDT",
+      "mark_price": "0.00326520",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TLMUSDT",
+      "mark_price": "0.00090676",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CVCUSDT",
+      "mark_price": "0.01757093",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NAORISUSDT",
+      "mark_price": "0.02370354",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ALGOUSDT",
+      "mark_price": "0.07888371",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZROUSDT",
+      "mark_price": "1.37617686",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ABCCCUSDT",
+      "mark_price": "0.15033000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BERAUSDT",
+      "mark_price": "0.09100000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SEIUSDT",
+      "mark_price": "0.03888671",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDT_260327",
+      "mark_price": "64629.31830580",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TACUSDT",
+      "mark_price": "0.00123923",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FTMUSDT",
+      "mark_price": "0.69940000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VETUSDT",
+      "mark_price": "0.00481145",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1INCHUSDT",
+      "mark_price": "0.06682000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IOTAUSDT",
+      "mark_price": "0.03121051",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AAVEUSDC",
+      "mark_price": "106.85316507",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WLFIUSDT",
+      "mark_price": "0.04671695",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XAIUSDT",
+      "mark_price": "0.00547399",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDT_260626",
+      "mark_price": "64629.31830580",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "JELLYJELLYUSDT",
+      "mark_price": "0.04257000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "APTUSDT",
+      "mark_price": "0.44937750",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TURBOUSDT",
+      "mark_price": "0.00059240",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IDUSDT",
+      "mark_price": "0.02089880",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "API3USDT",
+      "mark_price": "0.18801458",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MEUSDT",
+      "mark_price": "0.03753712",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MVLLUSDT",
+      "mark_price": "10.05306611",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "币安人生USDT",
+      "mark_price": "0.47260000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BICOUSDT",
+      "mark_price": "0.01132000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MUSDT",
+      "mark_price": "0.82986500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "OPUSDT",
+      "mark_price": "0.08110000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000RATSUSDT",
+      "mark_price": "0.01064000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BLESSUSDT",
+      "mark_price": "0.00903000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TUSDT",
+      "mark_price": "0.00389000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TRUSTUSDT",
+      "mark_price": "0.04300596",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "JCTUSDT",
+      "mark_price": "0.00234578",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WLDUSDC",
+      "mark_price": "0.26338344",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AGIXUSDT",
+      "mark_price": "0.49620000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GASUSDT",
+      "mark_price": "0.95704386",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AMBUSDT",
+      "mark_price": "0.00009066",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SPELLUSDT",
+      "mark_price": "0.00006237",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DFUSDT",
+      "mark_price": "0.00160500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ENAUSDC",
+      "mark_price": "0.11993627",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FLUIDUSDT",
+      "mark_price": "1.79497148",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NEARUSDT",
+      "mark_price": "3.14000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MAVUSDT",
+      "mark_price": "0.00661443",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VANAUSDT",
+      "mark_price": "0.63900000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TURTLEUSDT",
+      "mark_price": "0.02927624",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KATUSDT",
+      "mark_price": "0.00293863",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EFGUSDT",
+      "mark_price": "20.47272727",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "KSMUSDT",
+      "mark_price": "2.71363542",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DARUSDT",
+      "mark_price": "0.21703825",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "A2ZUSDT",
+      "mark_price": "0.00007922",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AVAUSDT",
+      "mark_price": "0.21520000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BCHUSDC",
+      "mark_price": "207.84054669",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SUNUSDT",
+      "mark_price": "0.01472600",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RVNUSDT",
+      "mark_price": "0.00108152",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CHZUSDT",
+      "mark_price": "0.00971198",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KAITOUSDC",
+      "mark_price": "0.17017081",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IRUSDT",
+      "mark_price": "0.00183449",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GMXUSDT",
+      "mark_price": "7.13300000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TIAUSDT",
+      "mark_price": "0.35814294",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "POLYXUSDT",
+      "mark_price": "0.02584649",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "REZUSDT",
+      "mark_price": "0.00289100",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RADUSDT",
+      "mark_price": "0.21082387",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PLTRUSDT",
+      "mark_price": "164.67879948",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "TRADOORUSDT",
+      "mark_price": "0.58400000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "REDUSDT",
+      "mark_price": "0.11120755",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NILUSDT",
+      "mark_price": "0.04959860",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PONKEUSDT",
+      "mark_price": "0.02496750",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCUSDT_261225",
+      "mark_price": "65165.50307971",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "LINEAUSDT",
+      "mark_price": "0.00189000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DISUSDT",
+      "mark_price": "118.60050000",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "SENTUSDT",
+      "mark_price": "0.01678349",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HMSTRUSDT",
+      "mark_price": "0.00013087",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ADAUSDT",
+      "mark_price": "0.15280726",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MOODENGUSDT",
+      "mark_price": "0.02704399",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KOMAUSDT",
+      "mark_price": "0.01235000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZHIPUUSDT",
+      "mark_price": "52.00253467",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "HK1810USDT",
+      "mark_price": "28.83414021",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "TAUSDT",
+      "mark_price": "0.11672000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FUSDT",
+      "mark_price": "0.00210700",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XTZUSDT",
+      "mark_price": "0.21233336",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ARKUSDT",
+      "mark_price": "0.13744120",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FILUSDT",
+      "mark_price": "0.61026827",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "USTCUSDT",
+      "mark_price": "0.00369245",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BLURUSDT",
+      "mark_price": "0.00599437",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "EDUUSDT",
+      "mark_price": "0.04270827",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STRAXUSDT",
+      "mark_price": "0.00754826",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "COWUSDT",
+      "mark_price": "0.08930000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TRUTHUSDT",
+      "mark_price": "0.01498499",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ARUSDT",
+      "mark_price": "2.54372525",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RVVUSDT",
+      "mark_price": "0.00033315",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "FETUSDT",
+      "mark_price": "0.13095364",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "XPINUSDT",
+      "mark_price": "0.00068179",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AIOTUSDT",
+      "mark_price": "0.15542737",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VIRTUALUSDT",
+      "mark_price": "0.44394648",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "KAVAUSDT",
+      "mark_price": "0.03085000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AGLDUSDT",
+      "mark_price": "0.13278333",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSDT_260327",
+      "mark_price": "1812.84393592",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETCUSDT",
+      "mark_price": "5.95248764",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "NEOUSDC",
+      "mark_price": "1.56497623",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PENDLEUSDT",
+      "mark_price": "1.42940000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HOTUSDT",
+      "mark_price": "0.00034540",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BTCDOMUSDT",
+      "mark_price": "5867.70000000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BIDUSDT",
+      "mark_price": "0.00841125",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AINUSDT",
+      "mark_price": "0.11019000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GUSDT",
+      "mark_price": "0.00261409",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000PEPEUSDC",
+      "mark_price": "0.00392061",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MBLUSDT",
+      "mark_price": "0.00056398",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SKYAIUSDT",
+      "mark_price": "0.03847632",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PENGUUSDT",
+      "mark_price": "0.00484846",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PHAUSDT",
+      "mark_price": "0.02945000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ETHUSDC",
+      "mark_price": "1813.80377725",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BEATUSDT",
+      "mark_price": "0.08007000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PORTALUSDT",
+      "mark_price": "0.01165000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TROYUSDT",
+      "mark_price": "0.00000310",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "B3USDT",
+      "mark_price": "0.00044236",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AUDIOUSDT",
+      "mark_price": "0.01076527",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RENUSDT",
+      "mark_price": "0.01196300",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000BONKUSDT",
+      "mark_price": "0.00236218",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PUMPBTCUSDT",
+      "mark_price": "0.00042000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TAKEUSDT",
+      "mark_price": "0.06033000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "WCTUSDT",
+      "mark_price": "0.02610000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GPSUSDT",
+      "mark_price": "0.00811200",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BSBUSDT_260618",
+      "mark_price": "0.07041623",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ONDOUSDT",
+      "mark_price": "0.30451427",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "1000SATSUSDT",
+      "mark_price": "0.00000759",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MYROUSDT",
+      "mark_price": "0.00361000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "STABLEUSDT",
+      "mark_price": "0.02480505",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PENGUUSDC",
+      "mark_price": "0.00484259",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "MERLUSDT",
+      "mark_price": "0.03047000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "QUSDT",
+      "mark_price": "0.02548110",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ONTUSDT",
+      "mark_price": "0.03674801",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ALTUSDT",
+      "mark_price": "0.00464501",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "DOGEUSDC",
+      "mark_price": "0.05839767",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ABCUSDT",
+      "mark_price": "1525.00000000",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "ILVUSDT",
+      "mark_price": "2.35334628",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SQDUSDT",
+      "mark_price": "0.01414332",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "PEOPLEUSDT",
+      "mark_price": "0.00493600",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BANKUSDT",
+      "mark_price": "0.01879000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SOXSUSDT",
+      "mark_price": "53.31219588",
+      "exchange_time_ms": 1794762304592
+    },
+    {
+      "symbol": "ALLUSDT",
+      "mark_price": "0.46200000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "CVXUSDT",
+      "mark_price": "1.43678874",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "HIPPOUSDT",
+      "mark_price": "0.00023650",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "GLMRUSDT",
+      "mark_price": "0.00788311",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "TWTUSDT",
+      "mark_price": "0.34829479",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "牛来USDT",
+      "mark_price": "0.04830000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "SOMIUSDT",
+      "mark_price": "0.14405033",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "VANRYUSDT",
+      "mark_price": "0.00091000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "AWEUSDT",
+      "mark_price": "0.05561000",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "IOUSDT",
+      "mark_price": "0.09591789",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ZKJUSDT",
+      "mark_price": "0.00544500",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "RPLUSDT",
+      "mark_price": "1.19249347",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "ALCHUSDT",
+      "mark_price": "0.02869032",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "POWRUSDT",
+      "mark_price": "0.04355335",
+      "exchange_time_ms": 1794762304000
+    },
+    {
+      "symbol": "BNTUSDT",
+      "mark_price": "0.22704842",
+      "exchange_time_ms": 1794762304000
+    }
+  ]
+}

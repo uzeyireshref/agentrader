@@ -4,11 +4,11 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import Mock
-from agentrader.market_data import INTERVALS, bucket, fetch_candles
-from agentrader.chart_market import ChartMarket, InvalidMarket
-from agentrader.market_feed import FeedState
-from agentrader.higher_timeframe import higher_context
-from agentrader.drawings.service import DrawingService, management
+from agentrader.shared.market_data import INTERVALS, bucket, fetch_candles
+from agentrader.chart.chart_market import ChartMarket, InvalidMarket
+from agentrader.shared.market_feed import FeedState
+from agentrader.chart.higher_timeframe import higher_context
+from agentrader.chart.drawings.service import DrawingService, management
 from agentrader.migrations import migrate
 
 NOW=1800000000123

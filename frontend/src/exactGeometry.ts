@@ -26,4 +26,12 @@ export function snapPrice(price:string,tick:string,delta='0'):string{
  if(!places)return text;const [whole,fraction='']=text.split('.');return whole+'.'+fraction.padEnd(places,'0');
 }
 export function fibonacciPrice(first:string,second:string,ratio:string):Rational{return add(decimalRational(first),multiply(subtract(decimalRational(second),decimalRational(first)),decimalRational(ratio)));}
+/** Signed chart coordinates; trading prices continue to use snapPrice/onTick. */
+export function snapDrawingPrice(price:string,tick:string,delta='0'):string{
+ const p=add(decimalRational(price),decimalRational(delta)),t=decimalRational(tick);if(t.n<=0n)throw Error('Fiyat adımı pozitif olmalı.');
+ const q=divide(p,t),m=q.n<0n?-q.n:q.n,units=(2n*m+q.d)/(2n*q.d)*(q.n<0n?-1n:1n);
+ const text=exactDecimal(multiply(rational(units),t))!,places=exactDecimal(t)!.split('.')[1]?.length??0;
+ if(!places)return text;const [whole,fraction='']=text.split('.');return whole+'.'+fraction.padEnd(places,'0');
+}
+export function onDrawingTick(price:string,tick:string):boolean{const p=decimalRational(price),t=decimalRational(tick);return t.n>0n&&(p.n*t.d)%(p.d*t.n)===0n;}
 export function displayNumber(value:Rational):number{return Number(value.n)/Number(value.d);}

@@ -12,9 +12,9 @@ function packet(epoch='a'.repeat(32),generation=1,sequence=1):Packet{
  const rows=structuredClone(example.rows) as Candle[],market=structuredClone(example.market) as Market;
  const quality=structuredClone(example.quality);
  const floatHex=(n:number)=>{const b=Buffer.alloc(8);b.writeDoubleBE(n===0?0:n);return b.toString('hex');};
- const payload={schema:'chart-data-snapshot/1',source:'binance_usdm_live_trade_price',environment:'live_public',product:'USD-M',price_type:'LAST_PRICE',symbol:'BTCUSDT',interval:'15m',stream_epoch:epoch,generation,data_revision:proof.data_revision,market,quality,rows:rows.map(r=>({time:r.time,close_time:r.close_time,closed:r.closed,chart_values:[r.open,r.high,r.low,r.close,r.volume,r.quote_volume].map(floatHex),exact:r.exact??null}))};
+ const payload={schema:'chart-data-snapshot/1',source:'binance_usdm_demo_trade_price',environment:'demo_public',product:'USD-M',price_type:'LAST_PRICE',symbol:'BTCUSDT',interval:'15m',stream_epoch:epoch,generation,data_revision:proof.data_revision,market,quality,rows:rows.map(r=>({time:r.time,close_time:r.close_time,closed:r.closed,chart_values:[r.open,r.high,r.low,r.close,r.volume,r.quote_volume].map(floatHex),exact:r.exact??null}))};
  proof.stream_epoch=epoch;proof.generation=generation;proof.snapshot_hash=createHash('sha256').update(canonical(payload)).digest('hex');
- return {type:'snapshot',stream_epoch:epoch,data_proof:proof,source:'binance_usdm_live_trade_price',environment:'live_public',product:'USD-M',price_type:'LAST_PRICE',symbol:'BTCUSDT',interval:'15m',generation,sequence,status:'LIVE',received_at:1000,candles:rows,market,quality};
+ return {type:'snapshot',stream_epoch:epoch,data_proof:proof,source:'binance_usdm_demo_trade_price',environment:'demo_public',product:'USD-M',price_type:'LAST_PRICE',symbol:'BTCUSDT',interval:'15m',generation,sequence,status:'LIVE',received_at:1000,candles:rows,market,quality};
 }
 test('fingerprint matches independent node crypto for padding boundaries and Unicode',()=>{
  for(const length of [0,1,55,56,63,64,65,127,128,129,1000,10000])for(const word of ['a','ç🙂']){

@@ -1,11 +1,12 @@
 import {familyKinds,familyNames} from './channelFamily';
 import type {Market} from './types';
-export type ToolKind=typeof familyKinds[number]|'text'|'note'|'price_label'|'fibonacci_extension'|'parallel_channel'|'long_plan'|'short_plan'|'cursor'|'line'|'zone'|'trend'|'fibonacci'|'ruler'|'ray'|'extended_line'|'horizontal_ray';
+export type ToolKind=typeof familyKinds[number]|'text'|'note'|'price_label'|'fibonacci_extension'|'fibonacci_projection'|'parallel_channel'|'long_plan'|'short_plan'|'cursor'|'line'|'zone'|'trend'|'fibonacci'|'ruler'|'ray'|'extended_line'|'horizontal_ray';
 export const chartTools:{id:ToolKind;label:string;icon:string;key:string;search:string}[]=[
  ...familyKinds.filter(id=>id!=='parallel_channel').map(id=>({id,label:familyNames[id],icon:'channel',key:'',search:id.replaceAll('_',' ')+' '+familyNames[id]})),
  {id:'text',label:'Metin',icon:'text',key:'A',search:'text yazı açıklama annotation'},
  {id:'note',label:'Not',icon:'note',key:'N',search:'note çok satırlı not annotation'},
  {id:'price_label',label:'Fiyat etiketi',icon:'price-label',key:'P',search:'price label etiket fiyat'},
+ {id:'fibonacci_projection',label:'Fibonacci projection',icon:'fibonacci',key:'',search:'fib projection üç nokta projeksiyon'},
  {id:'fibonacci_extension',label:'Fibonacci extension',icon:'fibonacci',key:'',search:'fib extension uzatma iki nokta'},
  {id:'parallel_channel',label:'Paralel kanal',icon:'channel',key:'',search:'parallel channel kanal orta çizgi'},
  {id:'long_plan',label:'Long plan',icon:'position',key:'',search:'long position risk getiri hedef stop'},

@@ -2,9 +2,9 @@ import copy
 from pathlib import Path
 import tempfile
 import unittest
-from agentrader.drawings.service import DrawingService, DrawingError, DrawingLocked, geometry, management
-from agentrader.drawings.calculations import query, canonical_hash, CalculationBlocked
-from agentrader.drawings.contracts import capability, legacy_contract
+from agentrader.chart.drawings.service import DrawingService, DrawingError, DrawingLocked, geometry, management
+from agentrader.chart.drawings.calculations import query, canonical_hash, CalculationBlocked
+from agentrader.chart.drawings.contracts import capability, legacy_contract
 from agentrader.migrations import migrate
 
 

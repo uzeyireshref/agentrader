@@ -1,3 +1,4 @@
+import {marketSource,marketEnvironment} from './marketEnvironment';
 import {verifyEvidence,type DataProof} from './evidence';
 import {validTiming,type TimeProof} from './timing';
 export type Interval = '1m' | '5m' | '30m' | '15m' | '1h' | '4h' | '1d' | '1w';
@@ -23,7 +24,7 @@ export function applyPacket(state:ChartState,p:Packet,mono=performance.now(),wal
   if(!Number.isSafeInteger(p.sequence)||p.sequence<0||!Number.isSafeInteger(p.generation)||p.generation<0)return state;
   if(strict){
     if(typeof p.stream_epoch!=='string'||!/^[a-f0-9]{32}$/.test(p.stream_epoch)||!p.data_proof)return state;
-    if(p.source!=='binance_usdm_live_trade_price'||p.environment!=='live_public'||p.product!=='USD-M'||p.price_type!=='LAST_PRICE')return state;
+    if(p.source!==marketSource||p.environment!==marketEnvironment||p.product!=='USD-M'||p.price_type!=='LAST_PRICE')return state;
     if(!sameEpoch&&(p.type!=='snapshot'||state.retired_epochs?.includes(p.stream_epoch)||!state.snapshot_required&&state.stream_epoch!==undefined&&p.generation<=state.generation))return state;
     if(state.snapshot_required&&p.type!=='snapshot'||sameEpoch&&p.generation!==state.generation&&p.type!=='snapshot')return state;
   }

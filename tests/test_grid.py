@@ -7,10 +7,10 @@ from decimal import Decimal
 from pathlib import Path
 from unittest.mock import Mock
 
-from agentrader.exchange import ExchangeError
-from agentrader.grid import arithmetic_levels, preview_grid, verify_leverage, GridLedger
-from agentrader.risk import RiskLimits
-from agentrader.state import StateStore
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.grid import arithmetic_levels, preview_grid, verify_leverage, GridLedger
+from agentrader.bot.risk import RiskLimits
+from agentrader.shared.state import StateStore
 from test_orders import SYMBOL
 
 
@@ -149,7 +149,7 @@ class LeverageTests(unittest.TestCase):
         self.current = 10
         def get(path, params=None):
             if path.endswith('leverageBracket'):
-                return [{'symbol':'BTCUSDT','brackets':[{'initialLeverage':20}]}]
+                return [{'symbol':'BTCUSDT','brackets':[{'initialLeverage':20,'notionalFloor':0,'notionalCap':100000,'maintMarginRatio':'.004','cum':0}]}]
             if path.endswith('symbolConfig'):
                 return [{'symbol':'BTCUSDT','leverage':self.current,'marginType':'CROSSED'}]
             return []

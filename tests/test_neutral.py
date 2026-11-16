@@ -10,18 +10,18 @@ from decimal import Decimal
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.account_ownership import AccountOwnership
-from agentrader.exchange import ExchangeError
-from agentrader.neutral_plan import compile_neutral,validate_neutral
-from agentrader.neutral_runner import NeutralGridRunner
-from agentrader.plan_execution import run_plan
-from agentrader.plans import PlanService
-from agentrader.risk import RiskLimits,number
-from agentrader.state import StateStore
-from agentrader.account_runtime import monitor_account,prepare_many
-from agentrader.service_cli import request_stop
-from agentrader.runtime import supervise_session
-from agentrader.v2_preflight import collect_flat_snapshot
+from agentrader.bot.account_ownership import AccountOwnership
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.neutral_plan import compile_neutral,validate_neutral
+from agentrader.bot.neutral_runner import NeutralGridRunner
+from agentrader.bot.plan_execution import run_plan
+from agentrader.bot.plans import PlanService
+from agentrader.bot.risk import RiskLimits,number
+from agentrader.shared.state import StateStore
+from agentrader.bot.account_runtime import monitor_account,prepare_many
+from agentrader.cli.service_cli import request_stop
+from agentrader.shared.runtime import supervise_session
+from agentrader.bot.v2_preflight import collect_flat_snapshot
 from test_multi_session import MultiExchange
 from test_plan_v2 import plan_v2
 
@@ -415,7 +415,7 @@ class NeutralTests(unittest.TestCase):
         self.assertEqual(len(self.x.calls),before);self.store.save_session(original)
 
     def test_same_account_peer_single_remains_untouched_on_neutral_close(self):
-        from agentrader.v2_runner import V2Runner
+        from agentrader.bot.v2_runner import V2Runner
         self.limits=replace(self.limits,max_positions=3,max_notional=Decimal('600'))
         self.runner=NeutralGridRunner(self.service,self.x,self.limits);sid=self.start()
         p=plan_v2();p.update(plan_id='eth-peer',symbol='ETHUSDT',position_mode='hedge')
@@ -437,9 +437,9 @@ class NeutralTests(unittest.TestCase):
         self.assertEqual(len([c for c in self.x.calls if c[0]=='POST' and c[1]=='/fapi/v1/order']),before)
 
     def test_neutral_example_prints_requested_budget_without_account_or_authorization(self):
-        from agentrader.plan_cli import main
+        from agentrader.cli.plan_cli import main
         stream=io.StringIO()
-        with patch('agentrader.plan_cli.Config.load') as load,redirect_stdout(stream):
+        with patch('agentrader.cli.plan_cli.Config.load') as load,redirect_stdout(stream):
             self.assertEqual(main(['neutral-example','--amount','200']),0)
         data=json.loads(stream.getvalue())
         self.assertEqual(data['sizing']['amount'],'200');self.assertEqual(data['execution']['strategy'],'NEUTRAL_GRID')

@@ -6,12 +6,12 @@ from decimal import ROUND_FLOOR
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.config import Config
-from agentrader.exchange import ExchangeError
-from agentrader.plans import PlanService
-from agentrader.risk import RiskLimits, number
-from agentrader.state import StateStore
-from agentrader.v2_runner import V2Runner
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.plans import PlanService
+from agentrader.bot.risk import RiskLimits, number
+from agentrader.shared.state import StateStore
+from agentrader.bot.v2_runner import V2Runner
 from test_plan_v2 import plan_v2
 from test_v2_preflight import snapshot
 
@@ -105,7 +105,7 @@ class V2RunnerTests(unittest.TestCase):
         self.runner=V2Runner(self.service,self.x,RiskLimits())
         self.snap=snapshot()
         self.snap.update(observed_at=time.time(),finished_at=time.time(),now_ms=int(time.time()*1000))
-        self.mock=patch('agentrader.v2_runner.collect_flat_snapshot',side_effect=lambda *a:copy.deepcopy(self.snap))
+        self.mock=patch('agentrader.bot.v2_runner.collect_flat_snapshot',side_effect=lambda *a:copy.deepcopy(self.snap))
         self.mock.start()
 
     def tearDown(self):
@@ -125,6 +125,46 @@ class V2RunnerTests(unittest.TestCase):
         self.assertEqual(self.open(False)['state'],'READY')
         self.assertEqual(self.x.calls,[])
         self.assertEqual(self.service.show(self.plan['plan_id'],1)['state'],'AUTHORIZED')
+
+    def test_new_filter_restriction_after_preflight_blocks_first_post(self):
+        self.plan['entry'].update(condition='LIMIT',trigger_price='79900')
+        original_get=self.x.get
+        def get(path,params=None):
+            result=original_get(path,params)
+            if path=='/fapi/v1/exchangeInfo':
+                result['symbols'][0]['filters'].append(dict(filterType='PERCENT_PRICE',multiplierDown='.9',multiplierUp='.99'))
+            return result
+        self.x.get=get
+        self.authorize()
+        with self.assertRaisesRegex(ValueError,'bandın dışında'):self.open()
+        self.assertEqual(self.x.calls,[])
+        intent=self.store.intent(self.store.sessions()[0]['entry_id'])
+        self.assertEqual(intent['state'],'REJECTED')
+
+    def test_stale_send_reference_blocks_first_post_after_valid_preflight(self):
+        original_get=self.x.get
+        def get(path,params=None):
+            result=original_get(path,params)
+            if path=='/fapi/v1/premiumIndex':result['time']-=20000
+            return result
+        self.x.get=get
+        self.authorize()
+        with self.assertRaisesRegex(ValueError,'eskidi'):self.open()
+        self.assertEqual(self.x.calls,[])
+
+    def test_send_guard_read_failure_is_proven_unsent_not_unknown_delivery(self):
+        import json
+        original_get=self.x.get
+        def get(path,params=None):
+            if path=='/fapi/v1/exchangeInfo':raise ExchangeError('read timeout',delivery_status='READ_FAILED')
+            return original_get(path,params)
+        self.x.get=get
+        self.authorize()
+        with self.assertRaises(ExchangeError):self.open()
+        intent=self.store.intent(self.store.sessions()[0]['entry_id'])
+        self.assertEqual(intent['state'],'REJECTED')
+        self.assertEqual(json.loads(intent['response'])['delivery_status'],'NOT_SENT')
+        self.assertEqual(self.x.calls,[])
 
     def test_dense_trade_history_reconciles_and_foreign_fill_on_later_page_halts(self):
         from test_history import TradeExchange, trade
@@ -180,6 +220,60 @@ class V2RunnerTests(unittest.TestCase):
         entries=[c for c in self.x.calls if c[0]=='POST' and c[1]=='/fapi/v1/order']
         self.assertEqual(len(entries),1)
 
+    def test_ack_response_can_be_minimal_and_result_is_reconciled_by_query(self):
+        self.plan['entry']['order_response_type']='ACK'
+        original_request=self.x.request
+        def request(method,path,params):
+            result=original_request(method,path,params)
+            if method=='POST' and path=='/fapi/v1/order':
+                return {'orderId':result['orderId'],'clientOrderId':result['clientOrderId']}
+            return result
+        self.x.request=request
+        self.authorize()
+        result=self.open()
+        self.assertEqual(result['state'],'MANAGING')
+        self.assertEqual(result['protections_verified'],2)
+        entry=self.x.calls[0][2]
+        self.assertEqual(entry['newOrderRespType'],'ACK')
+        self.assertEqual(self.store.intent(entry['newClientOrderId'])['state'],'FILLED')
+
+    def test_result_preference_survives_lost_reply_and_restart_without_reposting(self):
+        import json
+        self.plan['entry']['order_response_type']='RESULT'
+        self.authorize();self.x.timeout=True
+        with self.assertRaises(ExchangeError):self.open()
+        sid=self.store.sessions()[0]['id']
+        self.store.close();self.store=StateStore(self.path)
+        self.service=PlanService(self.store,'local:test')
+        self.runner=V2Runner(self.service,self.x,RiskLimits())
+        self.assertEqual(self.runner.manage(sid,True)['state'],'MANAGING')
+        entries=[c for c in self.x.calls if c[0]=='POST' and c[1]=='/fapi/v1/order']
+        self.assertEqual(len(entries),1)
+        params=entries[0][2]
+        self.assertEqual(params['newOrderRespType'],'RESULT')
+        self.assertEqual(json.loads(self.store.intent(params['newClientOrderId'])['params'])['newOrderRespType'],'RESULT')
+
+    def test_changed_prepared_response_type_is_rejected_before_further_delivery(self):
+        self.plan['entry']['order_response_type']='RESULT'
+        self.authorize();result=self.open()
+        session=self.store.sessions()[0]
+        session['prepared']['entry']['params']['newOrderRespType']='ACK'
+        self.store.save_session(session)
+        count=len(self.x.calls)
+        with self.assertRaises(ValueError):self.runner.manage(result['session_id'],True)
+        self.assertEqual(len(self.x.calls),count)
+
+    def test_result_limit_response_does_not_imply_a_filled_position(self):
+        self.plan['entry'].update(condition='LIMIT',trigger_price='79900',order_response_type='RESULT')
+        self.x.limit_pending=True
+        self.authorize();result=self.open()
+        self.assertEqual(self.x.amount,0)
+        self.assertEqual(len(self.x.algos),0)
+        entries=[c for c in self.x.calls if c[0]=='POST' and c[1]=='/fapi/v1/order']
+        self.assertEqual(len(entries),1)
+        self.assertEqual(entries[0][2]['newOrderRespType'],'RESULT')
+        self.assertEqual(result['state'],'ENTRY_PENDING')
+
     def test_partial_entry_is_canceled_before_protection(self):
         self.authorize();self.x.partial=True
         result=self.open()
@@ -225,7 +319,7 @@ class V2RunnerTests(unittest.TestCase):
     def test_price_or_budget_change_after_claim_blocks_entry(self):
         self.authorize()
         changed=copy.deepcopy(self.snap);changed['mark']['markPrice']='81000'
-        with patch('agentrader.v2_runner.collect_flat_snapshot',side_effect=[self.snap,changed]):
+        with patch('agentrader.bot.v2_runner.collect_flat_snapshot',side_effect=[self.snap,changed]):
             with self.assertRaises(ValueError):self.open()
         self.assertEqual(self.x.calls,[])
 
@@ -246,7 +340,7 @@ class V2RunnerTests(unittest.TestCase):
             if self.store.sessions():
                 self.service.cancel(self.plan['plan_id'],1,'local:test')
             return copy.deepcopy(self.snap)
-        with patch('agentrader.v2_runner.collect_flat_snapshot',side_effect=revoke):
+        with patch('agentrader.bot.v2_runner.collect_flat_snapshot',side_effect=revoke):
             # The second scope check immediately before sending must see revocation.
             with self.assertRaises(ValueError):self.open()
         self.assertEqual(self.x.calls,[])
@@ -271,7 +365,7 @@ class V2RunnerTests(unittest.TestCase):
     def test_definite_unsent_entry_can_retire_after_flat_read(self):
         self.authorize()
         changed=copy.deepcopy(self.snap);changed['mark']['markPrice']='81000'
-        with patch('agentrader.v2_runner.collect_flat_snapshot',side_effect=[self.snap,changed]):
+        with patch('agentrader.bot.v2_runner.collect_flat_snapshot',side_effect=[self.snap,changed]):
             with self.assertRaises(ValueError):self.open()
         sid=self.store.sessions()[0]['id']
         self.assertEqual(self.runner.manage(sid,False)['state'],'CLOSED')

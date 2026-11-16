@@ -9,10 +9,9 @@ export function channelBasis(g:Geometry){
  if(g.anchors.some(a=>!Number.isSafeInteger(a.time)||a.time<=0||a.time>32503680000))throw Error('Geçerli bir UTC zamanı gir.');
  if(a.time===b.time)throw Error('Temel çizginin iki zamanı farklı olmalı.');
  if(c.time<Math.min(a.time,b.time)||c.time>Math.max(a.time,b.time))throw Error('Üçüncü nokta temel çizginin zaman aralığında olmalı.');
- const [pa,pb,pc]=g.anchors.map(a=>dec(a.price));if([pa,pb,pc].some(p=>p.n<=0n))throw Error('Kanal fiyatları pozitif olmalı.');
+ const [pa,pb,pc]=g.anchors.map(a=>dec(a.price));
  const slope=divide(subtract(pb,pa),rational(BigInt(b.time-a.time))),offset=subtract(pc,add(pa,multiply(slope,rational(BigInt(c.time-a.time)))));
  if(offset.n===0n)throw Error('Kanal genişliği sıfır olamaz.');
- if(add(pa,offset).n<=0n||add(pb,offset).n<=0n)throw Error('Kanalın iki sınırı da pozitif olmalı.');
  return {pa,slope,offset};
 }
 export function channelValues(g:Geometry,time:number){

@@ -7,12 +7,12 @@ from decimal import Decimal
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.execution import DurableExchange
-from agentrader.plans import PlanService, example_plan, validate_plan, timestamp
-from agentrader.plan_execution import run_plan, prepare
-from agentrader.risk import RiskLimits
-from agentrader.state import StateStore
-from agentrader.watchdog import Watchdog
+from agentrader.bot.execution import DurableExchange
+from agentrader.bot.plans import PlanService, example_plan, validate_plan, timestamp
+from agentrader.bot.plan_execution import run_plan, prepare
+from agentrader.bot.risk import RiskLimits
+from agentrader.shared.state import StateStore
+from agentrader.bot.watchdog import Watchdog
 from test_watchdog import WatchExchange
 from test_orders import SYMBOL
 
@@ -20,6 +20,8 @@ from test_orders import SYMBOL
 class PlanExchange(WatchExchange):
     def __init__(self):
         super().__init__()
+        from agentrader.shared.config import Config
+        self.config = Config('plan-test-key', 'plan-test-secret')
         self.price = '80000'
         self.fill_price = '80000'
 

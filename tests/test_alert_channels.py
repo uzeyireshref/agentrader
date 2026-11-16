@@ -1,6 +1,6 @@
 import copy,tempfile,unittest
 from pathlib import Path
-from agentrader.price_alerts import PriceAlerts,definition,AlertError
+from agentrader.chart.price_alerts import PriceAlerts,definition,AlertError
 from agentrader.migrations import migrate
 from test_price_alerts import definition as legacy,context
 from test_alert_intrabar import draft

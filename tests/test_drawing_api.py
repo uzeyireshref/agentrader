@@ -92,7 +92,7 @@ class DrawingAPITests(unittest.TestCase):
         self.assertEqual(self.client.get('/api/workspaces/main/drawings', headers=self.auth).json()['drawings'], [])
 
     def test_metadata_mutations_never_open_execution_or_exchange(self):
-        with patch('agentrader.exchange.DemoExchange.request', side_effect=AssertionError('exchange write')):
+        with patch('agentrader.shared.exchange.DemoExchange.request', side_effect=AssertionError('exchange write')):
             self.assertEqual(self.create().status_code, 201)
         self.assertFalse(self.settings.execution_database.exists())
 
@@ -109,8 +109,8 @@ class DrawingAPITests(unittest.TestCase):
         ray = self.client.get('/api/chart-tools/drawing/ray').json()
         self.assertTrue(ray['readable'])
         future = self.client.get('/api/chart-tools/drawing/fibonacci_projection').json()
-        self.assertFalse(future['readable'])
-        self.assertEqual(future['definition']['state'], 'DECLARED_ONLY')
+        self.assertTrue(future['readable'])
+        self.assertEqual(future['definition']['state'], 'VERSIONED_READABLE')
 
     def test_unknown_tool_or_version_is_structured_blocked_error(self):
         for path in ('drawing/unknown', 'unknown/horizontal',
@@ -120,8 +120,8 @@ class DrawingAPITests(unittest.TestCase):
             self.assertEqual(result.json()['error']['code'], 'BLOCKED_UNSUPPORTED_TOOL')
 
     def test_contract_read_preserves_legacy_crud_duplicate_and_revision(self):
-        from agentrader.drawings.service import DrawingService
-        with patch('agentrader.exchange.DemoExchange.request', side_effect=AssertionError('exchange access')):
+        from agentrader.chart.drawings.service import DrawingService
+        with patch('agentrader.shared.exchange.DemoExchange.request', side_effect=AssertionError('exchange access')):
             saved = self.create().json()
             path = '/api/drawings/' + saved['drawing_id']
             result = self.client.get(path + '/contract')

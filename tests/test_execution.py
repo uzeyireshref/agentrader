@@ -6,11 +6,11 @@ from decimal import Decimal
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.execution import DurableExchange, reconcile, resolve_absent_flat
-from agentrader.exchange import ExchangeError
-from agentrader.risk import evaluate, size_for_risk, RiskLimits
-from agentrader.state import StateStore
-from agentrader.locking import execution_lock
+from agentrader.bot.execution import DurableExchange, reconcile, resolve_absent_flat
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.risk import evaluate, size_for_risk, RiskLimits
+from agentrader.shared.state import StateStore
+from agentrader.shared.locking import execution_lock
 
 
 class Exchange:

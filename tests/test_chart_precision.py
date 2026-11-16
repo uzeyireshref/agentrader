@@ -6,10 +6,10 @@ from decimal import Decimal, localcontext
 from pathlib import Path
 from unittest.mock import Mock
 
-from agentrader.chart_precision import decimal_text, exact_candle, exact_tick, validate_tick_price, precision_summary, PrecisionError
-from agentrader.chart_market import ChartMarket, candle, InvalidMarket, normalize_kline
-from agentrader.market_data import CandleStore
-from agentrader.market_feed import FeedState
+from agentrader.chart.chart_precision import decimal_text, exact_candle, exact_tick, validate_tick_price, precision_summary, PrecisionError
+from agentrader.chart.chart_market import ChartMarket, candle, InvalidMarket, normalize_kline
+from agentrader.shared.market_data import CandleStore
+from agentrader.shared.market_feed import FeedState
 from test_chart_feed import row, event, START, STEP
 
 class ChartPrecisionTests(unittest.TestCase):

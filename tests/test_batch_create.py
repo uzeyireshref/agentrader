@@ -5,9 +5,9 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock
 
-from agentrader.batch_create import NativeBatchCreate
-from agentrader.exchange import ExchangeError
-from agentrader.state import StateStore
+from agentrader.bot.batch_create import NativeBatchCreate
+from agentrader.shared.exchange import ExchangeError
+from agentrader.shared.state import StateStore
 from test_grid_runner import GridExchange
 
 
@@ -78,3 +78,16 @@ class NativeBatchCreateTests(unittest.TestCase):
         def authorize(p,phase):p[0]['quantity']='100';return True
         with self.assertRaises(ValueError):self.submit(authorize)
         self.assertEqual(self.x.calls,[])
+
+    def test_insufficient_shared_order_slots_rejects_every_unsent_member(self):
+        original_get=self.x.get
+        def get(path,params=None):
+            result=original_get(path,params)
+            if path=='/fapi/v1/exchangeInfo':
+                result['symbols'][0]['filters'].append(dict(filterType='MAX_NUM_ORDERS',limit=1))
+            return result
+        self.x.get=get
+        with self.assertRaisesRegex(ValueError,'emir sınırı'):self.submit()
+        self.assertEqual(self.batches(),[])
+        for p in self.proposals:
+            self.assertEqual(self.store.intent(p['params']['newClientOrderId'])['state'],'REJECTED')

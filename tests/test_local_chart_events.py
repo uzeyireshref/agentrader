@@ -1,17 +1,18 @@
+from agentrader.application.environment import bind_demo_store
 import copy,json,os,subprocess,sys,threading,tempfile,unittest
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import closing
 from pathlib import Path
-from agentrader.local_chart_events import LocalChartEvents,LocalEventError,closed_candidate
-from agentrader.chart_bindings import BindingService
-from agentrader.chart_evidence import snapshot
-from agentrader.chart_clock import POLICY
-from agentrader.drawings.service import DrawingService
+from agentrader.chart.local_chart_events import LocalChartEvents,LocalEventError,closed_candidate
+from agentrader.chart.chart_bindings import BindingService
+from agentrader.chart.chart_evidence import snapshot
+from agentrader.chart.chart_clock import POLICY
+from agentrader.chart.drawings.service import DrawingService
 from agentrader.migrations import connect,migrate
 from test_chart_evidence import fixture,capture
 
 def setup_store(db):
- migrate(db);b=BindingService(db,'owner');rows,market,quality=fixture(60);grid=[r['time'] for r in rows]
+ bind_demo_store(db);migrate(db);b=BindingService(db,'owner');rows,market,quality=fixture(60);grid=[r['time'] for r in rows]
  # Previous closed candle closes below the touch band; current closed bar spans it.
  rows[-3].update(close=95);rows[-3]['exact']['close']='95'
  d=DrawingService(db,'owner').create('main','drawing',dict(kind='horizontal',symbol='BTCUSDT',price_source='LAST_PRICE',label='P6',anchors=[dict(time=grid[2],price='100')]))
@@ -93,7 +94,7 @@ class LocalEventTests(unittest.TestCase):
   for stage,expected in [('before_event_commit',0),('after_event_commit',1)]:
    with self.subTest(stage=stage),tempfile.TemporaryDirectory() as folder:
     db=Path(folder)/'crash.db';d,b,c=setup_store(db);path=Path(folder)/'context.json';path.write_text(json.dumps(c),encoding='utf-8')
-    script="import json,os,sys;from agentrader.local_chart_events import LocalChartEvents;e=LocalChartEvents(sys.argv[1],'owner');p=e.prepare('main','binding','replay:crash',json.load(open(sys.argv[2])));e.commit(p,_fault=lambda s:os._exit(73) if s==sys.argv[3] else None)"
+    script="import json,os,sys;from agentrader.chart.local_chart_events import LocalChartEvents;e=LocalChartEvents(sys.argv[1],'owner');p=e.prepare('main','binding','replay:crash',json.load(open(sys.argv[2])));e.commit(p,_fault=lambda s:os._exit(73) if s==sys.argv[3] else None)"
     p=subprocess.run([sys.executable,'-c',script,str(db),str(path),stage],capture_output=True,timeout=15);self.assertEqual(p.returncode,73,p.stderr)
     with closing(connect(db)) as conn:
      for table in ('app_chart_local_events','app_chart_local_intents','app_chart_local_phases'):self.assertEqual(conn.execute('SELECT COUNT(*) FROM '+table).fetchone()[0],expected)
@@ -106,7 +107,7 @@ class LocalEventTests(unittest.TestCase):
   for stage,receipts in [('after_delivery_claim',0),('after_fake_send',1)]:
    with self.subTest(stage=stage),tempfile.TemporaryDirectory() as folder:
     db=Path(folder)/'delivery.db';d,b,c=setup_store(db);e=LocalChartEvents(db,'owner');e.commit(e.prepare('main','binding','replay:crash',c))
-    script="import os,sys;from agentrader.local_chart_events import LocalChartEvents;e=LocalChartEvents(sys.argv[1],'owner');e.deliver_one('main','replay:crash',_fault=lambda s:os._exit(74) if s==sys.argv[2] else None)"
+    script="import os,sys;from agentrader.chart.local_chart_events import LocalChartEvents;e=LocalChartEvents(sys.argv[1],'owner');e.deliver_one('main','replay:crash',_fault=lambda s:os._exit(74) if s==sys.argv[2] else None)"
     p=subprocess.run([sys.executable,'-c',script,str(db),stage],capture_output=True,timeout=15);self.assertEqual(p.returncode,74,p.stderr);self.assertEqual(e.recover_unknown('main','replay:crash')['count'],1);self.assertEqual(e.list_events('main','replay:crash')['events'][0]['intent_state'],'DELIVERY_UNKNOWN');self.assertEqual(e.deliver_one('main','replay:crash')['state'],'EMPTY')
     with closing(connect(db)) as conn:self.assertEqual(conn.execute('SELECT COUNT(*) FROM app_chart_fake_receipts').fetchone()[0],receipts)
  def test_http_history_is_readonly_and_rejects_live_namespace(self):

@@ -2,7 +2,7 @@ import {validateFibonacci} from './fibonacci';
 import {isFamily,isPitchfork,validateFamily} from './channelFamily';
 import {isChannel,channelBasis} from './channel';
 import {isPosition,positionMetrics} from './position';
-import {snapPrice,decimalRational,subtract} from './exactGeometry';
+import {snapPrice,snapDrawingPrice,decimalRational,subtract} from './exactGeometry';
 import type {Candle} from './types';
 import {timeToLogical,type Geometry} from './drawings.ts';
 /** One pointer owns a gesture; all cancellation paths share one cleanup. */
@@ -23,7 +23,10 @@ export function installDragCancellation(cancel:()=>void):()=>void{
 }
 export function logicalToTime(rows:Candle[],logical:number,step:number):number|null{
  if(!rows.length||!Number.isFinite(logical))return null;
- if(rows.length===1)return Math.round(rows[0].time+logical*step);
+ if(!Number.isFinite(step)||step<=0)return null;
+ if(logical<0)return Math.round(rows[0].time+logical*step);
+ if(logical>rows.length-1)return Math.round(rows.at(-1)!.time+(logical-rows.length+1)*step);
+ if(rows.length===1)return rows[0].time;
  const i=Math.max(0,Math.min(rows.length-2,Math.floor(logical)));
  return Math.round(rows[i].time+(logical-i)*(rows[i+1].time-rows[i].time));
 }
@@ -32,8 +35,8 @@ export function moveGeometry(geometry:Geometry,rows:Candle[],logicalDelta:number
  if(isFamily(geometry)&&anchor!==null){
   try{
    const points=geometry.anchors.map(a=>({...a})),[a,b,c]=points;
-   const time=(value:number)=>{const x=timeToLogical(rows,value);if(x===null)throw Error('GRID');const t=logicalToTime(rows,x+Math.round(logicalDelta),step);if(t===null)throw Error('GRID');return t;};
-   const price=(value:string,delta=priceDelta)=>snapPrice(value,String(tick),String(delta));
+   const time=(value:number)=>{const x=timeToLogical(rows,value,step);if(x===null)throw Error('GRID');const t=logicalToTime(rows,x+Math.round(logicalDelta),step);if(t===null)throw Error('GRID');return t;};
+   const price=(value:string,delta=priceDelta)=>snapDrawingPrice(value,String(tick),String(delta));
    if(isPitchfork(geometry.kind)){points[anchor]={time:time(points[anchor].time),price:price(points[anchor].price)};}
    else if(geometry.kind==='regression_channel'){points[anchor]={...points[anchor],time:time(points[anchor].time)};}
    else if(anchor===0){points[0]={time:time(a.time),price:price(a.price)};}
@@ -45,11 +48,11 @@ export function moveGeometry(geometry:Geometry,rows:Candle[],logicalDelta:number
  }
  let anchors;try{anchors=geometry.anchors.map((a,i)=>{
   if(anchor!==null&&anchor!==i)return a;
-  const logical=rows.length===1?(a.time-rows[0].time)/step:timeToLogical(rows,a.time);
+  const logical=rows.length===1?(a.time-rows[0].time)/step:timeToLogical(rows,a.time,step);
   const time=geometry.kind==='horizontal'?a.time:logical===null?null:logicalToTime(rows,logical+Math.round(logicalDelta),step);
-  return {time:time??0,price:snapPrice(a.price,String(tick),String(priceDelta))};
+  return {time:time??0,price:(isPosition(geometry)?snapPrice:snapDrawingPrice)(a.price,String(tick),String(priceDelta))};
  });}catch{return null;}
- if(anchors.some(a=>!Number.isSafeInteger(a.time)||a.time<=0||a.time>32503680000||!Number.isFinite(Number(a.price))||Number(a.price)<=0))return null;
+ if(anchors.some(a=>!Number.isSafeInteger(a.time)||a.time<=0||a.time>32503680000||!Number.isFinite(Number(a.price))||isPosition(geometry)&&Number(a.price)<=0))return null;
  if(!isFamily(geometry)&&geometry.kind!=='ruler'&&anchors.length===2&&(anchors[0].time===anchors[1].time||(!['ray','extended_line'].includes(geometry.kind)&&subtract(decimalRational(anchors[0].price),decimalRational(anchors[1].price)).n===0n)))return null;
  if(isPosition(geometry)&&anchor!==null){if(anchor===1)anchors[2]={...anchors[2],time:anchors[1].time};if(anchor===2)anchors[1]={...anchors[1],time:anchors[2].time};}
  const result={...geometry,anchors};if(isPosition(result)){try{positionMetrics(result);}catch{return null;}}if(isChannel(result)){try{channelBasis(result);}catch{return null;}}try{validateFibonacci(result);validateFamily(result);}catch{return null;}return result;

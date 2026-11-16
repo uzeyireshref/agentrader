@@ -2,8 +2,8 @@ import copy
 import unittest
 from unittest.mock import Mock
 
-from agentrader.chart_clock import measure_time, StreamTiming, POLICY
-from agentrader.market_feed import FeedState, FeedUnavailable
+from agentrader.chart.chart_clock import measure_time, StreamTiming, POLICY
+from agentrader.shared.market_feed import FeedState, FeedUnavailable
 from test_chart_feed import START, event
 from test_feed_freshness import history
 
@@ -139,7 +139,7 @@ class ChartClockTests(unittest.TestCase):
     def test_runtime_shared_feed_never_consumes_socket_without_clock_evidence(self):
         import threading
         from types import SimpleNamespace
-        from agentrader.market_feed import SharedFeed
+        from agentrader.shared.market_feed import SharedFeed
         socket = Mock()
         market = SimpleNamespace(history=Mock(return_value=history()))
         feed = SharedFeed(market, 'BTCUSDT', '15m', socket_factory=lambda *_: socket,

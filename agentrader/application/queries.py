@@ -6,7 +6,7 @@ from pathlib import Path
 import sqlite3
 import time
 
-from ..capabilities import list_capabilities
+from agentrader.bot.capabilities import list_capabilities
 
 
 class StorageUnavailable(RuntimeError):

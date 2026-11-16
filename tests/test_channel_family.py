@@ -3,10 +3,10 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from agentrader.drawings.service import DrawingService, DrawingError, geometry, management
-from agentrader.drawings.channel_family import KINDS
-from agentrader.drawings.calculations import canonical_hash, query, CalculationBlocked
-from agentrader.drawings.contracts import legacy_contract, capability
+from agentrader.chart.drawings.service import DrawingService, DrawingError, geometry, management
+from agentrader.chart.drawings.channel_family import KINDS
+from agentrader.chart.drawings.calculations import canonical_hash, query, CalculationBlocked
+from agentrader.chart.drawings.contracts import legacy_contract, capability
 from agentrader.migrations import migrate
 
 
@@ -35,10 +35,10 @@ class ChannelFamilyTests(unittest.TestCase):
         for kind in KINDS:
             value=family(kind)
             with self.assertRaises(CalculationBlocked) as error:canonical_hash(value)
-            self.assertEqual(error.exception.code,'DISPLAY_ONLY_CHANNEL_FAMILY')
+            self.assertEqual(error.exception.code,'UNSUPPORTED_INTERVAL')
             with self.assertRaises(CalculationBlocked):query(value,'boundsAt',time=1800000000)
             contract=legacy_contract(dict(geometry=value,drawing_id='test',revision=1,workspace_id='main',deleted=False,management=management()))
-            self.assertFalse(contract['capabilities']['computable']);self.assertEqual(contract['capabilities']['canonical_queries'],[])
+            self.assertTrue(contract['capabilities']['computable']);self.assertIn('boundsAt',contract['capabilities']['canonical_queries'])
             self.assertIsNone(contract['capabilities']['binding_model'])
             if kind!='parallel_channel':self.assertTrue(capability('drawing',kind)['readable'])
 
@@ -60,7 +60,7 @@ class ChannelFamilyTests(unittest.TestCase):
             value=family(kind);value['anchors'][2]=copy.deepcopy(value['anchors'][1]);geometry(value)
 
     def test_family_binding_is_rejected_before_traceability_or_activation(self):
-        from agentrader.chart_bindings import BindingService, BindingBlocked
+        from agentrader.chart.chart_bindings import BindingService, BindingBlocked
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/'app.db';migrate(path);made=DrawingService(path,'owner').create('main','new',family())
             with self.assertRaises(BindingBlocked) as error:

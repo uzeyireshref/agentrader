@@ -6,14 +6,14 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.exchange import ExchangeError
-from agentrader.grid_runner import GridRunner
-from agentrader.order_amend import OrderAmendments
-from agentrader.order_revisions import effective_params
-from agentrader.plans import PlanService
-from agentrader.risk import RiskLimits,number
-from agentrader.state import StateStore
-from agentrader.v2_runner import V2Runner
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.grid_runner import GridRunner
+from agentrader.bot.order_amend import OrderAmendments
+from agentrader.bot.order_revisions import effective_params
+from agentrader.bot.plans import PlanService
+from agentrader.bot.risk import RiskLimits,number
+from agentrader.shared.state import StateStore
+from agentrader.bot.v2_runner import V2Runner
 from test_grid_plan import grid_plan,grid_snapshot,limits
 from test_grid_runner import GridExchange
 from test_plan_v2 import plan_v2
@@ -58,7 +58,7 @@ class OrderAmendTests(unittest.TestCase):
         self.plan=plan_v2();self.plan['entry'].update(condition='LIMIT',trigger_price='79900')
         self.plan['sizing']['amount']='90';self.snap=snapshot();self.x.price='80000'
         self.snap.update(observed_at=time.time(),finished_at=time.time(),now_ms=int(time.time()*1000))
-        self.mock=patch('agentrader.v2_runner.collect_flat_snapshot',side_effect=lambda*a:copy.deepcopy(self.snap));self.mock.start()
+        self.mock=patch('agentrader.bot.v2_runner.collect_flat_snapshot',side_effect=lambda*a:copy.deepcopy(self.snap));self.mock.start()
         self.runner=V2Runner(self.service,self.x,RiskLimits());self.amend=OrderAmendments(self.service,self.x,RiskLimits())
     def tearDown(self):self.mock.stop();self.store.close();self.temp.cleanup()
     def start(self):
@@ -136,7 +136,7 @@ class OrderAmendTests(unittest.TestCase):
     def test_grid_quantity_amend_keeps_levels_and_next_refill_cap(self):
         self.plan=grid_plan();self.snap=grid_snapshot();self.x.price='75725'
         self.snap.update(observed_at=time.time(),finished_at=time.time(),now_ms=int(time.time()*1000))
-        with patch('agentrader.grid_runner.collect_flat_snapshot',side_effect=lambda*a:copy.deepcopy(self.snap)):
+        with patch('agentrader.bot.grid_runner.collect_flat_snapshot',side_effect=lambda*a:copy.deepcopy(self.snap)):
             self.runner=GridRunner(self.service,self.x,limits());self.amend=OrderAmendments(self.service,self.x,limits())
             p=self.service.create(self.plan,'owner');self.service.authorize(self.plan['plan_id'],1,p['authorization_token'],'approve','owner')
             sid=self.runner.open(self.plan['plan_id'],1,True)['session_id']
@@ -153,7 +153,7 @@ class OrderAmendTests(unittest.TestCase):
         self.plan=grid_plan();self.snap=grid_snapshot();self.x.price='75725'
         self.snap.update(observed_at=time.time(),finished_at=time.time(),now_ms=int(time.time()*1000))
         self.runner=GridRunner(self.service,self.x,limits());self.amend=OrderAmendments(self.service,self.x,limits())
-        with patch('agentrader.grid_runner.collect_flat_snapshot',side_effect=lambda*a:copy.deepcopy(self.snap)):
+        with patch('agentrader.bot.grid_runner.collect_flat_snapshot',side_effect=lambda*a:copy.deepcopy(self.snap)):
             p=self.service.create(self.plan,'owner');self.service.authorize(self.plan['plan_id'],1,p['authorization_token'],'approve','owner')
             sid=self.runner.open(self.plan['plan_id'],1,True)['session_id']
         for _ in range(5):self.runner.manage(sid,True)
@@ -220,3 +220,19 @@ class OrderAmendTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.amend.reconcile(p['command_id'])
         self.assertEqual(effective_params(self.store,cid)['price'],'79900')
         self.assertTrue(self.store.unresolved_account_command())
+
+    def test_more_than_one_hundred_amendments_are_paged_before_revision_commit(self):
+        _,cid,p=self.prepared();_,body,_,_=self.amend._row(p['command_id']);self.x.hide_history=True
+        self.assertEqual(self.apply(p)['state'],'ACKNOWLEDGED');self.x.hide_history=False
+        latest=copy.deepcopy(self.x.history[-1]);start=body['created_ms']-500
+        self.x.history=[dict(copy.deepcopy(latest),amendmentId=i+2,time=start+i,
+            amendment={'modifyId':i,'price':{'before':'79900','after':'79910'},'origQty':{'before':'.0011','after':'.0011'}}) for i in range(150)]+[latest]
+        original=self.x.get;reads=[]
+        def get(path,params=None):
+            if path=='/fapi/v1/orderAmendment':
+                reads.append(dict(params));rows=[h for h in self.x.history if params['startTime']<=h['time']<=params['endTime']]
+                return copy.deepcopy(rows[-params['limit']:])
+            return original(path,params)
+        with patch.object(self.x,'get',side_effect=get):self.assertEqual(self.amend.reconcile(p['command_id'])['state'],'APPLIED')
+        self.assertGreater(len(reads),2);self.assertEqual(effective_params(self.store,cid)['price'],'79800')
+        self.assertEqual(len([c for c in self.x.calls if c[0]=='PUT']),1)

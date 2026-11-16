@@ -4,9 +4,9 @@ from decimal import Decimal
 from pathlib import Path
 from unittest.mock import patch
 
-from agentrader.config import Config
-from agentrader.exchange import ExchangeError
-from agentrader.positions import position_cycle, position_plan
+from agentrader.shared.config import Config
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.positions import position_cycle, position_plan
 from test_orders import SYMBOL
 
 
@@ -75,7 +75,7 @@ class PositionTests(unittest.TestCase):
 
     def run_cycle(self, fake):
         with tempfile.TemporaryDirectory(dir=Path.cwd()) as folder:
-            with patch('agentrader.positions.DemoExchange', return_value=fake):
+            with patch('agentrader.bot.positions.DemoExchange', return_value=fake):
                 return position_cycle(Config(), execute=True, journal=Path(folder) / 'events.jsonl')
 
     def test_normal_cycle_and_lost_entry_response(self):
@@ -101,6 +101,6 @@ class PositionTests(unittest.TestCase):
 
     def test_preview_does_not_submit(self):
         fake = PositionExchange()
-        with patch('agentrader.positions.DemoExchange', return_value=fake):
+        with patch('agentrader.bot.positions.DemoExchange', return_value=fake):
             self.assertEqual(position_cycle(Config())['status'], 'preview')
         self.assertEqual(fake.calls, [])

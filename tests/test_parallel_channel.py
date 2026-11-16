@@ -3,9 +3,9 @@ from fractions import Fraction
 from pathlib import Path
 import tempfile
 import unittest
-from agentrader.drawings.service import DrawingService, DrawingError, geometry, management
-from agentrader.drawings.calculations import query, canonical_hash, CalculationBlocked
-from agentrader.drawings.contracts import legacy_contract, capability
+from agentrader.chart.drawings.service import DrawingService, DrawingError, geometry, management
+from agentrader.chart.drawings.calculations import query, canonical_hash, CalculationBlocked
+from agentrader.chart.drawings.contracts import legacy_contract, capability
 from agentrader.migrations import migrate
 
 START=1800000000
@@ -36,11 +36,11 @@ class ParallelChannelTests(unittest.TestCase):
         self.assertEqual(q(p,'distance',query_price='109')['decimal'],'1.75')
         self.assertEqual(q(p,'distance',query_price='119')['decimal'],'0')
 
-    def test_zero_width_vertical_outside_third_and_nonpositive_boundary_rejected(self):
+    def test_zero_width_vertical_outside_third_rejected_signed_boundary_allowed(self):
         cases=[];p=channel();p['anchors'][2]['price']='105.5';cases.append(p)
         p=channel();p['anchors'][1]['time']=p['anchors'][0]['time'];cases.append(p)
         p=channel();p['anchors'][2]['time']=GRID[8];cases.append(p)
-        p=channel();p['anchors'][0]['price']='5';p['anchors'][1]['price']='15';p['anchors'][2]=dict(time=GRID[6],price='1');cases.append(p)
+        p=channel();p['anchors'][0]['price']='5';p['anchors'][1]['price']='15';p['anchors'][2]=dict(time=GRID[6],price='1');self.assertEqual(geometry(p)['anchors'][0]['price'],'5')
         cases.append({**channel(),'schema':'wrong'})
         for p in cases:
             with self.assertRaises(DrawingError):geometry(p)

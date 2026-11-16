@@ -1,11 +1,12 @@
+from agentrader.application.environment import bind_demo_store
 import copy,json,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
-from agentrader.chart_bindings import BindingService,BindingError,BindingBlocked,binding_hash
-from agentrader.binding_catalog import catalog,definitions
-from agentrader.drawings.service import DrawingService,DrawingError,DrawingConflict,DrawingNotFound,management
-from agentrader.indicator_config import IndicatorService,defaults_v4
-from agentrader.chart_profiles import ProfileService,default_view
+from agentrader.chart.chart_bindings import BindingService,BindingError,BindingBlocked,binding_hash
+from agentrader.chart.binding_catalog import catalog,definitions
+from agentrader.chart.drawings.service import DrawingService,DrawingError,DrawingConflict,DrawingNotFound,management
+from agentrader.chart.indicator_config import IndicatorService,defaults_v4
+from agentrader.chart.chart_profiles import ProfileService,default_view
 from agentrader.migrations import migrate,connect
 GRID=[1800000000+i*900 for i in range(12)]
 def geometry(kind='horizontal'):
@@ -24,7 +25,7 @@ def geometry(kind='horizontal'):
 RULE=dict(schema='chart-rule-definition/1',kind='observe',direction='ANY',tolerance='0',closed_candle=True,rearm_policy='EXPLICIT')
 class BindingTests(unittest.TestCase):
  def setUp(self):
-  self.folder=tempfile.TemporaryDirectory();self.addCleanup(self.folder.cleanup);self.db=Path(self.folder.name)/'app.db';migrate(self.db);self.s=DrawingService(self.db,'owner');self.b=BindingService(self.db,'owner');self.i=IndicatorService(self.db,'owner');self.n=0
+  self.folder=tempfile.TemporaryDirectory();self.addCleanup(self.folder.cleanup);self.db=Path(self.folder.name)/'app.db';bind_demo_store(self.db);migrate(self.db);self.s=DrawingService(self.db,'owner');self.b=BindingService(self.db,'owner');self.i=IndicatorService(self.db,'owner');self.n=0
  def drawing(self,kind='horizontal'):
   self.n+=1;return self.s.create('main','drawing-'+str(self.n),geometry(kind))
  def save(self,d,bid='bind',expected=0,**kw):
@@ -56,7 +57,7 @@ class BindingTests(unittest.TestCase):
   d=self.drawing()
   for options in [dict(grid_times=[]),dict(grid_times=GRID[:3]+GRID[4:]),dict(scale='LOG'),dict(data_snapshot_hash='trusted'),dict(rule={**RULE,'closed_candle':False}),dict(rule={**RULE,'order_authority':True}),dict(query=dict(operation='execute',output='value',ratio=None))]:
    with self.subTest(options=options),self.assertRaises(DrawingError):self.save(d,**options)
-  with patch('agentrader.chart_bindings.catalog',return_value=dict(state='BLOCKED',reason='QUERY_EVIDENCE_STALE_OR_MISSING')):
+  with patch('agentrader.chart.chart_bindings.catalog',return_value=dict(state='BLOCKED',reason='QUERY_EVIDENCE_STALE_OR_MISSING')):
    with self.assertRaises(BindingBlocked):self.save(d)
   with self.assertRaises(BindingBlocked):self.save(self.drawing('text'))
  def test_catalog_coverage_every_supported_target_has_query_and_parity_artifacts(self):

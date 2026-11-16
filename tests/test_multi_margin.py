@@ -8,14 +8,14 @@ from unittest.mock import patch
 from dataclasses import replace
 from decimal import Decimal
 
-from agentrader.exchange import ExchangeError
-from agentrader.isolated_margin import IsolatedMarginCommands,PATH
-from agentrader.risk import number
-from agentrader.v2_runner import V2Runner
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.isolated_margin import IsolatedMarginCommands,PATH
+from agentrader.bot.risk import number
+from agentrader.bot.v2_runner import V2Runner
 from test_multi_session import MultiExchange
 import test_multi_session as fixtures
 from test_neutral import NeutralExchange,neutral_plan,neutral_limits
-from agentrader.neutral_runner import NeutralGridRunner
+from agentrader.bot.neutral_runner import NeutralGridRunner
 
 
 class MarginExchange(MultiExchange):
@@ -158,14 +158,14 @@ class MultiMarginTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'MARGIN'):margin.prepare('ETHUSDT','BOTH','ADD','1')
         self.assertEqual(len(self.x.calls),before)
     def test_cli_passes_selected_limits_to_prepare_and_apply(self):
-        from agentrader.settings_cli import main
+        from agentrader.cli.settings_cli import main
         self.start();out=io.StringIO()
         common=['--database',str(self.path)]
-        with patch('agentrader.settings_cli.execution_lock',return_value=nullcontext()), \
-             patch('agentrader.settings_cli.getpass.getuser',return_value='test'), \
-             patch('agentrader.settings_cli.Config.load',return_value=self.x.config), \
-             patch('agentrader.settings_cli.DemoExchange',return_value=self.x), \
-             patch('agentrader.risk.RiskLimits.load',return_value=self.limits) as load,redirect_stdout(out):
+        with patch('agentrader.cli.settings_cli.execution_lock',return_value=nullcontext()), \
+             patch('agentrader.cli.settings_cli.getpass.getuser',return_value='test'), \
+             patch('agentrader.cli.settings_cli.Config.load',return_value=self.x.config), \
+             patch('agentrader.cli.settings_cli.DemoExchange',return_value=self.x), \
+             patch('agentrader.bot.risk.RiskLimits.load',return_value=self.limits) as load,redirect_stdout(out):
             self.assertEqual(main(common+['margin-prepare','--symbol','BTCUSDT','--position-side','BOTH',
                 '--action','ADD','--amount','1','--session-id',self.btc,'--risk-profile','selected.json']),0)
             prepared=json.loads(out.getvalue());out.seek(0);out.truncate()

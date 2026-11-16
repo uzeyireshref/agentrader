@@ -1,0 +1,164 @@
+{
+  "review_date": "2026-11-15",
+  "repositories": [
+    {
+      "repository": "freqtrade/freqtrade",
+      "url": "https://github.com/freqtrade/freqtrade",
+      "description": "Free, open source crypto trading bot",
+      "license": "GPL-3.0",
+      "archived": false,
+      "pushed_at": "2026-11-15T14:57:48Z",
+      "default_branch": "develop",
+      "stars": 56913
+    },
+    {
+      "repository": "hummingbot/hummingbot",
+      "url": "https://github.com/hummingbot/hummingbot",
+      "description": "Open source software that helps you create and deploy high-frequency crypto trading bots",
+      "license": "Apache-2.0",
+      "archived": false,
+      "pushed_at": "2026-11-13T16:17:13Z",
+      "default_branch": "master",
+      "stars": 21228
+    },
+    {
+      "repository": "nautechsystems/nautilus_trader",
+      "url": "https://github.com/nautechsystems/nautilus_trader",
+      "description": "Production-grade Rust-native trading engine with deterministic event-driven architecture",
+      "license": "LGPL-3.0",
+      "archived": false,
+      "pushed_at": "2026-11-15T14:10:37Z",
+      "default_branch": "develop",
+      "stars": 31554
+    },
+    {
+      "repository": "ccxt/ccxt",
+      "url": "https://github.com/ccxt/ccxt",
+      "description": "A unified trading API with more than 100 crypto exchanges and prediction markets in JavaScript / TypeScript / Python / C# / PHP / Go / Java / Rust",
+      "license": "MIT",
+      "archived": false,
+      "pushed_at": "2026-11-13T23:54:58Z",
+      "default_branch": "master",
+      "stars": 44888
+    },
+    {
+      "repository": "jesse-ai/jesse",
+      "url": "https://github.com/jesse-ai/jesse",
+      "description": "An advanced trading bot written in Python",
+      "license": "MIT",
+      "archived": false,
+      "pushed_at": "2026-11-10T10:05:34Z",
+      "default_branch": "master",
+      "stars": 8806
+    },
+    {
+      "repository": "polakowo/vectorbt",
+      "url": "https://github.com/polakowo/vectorbt",
+      "description": "The research engine that gives you an unfair advantage. Run thousands of trading ideas before others finish one.",
+      "license": "NOASSERTION",
+      "archived": false,
+      "pushed_at": "2026-11-11T17:29:25Z",
+      "default_branch": "master",
+      "stars": 9856
+    },
+    {
+      "repository": "nkaz001/hftbacktest",
+      "url": "https://github.com/nkaz001/hftbacktest",
+      "description": "Free, open source, a high frequency trading and market making backtesting and trading bot, which accounts for limit orders, queue positions, and latencies, utilizing full tick data for trades and order books(Level-2 and Level-3), with real-world crypto trading examples for Binance and Bybit",
+      "license": "MIT",
+      "archived": false,
+      "pushed_at": "2025-12-23T15:57:58Z",
+      "default_branch": "master",
+      "stars": 5086
+    },
+    {
+      "repository": "QuantConnect/Lean",
+      "url": "https://github.com/QuantConnect/Lean",
+      "description": "Lean Algorithmic Trading Engine by QuantConnect (Python, C#)",
+      "license": "Apache-2.0",
+      "archived": false,
+      "pushed_at": "2026-11-13T21:37:31Z",
+      "default_branch": "master",
+      "stars": 22543
+    },
+    {
+      "repository": "bmoscon/cryptofeed",
+      "url": "https://github.com/bmoscon/cryptofeed",
+      "description": "Cryptocurrency Exchange Websocket Data Feed Handler",
+      "license": "NOASSERTION",
+      "archived": false,
+      "pushed_at": "2026-11-15T01:19:47Z",
+      "default_branch": "master",
+      "stars": 3035
+    },
+    {
+      "repository": "binance/binance-connector-python",
+      "url": "https://github.com/binance/binance-connector-python",
+      "description": "Simple connector to Binance Public API",
+      "license": "MIT",
+      "archived": false,
+      "pushed_at": "2026-11-12T11:17:51Z",
+      "default_branch": "master",
+      "stars": 2963
+    },
+    {
+      "repository": "optuna/optuna",
+      "url": "https://github.com/optuna/optuna",
+      "description": "A hyperparameter optimization framework",
+      "license": "MIT",
+      "archived": false,
+      "pushed_at": "2026-11-13T09:03:39Z",
+      "default_branch": "master",
+      "stars": 15048
+    },
+    {
+      "repository": "ranaroussi/quantstats",
+      "url": "https://github.com/ranaroussi/quantstats",
+      "description": "Portfolio analytics for quants, written in Python",
+      "license": "Apache-2.0",
+      "archived": false,
+      "pushed_at": "2026-11-02T14:00:34Z",
+      "default_branch": "main",
+      "stars": 7872
+    },
+    {
+      "repository": "prometheus/client_python",
+      "url": "https://github.com/prometheus/client_python",
+      "description": "Prometheus instrumentation library for Python applications",
+      "license": "Apache-2.0",
+      "archived": false,
+      "pushed_at": "2026-11-13T21:52:21Z",
+      "default_branch": "master",
+      "stars": 4386
+    },
+    {
+      "repository": "HypothesisWorks/hypothesis",
+      "url": "https://github.com/HypothesisWorks/hypothesis",
+      "description": "The property-based testing library for Python",
+      "license": "NOASSERTION",
+      "archived": false,
+      "pushed_at": "2026-11-15T00:05:31Z",
+      "default_branch": "master",
+      "stars": 9169
+    },
+    {
+      "repository": "timescale/timescaledb",
+      "url": "https://github.com/timescale/timescaledb",
+      "description": "A time-series database for high-performance real-time analytics packaged as a Postgres extension",
+      "license": "NOASSERTION",
+      "archived": false,
+      "pushed_at": "2026-11-15T09:52:34Z",
+      "default_branch": "main",
+      "stars": 23861
+    },
+    {
+      "repository": "hummingbot/skills",
+      "url": "https://github.com/hummingbot/skills",
+      "description": "Reusable skills for AI agents to interact with Hummingbot trading infrastructure",
+      "archived": false,
+      "pushed_at": "2026-08-26T18:51:57Z",
+      "default_branch": "main",
+      "stars": 34
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 import copy,json,tempfile,unittest
 from pathlib import Path
-from agentrader.indicator_config import IndicatorService,defaults,validate,series,SOURCES
+from agentrader.chart.indicator_config import IndicatorService,defaults,validate,series,SOURCES
 from agentrader.migrations import migrate,connect
-from agentrader.drawings.service import DrawingConflict,DrawingError,DrawingService
-from agentrader.analysis import ema,rsi
+from agentrader.chart.drawings.service import DrawingConflict,DrawingError,DrawingService
+from agentrader.chart.analysis import ema,rsi
 class IndicatorConfigurationTests(unittest.TestCase):
  def test_revision_idempotency_conflict_owner_and_workspace_isolation(self):
   with tempfile.TemporaryDirectory() as f:

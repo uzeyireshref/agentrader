@@ -3,9 +3,9 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock
 
-from agentrader.runtime import supervise_session
-from agentrader.service_cli import request_stop,service_status
-from agentrader.state import StateStore
+from agentrader.shared.runtime import supervise_session
+from agentrader.cli.service_cli import request_stop,service_status
+from agentrader.shared.state import StateStore
 import test_v2_runner as fixtures
 
 

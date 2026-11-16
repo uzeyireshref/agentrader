@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Request
 from .drawings import body
-from ..indicator_config import IndicatorService
+from agentrader.chart.indicator_config import IndicatorService
 
 def indicator_router(service:IndicatorService):
  router=APIRouter()

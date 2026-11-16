@@ -6,15 +6,15 @@ import unittest
 from unittest.mock import patch
 from pathlib import Path
 
-from agentrader.state import StateStore
-from scripts.watch_approved_demo import restart_proof, emit
+from agentrader.shared.state import StateStore
+from scripts.bot.watch_approved_demo import restart_proof, emit
 
 
 class DemoRestartTests(unittest.TestCase):
     def test_redirected_legacy_windows_log_keeps_turkish_text(self):
         buffer = io.BytesIO()
         stream = io.TextIOWrapper(buffer, encoding='cp1252')
-        with patch('scripts.watch_approved_demo.sys.stdout', stream):
+        with patch('scripts.bot.watch_approved_demo.sys.stdout', stream):
             emit(event='işlem', reason='Giriş koşulu sağlandı')
         stream.flush()
         result = json.loads(buffer.getvalue().decode('ascii'))

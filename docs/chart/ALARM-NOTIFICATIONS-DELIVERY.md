@@ -24,7 +24,7 @@ The application tab must stay open for these channels. Background scheduling/OS 
 - Cases: initial history silence; explicit permission/audio unlock; event to card/count/sound/desktop; repeated polling; reload/preferences/unread; history acknowledgement; channels disabled; denied permission recovery text; shared two-tab claim; dark/light/600px layout; polling failure/recovery; blocked storage with memory dedup.
 - Evidence: reports/alert-notifications-20261113/result.json, preferences-dark.png, preferences-light.png, preferences-mobile.png, toast-dark.png; frontend log reports/alert-notifications-frontend-tests.log.
 
-Reproduce fixture: python -m scripts.create_notification_fixture. Run browser acceptance with bundled node and frontend/node_modules/tsx/dist/cli.mjs scripts/check_alert_notifications.mts (local app running on 8765). Existing scripts/check_alert_conditions.mts also passed after integration.
+Reproduce fixture: python -m scripts.create_notification_fixture. Run browser acceptance with bundled node and frontend/node_modules/tsx/dist/cli.mjs scripts/chart/check_alert_notifications.mts (local app running on 8765). Existing scripts/chart/check_alert_conditions.mts also passed after integration.
 
 ## Browser references
 

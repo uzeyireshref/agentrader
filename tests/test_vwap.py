@@ -2,9 +2,9 @@ import copy,json,tempfile,unittest
 from pathlib import Path
 from fractions import Fraction
 from decimal import Decimal
-from agentrader.vwap import vwap_series
-from agentrader.indicator_config import defaults_v3,defaults_v4,validate_v4,IndicatorService
-from agentrader.drawings.service import DrawingError
+from agentrader.chart.vwap import vwap_series
+from agentrader.chart.indicator_config import defaults_v3,defaults_v4,validate_v4,IndicatorService
+from agentrader.chart.drawings.service import DrawingError
 from agentrader.migrations import migrate
 DAY=1800000000//86400*86400
 
@@ -66,6 +66,6 @@ class VwapTests(unittest.TestCase):
   data=json.loads((Path(__file__).resolve().parents[1]/'frontend/tests/fixtures/vwap-parity.json').read_text(encoding='utf-8'))
   for c in data['cases']:self.assertEqual(vwap_series(data['datasets'][c['dataset']],c['config'],c['interval'],c['symbol']),c['result'])
  def test_registry_exposes_provenance_inputs_without_order_or_canonical_query(self):
-  from agentrader.drawings.contracts import capability
+  from agentrader.chart.drawings.contracts import capability
   for kind in ['session_vwap','anchored_vwap']:
    c=capability('indicator',kind);self.assertEqual(c['display_model']['schema'],'chart-indicators/4');self.assertEqual(c['canonical_queries'],[]);self.assertFalse(c['order_authority']);self.assertFalse(c['tracking_activation'])

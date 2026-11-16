@@ -1,4 +1,4 @@
-> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../../01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
+> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../project/history/01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
 
 # Kişisel kripto analiz ve işlem sistemi proje taslağı
 
@@ -379,7 +379,7 @@ Kullanıcı açısından aranan sonuç, bir alarm geldiğinde “Neden bu karar 
 - `03-MIMARI-VE-ISLEM-SOZLESMESI.md`: Plan, kullanıcı yetkisi, risk ve yürütme sözleşmesi.
 - `DOGRULAMA.md`: Demo senaryoları, hata bulguları ve test geçmişi.
 - `agentrader/`: Mevcut Python uygulaması; özellikle plans, plan_execution, execution, watchdog, management, market_data ve market_cli modülleri.
-- `scripts/watch_approved_demo.py`: Yerel izleme ve stop sonrası ayrı süreçte devralma yardımcısı.
+- `scripts/bot/watch_approved_demo.py`: Yerel izleme ve stop sonrası ayrı süreçte devralma yardımcısı.
 - `tests/`: Çevrimdışı davranış ve hata senaryoları.
 - `data/execution.sqlite3` ile ilgili JSONL kayıtları: Bu belgede belirtilen son oturumun yerel durum kanıtı. Gizli anahtarlar belgeye aktarılmamıştır.
 

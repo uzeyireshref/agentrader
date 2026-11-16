@@ -58,7 +58,7 @@ Tek kapanışta bütün koşullar aynı veri penceresinden hesaplanır. Intrabar
 ## Kabul
 
 - tests/test_alert_conditions.py:17 operatör örnekleri, VE/VEYA/bilinmeyen kaynak, bakış penceresi, bütün mevcut gösterge aileleri, iki gösterge kesişmesi, VWAP, trend/fib/eski kanal, exact ondalık farkları, API create/edit409, değişmeyen snapshot, kalıcı olay/dedup ve heartbeat warmup.
-- scripts/check_alert_conditions.mts: üretim Chrome'unda fiyat+RSI oluşturma/mesaj, pause/resume, VEYA ve kanal sınırları, yüzdelik lookback, reload, history/delete,600px,açık tema,süre seçimi ve8 koşul sınırı. Kişisel çalışma alanına sıfır test yazımı; API/WebSocket kontrollü fixture.
+- scripts/chart/check_alert_conditions.mts: üretim Chrome'unda fiyat+RSI oluşturma/mesaj, pause/resume, VEYA ve kanal sınırları, yüzdelik lookback, reload, history/delete,600px,açık tema,süre seçimi ve8 koşul sınırı. Kişisel çalışma alanına sıfır test yazımı; API/WebSocket kontrollü fixture.
 - Tam backend950 test;306 frontend testi; TypeScript ve üretim derlemesi. Ekranlar reports/alerts-conditions-ui-20261113 altında. Son runtime paket adı ve sunucu doğrulaması teslim sonunda kaydedilir.
 
 Son üretim paketi: index-Cz97NEZV.js. localhost8765 gerçek GET /api/alerts doğrulandı; runtime_error=null, order_authority=false. Kayıtlı kişisel alarmlar test amacıyla oluşturulmadı/değiştirilmedi.

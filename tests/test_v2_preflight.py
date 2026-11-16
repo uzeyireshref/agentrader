@@ -2,8 +2,8 @@ import copy
 import unittest
 from decimal import Decimal
 
-from agentrader.risk import RiskLimits
-from agentrader.v2_preflight import collateral_usdt, collect_flat_snapshot, joint_step, prepare_single
+from agentrader.bot.risk import RiskLimits
+from agentrader.bot.v2_preflight import collateral_usdt, collect_flat_snapshot, joint_step, prepare_single
 from test_orders import SYMBOL
 from test_plan_v2 import plan_v2
 
@@ -23,7 +23,7 @@ class SnapshotExchange:
         self.data = {
             '/fapi/v1/accountConfig':{'canTrade':True,'multiAssetsMargin':True},
             '/fapi/v1/positionSide/dual':{'dualSidePosition':False},
-            '/fapi/v3/account':{'availableBalance':'10000','assets':[{'asset':'USDT','availableBalance':'5000','marginAvailable':True}], 'positions':[]},
+            '/fapi/v3/account':{'availableBalance':'10000','assets':[{'asset':'USDT','availableBalance':'5000','walletBalance':'5000','unrealizedProfit':'0','initialMargin':'0','marginAvailable':True}], 'positions':[]},
             '/fapi/v3/positionRisk':[], '/fapi/v1/openOrders':[], '/fapi/v1/openAlgoOrders':[],
             '/fapi/v1/symbolConfig':[snapshot()['settings']],
             '/fapi/v1/leverageBracket':[{'symbol':'BTCUSDT','brackets':snapshot()['brackets']}],
@@ -58,6 +58,20 @@ class V2PreflightTests(unittest.TestCase):
         self.assertEqual(r['entry']['params']['side'], 'BUY')
         self.assertFalse(r['execution_authorized'])
         self.assertEqual(len(r['protections']), 2)
+
+    def test_response_preference_reaches_entry_without_changing_protection_or_risk(self):
+        original=self.prepare()
+        self.assertNotIn('newOrderRespType',original['entry']['params'])
+        for condition,trigger in (('IMMEDIATE',None),('LIMIT','79900')):
+            self.plan['entry'].update(condition=condition,trigger_price=trigger)
+            baseline=self.prepare()
+            for response in ('ACK','RESULT'):
+                self.plan['entry']['order_response_type']=response
+                prepared=self.prepare()
+                self.assertEqual(prepared['entry']['params']['newOrderRespType'],response)
+                self.assertEqual(prepared['risk'],baseline['risk'])
+                self.assertEqual(prepared['protections'],baseline['protections'])
+            del self.plan['entry']['order_response_type']
 
     def test_short_and_hedge_prepare_correct_sides(self):
         self.plan.update(direction='SHORT', stop='81600', targets=[{'price':'78400','fraction':'1'}],position_mode='hedge')
@@ -104,7 +118,7 @@ class V2PreflightTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.prepare()
 
     def test_multi_assets_capacity_is_bounded_by_verified_usdt(self):
-        account={'availableBalance':'10000','assets':[{'asset':'USDT','availableBalance':'100','marginAvailable':True},
+        account={'availableBalance':'10000','assets':[{'asset':'USDT','availableBalance':'100','walletBalance':'100','unrealizedProfit':'0','initialMargin':'0','marginAvailable':True},
                     {'asset':'BTC','availableBalance':'3','marginAvailable':True}]}
         self.assertEqual(collateral_usdt(account,{'multiAssetsMargin':True},{'index':'1','askRate':'1.01'}),100)
         account['availableBalance']='50'

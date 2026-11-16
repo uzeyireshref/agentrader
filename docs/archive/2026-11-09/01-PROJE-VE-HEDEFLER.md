@@ -1,4 +1,4 @@
-> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../../01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
+> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../project/history/01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
 
 # AI Crypto Trader — Proje ve hedefler
 
@@ -8,14 +8,14 @@ Kullanıcı, yalnız tek LONG denemesi değil, Binance demo API'sinin ilgili ür
 ve hesapta gerçekten desteklediği işlemleri bot üzerinden kullanabilmeyi istedi.
 Önce yetenek/izin/mevcut kod envanteri, sonra bağımlılıklara göre geliştirme
 yapılacak. Yeni ana envanter ve sıra:
-[06-BINANCE-DEMO-YETENEK-ENVANTERI-VE-GELISTIRME-SIRASI.md](../../../06-BINANCE-DEMO-YETENEK-ENVANTERI-VE-GELISTIRME-SIRASI.md).
+[06-BINANCE-DEMO-YETENEK-ENVANTERI-VE-GELISTIRME-SIRASI.md](../../bot/history/06-BINANCE-DEMO-YETENEK-ENVANTERI-VE-GELISTIRME-SIRASI.md).
 95 USD-M REST başlığı belgede listelidir; hepsinin demoda veya bu anahtarda
 çalıştığı iddia edilmez. Grid, Spot ve COIN-M kapsamları ayrı doğrulanır.
 Bu kapsam genişlemesi yeni emir, hesap modu değişimi veya canlı işlem izni değildir.
 Aşağıdaki eski durum paragrafları tarihsel gelişimi yansıtır; güncel kanıtlar
 DOGRULAMA.md ve yeni envanterle birlikte okunmalıdır.
 
-Son plan güncellemesi: 5 Kasım 2026. Bu belge ilk tasarım ile sonraki geliştirme ve karar görüşmelerini birleştirir. Artık çalışan demo kodu vardır; mevcut yetenekler ve henüz geliştirilecek hedefler aşağıda ayrı belirtilmiştir. Teknik kanıtlar [DOGRULAMA.md](../../../DOGRULAMA.md) içindedir.
+Son plan güncellemesi: 5 Kasım 2026. Bu belge ilk tasarım ile sonraki geliştirme ve karar görüşmelerini birleştirir. Artık çalışan demo kodu vardır; mevcut yetenekler ve henüz geliştirilecek hedefler aşağıda ayrı belirtilmiştir. Teknik kanıtlar [DOGRULAMA.md](../../project/VALIDATION-HISTORY.md) içindedir.
 
 ## Kullanıcının istediği sistem
 

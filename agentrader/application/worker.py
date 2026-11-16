@@ -1,7 +1,7 @@
 """Explicit local worker. W1 processes runtime.inspect only, never trading actions."""
 import time
 
-from ..locking import execution_lock
+from agentrader.shared.locking import execution_lock
 from .queries import StorageUnavailable
 
 

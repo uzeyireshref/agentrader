@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import unittest
 
-from agentrader.drawings.calculations import (query, logical_position, encoded, canonical_hash,
+from agentrader.chart.drawings.calculations import (query, logical_position, encoded, canonical_hash,
                                              CalculationBlocked, verified_grid)
 
 REFERENCE = Path(__file__).resolve().parents[1] / 'frontend/tests/fixtures/geometry-parity.json'

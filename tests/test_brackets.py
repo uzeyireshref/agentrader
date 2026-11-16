@@ -1,6 +1,6 @@
 import copy
 import unittest
-from agentrader.brackets import select_bracket
+from agentrader.bot.brackets import select_bracket
 
 
 class BracketTests(unittest.TestCase):

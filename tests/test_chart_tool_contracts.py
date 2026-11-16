@@ -1,10 +1,10 @@
 import copy
 import unittest
 
-from agentrader.drawings.contracts import capability, legacy_contract, registry, UnsupportedTool
+from agentrader.chart.drawings.contracts import capability, legacy_contract, registry, UnsupportedTool
 from pathlib import Path
 import tempfile
-from agentrader.drawings.service import DrawingService
+from agentrader.chart.drawings.service import DrawingService
 from agentrader.migrations import migrate
 from test_drawings import line, zone
 
@@ -15,7 +15,7 @@ class ToolRegistryTests(unittest.TestCase):
         self.assertEqual(len(entries), 34)
         self.assertEqual(len({(t['category'], t['kind']) for t in entries}), len(entries))
         for tool in entries:
-            if tool['category'] == 'annotation' or tool['definition']['write_schema'] == 'chart-channel-family/1':
+            if tool['category'] == 'annotation':
                 self.assertTrue(tool['readable']); self.assertTrue(tool['editable']); self.assertFalse(tool['computable'])
                 self.assertEqual(tool['canonical_queries'], []); self.assertEqual(tool['calculation_state'], 'DISPLAY_ONLY')
             elif tool['readable']:

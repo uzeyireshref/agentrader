@@ -1,0 +1,276 @@
+{
+  "binding": {
+    "schema": "chart-binding/1",
+    "binding_id": "binding",
+    "revision": 1,
+    "workspace_id": "main",
+    "state": "DISABLED",
+    "reason": null,
+    "definition_hash": "f9b6a17fecf1c4e51f08897049cedba35036f8cb4e9620efe3e30f7c47d8ec3d",
+    "definition": {
+      "schema": "chart-binding-definition/1",
+      "owner": "fixture",
+      "workspace_id": "main",
+      "target": {
+        "type": "drawing",
+        "object_id": "7eba721d18f5452590210a3144538b1a",
+        "revision": 1,
+        "kind": "horizontal",
+        "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
+        "snapshot": {
+          "kind": "horizontal",
+          "symbol": "BTCUSDT",
+          "price_source": "LAST_PRICE",
+          "label": "Sentetik P7",
+          "anchors": [
+            {
+              "time": 1799991000,
+              "price": "100"
+            }
+          ]
+        }
+      },
+      "market": {
+        "source": "binance_usdm_demo_trade_price",
+        "environment": "demo_public",
+        "product": "USD-M",
+        "price_type": "LAST_PRICE",
+        "symbol": "BTCUSDT",
+        "interval": "15m"
+      },
+      "scale": "LINEAR",
+      "grid": {
+        "schema": "chart-binding-grid/1",
+        "times": [
+          1799989200,
+          1799990100,
+          1799991000,
+          1799991900,
+          1799992800,
+          1799993700,
+          1799994600,
+          1799995500,
+          1799996400,
+          1799997300,
+          1799998200,
+          1799999100,
+          1800000000,
+          1800000900
+        ],
+        "hash": "4cd24e5c1f1a5f12499250d1e22dd28b366f36817880048a3cabe1702d64462f",
+        "first_time": 1799989200,
+        "last_time": 1800000900,
+        "count": 14
+      },
+      "data_reference": {
+        "snapshot_hash": null,
+        "state": "CLIENT_REFERENCE_NOT_ELIGIBILITY"
+      },
+      "query": {
+        "operation": "priceAt",
+        "output": "value",
+        "ratio": null
+      },
+      "rule": {
+        "schema": "chart-rule-definition/1",
+        "kind": "touch",
+        "direction": "ANY",
+        "tolerance": "0.1",
+        "closed_candle": true,
+        "rearm_policy": "EXPLICIT"
+      },
+      "query_evidence": {
+        "queries": [
+          {
+            "operation": "priceAt",
+            "output": "value",
+            "output_type": "PRICE",
+            "rules": [
+              "observe",
+              "approach",
+              "touch",
+              "close_cross"
+            ]
+          },
+          {
+            "operation": "distance",
+            "output": "value",
+            "output_type": "METRIC",
+            "rules": [
+              "observe"
+            ]
+          }
+        ],
+        "numeric_basis": "RATIONAL_CANONICAL",
+        "context_requirements": [
+          "verified_market_identity",
+          "closed_data_reference",
+          "fresh_clock",
+          "verified_grid"
+        ],
+        "artifacts": [
+          {
+            "path": "frontend/tests/fixtures/geometry-parity.json",
+            "sha256": "3b5aaa1562a9898a3e5cc2039c2ee6d3e8277948f6894b35fc94ab108a374b61"
+          },
+          {
+            "path": "tests/test_chart_calculations.py",
+            "sha256": "52f16ae24875ad92f077b85e2c6f40010f0383d70b5c6d9f42083587a84c7482"
+          }
+        ],
+        "descriptor": {
+          "operation": "priceAt",
+          "output": "value",
+          "output_type": "PRICE",
+          "rules": [
+            "observe",
+            "approach",
+            "touch",
+            "close_cross"
+          ]
+        },
+        "hash": "bd7f4c18a7957a51aeeac6ac662d390208b255dfb16d59a25759ed7863fdc91d"
+      },
+      "activation": "DISABLED",
+      "evaluation_state": "SEPARATE_READ_ONLY_P5",
+      "bot_capabilities": {
+        "read_definition": true,
+        "write_target": false,
+        "edit_target": false,
+        "execute_rule": false,
+        "order_authority": false
+      }
+    },
+    "live_eligible": false,
+    "order_authority": false,
+    "duplicate": false
+  },
+  "preview": {
+    "account_preflight": "NOT_CHECKED",
+    "approval_state": "NOT_REQUESTED",
+    "assumptions": {
+      "actual_account_fees": "NOT_CHECKED",
+      "fee_rate": "0.001",
+      "slippage_bps": "5",
+      "stop_trigger_price_type": "MARK_PRICE"
+    },
+    "binding_id": "binding",
+    "binding_revision": 1,
+    "content_hash": "76318f0a3e94921a4d363c9c36b4db36fb50807798e7aa00a09edeea282f948e",
+    "created_at": 1000.0,
+    "definition_hash": "f9b6a17fecf1c4e51f08897049cedba35036f8cb4e9620efe3e30f7c47d8ec3d",
+    "environment": "demo_public",
+    "estimates": {
+      "margin_with_fee_reserve": "30.11981175000",
+      "net_rr": "1.608184759170762224309001172",
+      "notional": "59.8500",
+      "quantity": "0.5985",
+      "stop_loss_with_cost_reserve": "1.37475509850",
+      "target_pnl_with_cost_reserve": "2.21086019700"
+    },
+    "event_id": "bbd91ac5a8efa7f59544099329a0f0f0c46d7d5566863bad89d23b80130c3035",
+    "evidence": {
+      "current_snapshot_hash": "f07169a7f7833ea8341d233ad52a8347a260136ba13a622301f3399e1c77e2d8",
+      "demo_mark": {
+        "markPrice": "100",
+        "symbol": "BTCUSDT",
+        "time": 1000000
+      },
+      "event_hash": "c5e3a614f52d8eeb45e70401a9f1aef45b42cb0a046a923ce5fc225a340fe1c3",
+      "public_observed_at_ms": 1000000,
+      "symbol_filters_hash": "e0720ea109845ab16215bdc49cda7aa1eafe141fc4f2a8c72cc8da6155826753"
+    },
+    "execution_eligible": false,
+    "expires_at": 1120.0,
+    "order_authority": false,
+    "parameters": {
+      "direction": "LONG",
+      "entry_price": "100",
+      "leverage": 2,
+      "margin_mode": "ISOLATED",
+      "max_drift_bps": "25",
+      "notional": "60",
+      "position_mode": "one-way",
+      "stop": "98",
+      "target": "104",
+      "ttl_seconds": 120
+    },
+    "parameters_hash": "3fd6cde05a0c8828ae31c7125a71e805eb15fa68b8119811266e6f0842064935",
+    "plan": {
+      "analysis_ref": "shadow-event:bbd91ac5a8efa7f59544099329a0f0f0c46d7d5566863bad89d23b80130c3035",
+      "created_at": "1970-01-01T00:16:40+00:00",
+      "direction": "LONG",
+      "entry": {
+        "condition": "LIMIT",
+        "max_drift_bps": "25",
+        "reference_price": "100",
+        "trigger_price": "100"
+      },
+      "environment": "demo",
+      "exchange": "binance",
+      "execution": {
+        "leverage": 2,
+        "margin_mode": "ISOLATED",
+        "strategy": "SINGLE"
+      },
+      "expires_at": "1970-01-01T00:18:40+00:00",
+      "management": {
+        "allow_reentry": false,
+        "allow_reverse": false,
+        "allow_scale_in": false,
+        "break_even_after_target": null
+      },
+      "max_runs": 1,
+      "mode": "A",
+      "plan_id": "shadow-bbd91ac5a8efa7f595440993",
+      "position_mode": "one-way",
+      "product": "USD-M",
+      "rationale": "Kullan\u0131c\u0131n\u0131n a\u00e7\u0131k parametreleriyle g\u00f6lge sinyalden olu\u015fturulan \u00f6nizleme; i\u015flem onay\u0131 de\u011fildir.",
+      "schema_version": 2,
+      "sizing": {
+        "amount": "60",
+        "currency": "USDT",
+        "kind": "NOTIONAL"
+      },
+      "stop": "98",
+      "symbol": "BTCUSDT",
+      "targets": [
+        {
+          "fraction": "1",
+          "price": "104"
+        }
+      ],
+      "version": 1
+    },
+    "plan_digest": "f37a0a72f4cfd390b17dbf521f36b6b3ab6eba3c79a124b01337d43222d5e239",
+    "price_type": "LAST_PRICE",
+    "product": "USD-M",
+    "risk_limits": {
+      "max_age_seconds": "15",
+      "max_daily_loss": "25",
+      "max_notional": "100",
+      "max_positions": "1",
+      "max_total_loss": "10",
+      "max_trade_loss": "5"
+    },
+    "risk_profile_hash": "7cd0ecfafc87bc381afb2d79f371430346b9957a9156633c24014ab5e341c170",
+    "schema": "signal-preview/1",
+    "source": "binance_usdm_demo_trade_price",
+    "unchecked": [
+      "available_balance",
+      "account_mode_and_leverage",
+      "portfolio_and_daily_loss",
+      "ownership",
+      "liquidation",
+      "execution_quote_revalidation",
+      "future_funding",
+      "actual_commission_and_slippage"
+    ],
+    "version": 1,
+    "warnings": [],
+    "workspace_id": "main",
+    "state": "PREVIEW_ONLY",
+    "reasons": [],
+    "current_last_price": "98"
+  }
+}

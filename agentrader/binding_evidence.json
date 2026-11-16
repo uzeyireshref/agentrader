@@ -2,76 +2,184 @@
   "schema": "chart-binding-evidence/1",
   "runtime_sources": [
     {
-      "path": "agentrader/drawings/channel_family.py",
-      "sha256": "d4ab694f57c6739e290e96df3541cc2471001d93e9bdf61c0374bac6bc87b0b8"
+      "path": "agentrader/chart/drawings/coordinates.py",
+      "sha256": "9ca5d17ead697625ac3b2638144305ff8cf3509d50dc32ab163dbcf435501c53"
     },
     {
-      "path": "agentrader/drawings/service.py",
-      "sha256": "ffa6bcc4424cc20042c3ea4e88c49b965b774eb13384a0dc864ee390c55cb708"
+      "path": "agentrader/chart/drawings/channel_family.py",
+      "sha256": "73168c4cc7e68ad31251d92b0396e1bf7fb4a0317ac153ac0983f009aee8f079"
     },
     {
-      "path": "agentrader/drawings/contracts.py",
-      "sha256": "479afa5abc3edc47c946e664fd97a75536136ecc9b200c608f1020a9968639a1"
+      "path": "agentrader/chart/drawings/service.py",
+      "sha256": "57ea6f236bcc32bf828baa8f9fdcb41ee1b75c0e39965bf8121c6337b65a6740"
     },
     {
-      "path": "agentrader/chart_bindings.py",
-      "sha256": "5e3b7ea9e567b7845718789cc4a37dd18d24555f2731af8df0104e1c87945aff"
+      "path": "agentrader/chart/drawings/contracts.py",
+      "sha256": "0feacfd7078f6801150ccfe68cc17346975694faa2f5fc6327f37affcbddb789"
     },
     {
-      "path": "agentrader/binding_catalog.py",
-      "sha256": "3c8d2b052d29a01c2548f9f711db9477ef5e372030c5986252315b42cd364da2"
+      "path": "agentrader/chart/chart_bindings.py",
+      "sha256": "998a1d0fdec124510e71469a1b49721d68147566bf1a9d60e6f7d77f64fffeb5"
     },
     {
-      "path": "agentrader/drawings/calculations.py",
-      "sha256": "02d3a9dd14149c568b4151b8b8f9504d8ae2b845ebbdaf6c3934b28281dcd407"
+      "path": "agentrader/chart/binding_catalog.py",
+      "sha256": "a149e59ed3e19012d540030280b54673a40cfb92f30608ef7a2a0abed54540b6"
     },
     {
-      "path": "agentrader/drawings/channel.py",
-      "sha256": "2656eea381305cf9852c8f20cb828eae79ebef11ae1bcd20ec3973c7dd8020d2"
+      "path": "agentrader/chart/drawings/calculations.py",
+      "sha256": "d7728d448b48ad7d43be01802d1b79196a1dde297142b5733d1ec7d04117af04"
     },
     {
-      "path": "agentrader/drawings/position.py",
-      "sha256": "905901f1a004739640950f0a7af1c3039af7f646c0fad1c10fe73a201021c159"
+      "path": "agentrader/chart/drawings/channel.py",
+      "sha256": "68d949c34490ba31371627237b81303f998d4981c02388b8af28796131839bd6"
     },
     {
-      "path": "agentrader/drawings/fibonacci.py",
+      "path": "agentrader/chart/drawings/position.py",
+      "sha256": "e5f480114e04247228036bf3622476cd997aa41c5a01502aa55fb96bb227b6cd"
+    },
+    {
+      "path": "agentrader/chart/drawings/fibonacci.py",
       "sha256": "5ccf06970c8588551970335ec81cef16f47d07ae37514c78b7a1a7b2fd97eb00"
     },
     {
-      "path": "agentrader/indicator_config.py",
-      "sha256": "fc07a999363dadfbfb36ed79d94bd971ccb594829ed459caa9376335f29b7902"
+      "path": "agentrader/chart/indicator_config.py",
+      "sha256": "50e85182f3e8a53539f1eb059e25f0a70a201b65984d8baaed68bd741aabed55"
     },
     {
-      "path": "agentrader/vwap.py",
-      "sha256": "8fbd27d2dd684ca9f56203d4df2b9e61190f2e3bfacab29c30cc23907e657176"
+      "path": "agentrader/chart/vwap.py",
+      "sha256": "313bffe53622b499f8491aaa19a398272cac1a6d43458e77a253c61c940e20a8"
     },
     {
-      "path": "agentrader/binding_eligibility.py",
-      "sha256": "21ea614cd0279c514ca44c90c719ce251bc5a815d06198cdafd546a276ea2d98"
+      "path": "agentrader/chart/binding_eligibility.py",
+      "sha256": "7290e67a1f8f9799e8f2bd06a1ecb054565664d19d3520c70ec6ec041dbe682c"
     },
     {
-      "path": "agentrader/chart_clock.py",
-      "sha256": "002b13abbfc3046ea0db2510131e887bd3b55dc2c927cf9fac3e43511ac38859"
+      "path": "agentrader/chart/chart_clock.py",
+      "sha256": "e6d4133cf15b8a0985042972f4b478fcb0e82be2b9f381142110aa0a9e67b412"
     },
     {
-      "path": "agentrader/chart_evidence.py",
-      "sha256": "00e2d501139f29ad5124b64d5b5870c4f1b3ccc523ba063f5423377fb8d8abac"
+      "path": "agentrader/chart/chart_evidence.py",
+      "sha256": "fb29d3ff4ea935f5d6fd65a18a9ab8645dda26fd5e0ca2b83e438d498881070d"
     },
     {
-      "path": "agentrader/chart_precision.py",
+      "path": "agentrader/chart/chart_precision.py",
       "sha256": "c8b644b0bbb9be24c8e9defad1c1c03c4bcaf348265864415f79ab5c6863fba1"
     },
     {
-      "path": "agentrader/market_feed.py",
-      "sha256": "148f75e7e17f266b382e1c5b5cd07639d9a05c6789a8950f18946855754d8cfa"
+      "path": "agentrader/shared/market_feed.py",
+      "sha256": "7eccfa19a4adfa075ded6c2384a1b1b2145443f6d957caf8df835033edb1fdac"
     },
     {
-      "path": "agentrader/local_chart_events.py",
-      "sha256": "4dae343d0a72d9e5f0a87b681aba226b5cf2f683ebdfaf2132b13091c7f433df"
+      "path": "agentrader/chart/local_chart_events.py",
+      "sha256": "71e7b5d1122633ccce77cba335a9526c3f6da95ee91516640bef86ebb112571b"
     },
     {
-      "path": "agentrader/chart_replay.py",
-      "sha256": "b7989c67884dda98c44182448e897e25087bb9c05e21cae89f1f593f4ec81d10"
+      "path": "agentrader/chart/chart_replay.py",
+      "sha256": "3e7fa141482565feffd95d21446ab33ae0361e9dadd1fe3516d02400a1a86a09"
+    },
+    {
+      "path": "agentrader/shared/market_environment.py",
+      "sha256": "937996718dd2b27cc00730d6f9645f4e0dd8ed04392579413a6e9608c79da8c7"
+    },
+    {
+      "path": "agentrader/integration/shadow_tracking.py",
+      "sha256": "7ab84e5e4fc750b5a46f24fb8c7afaabc36536f3d08e0ff3a9ab9cdd5dadb869"
+    },
+    {
+      "path": "agentrader/chart/chart_market.py",
+      "sha256": "6f78b7a4ffc5ccc441da6c5e4933f2ee48fb2a57bbc2a2b697b42153a6b12dff"
+    },
+    {
+      "path": "agentrader/chart/drawings/tool_access.py",
+      "sha256": "a3bfb2b277e0aa97c25218c19f8969d146d19f6dffd862f84b446cc512543534"
+    },
+    {
+      "path": "agentrader/chart/chart_context.py",
+      "sha256": "5e80f8bd3777ff566fe11f316d7f9c3c62c5fd3557997a4cf36900eefb753d11"
+    },
+    {
+      "path": "agentrader/api/chart_context.py",
+      "sha256": "77f5a8c8357cea7e1fcd1813410a8b3bf219efb2a4dd06583b90ef14c51b4716"
+    },
+    {
+      "path": "agentrader/chart/chart_queries.py",
+      "sha256": "77a3f81578a0cf2af5569503cfafddb4e51c3e869856cfa4e07ac784a3337ab2"
+    },
+    {
+      "path": "agentrader/api/chart_queries.py",
+      "sha256": "7ad65ac79c662205891cdeb3f01ef27c5c00f6a2bee203ffe683ac6ea61a4ebe"
+    },
+    {
+      "path": "agentrader/chart/drawings/family_math.py",
+      "sha256": "e00702d17c2d649d3f32d04e7c0b05cd46e03e32436cdc724eabd58eaeeed957"
+    },
+    {
+      "path": "agentrader/chart/indicator_queries.py",
+      "sha256": "75946e60d7d9e2da75bd37cd7432d302b5ed7e2c72a6e1a569a6a5d6327f2ec3"
+    },
+    {
+      "path": "agentrader/api/indicator_queries.py",
+      "sha256": "ffa39a31b4c3a38f7cb9abfb43ef356cf5a56bab15a6017bc07075e4f46f3e6b"
+    },
+    {
+      "path": "agentrader/chart/ui_sessions.py",
+      "sha256": "75b8ad5314bdb853a3c07ae45394ed820ff5edfb5075d6ecb9af0583bf09e50f"
+    },
+    {
+      "path": "agentrader/api/ui_sessions.py",
+      "sha256": "4991d29512c810029415675d0a0665246e658d2479e28f7aac77857c65105fb0"
+    },
+    {
+      "path": "agentrader/chart/drawings/actors.py",
+      "sha256": "9ab79b061ccace8622fb6d50a9370585cac66536572d474a528888d1c659b213"
+    },
+    {
+      "path": "agentrader/chart/drawings/notes.py",
+      "sha256": "375642bd58e2bcce84e3ee15ddb4fc7f64301c01819f65cc35dda97269308712"
+    },
+    {
+      "path": "agentrader/api/drawings.py",
+      "sha256": "959c463ba7a725f7376de30063d2752f6c84ba237aaefdbcde90ecadbc37d997"
+    },
+    {
+      "path": "agentrader/chart/chart_profiles.py",
+      "sha256": "fb1f0067cbeb6a6342f861c8a8696e6fa0db2da288f31133c2350888d16ba994"
+    },
+    {
+      "path": "agentrader/migrations/__init__.py",
+      "sha256": "6e8ce61a8c62d7301b82b8b50b186e6a21202de6c5fe2b3c04f97a113f3beb65"
+    },
+    {
+      "path": "agentrader/application/settings.py",
+      "sha256": "f02f3140cf2e1156cddeb5d3c76e09c59c869ae798d674b2fd1c2b4c3063c12e"
+    },
+    {
+      "path": "agentrader/api/app.py",
+      "sha256": "0c9bc5d0aff8cc4c40ee666746d7308a7f8e8a47984a5c4d86115027a6a383da"
+    },
+    {
+      "path": "agentrader/integration/chart_bot.py",
+      "sha256": "d2007453cb2e5e1df53d8b0e9d2cbff22504b789ea7f54db465e0f4c2ad42d93"
+    },
+    {
+      "path": "agentrader/cli/chart_bot_cli.py",
+      "sha256": "5b494ab6d1d5b4697027d5a1df9950f5c447b8cc7c1ed8d7d742e8f7b8dc81c2"
+    },
+    {
+      "path": "agentrader/__main__.py",
+      "sha256": "1999ca018a96376de1da917bd8dea11977015ee005c7bedd9b09517cbbfe6c6e"
+    },
+    {
+      "path": "agentrader/chart/drawings/projection.py",
+      "sha256": "11e28b6a00b5d833732f53df1e35d338781c8665fccac1d80c753a1a025af01d"
+    },
+    {
+      "path": "agentrader/chart/drawings/packages.py",
+      "sha256": "a8d9346ed939159883e7acbbbddcef7200c258310cc5e530668c62699666013a"
+    },
+    {
+      "path": "agentrader/integration/chart_strategy.py",
+      "sha256": "e47a8fd28d6b6660a91fd56e6f8c83a485cdf4dec486ba2a2f569bab5b504671"
     }
   ],
   "targets": {
@@ -111,7 +219,7 @@
         },
         {
           "path": "tests/test_chart_calculations.py",
-          "sha256": "52f16ae24875ad92f077b85e2c6f40010f0383d70b5c6d9f42083587a84c7482"
+          "sha256": "41209a0d16d899fed57e4623f41da3631b92c21e92ac14e852014d4e394f3bfc"
         }
       ]
     },
@@ -151,7 +259,7 @@
         },
         {
           "path": "tests/test_chart_calculations.py",
-          "sha256": "52f16ae24875ad92f077b85e2c6f40010f0383d70b5c6d9f42083587a84c7482"
+          "sha256": "41209a0d16d899fed57e4623f41da3631b92c21e92ac14e852014d4e394f3bfc"
         }
       ]
     },
@@ -191,7 +299,7 @@
         },
         {
           "path": "tests/test_line_extensions.py",
-          "sha256": "b979ed0e9f7d2145a2ad8009601c1b593005787bb854eb9d245d130b9d573b00"
+          "sha256": "cdd7d56cc450fec6f6a0156fbef5d613366c1c3e70c62fefe878fc00e60bde10"
         }
       ]
     },
@@ -231,7 +339,7 @@
         },
         {
           "path": "tests/test_line_extensions.py",
-          "sha256": "b979ed0e9f7d2145a2ad8009601c1b593005787bb854eb9d245d130b9d573b00"
+          "sha256": "cdd7d56cc450fec6f6a0156fbef5d613366c1c3e70c62fefe878fc00e60bde10"
         }
       ]
     },
@@ -271,7 +379,7 @@
         },
         {
           "path": "tests/test_line_extensions.py",
-          "sha256": "b979ed0e9f7d2145a2ad8009601c1b593005787bb854eb9d245d130b9d573b00"
+          "sha256": "cdd7d56cc450fec6f6a0156fbef5d613366c1c3e70c62fefe878fc00e60bde10"
         }
       ]
     },
@@ -308,7 +416,7 @@
         },
         {
           "path": "tests/test_chart_calculations.py",
-          "sha256": "52f16ae24875ad92f077b85e2c6f40010f0383d70b5c6d9f42083587a84c7482"
+          "sha256": "41209a0d16d899fed57e4623f41da3631b92c21e92ac14e852014d4e394f3bfc"
         }
       ]
     },
@@ -336,11 +444,11 @@
       "artifacts": [
         {
           "path": "frontend/tests/fibonacciConfig.test.ts",
-          "sha256": "730b9a08c12b53ace94cfd2b4f161583375a359564910f3e59d1719189472394"
+          "sha256": "d24e2f15377c77456389e5876a3f97e81d05a0d37fcaa61821bcdaa64f9efefb"
         },
         {
           "path": "tests/test_configurable_fibonacci.py",
-          "sha256": "909e8e668a0b92828cd9d3fab8aa85c11ac7ddd9af35627ebc1281ae4a59dc9b"
+          "sha256": "ef095a6e3509662492f416bd9118ee4d99b5d88cd923265e656c01a353163355"
         }
       ]
     },
@@ -368,11 +476,11 @@
       "artifacts": [
         {
           "path": "frontend/tests/fibonacciConfig.test.ts",
-          "sha256": "730b9a08c12b53ace94cfd2b4f161583375a359564910f3e59d1719189472394"
+          "sha256": "d24e2f15377c77456389e5876a3f97e81d05a0d37fcaa61821bcdaa64f9efefb"
         },
         {
           "path": "tests/test_configurable_fibonacci.py",
-          "sha256": "909e8e668a0b92828cd9d3fab8aa85c11ac7ddd9af35627ebc1281ae4a59dc9b"
+          "sha256": "ef095a6e3509662492f416bd9118ee4d99b5d88cd923265e656c01a353163355"
         }
       ]
     },
@@ -450,7 +558,7 @@
         },
         {
           "path": "tests/test_parallel_channel.py",
-          "sha256": "0657d64a259f3f82a48259ff48eea82fbff4585d9b1956a6784919a4a7bc9919"
+          "sha256": "a64c23e35db6f635720f748a9e7f1ac4cdad19116c8c700adc16eacb1fdd2b5c"
         }
       ]
     },
@@ -519,7 +627,7 @@
         },
         {
           "path": "tests/test_chart_position.py",
-          "sha256": "f6b224849e2c24fde4e9cc98b763e1db6489355767d7d95fde0ba2a4589bb31f"
+          "sha256": "1ffba0431929d005b91997f06bb2e772b903856c4c002b75c06514bb9f737be7"
         }
       ]
     },
@@ -588,7 +696,7 @@
         },
         {
           "path": "tests/test_chart_position.py",
-          "sha256": "f6b224849e2c24fde4e9cc98b763e1db6489355767d7d95fde0ba2a4589bb31f"
+          "sha256": "1ffba0431929d005b91997f06bb2e772b903856c4c002b75c06514bb9f737be7"
         }
       ]
     },
@@ -642,7 +750,7 @@
         },
         {
           "path": "tests/test_ruler.py",
-          "sha256": "01e42eba0961262dfcb1706923fa00fa7210909d9c125a6cda3848a03c9019b8"
+          "sha256": "63e2934354962890e722bbf4222ea50698f3ff48f995fb472381470ef40d6d03"
         }
       ]
     },

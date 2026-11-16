@@ -14,8 +14,8 @@ from agentrader.application.queries import StorageUnavailable
 from agentrader.application.service import ApplicationService
 from agentrader.application.settings import WebSettings
 from agentrader.application.worker import run_worker
-from agentrader.locking import execution_lock
-from agentrader.state import StateStore
+from agentrader.shared.locking import execution_lock
+from agentrader.shared.state import StateStore
 
 
 COMMAND = {'request_id': 'inspect-1', 'action': 'runtime.inspect', 'payload': {}}
@@ -49,7 +49,7 @@ class ApplicationTests(unittest.TestCase):
         self.assertNotIn('x' * 40, repr(self.settings))
 
     def test_public_queries_do_not_load_credentials_or_create_execution_store(self):
-        with patch('agentrader.config.Config.load', side_effect=AssertionError('credential load')):
+        with patch('agentrader.shared.config.Config.load', side_effect=AssertionError('credential load')):
             self.assertFalse(self.service.health()['trading_commands_enabled'])
             self.assertEqual(self.service.capabilities()['count'], 95)
             self.assertEqual(self.service.status()['execution']['storage'], 'NOT_INITIALIZED')
@@ -166,7 +166,7 @@ class ApplicationTests(unittest.TestCase):
     def test_execution_lock_blocks_another_process(self):
         script = """from pathlib import Path
 import sys
-from agentrader.locking import execution_lock
+from agentrader.shared.locking import execution_lock
 try:
     with execution_lock(Path(sys.argv[1])):
         sys.exit(73)

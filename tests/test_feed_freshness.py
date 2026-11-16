@@ -3,8 +3,8 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock
 
-from agentrader.chart_clock import measure_time
-from agentrader.market_feed import FeedState, FeedUnavailable, SharedFeed
+from agentrader.chart.chart_clock import measure_time
+from agentrader.shared.market_feed import FeedState, FeedUnavailable, SharedFeed
 from test_chart_feed import START, event
 
 
@@ -81,3 +81,22 @@ class FeedFreshnessTests(unittest.TestCase):
         now[0] += 1
         self.assertIsNotNone(state.apply(event(stamp=START+3000)))
         self.assertEqual(state.state, 'LIVE')
+
+
+    def test_gap_at_seed_retries_rest_instead_of_remaining_gap_forever(self):
+        now=[100.0];stop=Stop();first,second=Mock(),Mock();calls=[]
+        def fresh_history(*args,**kwargs):
+            client=Mock();client.get.return_value={'serverTime':START+2000}
+            value=copy.deepcopy(history());value['clock_sample']=measure_time(client,lambda:now[0],lambda:now[0])[1]
+            if len(calls)==1:value['quality']={'state':'GAP','missing_bars':1}
+            return value
+        def factory(*args):
+            calls.append(True)
+            if len(calls)==2:stop.set()
+            return first if len(calls)==1 else second
+        first.receive.side_effect=lambda:stop.set()
+        market=SimpleNamespace(history=Mock(side_effect=fresh_history))
+        feed=SharedFeed(market,'BTCUSDT','15m',socket_factory=factory,clock=lambda:now[0],monotonic=lambda:now[0]);feed.stop_event=stop;feed.references=1
+        feed.run()
+        self.assertEqual(market.history.call_count,2)
+        first.receive.assert_not_called();first.close.assert_called_once();second.close.assert_called_once()

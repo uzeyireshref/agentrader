@@ -2,10 +2,10 @@ import copy
 import time
 import unittest
 
-from agentrader.exchange import ExchangeError
-from agentrader.isolated_margin import IsolatedMarginCommands, PATH
-from agentrader.risk import number
-from agentrader.v2_runner import V2Runner
+from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.isolated_margin import IsolatedMarginCommands, PATH
+from agentrader.bot.risk import number
+from agentrader.bot.v2_runner import V2Runner
 import test_v2_runner as fixtures
 
 

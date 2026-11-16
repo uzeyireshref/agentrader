@@ -69,7 +69,7 @@ Bunları geçti olarak işaretlemedik. Gerçek tetikleme yapılmadığı için s
 
 ## Bizde neden Alarm düğmesi tek başına yetmiyor?
 
-`agentrader/chart_bindings.py` kapalı, sürüme bağlı tanımları saklıyor. `agentrader/local_chart_events.py` yalnız replay namespace kabul ediyor ve yerel sahte alıcı kullanıyor. `agentrader/chart_replay.py` açık çağrılan izole motor; kendi açıklaması da runtime subscriber olmadığını söylüyor. `agentrader/api/bindings.py` tanım/eligibility/listeler sunuyor; aktif alarm scheduler/worker başlatmıyor.
+`agentrader/chart/chart_bindings.py` kapalı, sürüme bağlı tanımları saklıyor. `agentrader/chart/local_chart_events.py` yalnız replay namespace kabul ediyor ve yerel sahte alıcı kullanıyor. `agentrader/chart/chart_replay.py` açık çağrılan izole motor; kendi açıklaması da runtime subscriber olmadığını söylüyor. `agentrader/api/bindings.py` tanım/eligibility/listeler sunuyor; aktif alarm scheduler/worker başlatmıyor.
 
 `MarketFeedHub.binding_context` yalnız zaten abone olunmuş ve references>0 olan feedden kanıt veriyor. WebSocket istemcisi kapanınca API finally bloğu feed referansını bırakıyor. Bu yüzden mevcut sayfa aboneliğine dayanarak tarayıcı kapalıyken alarm çalıştığı söylenemez.
 

@@ -1,0 +1,105 @@
+{
+  "market": {
+    "source": "binance_usdm_demo_trade_price",
+    "environment": "demo_public",
+    "product": "USD-M",
+    "price_type": "LAST_PRICE",
+    "symbol": "BTCUSDT",
+    "interval": "15m"
+  },
+  "market_data": {
+    "status": "LIVE",
+    "stream_epoch": "dddddddddddddddddddddddddddddddd",
+    "generation": 1,
+    "sequence": 10
+  },
+  "viewport": {
+    "logical_range": {
+      "from": 20.5,
+      "to": 40.5
+    },
+    "time_range": {
+      "from": 1800000000,
+      "to": 1800000900
+    },
+    "price_range": {
+      "from": "-1.25",
+      "to": "300.25"
+    },
+    "width": 1200,
+    "height": 600,
+    "scale": "LINEAR",
+    "inverted": false
+  },
+  "selection": {
+    "drawing_ids": [],
+    "tool": "cursor"
+  },
+  "crosshair": {
+    "time": 1800000000,
+    "price": "100.2500",
+    "pane": 0,
+    "hover_candle": {
+      "time": 1800000000,
+      "closed": true,
+      "open": "100.00",
+      "high": "110",
+      "low": "90",
+      "close": "105",
+      "volume": "10.500",
+      "quote_volume": "1102.5"
+    }
+  },
+  "magnet": false,
+  "panels": {
+    "sidebar": "markets",
+    "volume": true,
+    "indicator_settings": false,
+    "alerts": false,
+    "templates": false,
+    "bindings": false,
+    "local_events": false,
+    "replay": false,
+    "command_dialog": false,
+    "fullscreen": false,
+    "pane_preset": "balanced",
+    "pane_weights": {
+      "price": 4,
+      "volume": 1,
+      "rsi": 1,
+      "atr": 1,
+      "macd": 1
+    }
+  },
+  "indicators": {
+    "settings_revision": 0,
+    "visible_ids": []
+  },
+  "theme": "dark",
+  "favorites": [
+    "BTCUSDT"
+  ],
+  "notifications": {
+    "in_app": true,
+    "sound": false,
+    "desktop": false,
+    "desktop_permission": "default",
+    "sound_ready": false
+  },
+  "history": {
+    "can_undo": false,
+    "can_redo": false,
+    "undo_targets": [],
+    "redo_targets": []
+  },
+  "persistent_refs": {
+    "workspace_revision": 0,
+    "profile_revision": 0,
+    "indicator_settings_revision": 0
+  },
+  "loading": {
+    "drawings": false,
+    "indicators": false,
+    "profile": false
+  }
+}

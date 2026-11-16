@@ -1,0 +1,4 @@
+{
+  "scripts/chart/probe_qa_dialog.py": "Tek kullanımlık, hiçbir aktif komut veya test tarafından çağrılmayan eski heap incelemesi.",
+  "scripts/chart/probe_qa_feedback.py": "Tek kullanımlık, hiçbir aktif komut veya test tarafından çağrılmayan eski iz kaydı incelemesi."
+}

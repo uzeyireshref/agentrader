@@ -9,7 +9,7 @@ import unittest
 from unittest.mock import patch
 
 from agentrader.application.settings import WebSettings
-from agentrader.web_cli import main
+from agentrader.cli.web_cli import main
 
 
 class WebCLITests(unittest.TestCase):

@@ -4,7 +4,7 @@
 
 ## Kesin sonuç ve sorgular
 
-agentrader/drawings/calculations.py içindeki query saf bir Python işlevidir; HTTP hesap endpointi veya bot adaptörü eklenmedi. Girdi mevcut strict geometry ve açık sorgu bağlamıdır. chart-geometry/1 sonuçları numerator/denominator metni taşır. decimal yalnız sonlu ondalık gösterim varsa doludur; örneğin 310/3 için null olur. Yuvarlanmış sayı kesin fiyat diye sunulmaz. Fraction aritmetiği Decimal ortam hassasiyetinden bağımsızdır. Float fiyat, bool zaman ve milisaniye/saniye karışıklığı reddedilir.
+agentrader/chart/drawings/calculations.py içindeki query saf bir Python işlevidir; HTTP hesap endpointi veya bot adaptörü eklenmedi. Girdi mevcut strict geometry ve açık sorgu bağlamıdır. chart-geometry/1 sonuçları numerator/denominator metni taşır. decimal yalnız sonlu ondalık gösterim varsa doludur; örneğin 310/3 için null olur. Yuvarlanmış sayı kesin fiyat diye sunulmaz. Fraction aritmetiği Decimal ortam hassasiyetinden bağımsızdır. Float fiyat, bool zaman ve milisaniye/saniye karışıklığı reddedilir.
 
 | Tür | Sorgu | Anlam |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ Fibonacci'de görünmez hit-line'ların yanlış/eksik koordinatları düzeltild
 
 Ortak sabit referans: frontend/tests/fixtures/geometry-parity.json. Sekiz örnek dört türü, ters anchor'ı, kesirli zamanı, micro fiyatı, float altı hassasiyeti ve tekrar eden kesri kapsar. Python ayrıca bağımsız Decimal matrisinde 77 kesin kesir kontrolü, grid/UTC/weekly/scope/hash/negatif senaryoları sınar. TypeScript testleri bu referansı gerçek timeToLogical ve kesin Fibonacci işlevleriyle karşılaştırır; büyük fiyatlarda sürükleme/form tick eşleşmesini doğrular.
 
-Yeni üretim bundle: index-DLB6RP6i.js. scripts/check_chart_t02.py kontrollü sentetik piyasa ile güncel üretim App'ini headless Chromium'da çalıştırır: ters Fib'in yedi seviyesi ve kesirli anchor trendi native koordinatlarla eşleşir; Fib tıklama alanları da kontrol edilir. Bu 8 sayısal kontrol fiziksel ekran/raster kabulü değildir. Screenshot ayrıca incelendi. İlk kontrol seçicisi görünür ve hit çizgisini birlikte seçerek başarısız oldu; ilk rapor korundu, seçici daraltıldı ve hit çizgisi hatası ayrı test/düzeltmeyle kapandı.
+Yeni üretim bundle: index-DLB6RP6i.js. scripts/chart/check_chart_t02.py kontrollü sentetik piyasa ile güncel üretim App'ini headless Chromium'da çalıştırır: ters Fib'in yedi seviyesi ve kesirli anchor trendi native koordinatlarla eşleşir; Fib tıklama alanları da kontrol edilir. Bu 8 sayısal kontrol fiziksel ekran/raster kabulü değildir. Screenshot ayrıca incelendi. İlk kontrol seçicisi görünür ve hit çizgisini birlikte seçerek başarısız oldu; ilk rapor korundu, seçici daraltıldı ve hit çizgisi hatası ayrı test/düzeltmeyle kapandı.
 
 Sonuçlar reports/chart-t02-validation-20261110.json içinde kayıtlıdır. 706 Python ve 136 frontend testi ile TypeScript/üretim derlemesi geçti. Kısa 10 saniye / 4.000 mum / 200 karma çizim performans kontrolünde p95 16.799999999999272 ms; 33,34 ms tarama hedefi geçti. Bu kısa ölçüm genel performans kabulü değildir. Önceki aday02 arşivi korunur. Önceki 30 dakika performans kanıtı yeni bundle için tekrar edilmedi; yeni pakette sınırsız oturum/performance/cihaz kabulü iddia edilmez. Kullanıcı DB'sine, gerçek piyasa/hesap/emir endpointlerine yazılmadı.
 

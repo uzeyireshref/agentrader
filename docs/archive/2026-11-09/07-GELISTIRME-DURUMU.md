@@ -1,4 +1,4 @@
-> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../../01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
+> Tarihsel arşiv: 9 Kasım 2026 yön değişikliğinden önceki metin. Güncel ürün kararı için [aktif hedeflere](../../project/history/01-PROJE-VE-HEDEFLER.md) bakın. İçerik korunmuştur; yerel Markdown bağlantıları arşiv konumuna uyarlanmıştır.
 
 # Geliştirme durumu — 6 Kasım 2026
 
@@ -115,14 +115,14 @@ seviyelerini değiştirme reddedilir. Yeni yolların demo yazma kanıtı henüz 
 
 Yoğun gelir ve gerçekleşme geçmişi artık ortak, sınırlı ve eksik veride duran
 okuyucularla toplanır. 386 test geçti. WebSocket bağlantısı henüz tamamlanmadı.
-Ayrıntı: [11-GECMIS-SAYFALAMA-VE-UZLASTIRMA.md](../../../11-GECMIS-SAYFALAMA-VE-UZLASTIRMA.md).
+Ayrıntı: [11-GECMIS-SAYFALAMA-VE-UZLASTIRMA.md](../../bot/history/11-GECMIS-SAYFALAMA-VE-UZLASTIRMA.md).
 
 ## Kullanıcı WebSocket güncellemesi
 
 430 test geçti. Gerçek demo bağlantısı, akış kaynağının oluşturulması/süre
 yenilemesi ve ping/pong doğrulandı. Emir veya hesap ayarı değiştirilmedi.
 Gerçek özel hesap olayı alınmadı; uçtan uca işlem olayı kanıtı bekliyor.
-Ayrıntı: [12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md](../../../12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md).
+Ayrıntı: [12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md](../../bot/history/12-KULLANICI-WEBSOCKET-VE-YENIDEN-UZLASTIRMA.md).
 
 ## Takip stopu, yönetilen teminat ve servis teslimi
 
@@ -131,7 +131,7 @@ zinciri, etkin oturuma bağlı izole teminat komutu, güncel grid basamak kontro
 bildirim kuyruğu ve sürekli servis/sağlık/durdurma komutları eklendi.
 Bu teslimde demo emri, hesap ayarı, Telegram mesajı veya otomatik görev başlatılmadı.
 Sekiz aşamalı planın tamamı henüz bitmedi; kalan kapsam açıkça kayıtlıdır.
-Ayrıntı: [13-TAKIP-STOP-TEMINAT-VE-SERVIS.md](../../../13-TAKIP-STOP-TEMINAT-VE-SERVIS.md).
+Ayrıntı: [13-TAKIP-STOP-TEMINAT-VE-SERVIS.md](../../bot/history/13-TAKIP-STOP-TEMINAT-VE-SERVIS.md).
 
 ## Çoklu oturum ve ortak risk teslimi
 
@@ -140,32 +140,32 @@ risk rezerviyle birlikte yönetilebilir. Aynı sembol iki plana bölünmez.
 497 test geçti; gerçek demo çoklu işlem testi yapılmadı. Risk profili ve mevcut
 bütçeler değiştirilmedi. Yeni komutlar: plans run-many/manage-all/reservations/
 release-unused ve service run-all. Ayrıntı ve sınırlamalar:
-[14-COKLU-OTURUM-VE-ORTAK-RISK.md](../../../14-COKLU-OTURUM-VE-ORTAK-RISK.md).
+[14-COKLU-OTURUM-VE-ORTAK-RISK.md](../../bot/history/14-COKLU-OTURUM-VE-ORTAK-RISK.md).
 
 
 ## Neutral grid teslimi — 6 Kasım 2026
 
 Neutral grid kodu ve 44 yeni senaryo tamamlandı. Toplam 541 test geçti. Neutral gerçek demo yazma kanıtı bekliyor; tüm proje bitmiş değildir.
 
-Ayrıntı: [15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md](../../../15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md).
+Ayrıntı: [15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md](../../bot/history/15-NEUTRAL-GRID-VE-IKI-TARAFLI-YONETIM.md).
 
 
 ## Aktif teminat teslimi — 6 Kasım 2026
 
 Aktif çoklu oturum, yönlü grid ve neutral taraf teminat yönetimi tamamlandı. Toplam 560 test geçti; gerçek demo teminat değişikliği henüz doğrulanmadı.
 
-Ayrıntı: [16-COKLU-OTURUM-TEMINAT-YONETIMI.md](../../../16-COKLU-OTURUM-TEMINAT-YONETIMI.md).
+Ayrıntı: [16-COKLU-OTURUM-TEMINAT-YONETIMI.md](../../bot/history/16-COKLU-OTURUM-TEMINAT-YONETIMI.md).
 
 
 ## Grid takip stopu — 7 Kasım 2026
 
 Yönlü GRID için isteğe bağlı bot takip stopu eklendi. LONG/SHORT watermark ve eşik kalıcıdır; tetikte yeni girişler durur, gerçek kalan miktar kapanış akışına geçer. Native sabit stop korunur; hareketli eşik bot çalışırken izlenir. Neutral/native takip ve diğer politikalar bekliyor. 13 yeni senaryo dahil 573 test geçti; sonuç doğrulama raporuna kaydedildi. Gerçek demo yazma yapılmadı.
 
-Ayrıntı: [17-GRID-TAKIP-STOPU.md](../../../17-GRID-TAKIP-STOPU.md). Kanıt: `reports/development-validation-20261107.json`.
+Ayrıntı: [17-GRID-TAKIP-STOPU.md](../../bot/history/17-GRID-TAKIP-STOPU.md). Kanıt: `reports/development-validation-20261107.json`.
 
 
 ## Grid borsa stopunu yenileme — 7 Kasım 2026
 
 Yönlü GRID için isteğe bağlı `management.trailing.native_stop: true` eklendi. Yeni close-all stop GET ile doğrulanmadan önceki takip stopu kaldırılmaz; başlangıç sabit koruması tutulur. Eski planlar değişmez. 21 yeni senaryo eklendi; tam regresyon sonucu `reports/development-validation-20261107.json` içinde. Gerçek demo yazma kanıtı bekliyor.
 
-Ayrıntı: [18-GRID-BORSA-STOP-YENILEME.md](../../../18-GRID-BORSA-STOP-YENILEME.md).
+Ayrıntı: [18-GRID-BORSA-STOP-YENILEME.md](../../bot/history/18-GRID-BORSA-STOP-YENILEME.md).

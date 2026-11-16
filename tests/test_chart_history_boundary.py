@@ -2,7 +2,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import Mock
-from agentrader.chart_market import ChartMarket, MarketUnavailable
+from agentrader.chart.chart_market import ChartMarket, MarketUnavailable
 
 
 class ChartHistoryBoundaryTests(unittest.TestCase):

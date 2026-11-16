@@ -3,8 +3,8 @@ import unittest
 from decimal import Decimal
 from pathlib import Path
 
-from agentrader.order_journal import OrderJournal
-from agentrader.state import StateStore
+from agentrader.bot.order_journal import OrderJournal
+from agentrader.shared.state import StateStore
 
 
 class OrderJournalTests(unittest.TestCase):

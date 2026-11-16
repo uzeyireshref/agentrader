@@ -2,8 +2,8 @@ import unittest
 from dataclasses import replace
 from decimal import Decimal
 
-from agentrader.portfolio import Exposure,evaluate_portfolio,liquidation_price
-from agentrader.risk import RiskLimits
+from agentrader.bot.portfolio import Exposure,evaluate_portfolio,liquidation_price
+from agentrader.bot.risk import RiskLimits
 
 
 class PortfolioTests(unittest.TestCase):

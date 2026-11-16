@@ -1,8 +1,8 @@
 import copy,tempfile,unittest
 from pathlib import Path
-from agentrader.alert_timeframes import align,intervals
-from agentrader.price_alerts import definition,PriceAlerts,PriceAlertWorker,AlertError
-from agentrader.market_data import INTERVALS,SOURCE,bucket
+from agentrader.chart.alert_timeframes import align,intervals
+from agentrader.chart.price_alerts import definition,PriceAlerts,PriceAlertWorker,AlertError
+from agentrader.shared.market_data import INTERVALS,SOURCE,bucket
 from agentrader.migrations import migrate
 T=1800057600
 
@@ -12,7 +12,7 @@ def context(interval,last,price=101):
     step=INTERVALS[interval]//1000
     rows=[]
     for t in range(last-step*3,last+1,step):rows.append(dict(time=t,close_time=(t+step)*1000-1,closed=True,close=price,exact=dict(state='VERIFIED',close=str(price))))
-    return dict(identity=dict(source=SOURCE,environment='live_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval=interval),rows=rows,transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch='epoch')
+    return dict(identity=dict(source=SOURCE,environment='demo_public',product='USD-M',price_type='LAST_PRICE',symbol='BTCUSDT',interval=interval),rows=rows,transport_state='LIVE',timing=dict(state='FRESH'),quality=dict(state='OK'),stream_epoch='epoch')
 def sources(base=T+600,higher=T+300):return {'1m':context('1m',base),'5m':context('5m',higher)}
 
 class TimeframeTests(unittest.TestCase):

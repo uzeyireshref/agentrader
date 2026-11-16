@@ -1,8 +1,8 @@
 import copy,tempfile,unittest
 from pathlib import Path
-from agentrader.chart_profiles import ProfileService,default_view,valid_defaults,profile_body,template_body
-from agentrader.indicator_config import IndicatorService,defaults_v4
-from agentrader.drawings.service import DrawingService,DrawingError,DrawingConflict,management
+from agentrader.chart.chart_profiles import ProfileService,default_view,valid_defaults,profile_body,template_body
+from agentrader.chart.indicator_config import IndicatorService,defaults_v4
+from agentrader.chart.drawings.service import DrawingService,DrawingError,DrawingConflict,management
 from agentrader.migrations import migrate,connect
 class ProfileTests(unittest.TestCase):
  def setUp(self):
