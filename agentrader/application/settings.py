@@ -18,6 +18,9 @@ class WebSettings:
     bot_token: str = field(default='', repr=False)
     bot_id: str = 'chart-bot'
     strategy_id: str = 'default'
+    bot_enabled: bool = False
+    local_auto_login: bool = False
+    bot_risk_profile: Path = Path('risk-demo.json')
 
     def __post_init__(self):
         app_path = Path(self.application_database).resolve()
@@ -34,6 +37,8 @@ class WebSettings:
             raise ValueError('Web erişim anahtarı 32–256 güvenli karakter içermeli.')
         if not isinstance(self.owner, str) or not self.owner or len(self.owner) > 128:
             raise ValueError('Yerel uygulama sahibi geçersiz.')
+        if type(self.bot_enabled) is not bool or self.bot_enabled and not self.token:
+            raise ValueError('Bot bağlantısı açık web kullanıcı anahtarı gerektirir.')
         if not isinstance(self.bot_token,str) or (self.bot_token and (not re.fullmatch(r'[A-Za-z0-9_-]{32,256}',self.bot_token) or not self.token or self.bot_token==self.token)):
             raise ValueError('Bot anahtarı ayrı ve güvenli olmalı; kullanıcı anahtarı da yapılandırılmalı.')
         if any(not isinstance(v,str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,64}',v) for v in (self.bot_id,self.strategy_id)):
@@ -47,10 +52,17 @@ class WebSettings:
 
     @classmethod
     def load(cls):
+        auto_login=os.environ.get('AGENTRADER_LOCAL_AUTO_LOGIN','0')
+        if auto_login not in ('0','1'):raise ValueError('AGENTRADER_LOCAL_AUTO_LOGIN 0 veya 1 olmalı.')
+        bot_enabled=os.environ.get('AGENTRADER_BOT_ENABLED','0')
+        if bot_enabled not in ('0','1'):raise ValueError('AGENTRADER_BOT_ENABLED 0 veya 1 olmalı.')
         return cls(application_database=Path(os.environ.get('AGENTRADER_WEB_DATABASE', 'data/application-demo.sqlite3')),
                    execution_database=Path(os.environ.get('AGENTRADER_EXECUTION_DATABASE', 'data/execution.sqlite3')),
                    token=os.environ.get('AGENTRADER_WEB_TOKEN', ''),
                    bot_token=os.environ.get('AGENTRADER_CHART_BOT_TOKEN',''),
                    bot_id=os.environ.get('AGENTRADER_CHART_BOT_ID','chart-bot'),
                    strategy_id=os.environ.get('AGENTRADER_CHART_STRATEGY_ID','default'),
+                   bot_enabled=bot_enabled=='1',
+                   local_auto_login=auto_login=='1',
+                   bot_risk_profile=Path(os.environ.get('AGENTRADER_BOT_RISK_PROFILE','risk-demo.json')),
                    market_database=Path(os.environ.get('AGENTRADER_CHART_DATABASE', 'data/chart-market-demo.sqlite3')))

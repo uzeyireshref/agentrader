@@ -156,6 +156,9 @@ class CancelScopeTests(unittest.TestCase):
         self.assertEqual(r['state'],'UNKNOWN');self.assertEqual(self.deletes(),[])
         self.assertEqual(r['result']['orders'][0]['child']['client_id'],'trigger-child')
     def test_cli_frozen_cancel_preview_apply_show_and_reconcile(self):
+        from agentrader.shared.locking import execution_lock
+        lock_patch=patch('agentrader.cli.exchange_command_cli.execution_lock',side_effect=lambda:execution_lock(self.path.with_suffix('.test.lock')))
+        lock_patch.start();self.addCleanup(lock_patch.stop)
         import io,json
         from contextlib import redirect_stdout
         from agentrader.cli.exchange_command_cli import main

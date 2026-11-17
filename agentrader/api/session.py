@@ -36,11 +36,17 @@ def session_router(settings):
 
     @router.get('/api/session')
     def status(request: Request):
-        return {'enabled': bool(settings.token), 'authenticated': authenticated(request, settings)}
+        result={'enabled': bool(settings.token), 'authenticated': authenticated(request, settings)}
+        if settings.local_auto_login and settings.token:result['local_auto_login']=True
+        return result
 
     @router.post('/api/session')
     def pair(request: Request):
-        if not authenticated(request, settings):
+        local=(settings.local_auto_login and bool(settings.token)
+               and request.client is not None and request.client.host in ('127.0.0.1','::1')
+               and request.headers.get('sec-fetch-site')=='same-origin'
+               and request.headers.get('x-agentrader-local-session')=='1')
+        if not local and not authenticated(request, settings):
             return JSONResponse({'error': {'code': 'UNAUTHORIZED'}}, status_code=401)
         response = JSONResponse({'enabled': True, 'authenticated': True})
         response.set_cookie(COOKIE, cookie_value(settings), max_age=43200, httponly=True,

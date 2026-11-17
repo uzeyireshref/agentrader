@@ -161,6 +161,9 @@ class G09SettingsTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.commands.apply(p['command_id'],'wrong',execute=True)
         self.assertEqual(self.x.reads+self.x.calls,[])
     def test_settings_cli_prepare_show_apply_and_reconcile(self):
+        from agentrader.shared.locking import execution_lock
+        lock_patch=patch('agentrader.cli.settings_cli.execution_lock',side_effect=lambda:execution_lock(self.path.with_suffix('.test.lock')))
+        lock_patch.start();self.addCleanup(lock_patch.stop)
         from agentrader.cli.settings_cli import main
         def call(args):
             out=io.StringIO()
@@ -171,6 +174,9 @@ class G09SettingsTests(unittest.TestCase):
             call(['show',p['command_id']]);call(['apply',p['command_id'],'--digest',p['digest'],'--execute-demo']);call(['reconcile',p['command_id']])
         self.assertEqual(len(self.x.calls),1)
     def test_common_cli_shared_scope_prepare_apply_show_reconcile(self):
+        from agentrader.shared.locking import execution_lock
+        lock_patch=patch('agentrader.cli.exchange_command_cli.execution_lock',side_effect=lambda:execution_lock(self.path.with_suffix('.test.lock')))
+        lock_patch.start();self.addCleanup(lock_patch.stop)
         from agentrader.cli.exchange_command_cli import main
         file=Path(self.temp.name)/'mode.json';file.write_text(json.dumps(self.request()),encoding='utf-8')
         def call(args):

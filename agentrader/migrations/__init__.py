@@ -142,6 +142,22 @@ MIGRATIONS = (
         """CREATE TRIGGER app_drawing_origin_immutable_delete BEFORE DELETE ON app_drawing_origins
             BEGIN SELECT RAISE(ABORT,'DRAWING_ORIGIN_IMMUTABLE'); END""",
     )),
+    (14, 'bot_terminal_queue', (
+        """CREATE TABLE IF NOT EXISTS app_bot_jobs (
+            job_id TEXT PRIMARY KEY,owner TEXT NOT NULL,action TEXT NOT NULL,payload TEXT NOT NULL,
+            payload_hash TEXT NOT NULL,state TEXT NOT NULL,created_at REAL NOT NULL,updated_at REAL NOT NULL,
+            result TEXT,result_hash TEXT,error_code TEXT)""",
+        """CREATE TABLE IF NOT EXISTS app_bot_worker (
+            owner TEXT PRIMARY KEY,updated_at REAL NOT NULL,mode TEXT NOT NULL,error_code TEXT)""",
+        "CREATE INDEX app_bot_queue ON app_bot_jobs(owner,state,created_at,job_id)",
+        "CREATE INDEX app_bot_recent ON app_bot_jobs(owner,created_at DESC,job_id DESC)",
+    )),
+    (15, 'bot_job_outcome_summaries', (
+        "CREATE TABLE app_bot_job_outcomes (job_id TEXT PRIMARY KEY,result_state TEXT)",
+        """INSERT INTO app_bot_job_outcomes SELECT job_id,outcome FROM
+            (SELECT job_id,CASE WHEN json_valid(result) THEN json_extract(result,'$.state') END AS outcome FROM app_bot_jobs)
+            WHERE typeof(outcome)='text' AND length(outcome)<=64""",
+    )),
 )
 
 
@@ -185,6 +201,24 @@ def migrate(path):
                     with closing(sqlite3.connect(path.resolve().as_uri() + '?mode=ro', uri=True)) as source:
                         with closing(sqlite3.connect(backup)) as destination:
                             source.backup(destination)
+                if version == 14:
+                    expected = {
+                        'app_bot_jobs': ('job_id','owner','action','payload','payload_hash','state','created_at','updated_at','result','result_hash','error_code'),
+                        'app_bot_worker': ('owner','updated_at','mode','error_code'),
+                    }
+                    for table, columns in expected.items():
+                        info = list(db.execute(f'PRAGMA table_info({table})'))
+                        existing = tuple(r['name'] for r in info)
+                        if existing and existing != columns:
+                            raise ValueError('BOT_QUEUE_SCHEMA_MISMATCH')
+                        nullable = {'job_id','result','result_hash','error_code'} if table=='app_bot_jobs' else {'owner','error_code'}
+                        primary = 'job_id' if table=='app_bot_jobs' else 'owner'
+                        for field in info:
+                            field_name = field['name']
+                            kind = 'REAL' if field_name in ('created_at','updated_at') else 'TEXT'
+                            if (field['type'].upper()!=kind or field['pk']!=int(field_name==primary)
+                                    or field['notnull']!=int(field_name not in nullable)):
+                                raise ValueError('BOT_QUEUE_SCHEMA_MISMATCH')
                 for statement in statements:
                     db.execute(statement)
                 db.execute('INSERT INTO app_schema_migrations VALUES (?,?,?)', (version, name, checksum))

@@ -1,6 +1,7 @@
 """Shared on-demand public kline feeds with reconnect and REST resynchronization."""
 from agentrader.shared.market_environment import ENVIRONMENT
 from collections import deque
+from concurrent.futures import ThreadPoolExecutor
 import copy
 import json
 import threading
@@ -237,9 +238,22 @@ class SharedFeed:
                 break
             try:
                 self.state.status('CONNECTING' if failures == 0 else 'RECONNECTING')
-                self.socket = self.socket_factory(self.symbol, self.interval)
                 self.state.status('SYNCING')
-                self.state.seed(self.market.history(self.symbol, self.interval, force=True))
+                # Open the independent public socket while REST seeds the chart.
+                # Publish verified SYNCING candles as soon as REST completes;
+                # LIVE still requires an accepted event from this socket.
+                with ThreadPoolExecutor(max_workers=1, thread_name_prefix='kline-open') as startup:
+                    opening = startup.submit(self.socket_factory, self.symbol, self.interval)
+                    try:
+                        history = self.market.history(self.symbol, self.interval, force=True)
+                        if not self.stop_event.is_set():
+                            self.state.seed(history)
+                    finally:
+                        # Collect ownership even when REST fails, so finally/stop
+                        # can close a socket which finished opening in parallel.
+                        self.socket = opening.result()
+                if self.stop_event.is_set():
+                    return
                 if self.state.quality.get('state') != 'OK' or self.state.quality.get('missing_bars') != 0:
                     raise FeedUnavailable('Unverified REST history; bounded resync required')
                 if not self.state.timing.enforced:

@@ -67,18 +67,19 @@ class ChartContext:
                 items = []
                 rows = db.execute('''SELECT r.* FROM app_drawing_revisions r JOIN app_drawing_heads h
                     ON r.owner=h.owner AND r.drawing_id=h.drawing_id AND r.revision=h.revision
-                    WHERE r.owner=? AND r.workspace_id=? ORDER BY r.drawing_id''', (self.owner, workspace_id))
+                    WHERE r.owner=? AND r.workspace_id=? AND json_extract(r.geometry,'$.symbol')=? ORDER BY r.drawing_id''', (self.owner, workspace_id, symbol)).fetchall()
+                metadata = self.drawings._metadata(db, rows)
                 for row in rows:
                     if self.monotonic() > deadline:
                         raise ContextReadLimit()
                     geometry = json.loads(row['geometry'])
                     if geometry['symbol'] != symbol:
                         continue
-                    revisions.update(json.dumps([row['drawing_id'], row['revision'], row['deleted'], self.drawings._origin(db,row['drawing_id']), self.drawings._note(db,row)], separators=(',', ':')).encode())
+                    revisions.update(json.dumps([row['drawing_id'], row['revision'], row['deleted'], metadata[row['drawing_id']]['origin'], metadata[row['drawing_id']]['linked_note']], separators=(',', ':')).encode())
                     if row['deleted']:
                         continue
                     if offset <= count < offset+limit:
-                        items.append(self.drawings._view(row,db))
+                        items.append(self.drawings._view(row,db,metadata[row['drawing_id']]))
                     count += 1
                 stamp = digest(dict(workspace=workspace, indicators=indicators, profile=profile,
                                     drawings=revisions.hexdigest(), symbol=symbol, interval=interval))

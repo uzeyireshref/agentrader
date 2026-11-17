@@ -41,6 +41,7 @@ from ..application.commands import InvalidCommand, CommandConflict, CommandNotFo
 from ..application.queries import StorageUnavailable
 from ..application.service import ApplicationService
 from ..application.settings import WebSettings
+from ..application.bot_inbox import BotError
 
 
 MAX_BODY = 8192
@@ -110,6 +111,8 @@ def create_app(settings=None, *, service=None, market=None, hub=None, previews=N
     app.include_router(profile_router(ProfileService(settings.application_database, settings.owner)))
     app.include_router(binding_router(BindingService(settings.application_database, settings.owner), hub, shadow=shadow, previews=previews))
     app.include_router(chart_approval_router(settings))
+    from .bot import bot_router
+    app.include_router(bot_router(settings))
 
     @app.middleware('http')
     async def local_boundary(request, call_next):
@@ -140,6 +143,7 @@ def create_app(settings=None, *, service=None, market=None, hub=None, previews=N
         elif settings.bot_token and request.method not in ('GET','HEAD','OPTIONS') and request.url.path.startswith('/api/') and request.url.path!='/api/session' and not authenticated(request,settings):
             return _error('UNAUTHORIZED',401)
         private = (request.url.path.startswith('/api/commands')
+                   or request.url.path.startswith('/api/bot/')
                    or request.url.path.startswith('/api/chart-plans')
                    or request.url.path.startswith('/api/chart-approvals')
                    or request.url.path == '/api/status'
@@ -153,6 +157,8 @@ def create_app(settings=None, *, service=None, market=None, hub=None, previews=N
                 return response
         try:
             response = await call_next(request)
+        except BotError as exc:
+            response = _error(exc.code,exc.status)
         except DrawingError as exc:
             response = _error(exc.code, exc.status)
         except InvalidMarket:

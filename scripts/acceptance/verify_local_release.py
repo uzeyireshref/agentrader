@@ -11,7 +11,7 @@ from agentrader.acceptance.release import verify
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--report',type=Path,default=ROOT/'reports/exchange-development-20261115/reliability-priority-validation.json')
+    parser.add_argument('--report',type=Path,default=ROOT/'reports/hardening-20261117/release-validation.json')
     args=parser.parse_args(argv);result=verify(ROOT,args.report)
     print(json.dumps(result,ensure_ascii=True,indent=2))
     return 0 if result['status']=='LOCAL_SCOPE_VERIFIED_EXTERNAL_ACCEPTANCE_PENDING' else 1

@@ -537,7 +537,7 @@ class V2Runner:
     def _manage(self, sid, execute=False):
         s = self._session(sid)
         self.x.sync_time()
-        saved_entry = next((r for r in self.store.intents() if r['client_id'] == s['entry_id']), None)
+        saved_entry = self.store.intent(s['entry_id'])
         if saved_entry is None or saved_entry['state'] == 'REJECTED':
             # A definite local rejection/no-send can be retired only after a new
             # independently read flat account snapshot. UNKNOWN is never treated so.
@@ -598,7 +598,7 @@ class V2Runner:
         all_protections+=session_proposals(self.store,s,self.account_ref,self.service.owner)
         for proposal in all_protections:
             cid = proposal['params']['clientAlgoId']
-            saved = next((r for r in self.store.intents() if r['client_id'] == cid), None)
+            saved = self.store.intent(cid)
             if saved:
                 if saved['state'] == 'REJECTED':
                     raise ValueError('V2 koruma reddedilmiş; otomatik yeniden gönderilmez.')

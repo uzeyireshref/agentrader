@@ -56,7 +56,7 @@ class Watchdog(StagedManagement):
             # Yanıtı belirsiz bir çıkış yeniden gönderilmez.
             cid = params['newClientOrderId']
             if cid in stage_ids:
-                saved = next((r for r in self.store.intents() if r['client_id'] == cid), None)
+                saved = self.store.intent(cid)
                 if saved is None or saved['state'] == 'REJECTED':
                     exit_orders[cid] = {'status': 'NOT_SUBMITTED' if saved is None else 'REJECTED', 'executedQty': '0'}
                     continue
@@ -69,7 +69,7 @@ class Watchdog(StagedManagement):
         for protection in s['protections']:
             cid = protection['clientAlgoId']
             # Henüz gönderilmemiş kalıcı onarım niyeti varsa güvenle ilk gönderim yapılabilir.
-            saved = next((row for row in self.store.intents() if row['client_id'] == cid), None)
+            saved = self.store.intent(cid)
             if saved is None:
                 continue
             if saved['state'] == 'REJECTED':
@@ -195,7 +195,7 @@ class Watchdog(StagedManagement):
             self.engine.request('POST', '/fapi/v1/algoOrder', params)
         except ExchangeError:
             # Sunucu kabul etmiş olabilir: aynı kimlikle sorgula, yeni emir üretme.
-            saved = next(r for r in self.store.intents() if r['client_id'] == params['clientAlgoId'])
+            saved = self.store.intent(params['clientAlgoId'])
             if saved['state'] == 'REJECTED':
                 raise
         return self.algo(params['clientAlgoId'])

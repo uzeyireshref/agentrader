@@ -192,6 +192,16 @@ class PositionCommandTests(unittest.TestCase):
             r=call(['apply',p['command_id'],'--digest',p['digest'],'--execute-demo']);self.assertEqual(r['result']['phase'],'FULL_FILL')
             call(['show',p['command_id']]);call(['reconcile',p['command_id']]);self.assertEqual(len(self.changes()),1)
     def test_short_hedge_reduce_and_reverse_keep_correct_legs(self):
+        # This fake exchange fills synchronously. Start the opposite session
+        # after the old close's timestamp, including Windows clock granularity.
+        # Production correctly rejects same-millisecond foreign-history ambiguity.
+        original_open=V2Runner.open
+        def separated_open(runner,*args,**kwargs):
+            if isinstance(runner.x,HedgePositionExchange) and runner.x.trades:
+                time.sleep(0.02)
+            return original_open(runner,*args,**kwargs)
+        clock_boundary=patch.object(V2Runner,'open',separated_open)
+        clock_boundary.start();self.addCleanup(clock_boundary.stop)
         store=StateStore(Path(self.folder.name)/'hedge.db')
         try:
             x=HedgePositionExchange();service=PlanService(store,self.owner)

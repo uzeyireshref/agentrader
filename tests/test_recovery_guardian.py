@@ -29,13 +29,15 @@ class GuardianLeaseTests(unittest.TestCase):
         code="""import json,os,sys,time
 from pathlib import Path
 from agentrader.shared.locking import execution_lock
-from agentrader.bot.recovery_guardian import lease_signature,process_token
+from agentrader.bot.recovery_guardian import lease_signature,process_token,replace_lease
 from agentrader.shared.config import Config
 body=json.loads(sys.argv[3]);body.update(pid=os.getpid(),observed_at=time.time())
 body['process_token']=process_token(os.getpid())
 body['signature']=lease_signature(body,type('X',(),{'config':Config('demo-key','secret-never-output')})())
 with execution_lock(Path(sys.argv[1])):
- Path(sys.argv[2]).write_text(json.dumps(body))
+ temporary=Path(sys.argv[2]).with_suffix('.tmp')
+ temporary.write_text(json.dumps(body))
+ replace_lease(temporary,Path(sys.argv[2]))
  time.sleep(120)
 """
         self.child=subprocess.Popen([sys.executable,'-c',code,str(lock),str(lease),json.dumps(body)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,

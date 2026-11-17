@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {UiPublisher,type UiEnvelope,type UiPolicy,type UiReply} from '../src/uiSession.ts';
+import {UiPublisher,chartUiVisibility,type UiEnvelope,type UiPolicy,type UiReply} from '../src/uiSession.ts';
 import {currentUiCrosshair,emptyCrosshair} from '../src/uiCrosshair.ts';
 import type {Candle} from '../src/types.ts';
 
@@ -22,6 +22,17 @@ function fixture(){
   send:async(id,key,value,keepalive)=>{calls.push({id,key,value,keepalive});return sender?sender(value):reply;}});
  return {client,calls,statuses,env,state,setReply:(r:UiReply)=>{reply=r;},setSender:(fn:typeof sender)=>{sender=fn;}};
 }
+
+test('bot view hides the chart publisher and resuming the chart retains its session identity',async()=>{
+ const f=fixture();await f.client.step(0);const id=f.client.sessionId;
+ f.env.visibility=chartUiVisibility(true,false);await f.client.restrict(10);
+ const restricted=f.calls.length;
+ for(let now=1000;now<10000;now+=1000){f.client.markDirty();await f.client.step(now);}
+ assert.equal(f.calls.length,restricted);assert.equal(f.calls.at(-1)?.value.visibility,'hidden');
+ f.env.visibility=chartUiVisibility(true,true);f.client.markDirty();await f.client.step(11000);
+ assert.equal(f.client.sessionId,id);assert.equal(f.calls.at(-1)?.value.visibility,'visible');
+ assert.equal(chartUiVisibility(false,true),'hidden');
+});
 
 test('pointer changes coalesce to at most two normal reports per second; quiet state uses heartbeat',async()=>{
  const f=fixture();await f.client.step(0);assert.equal(f.calls.length,1);

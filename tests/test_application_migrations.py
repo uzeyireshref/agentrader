@@ -44,6 +44,21 @@ class ApplicationMigrationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             migrate(self.path)
 
+    def test_adopted_bot_tables_keep_migration_name_and_allow_repeated_startup(self):
+        import hashlib,json
+        with closing(sqlite3.connect(self.path)) as db,db:
+            db.execute('CREATE TABLE app_schema_migrations(version INTEGER PRIMARY KEY,name TEXT NOT NULL,digest TEXT NOT NULL)')
+            for version,name,statements in MIGRATIONS[:13]:
+                for sql in statements:db.execute(sql)
+                db.execute('INSERT INTO app_schema_migrations VALUES(?,?,?)',(version,name,hashlib.sha256(json.dumps(statements).encode()).hexdigest()))
+            for sql in MIGRATIONS[13][2][:2]:db.execute(sql)
+            db.execute("INSERT INTO app_bot_worker VALUES('owner',1,'STOPPED',NULL)")
+        migrate(self.path)
+        migrate(self.path)
+        with closing(sqlite3.connect(self.path)) as db:
+            self.assertEqual(db.execute('SELECT name FROM app_schema_migrations WHERE version=14').fetchone()[0],'bot_terminal_queue')
+            self.assertEqual(db.execute('SELECT owner FROM app_bot_worker').fetchone()[0],'owner')
+
     def test_failed_migration_rolls_back_all_ddl_and_preserves_existing_data(self):
         with closing(sqlite3.connect(self.path)) as db, db:
             db.execute('CREATE TABLE app_worker_state (legacy TEXT)')

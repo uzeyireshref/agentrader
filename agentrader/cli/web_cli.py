@@ -16,6 +16,10 @@ def main(argv=None):
     worker = sub.add_parser('worker', help='Yalnız runtime.inspect komutlarını işle')
     worker.add_argument('--once', action='store_true')
     worker.add_argument('--interval', type=int, default=2)
+    bot_worker=sub.add_parser('bot-worker',help='Kimlik doğrulamalı Bot terminali kuyruğu; yazma yalnız --execute-demo ile')
+    bot_worker.add_argument('--once',action='store_true')
+    bot_worker.add_argument('--interval',type=int,default=1)
+    bot_worker.add_argument('--execute-demo',action='store_true')
     preflight = sub.add_parser('preflight-preview', help='Grafik önizlemesini demo hesapta salt okunur kontrol et; emir/onay oluşturmaz')
     preflight.add_argument('workspace')
     preflight.add_argument('event_id')
@@ -36,7 +40,11 @@ def main(argv=None):
         parser.error('Onay işçisi aralığı 1–10 saniye olmalı.')
     try:
         settings = WebSettings.load()
-        if args.command == 'approval-worker':
+        if args.command == 'bot-worker':
+            from agentrader.application.bot_worker import run_bot_worker
+            run_bot_worker(settings,execute=args.execute_demo,once=args.once,interval=args.interval,
+                           emit=lambda result:print(json.dumps(dict(job_id=result['job_id'],state=result['state'],error_code=result['error_code'])),flush=True))
+        elif args.command == 'approval-worker':
             from agentrader.integration.chart_approval import run_approval_worker
             run_approval_worker(settings, once=args.once, interval=args.interval)
         elif args.command == 'review-preview':

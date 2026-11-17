@@ -60,3 +60,7 @@ npm run build
 - [Önceki geliştirme günlüğü ve ayrıntılı kullanım](docs/project/DEVELOPMENT-HISTORY.md)
 
 REA araçları ve yüklü skill dizinleri bu düzenlemenin dışında tutulmuştur.
+
+## Güncel sağlamlaştırma
+
+[17 Kasım mevcut kod sağlamlaştırması ve doğrulama](docs/development/hardening-20261117/README.md). Güncel sürüm kabulü: `python scripts/acceptance/run_hardening.py`, ardından `python scripts/acceptance/verify_local_release.py`.

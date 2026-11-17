@@ -104,9 +104,10 @@ def operation_status(database,owner,*,governor_database=Path('data/request-gover
                 return int(steps[0]>2000)
             db.set_progress_handler(progress,1000)
             tables={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
-            if 'execution_namespace' not in tables:return result|dict(storage='CONTEXT_UNVERIFIED',health='NOT_OBSERVED')
-            rows=db.execute('SELECT body FROM execution_namespace').fetchall()
-            if len(rows)!=1 or json.loads(rows[0][0])!=EXECUTION_CONTEXT:return result|dict(storage='CONTEXT_MISMATCH',health='NOT_OBSERVED')
+            from agentrader.shared.storage_context import execution_context_state
+            context = execution_context_state(db)
+            if context != 'VERIFIED':
+                return result | dict(storage=context, health='NOT_OBSERVED')
             if 'discovery_contexts' in tables or not {'control','intents','managed_sessions'}<=tables:
                 return result|dict(storage='INCOMPLETE_SCHEMA',health='NOT_OBSERVED')
             row=db.execute("SELECT value FROM control WHERE name='plan_owner'").fetchone()
@@ -145,7 +146,7 @@ def operation_status(database,owner,*,governor_database=Path('data/request-gover
                 h=json.loads(row[0]);stamp=h.get('observed_at')
                 if type(stamp) not in (int,float) or not math.isfinite(stamp):raise ValueError('OPERATION_HEALTH_TIME_INVALID')
                 stopped=h.get('service_stopped') is True or h.get('state') in ('CLOSED','MONITOR_STOPPED')
-                monitors['STOPPED' if stopped else 'FRESH' if 0<=now-stamp<=90 else 'STALE']+=1
+                monitors['STOPPED' if stopped else 'FRESH' if 0<=now-stamp<=90 and h.get('state')!='MONITOR_READ_RETRY' else 'STALE']+=1
             counters={}
             if 'operation_counters' in tables:
                 for kind,count in db.execute('SELECT kind,count FROM operation_counters'):

@@ -1,4 +1,5 @@
 import {familyLogAxis} from './channelFamily';
+import {candleLogicalAt} from './chartTime';
 import {drawingTimeAt} from './drawingTime';
 import {familyKinds,type FamilyKind} from './channelFamily';
 import {useEffect,useRef,useState} from 'react';
@@ -45,7 +46,7 @@ export default function DrawingInteraction(props:Props){
   const updateCursor=()=>{
    frame=0;const p=latest.current,at=pointer.current,size=chart.paneSize(0);
    if(!at||at.x<0||at.x>=size.width||at.y<0||at.y>=size.height||p.disabled){setCursor(null);draw();return;}
-   const logical=chart.timeScale().coordinateToLogical(at.x),row=logical===null?undefined:p.rows[Math.round(logical)];let price:number|null=series.coordinateToPrice(at.y);
+   const logical=candleLogicalAt(p.rows,at.x,chart.timeScale()),row=logical===null?undefined:p.rows[Math.round(logical)];let price:number|null=series.coordinateToPrice(at.y);
    const time=drawingTimeAt(p.rows,logical,p.interval);if(time!==null&&price!==null&&(p.viewScale==='LINEAR'||price>0)){if(p.magnet)price=magnetPrice(row,price,v=>series.priceToCoordinate(v),at.y);const label=cursorPrice(price,p.tick,p.viewScale==='LINEAR');if(label){const next={time,price:label};setCursor(old=>old?.time===next.time&&old.price===next.price?old:next);}else setCursor(null);}else setCursor(null);
    draw();
   };

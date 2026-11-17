@@ -71,3 +71,17 @@ class ReleaseEvidenceTests(unittest.TestCase):
     def test_new_runtime_module_requires_fresh_acceptance_manifest(self):
         (self.root/'agentrader').mkdir();(self.root/'agentrader/new.py').write_text('# changed runtime\n',encoding='utf-8')
         self.assertEqual(self.result()['error'],'SOURCE_COVERAGE_INCOMPLETE')
+
+    def test_hardening_report_must_cover_frontend_sources(self):
+        self.report['hardening_scope']=True
+        self.report['frontend']=dict(result='OK',build='OK',skipped=0)
+        directory=self.root/'frontend/src';directory.mkdir(parents=True)
+        (directory/'test.ts').write_text('export const version=1;',encoding='utf-8')
+        self.save()
+        self.assertEqual(self.result()['error'],'FRONTEND_SOURCE_COVERAGE_INCOMPLETE')
+
+    def test_hardening_report_rejects_failed_frontend_acceptance(self):
+        self.report['hardening_scope']=True
+        self.report['frontend']=dict(result='OK',build='OK',skipped=1)
+        self.save()
+        self.assertEqual(self.result()['error'],'FRONTEND_ACCEPTANCE_INCOMPLETE')

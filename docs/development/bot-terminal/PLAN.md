@@ -1,7 +1,7 @@
 # Grafik ve Bot Terminali Uygulama Planı
 
 Tarih: 16 Kasım 2026.
-Durum: Plan kaydedildi; uygulama başlamadı. Araştırma, prototip, entegrasyon ve yayın kabulü henüz tamamlanmadı.
+Durum: Frontend ve yerel Demo API/worker entegrasyonu uygulandı. Çalıştırma ve kabul sınırları [INTEGRATION.md](INTEGRATION.md) içinde. Desteklenen tarayıcı bağlantısı kullanılamadığı için yeni bağlı modun tam tarayıcı kabulü açık. Gerçek Demo emir kabulü ve müşteri yayını yapılmadı. Önceki tasarım turu [DESIGN-REVIEW.md](DESIGN-REVIEW.md), ilerleme [PROGRESS.md](PROGRESS.md) içinde.
 
 ## Hedef ve çalışma düzeni
 
@@ -84,4 +84,4 @@ Yönetim eylemleri gerçek destek sınırlarıyla etkinleştirilecek. Pozisyon a
 
 ## Devam noktası
 
-Bir sonraki çalışma araştırma ve güncel yetenek envanteriyle başlayacak, ardından emir göndermeyen tıklanabilir prototip hazırlanacak. Bu planın kaydedilmesi kod geliştirmesinin veya finansal yürütmenin başladığı anlamına gelmez.
+Geniş frontend turu, ayrıntılı işlem/pozisyon/toplu emir/hesap formları ve grafik aktarımıyla teslim edildi. Sonraki adım görsel değerlendirme ve mevcut bot servislerine bağlantıdır. Finansal yürütme başlamadı; ayrıntılı sınırlar UI-DELIVERY.md içinde korunur.

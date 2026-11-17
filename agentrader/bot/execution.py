@@ -114,7 +114,7 @@ class DurableExchange:
         cid = params.get('clientAlgoId') if path.endswith('algoOrder') else params.get('newClientOrderId')
         if not cid:
             raise ValueError('Kalıcı işlem için istemci kimliği zorunlu.')
-        existing = next((r for r in self.store.intents() if r['client_id'] == cid), None)
+        existing = self.store.intent(cid)
         if existing:
             if existing['path'] != path or json.loads(existing['params']) != params:
                 raise ValueError('Aynı kimlikle farklı emir parametresi reddedildi.')

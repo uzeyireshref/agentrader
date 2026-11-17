@@ -26,3 +26,38 @@ test('negative BB offset reports missing selected value independently of warmup'
 
 test('VWAP zero volume and missing anchor display explicit reasons and volume provenance',async()=>{const f=await fixture();try{const c=defaultVwapIndicators();c[7].enabled=true;c[8].enabled=true;await f.render(view(vwapFixture.datasets.zero.slice(0,1) as Candle[]),'BTCUSDT:15m','BTCUSDT',false,c);assert.equal(f.host.querySelector('[data-output-id="session-vwap:value"] dd')!.textContent,'Birikimli hacim sıfır');assert.equal(f.host.querySelector('[data-output-id="anchored-vwap:value"] dd')!.textContent,'Önce bir çapa mumu seç');assert.match(f.host.textContent!,/ham base hacmi/);assert.match(f.host.textContent!,/UTC 00:00/);}finally{await f.close();}});
 test('selected base candle is passed to explicit anchored VWAP action',async()=>{const f=await fixture();try{let selected:Candle|undefined;const rows=vwapFixture.datasets.full as Candle[];await f.render(view(rows),'BTCUSDT:15m','BTCUSDT',false,defaultVwapIndicators(),row=>{selected=row;});await f.click('Seçili mumdan Anchored VWAP');assert.equal(selected!.time,rows.at(-1)!.time);}finally{await f.close();}});
+
+for(const transport of ['LIVE','CONNECTING','SYNCING','RECONNECTING','STALE','ERROR','STOPPED','RENDER_ERROR'])for(const integrity of ['GAP','INVALID'] as const)test('readiness preserves '+transport+' independently of '+integrity+' history',()=>{
+ const first=row(),rows=integrity==='GAP'?[first,row(first.time+1800)]:[{...first,close_time:first.close_time-1}];
+ const ready=marketReadiness(view(rows,transport),'BTCUSDT','15m');
+ assert.equal(ready.transportStatus,transport);
+ assert.equal(ready.history.state,integrity);
+ assert.equal(ready.status,transport==='LIVE'?(integrity==='GAP'?'GAP':'UNVERIFIED'):transport);
+ assert.equal(ready.fresh,false);
+ assert.equal(ready.renderError,transport==='RENDER_ERROR');
+ assert.equal(ready.inspectable,transport!=='RENDER_ERROR');
+ if(integrity==='GAP')assert.equal(ready.history.missing_bars,1);
+});
+
+test('repairing history never upgrades stale or failed transport to LIVE',()=>{
+ for(const transport of ['STALE','RECONNECTING','ERROR','STOPPED']){
+  const ready=marketReadiness(view([row()],transport),'BTCUSDT','15m');
+  assert.equal(ready.history.state,'OK');assert.equal(ready.status,transport);assert.equal(ready.transportStatus,transport);assert.equal(ready.fresh,false);
+ }
+ const live=marketReadiness(view(),'BTCUSDT','15m');assert.equal(live.status,'LIVE');assert.equal(live.fresh,true);
+});
+
+test('data window displays transport and history integrity as separate readiness fields',async()=>{
+ const f=await fixture();try{
+  for(const transport of ['LIVE','RECONNECTING','STALE','ERROR','STOPPED'])for(const integrity of ['GAP','INVALID'] as const){
+   const first=row(),rows=integrity==='GAP'?[first,row(first.time+1800)]:[{...first,close_time:first.close_time-1}];
+   await f.render(view(rows,transport));
+   const connection=f.host.querySelector('[data-readiness="market"] dd')!;
+   const history=f.host.querySelector('[data-readiness="history"] dd')!;
+   assert.equal(connection.getAttribute('data-state'),transport);
+   assert.equal(history.getAttribute('data-state'),integrity);
+   assert.equal(history.textContent,integrity==='GAP'?'Geçmişte 1 eksik mum':'Geçmiş zaman aralığı geçersiz');
+   assert.equal(f.host.querySelector('[data-readiness="history-load"] dd')!.textContent,'Hazır');
+  }
+ }finally{await f.close();}
+});

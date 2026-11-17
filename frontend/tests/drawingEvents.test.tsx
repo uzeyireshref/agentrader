@@ -14,11 +14,12 @@ function pointer(target:Element,type:string,y:number,id=1,primary=true){const ev
 const item:Drawing={drawing_id:'line',revision:1,workspace_id:'main',geometry:{kind:'horizontal',symbol:'BTCUSDT',price_source:'LAST_PRICE',anchors:[{time:1000,price:'100'}],label:'Test'},deleted:false,updated_at:1};
 async function fixture(drawing:Drawing=item){
  const host=document.createElement('div');document.body.append(host);const root=createRoot(host);const options={handleScroll:{mouseWheel:false,pressedMouseMove:true},handleScale:{mouseWheel:false,pinch:true}};const original=structuredClone(options);const applied:unknown[]=[];const changes:Geometry[]=[];let primitive:ISeriesPrimitive<Time>|null=null;
- const chart={options:()=>options,applyOptions:(value:unknown)=>applied.push(value),paneSize:()=>({width:800,height:500}),timeScale:()=>({logicalToCoordinate:(v:number)=>Number.isInteger(v)?v*10:0,coordinateToLogical:(v:number)=>v/10})} as unknown as IChartApi;
+ let scaleRows=[{time:1000},{time:1900},{time:4600}];
+ const chart={options:()=>options,applyOptions:(value:unknown)=>applied.push(value),paneSize:()=>({width:800,height:500}),timeScale:()=>({timeToCoordinate:(time:number)=>{const index=scaleRows.findIndex(r=>r.time===time);return index<0?null:index*10;},options:()=>({barSpacing:10}),logicalToCoordinate:(v:number)=>Number.isInteger(v)?v*10:0,coordinateToLogical:(v:number)=>v/10})} as unknown as IChartApi;
  const series={priceScale:()=>({options:()=>({mode:0}),getVisibleRange:()=>({from:10,to:500}),setVisibleRange:()=>{throw Error('Unexpected viewport correction');}}),priceToCoordinate:(p:number)=>500-p,coordinateToPrice:(p:number)=>500-p,attachPrimitive:(p:ISeriesPrimitive<Time>)=>{primitive=p;p.attached?.({requestUpdate:()=>p.updateAllViews?.()} as never);},detachPrimitive:(p:ISeriesPrimitive<Time>)=>{p.detached?.();primitive=null;}} as unknown as ISeriesApi<'Candlestick'>;
  const groupChanges:{id:string;geometry:Geometry}[][]=[];
  const base={viewScale:'LINEAR' as 'LINEAR'|'LOG',selectedIds:undefined as string[]|undefined,changeMany:undefined as ((changes:{id:string;geometry:Geometry}[])=>Promise<void>)|undefined,symbol:'BTCUSDT',chart,series,rows:[{time:1000},{time:1900},{time:4600} ] as import('../src/types.ts').Candle[],items:[drawing],selected:'line',select:()=>{},change:async(_id:string,g:Geometry)=>{changes.push(g);},interval:'15m' as const,tick:.1,disabled:false};
- const render=async(extra:Partial<typeof base>={})=>{await act(async()=>root.render(<DrawingLayer {...base} {...extra}/>));};await render();
+ const render=async(extra:Partial<typeof base>={})=>{scaleRows=extra.rows??base.rows;await act(async()=>root.render(<DrawingLayer {...base} {...extra}/>));};await render();
  const group=host.querySelector('g[data-drawing]')!;
  const begin=async()=>{await act(async()=>{pointer(group,'pointerdown',400);pointer(group,'pointermove',380);});};
  const close=async()=>{await act(async()=>root.unmount());host.remove();};

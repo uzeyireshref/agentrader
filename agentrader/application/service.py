@@ -15,15 +15,18 @@ class ApplicationService:
 
     def initialize(self):
         bind_demo_store(self.settings.application_database)
-        return migrate(self.settings.application_database)
+        result=migrate(self.settings.application_database)
+        from .bot_inbox import BotInbox
+        BotInbox(self.settings).initialize()
+        return result
 
     def health(self):
         return {'service': 'agentrader', 'api_version': 1, 'status': 'OK',
-                'mode': 'LOCAL_READ_ONLY', 'exchange_access': 'NOT_CHECKED',
+                'mode': 'LOCAL_BOT_QUEUE' if self.settings.bot_enabled else 'LOCAL_READ_ONLY', 'exchange_access': 'NOT_CHECKED',
                 'private_api_enabled': bool(self.settings.token),
                 'market_feed': 'DEMO_ON_DEMAND', 'market_source': SOURCE, 'market_environment': ENVIRONMENT,
                 'strategy_engine': 'NOT_IMPLEMENTED',
-                'trading_commands_enabled': False}
+                'trading_commands_enabled': self.settings.bot_enabled}
 
     def capabilities(self):
         return capabilities()

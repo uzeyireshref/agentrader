@@ -8,7 +8,7 @@
   "cases": [
     {
       "id": "DR01",
-      "title": "Bugünkü LIVE veri uygunluk ispatı değildir",
+      "title": "Bug\u00fcnk\u00fc LIVE veri uygunluk ispat\u0131 de\u011fildir",
       "passed": true,
       "expected": {
         "outcome": "BLOCKED",
@@ -29,7 +29,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "eded5cd1d467ca3802aacfd75b07f97aec5247a2067df25bd55c6388f69b6d26",
+        "definition_hash": "c5141aac131abc150809e657b26d73585aa5dd214d78f1c94ed6ae78a154e4b4",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "63678ba60ab2fdc5438f36175f97a28d47cd64da3b2f88b144b792662b8e577d",
         "data_proof": null,
@@ -44,7 +44,7 @@
     },
     {
       "id": "DR02",
-      "title": "Yaklaşma bandına giriş",
+      "title": "Yakla\u015fma band\u0131na giri\u015f",
       "passed": true,
       "expected": {
         "event": "APPROACH",
@@ -63,7 +63,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "637fce44bf2abdffb386867bb0f75d840040d40daf71038f1ee7a96562114ed7",
+        "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "633c724976a7573be61049ce9783f92b939fea2514499071c97215f1cf5041ac",
         "data_proof": {
@@ -90,7 +90,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "5c8bca7443224d889765c55c89008566",
+              "boot_id": "4c5ae9679a564010b288ea77bfdb8c81",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -123,7 +123,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "637fce44bf2abdffb386867bb0f75d840040d40daf71038f1ee7a96562114ed7",
+            "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -265,7 +265,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "637fce44bf2abdffb386867bb0f75d840040d40daf71038f1ee7a96562114ed7",
+              "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -324,7 +324,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "5c8bca7443224d889765c55c89008566",
+              "boot_id": "4c5ae9679a564010b288ea77bfdb8c81",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -357,9 +357,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "637fce44bf2abdffb386867bb0f75d840040d40daf71038f1ee7a96562114ed7",
+            "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
             "distance": "9/10",
-            "domain_event_id": "80dc441efe8b5427145f11c2420aeef39440e0d2a52b7301d2a527fb1a5236c2",
+            "domain_event_id": "e37c06d1ec1be319ef7c49c4d1e6d24307e4473daddd37c7f66ae87d05396254",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -501,7 +501,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "637fce44bf2abdffb386867bb0f75d840040d40daf71038f1ee7a96562114ed7",
+              "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -530,7 +530,7 @@
             },
             "episode": 1,
             "event": "APPROACH",
-            "event_id": "e191b0f5576fc92ecc29b21caff0f6f899400d1517e02dac7c12e420589e641e",
+            "event_id": "bd049bf0e27fb5a4bced81108bb923c38cd5be8e5b213b3a1a9ddfe6567d7b45",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -559,20 +559,20 @@
         ],
         "events": [
           {
-            "event_id": "e191b0f5576fc92ecc29b21caff0f6f899400d1517e02dac7c12e420589e641e",
+            "event_id": "bd049bf0e27fb5a4bced81108bb923c38cd5be8e5b213b3a1a9ddfe6567d7b45",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "637fce44bf2abdffb386867bb0f75d840040d40daf71038f1ee7a96562114ed7",
+              "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
               "direction": "ABOVE",
-              "domain_event_id": "80dc441efe8b5427145f11c2420aeef39440e0d2a52b7301d2a527fb1a5236c2",
+              "domain_event_id": "e37c06d1ec1be319ef7c49c4d1e6d24307e4473daddd37c7f66ae87d05396254",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "e63fc51e25e44d8a973444e916e3a3f7",
+                "drawing_id": "00b8591d62ad4e8ea639da4818f77c56",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "APPROACH",
@@ -624,7 +624,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "e63fc51e25e44d8a973444e916e3a3f7",
+                "object_id": "00b8591d62ad4e8ea639da4818f77c56",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -642,7 +642,7 @@
     },
     {
       "id": "DR03",
-      "title": "Yaklaşma sınırı dahildir",
+      "title": "Yakla\u015fma s\u0131n\u0131r\u0131 dahildir",
       "passed": true,
       "expected": {
         "event": "APPROACH",
@@ -659,7 +659,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "9fa3c88cba8b176fc1885f5eb5f1aaf06cd40b334769e5e4caff352ea24d3b67",
+        "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "ce8379788e504735b064f6ec77e58f17676c7a06bad86b437249215ac3028a7c",
         "data_proof": {
@@ -686,7 +686,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "b125e32432fc40fea4df2c918303670d",
+              "boot_id": "0b594d6095814b019e3a2903efcf9bcc",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -719,7 +719,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "9fa3c88cba8b176fc1885f5eb5f1aaf06cd40b334769e5e4caff352ea24d3b67",
+            "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -861,7 +861,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "9fa3c88cba8b176fc1885f5eb5f1aaf06cd40b334769e5e4caff352ea24d3b67",
+              "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -920,7 +920,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "b125e32432fc40fea4df2c918303670d",
+              "boot_id": "0b594d6095814b019e3a2903efcf9bcc",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -953,9 +953,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "9fa3c88cba8b176fc1885f5eb5f1aaf06cd40b334769e5e4caff352ea24d3b67",
+            "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
             "distance": "1",
-            "domain_event_id": "f201ef5bfc66815307ae698bd65ac6da193f0f763a8b53e8865223056116900c",
+            "domain_event_id": "110b92918fa6a7fd8d9ea31cf9376e5c151c9164d30b8a7e8bd18a23695b102b",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -1097,7 +1097,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "9fa3c88cba8b176fc1885f5eb5f1aaf06cd40b334769e5e4caff352ea24d3b67",
+              "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -1126,7 +1126,7 @@
             },
             "episode": 1,
             "event": "APPROACH",
-            "event_id": "72be1e75ad48e3e6962889386fd784f313538f7a80fcf071ee740718708b7fd2",
+            "event_id": "332c584d4fa1f2851a469dde949a8fb844791d8f6df03a8d2222d38513f7c91d",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -1155,20 +1155,20 @@
         ],
         "events": [
           {
-            "event_id": "72be1e75ad48e3e6962889386fd784f313538f7a80fcf071ee740718708b7fd2",
+            "event_id": "332c584d4fa1f2851a469dde949a8fb844791d8f6df03a8d2222d38513f7c91d",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "9fa3c88cba8b176fc1885f5eb5f1aaf06cd40b334769e5e4caff352ea24d3b67",
+              "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
               "direction": "ABOVE",
-              "domain_event_id": "f201ef5bfc66815307ae698bd65ac6da193f0f763a8b53e8865223056116900c",
+              "domain_event_id": "110b92918fa6a7fd8d9ea31cf9376e5c151c9164d30b8a7e8bd18a23695b102b",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "042c8b2b89024f4db2fbb583e82fa531",
+                "drawing_id": "e094001d16ef43a3a02e6e2a50241906",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "APPROACH",
@@ -1220,7 +1220,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "042c8b2b89024f4db2fbb583e82fa531",
+                "object_id": "e094001d16ef43a3a02e6e2a50241906",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -1238,7 +1238,7 @@
     },
     {
       "id": "DR04",
-      "title": "Bandın dışı yaklaşma değildir",
+      "title": "Band\u0131n d\u0131\u015f\u0131 yakla\u015fma de\u011fildir",
       "passed": true,
       "expected": {
         "semantic_events": 0,
@@ -1253,7 +1253,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "c90922ebf06df6dc19c3824e10c92402304253057056df456526fb9b3915eaf6",
+        "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "ef59a8aee87ce1aadb55b27de368bff94ee7c3fd80901699fb5858f2d26649de",
         "data_proof": {
@@ -1280,7 +1280,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "4e77a6c531e84441b11d65ecc60bc153",
+              "boot_id": "02ef1f36f440463286e1a59cbfb90836",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -1313,7 +1313,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c90922ebf06df6dc19c3824e10c92402304253057056df456526fb9b3915eaf6",
+            "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -1455,7 +1455,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c90922ebf06df6dc19c3824e10c92402304253057056df456526fb9b3915eaf6",
+              "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -1514,7 +1514,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "4e77a6c531e84441b11d65ecc60bc153",
+              "boot_id": "02ef1f36f440463286e1a59cbfb90836",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -1547,7 +1547,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c90922ebf06df6dc19c3824e10c92402304253057056df456526fb9b3915eaf6",
+            "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -1689,7 +1689,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c90922ebf06df6dc19c3824e10c92402304253057056df456526fb9b3915eaf6",
+              "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -1754,7 +1754,7 @@
     },
     {
       "id": "DR05",
-      "title": "Kapalı OHLC bandı temasla kesişir",
+      "title": "Kapal\u0131 OHLC band\u0131 temasla kesi\u015fir",
       "passed": true,
       "expected": {
         "event": "TOUCH",
@@ -1773,7 +1773,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "6f8c60ce2d9e2a22f0192d0aa51276ce05edb53ad99693c5a23909d91c7779a4",
+        "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -1800,7 +1800,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "6ee914a4f99d450883e0d8d571203045",
+              "boot_id": "d992c704b3b0496995b579137ce0423b",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -1833,7 +1833,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6f8c60ce2d9e2a22f0192d0aa51276ce05edb53ad99693c5a23909d91c7779a4",
+            "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -1975,7 +1975,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6f8c60ce2d9e2a22f0192d0aa51276ce05edb53ad99693c5a23909d91c7779a4",
+              "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -2034,7 +2034,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "6ee914a4f99d450883e0d8d571203045",
+              "boot_id": "d992c704b3b0496995b579137ce0423b",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -2067,9 +2067,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6f8c60ce2d9e2a22f0192d0aa51276ce05edb53ad99693c5a23909d91c7779a4",
+            "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
             "distance": "1/5",
-            "domain_event_id": "332a18bc16e566a8e7e9084204eeb346bdcde6ad6dfdcab4a1d3030178377b9c",
+            "domain_event_id": "537a08d7439af1b5ed0030c01630198f38cb821f1f48861ce85c6ea3104a8ab2",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -2211,7 +2211,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6f8c60ce2d9e2a22f0192d0aa51276ce05edb53ad99693c5a23909d91c7779a4",
+              "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -2240,7 +2240,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "875de8a16ed2d71c2bb87bce5f40c13c743abba44bb7f441048ecdf828234809",
+            "event_id": "e4c6d4486f783ec866b54ce90c9cb6f5941d0fc4695298e7a2d048d517b9f4da",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -2269,20 +2269,20 @@
         ],
         "events": [
           {
-            "event_id": "875de8a16ed2d71c2bb87bce5f40c13c743abba44bb7f441048ecdf828234809",
+            "event_id": "e4c6d4486f783ec866b54ce90c9cb6f5941d0fc4695298e7a2d048d517b9f4da",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "6f8c60ce2d9e2a22f0192d0aa51276ce05edb53ad99693c5a23909d91c7779a4",
+              "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
               "direction": "ABOVE",
-              "domain_event_id": "332a18bc16e566a8e7e9084204eeb346bdcde6ad6dfdcab4a1d3030178377b9c",
+              "domain_event_id": "537a08d7439af1b5ed0030c01630198f38cb821f1f48861ce85c6ea3104a8ab2",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "8db76072129749c5a8358bae02943e16",
+                "drawing_id": "42f79a63f9c748eb878b49548fcc0184",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -2334,7 +2334,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "8db76072129749c5a8358bae02943e16",
+                "object_id": "42f79a63f9c748eb878b49548fcc0184",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -2352,7 +2352,7 @@
     },
     {
       "id": "DR06",
-      "title": "Aynı mumda temas yaklaşmaya önceliklidir",
+      "title": "Ayn\u0131 mumda temas yakla\u015fmaya \u00f6nceliklidir",
       "passed": true,
       "expected": {
         "event": "TOUCH",
@@ -2369,7 +2369,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "a10df661e6c32d8de6b28d1083558280fedaf4a88329649f5073c9a38a7a3200",
+        "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -2396,7 +2396,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "66856f93d2e14a029bcb91c342c2b426",
+              "boot_id": "b3377f08b654459381ad3d4524d5afbd",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -2429,7 +2429,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "a10df661e6c32d8de6b28d1083558280fedaf4a88329649f5073c9a38a7a3200",
+            "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -2571,7 +2571,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "a10df661e6c32d8de6b28d1083558280fedaf4a88329649f5073c9a38a7a3200",
+              "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -2630,7 +2630,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "66856f93d2e14a029bcb91c342c2b426",
+              "boot_id": "b3377f08b654459381ad3d4524d5afbd",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -2663,9 +2663,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "a10df661e6c32d8de6b28d1083558280fedaf4a88329649f5073c9a38a7a3200",
+            "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
             "distance": "1/5",
-            "domain_event_id": "a48ea6490f09753eb9f2ae1fb94498048bc50b8f0bd90baf349ed68b43f52316",
+            "domain_event_id": "9b1cf04404ab34ef75afaca95ec6cd85cf886000569bd85f96b50d654791ceed",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -2807,7 +2807,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "a10df661e6c32d8de6b28d1083558280fedaf4a88329649f5073c9a38a7a3200",
+              "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -2836,7 +2836,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "04233606a6e4ab1804f22a86be780125156e5a038e3a71f858708fa660779841",
+            "event_id": "59c3244ed91155f1b46cb8be8138fd6798582d79ac78ee38c71f95d03b505ce0",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -2865,20 +2865,20 @@
         ],
         "events": [
           {
-            "event_id": "04233606a6e4ab1804f22a86be780125156e5a038e3a71f858708fa660779841",
+            "event_id": "59c3244ed91155f1b46cb8be8138fd6798582d79ac78ee38c71f95d03b505ce0",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "a10df661e6c32d8de6b28d1083558280fedaf4a88329649f5073c9a38a7a3200",
+              "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
               "direction": "ABOVE",
-              "domain_event_id": "a48ea6490f09753eb9f2ae1fb94498048bc50b8f0bd90baf349ed68b43f52316",
+              "domain_event_id": "9b1cf04404ab34ef75afaca95ec6cd85cf886000569bd85f96b50d654791ceed",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "9456c51d9ab3467985492429d1c98343",
+                "drawing_id": "d94ff852526c4797b279e362f7d8f0fc",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -2930,7 +2930,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "9456c51d9ab3467985492429d1c98343",
+                "object_id": "d94ff852526c4797b279e362f7d8f0fc",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -2948,7 +2948,7 @@
     },
     {
       "id": "DR07",
-      "title": "Süren temas yeni temas değildir",
+      "title": "S\u00fcren temas yeni temas de\u011fildir",
       "passed": true,
       "expected": {
         "new_semantic_events": 0,
@@ -2965,7 +2965,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+        "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "6e675f035497483efeddde0c543b93c7823031864543a20d9162b8bbd1104f26",
         "data_proof": {
@@ -2992,7 +2992,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "516dc776abe448dc8673001ef3c3f3ee",
+              "boot_id": "602d3c4905934bc4adb2ceff4357f30c",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -3025,7 +3025,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+            "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -3167,7 +3167,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -3226,7 +3226,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "516dc776abe448dc8673001ef3c3f3ee",
+              "boot_id": "602d3c4905934bc4adb2ceff4357f30c",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -3259,9 +3259,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+            "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
             "distance": "1/5",
-            "domain_event_id": "122a49b0fb3256a5f8065238ed343f7ff77b26d500cbd6e697d1212eab24643a",
+            "domain_event_id": "570b6b7b465408cf58e6f645e855b58484dcc788367d1d691e0a3c94ed6db62c",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -3403,7 +3403,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -3432,7 +3432,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "86bca7186710804824d9f3970383946e6f26d18ab0321b46797bfedb0028820d",
+            "event_id": "8fd416b825572f0631b5478ff8448acff2ceed0190540b3df74097c093b5db50",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -3462,7 +3462,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "516dc776abe448dc8673001ef3c3f3ee",
+              "boot_id": "602d3c4905934bc4adb2ceff4357f30c",
               "cooldown": 1,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -3495,7 +3495,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+            "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -3637,7 +3637,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
               "evaluated_data": {
                 "data_revision": 3,
                 "generation": 1,
@@ -3695,7 +3695,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "516dc776abe448dc8673001ef3c3f3ee",
+              "boot_id": "602d3c4905934bc4adb2ceff4357f30c",
               "cooldown": 2,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -3728,7 +3728,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+            "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -3870,7 +3870,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -3927,20 +3927,20 @@
         ],
         "events": [
           {
-            "event_id": "86bca7186710804824d9f3970383946e6f26d18ab0321b46797bfedb0028820d",
+            "event_id": "8fd416b825572f0631b5478ff8448acff2ceed0190540b3df74097c093b5db50",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "f88190cc65f8b8ddc08a9e322f7ca4db5fe11af7c61d87c77a11f62ea5507e2e",
+              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
               "direction": "ABOVE",
-              "domain_event_id": "122a49b0fb3256a5f8065238ed343f7ff77b26d500cbd6e697d1212eab24643a",
+              "domain_event_id": "570b6b7b465408cf58e6f645e855b58484dcc788367d1d691e0a3c94ed6db62c",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "8b84ceb670d44786a34b7c55e722b0ef",
+                "drawing_id": "5c85567c54d74ef6aee4cafe7965ad11",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -3992,7 +3992,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "8b84ceb670d44786a34b7c55e722b0ef",
+                "object_id": "5c85567c54d74ef6aee4cafe7965ad11",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -4010,7 +4010,7 @@
     },
     {
       "id": "DR08",
-      "title": "Ayrılma ve cooldown sonrası yeniden kurulma",
+      "title": "Ayr\u0131lma ve cooldown sonras\u0131 yeniden kurulma",
       "passed": true,
       "expected": {
         "event_on_rearm_bar": null,
@@ -4027,7 +4027,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+        "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "834110d795c622dfebb4aa2cc9bde21fe4bdd43d28be988c196745269f4510e7",
         "data_proof": {
@@ -4054,7 +4054,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "e7f697c47f2e4f56b8111260b8020559",
+              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -4087,7 +4087,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -4229,7 +4229,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -4288,7 +4288,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "e7f697c47f2e4f56b8111260b8020559",
+              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -4321,9 +4321,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
             "distance": "1/5",
-            "domain_event_id": "a6ae371f7490a68d0a3a1dd03b95ccd02ea98fc7da9aa0b8f825ec2c9e038774",
+            "domain_event_id": "b3c30c0b505342a1008a9f1fdd98b36cfd790a90e8b005e74ff99d7a61dc3a76",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -4465,7 +4465,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -4494,7 +4494,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "828048fc4f59ef42670a7c9f9c3b45f1b64d6443999cb6dbe2a6d2e1bc519f0f",
+            "event_id": "24a2a84de483b2a9c5b478098a60489ebb587ec6f968674c7a1d4b9af1005427",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -4524,7 +4524,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "e7f697c47f2e4f56b8111260b8020559",
+              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
               "cooldown": 1,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -4557,7 +4557,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -4699,7 +4699,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
               "evaluated_data": {
                 "data_revision": 3,
                 "generation": 1,
@@ -4757,7 +4757,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "e7f697c47f2e4f56b8111260b8020559",
+              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
               "cooldown": 0,
               "episode": 2,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -4790,7 +4790,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -4932,7 +4932,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -4990,7 +4990,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "e7f697c47f2e4f56b8111260b8020559",
+              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
               "cooldown": 0,
               "episode": 2,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -5023,9 +5023,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
             "distance": "9/10",
-            "domain_event_id": "3e4074b3b8cf156af88b2685e3c1aead2c0c2b6c5983113d0f4e3b86344ed933",
+            "domain_event_id": "bfc2b83e7e33e1a2e2d2594f7047397a9f45f6b1d27a4a7eed0bc24b50cab30c",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -5167,7 +5167,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
               "evaluated_data": {
                 "data_revision": 5,
                 "generation": 1,
@@ -5196,7 +5196,7 @@
             },
             "episode": 2,
             "event": "APPROACH",
-            "event_id": "dafa5aa174d0294e80eaa5cc1cfe0e4f10625ac3e4cded81b58b867b9d4a8b76",
+            "event_id": "cae4f35045c337573017f67b62e769b6b8265084c59bb620861ec9d51e7f72c9",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -5225,20 +5225,20 @@
         ],
         "events": [
           {
-            "event_id": "828048fc4f59ef42670a7c9f9c3b45f1b64d6443999cb6dbe2a6d2e1bc519f0f",
+            "event_id": "24a2a84de483b2a9c5b478098a60489ebb587ec6f968674c7a1d4b9af1005427",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
               "direction": "ABOVE",
-              "domain_event_id": "a6ae371f7490a68d0a3a1dd03b95ccd02ea98fc7da9aa0b8f825ec2c9e038774",
+              "domain_event_id": "b3c30c0b505342a1008a9f1fdd98b36cfd790a90e8b005e74ff99d7a61dc3a76",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "ab39405acc694334a2953d573b339dba",
+                "drawing_id": "089c915a52874d86aff8ec1e2608fe80",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -5290,7 +5290,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "ab39405acc694334a2953d573b339dba",
+                "object_id": "089c915a52874d86aff8ec1e2608fe80",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -5299,20 +5299,20 @@
             "intent_state": "PENDING_FAKE"
           },
           {
-            "event_id": "dafa5aa174d0294e80eaa5cc1cfe0e4f10625ac3e4cded81b58b867b9d4a8b76",
+            "event_id": "cae4f35045c337573017f67b62e769b6b8265084c59bb620861ec9d51e7f72c9",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800003600,
-              "definition_hash": "3513d89eac85333b61e942f12177eadaa95f85d95b4228e64f6aefd150166150",
+              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
               "direction": "ABOVE",
-              "domain_event_id": "3e4074b3b8cf156af88b2685e3c1aead2c0c2b6c5983113d0f4e3b86344ed933",
+              "domain_event_id": "bfc2b83e7e33e1a2e2d2594f7047397a9f45f6b1d27a4a7eed0bc24b50cab30c",
               "episode": 2,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800003600",
-                "drawing_id": "ab39405acc694334a2953d573b339dba",
+                "drawing_id": "089c915a52874d86aff8ec1e2608fe80",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "APPROACH",
@@ -5364,7 +5364,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "ab39405acc694334a2953d573b339dba",
+                "object_id": "089c915a52874d86aff8ec1e2608fe80",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -5382,7 +5382,7 @@
     },
     {
       "id": "DR09",
-      "title": "Açık mumda varsayılan olay yok",
+      "title": "A\u00e7\u0131k mumda varsay\u0131lan olay yok",
       "passed": true,
       "expected": {
         "outcome": "OBSERVE_ONLY",
@@ -5397,7 +5397,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "6ce26f1e614b8d6affcffc3631453a49fb6699b07f8bd742f36266c78debf272",
+        "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "2b3fce7530d2880cb6de7af48ff3d72456f6bff9c58a6415544ed583aace1c82",
         "data_proof": {
@@ -5424,7 +5424,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "cc34cba4d0c8495db01afc883a30865e",
+              "boot_id": "a68d2f8f4a594b6bac86703de7b11277",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -5457,7 +5457,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6ce26f1e614b8d6affcffc3631453a49fb6699b07f8bd742f36266c78debf272",
+            "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -5599,7 +5599,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6ce26f1e614b8d6affcffc3631453a49fb6699b07f8bd742f36266c78debf272",
+              "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -5658,7 +5658,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "cc34cba4d0c8495db01afc883a30865e",
+              "boot_id": "a68d2f8f4a594b6bac86703de7b11277",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -5691,7 +5691,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6ce26f1e614b8d6affcffc3631453a49fb6699b07f8bd742f36266c78debf272",
+            "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -5833,7 +5833,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6ce26f1e614b8d6affcffc3631453a49fb6699b07f8bd742f36266c78debf272",
+              "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -5898,7 +5898,7 @@
     },
     {
       "id": "DR10",
-      "title": "Kapanışla kırılım ayrı W5 profili",
+      "title": "Kapan\u0131\u015fla k\u0131r\u0131l\u0131m ayr\u0131 W5 profili",
       "passed": true,
       "expected": {
         "equality_cross_event": 0,
@@ -5915,7 +5915,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "e1f2335754a901bac31717be11eb8235d8f6d1e02ced73ea6ec6e3fb802cb649",
+        "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "6a6a63ec636ae3a6941a09f6d7a7cfb8b93643b170c484f25b050d5fca388204",
         "data_proof": {
@@ -5942,7 +5942,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "86681ff3552b48fea7493b263616b513",
+              "boot_id": "1370e044a24141caaefa571fcf90016c",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -5975,7 +5975,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "e1f2335754a901bac31717be11eb8235d8f6d1e02ced73ea6ec6e3fb802cb649",
+            "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -6117,7 +6117,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "e1f2335754a901bac31717be11eb8235d8f6d1e02ced73ea6ec6e3fb802cb649",
+              "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -6175,7 +6175,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "86681ff3552b48fea7493b263616b513",
+              "boot_id": "1370e044a24141caaefa571fcf90016c",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -6208,9 +6208,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "e1f2335754a901bac31717be11eb8235d8f6d1e02ced73ea6ec6e3fb802cb649",
+            "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
             "distance": "1/5",
-            "domain_event_id": "806dfac26fe31dba76f2786b66f1ef2a96e91cc7d92d05f5aa43c246460a6786",
+            "domain_event_id": "5adcc235255059b2ec94f4f7c8da9fa993df4c9e3e6ab01e80361c66ad73669d",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -6352,7 +6352,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "e1f2335754a901bac31717be11eb8235d8f6d1e02ced73ea6ec6e3fb802cb649",
+              "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -6381,7 +6381,7 @@
             },
             "episode": 1,
             "event": "CLOSE_CROSS",
-            "event_id": "1a26a5351d9fcb1b377d76408d563620f1dd783bde22ab890d9c725a98ba0ea0",
+            "event_id": "44d5a3ac8bba923abac6c86c7392295dba4d5bc675f17535faf80aff5b7b8231",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -6410,20 +6410,20 @@
         ],
         "events": [
           {
-            "event_id": "1a26a5351d9fcb1b377d76408d563620f1dd783bde22ab890d9c725a98ba0ea0",
+            "event_id": "44d5a3ac8bba923abac6c86c7392295dba4d5bc675f17535faf80aff5b7b8231",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "e1f2335754a901bac31717be11eb8235d8f6d1e02ced73ea6ec6e3fb802cb649",
+              "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
               "direction": "ABOVE",
-              "domain_event_id": "806dfac26fe31dba76f2786b66f1ef2a96e91cc7d92d05f5aa43c246460a6786",
+              "domain_event_id": "5adcc235255059b2ec94f4f7c8da9fa993df4c9e3e6ab01e80361c66ad73669d",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "30cd70a8cccf446990594bea59932ee0",
+                "drawing_id": "f14461b73ddd407d9a048d75bf62a752",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "CLOSE_CROSS",
@@ -6475,7 +6475,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "30cd70a8cccf446990594bea59932ee0",
+                "object_id": "f14461b73ddd407d9a048d75bf62a752",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -6493,7 +6493,7 @@
     },
     {
       "id": "DR11",
-      "title": "OHLC içi sıra bilinmez",
+      "title": "OHLC i\u00e7i s\u0131ra bilinmez",
       "passed": true,
       "expected": {
         "outcome": "INTRABAR_ORDER_UNKNOWN",
@@ -6508,7 +6508,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "aeb1ad8c3d8184c05438fae7fcf6f055b918291180a3cfc0ceb3e60c74582720",
+        "definition_hash": "affa55efcbd6fdc93691f568702fb3164b2e717568572a1f0e1007d71b74b233",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "2f195bb37473732e01b2e9243e8614af320b7d6dbd8e25aed3d6f712f3584a4e",
         "data_proof": {
@@ -6535,7 +6535,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "0c60774e43f74979ace2a5c69592a57b",
+              "boot_id": "81c22dadf5f949c5a6da75f1ebbf0434",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -6567,7 +6567,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "aeb1ad8c3d8184c05438fae7fcf6f055b918291180a3cfc0ceb3e60c74582720",
+            "definition_hash": "affa55efcbd6fdc93691f568702fb3164b2e717568572a1f0e1007d71b74b233",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -6709,7 +6709,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "aeb1ad8c3d8184c05438fae7fcf6f055b918291180a3cfc0ceb3e60c74582720",
+              "definition_hash": "affa55efcbd6fdc93691f568702fb3164b2e717568572a1f0e1007d71b74b233",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -6774,7 +6774,7 @@
     },
     {
       "id": "DR12",
-      "title": "Zaman sınırlı bölge",
+      "title": "Zaman s\u0131n\u0131rl\u0131 b\u00f6lge",
       "passed": true,
       "expected": {
         "outcome": "OUT_OF_SCOPE",
@@ -6789,7 +6789,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "3978cde6e2514858b5e3906509f7e83393608210478f360432380288223d721a",
+        "definition_hash": "fb91df272098616d67eaf8c64cd6df5d27702cd22954ea7b19755e8cf1745bdd",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": null,
         "data_proof": null,
@@ -6804,7 +6804,7 @@
     },
     {
       "id": "DR13",
-      "title": "Trend grid kanıtı yok",
+      "title": "Trend grid kan\u0131t\u0131 yok",
       "passed": true,
       "expected": {
         "outcome": "BLOCKED",
@@ -6819,7 +6819,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "399a69ccb1eaab200cc0778ca71760c321638da8497cb847e3614def48aba6a0",
+        "definition_hash": "b08eadbbd520e0218f300f2c23d73134e134116f7e01299da3488060e5096db5",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": null,
         "data_proof": null,
@@ -6834,7 +6834,7 @@
     },
     {
       "id": "DR14",
-      "title": "Ters Fibonacci ve ondalık seviye",
+      "title": "Ters Fibonacci ve ondal\u0131k seviye",
       "passed": true,
       "expected": {
         "level": "103.82",
@@ -6849,7 +6849,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "e44ba2f68cec6ffc5821ff38593e6d93451c47c4c3b52da0d9d7fc6f7e064a2f",
+        "definition_hash": "06c890b719545f4995c4ca51ab179aa4f800f3571f5247fc60e5b5fe0b888967",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": null,
         "data_proof": null,
@@ -6864,7 +6864,7 @@
     },
     {
       "id": "DR15",
-      "title": "Snapshot/history close metadata canlı olay değildir",
+      "title": "Snapshot/history close metadata canl\u0131 olay de\u011fildir",
       "passed": true,
       "expected": {
         "new_live_events": 0,
@@ -6879,7 +6879,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "1656551a8d02c819b7cec7a10868f4351776e2a9003bb091de81ebae47cba5e6",
+        "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "50a61f3e88224f9593124f7a908aba33ca8c5ae22a531dbf5db57a3a25325a61",
         "data_proof": {
@@ -6906,7 +6906,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "391d53dea82a49fca9a39e6d74456a6d",
+              "boot_id": "0fa10884defc4f2c80860089f3fc3a3f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -6939,7 +6939,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "1656551a8d02c819b7cec7a10868f4351776e2a9003bb091de81ebae47cba5e6",
+            "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -7081,7 +7081,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "1656551a8d02c819b7cec7a10868f4351776e2a9003bb091de81ebae47cba5e6",
+              "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -7140,7 +7140,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "391d53dea82a49fca9a39e6d74456a6d",
+              "boot_id": "0fa10884defc4f2c80860089f3fc3a3f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -7173,7 +7173,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "1656551a8d02c819b7cec7a10868f4351776e2a9003bb091de81ebae47cba5e6",
+            "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -7315,7 +7315,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "1656551a8d02c819b7cec7a10868f4351776e2a9003bb091de81ebae47cba5e6",
+              "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -7374,7 +7374,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "391d53dea82a49fca9a39e6d74456a6d",
+              "boot_id": "0fa10884defc4f2c80860089f3fc3a3f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -7407,7 +7407,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "1656551a8d02c819b7cec7a10868f4351776e2a9003bb091de81ebae47cba5e6",
+            "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -7549,7 +7549,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "1656551a8d02c819b7cec7a10868f4351776e2a9003bb091de81ebae47cba5e6",
+              "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -7631,7 +7631,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "c7d3560d2785715b35de5235d7bdf62485faf54bfca916cf372d91a095702c04",
+        "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -7658,7 +7658,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2da25d68294e48cda63d8ce3d915c18a",
+              "boot_id": "2995945884ec49a499f29a6c605c4886",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -7691,7 +7691,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c7d3560d2785715b35de5235d7bdf62485faf54bfca916cf372d91a095702c04",
+            "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -7833,7 +7833,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c7d3560d2785715b35de5235d7bdf62485faf54bfca916cf372d91a095702c04",
+              "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -7892,7 +7892,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2da25d68294e48cda63d8ce3d915c18a",
+              "boot_id": "2995945884ec49a499f29a6c605c4886",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -7925,9 +7925,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c7d3560d2785715b35de5235d7bdf62485faf54bfca916cf372d91a095702c04",
+            "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
             "distance": "1/5",
-            "domain_event_id": "74611ca9d88f99a98074bfd357f3f72bf8b63eaa97158b860f888a167ec80665",
+            "domain_event_id": "cbeb7c860d879fe7dc6a284dd2c4c545bd9913a1260d454363a40539e6bfc09c",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -8069,7 +8069,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c7d3560d2785715b35de5235d7bdf62485faf54bfca916cf372d91a095702c04",
+              "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -8098,7 +8098,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "3c1a1df3253c77c0b6dbc8d09614329466ecb50b998b97746afa8504f8055bea",
+            "event_id": "e5fc2f8f7025cc2a5db0fb84746cc68b330143393c9dc4661e4477d1d34d1162",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -8128,7 +8128,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2da25d68294e48cda63d8ce3d915c18a",
+              "boot_id": "2995945884ec49a499f29a6c605c4886",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -8161,7 +8161,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c7d3560d2785715b35de5235d7bdf62485faf54bfca916cf372d91a095702c04",
+            "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -8303,7 +8303,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c7d3560d2785715b35de5235d7bdf62485faf54bfca916cf372d91a095702c04",
+              "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -8360,20 +8360,20 @@
         ],
         "events": [
           {
-            "event_id": "3c1a1df3253c77c0b6dbc8d09614329466ecb50b998b97746afa8504f8055bea",
+            "event_id": "e5fc2f8f7025cc2a5db0fb84746cc68b330143393c9dc4661e4477d1d34d1162",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "c7d3560d2785715b35de5235d7bdf62485faf54bfca916cf372d91a095702c04",
+              "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
               "direction": "ABOVE",
-              "domain_event_id": "74611ca9d88f99a98074bfd357f3f72bf8b63eaa97158b860f888a167ec80665",
+              "domain_event_id": "cbeb7c860d879fe7dc6a284dd2c4c545bd9913a1260d454363a40539e6bfc09c",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "81bcc03ee0ab4838924a3768d20c87da",
+                "drawing_id": "3d073eeb26074027a4f97284d1034beb",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -8425,7 +8425,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "81bcc03ee0ab4838924a3768d20c87da",
+                "object_id": "3d073eeb26074027a4f97284d1034beb",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -8443,7 +8443,7 @@
     },
     {
       "id": "DR17",
-      "title": "Restart epoch ve temas hafızası",
+      "title": "Restart epoch ve temas haf\u0131zas\u0131",
       "passed": true,
       "expected": {
         "phase_restored": "TOUCH_LATCHED",
@@ -8460,7 +8460,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+        "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "932cdc535067f32765fae8e7548507978d5dab9b1d9346fa93c351120f27646b",
         "data_proof": {
@@ -8487,7 +8487,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "3e236dab3fc44f03a26f98e9aa9a6650",
+              "boot_id": "263d181c5c45463a932db8f4e784926f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -8520,7 +8520,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+            "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -8662,7 +8662,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -8721,7 +8721,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "3e236dab3fc44f03a26f98e9aa9a6650",
+              "boot_id": "263d181c5c45463a932db8f4e784926f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -8754,9 +8754,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+            "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
             "distance": "1/5",
-            "domain_event_id": "3727e42c69cde620fc3fcbede6cbfd4bfe1f41ad93703c129f488a9af6d47757",
+            "domain_event_id": "d8ff38fe6a934a8ce992efa53e7843de8f346a0c7e3427fad8aacb8b3f3f17ef",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -8898,7 +8898,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -8927,7 +8927,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "b5c512ca4b717cd15793a70a06d290391aaaf791c7d2d6dfd658901d4b6dc48a",
+            "event_id": "77b67bf0050f66e5eb8b5b654387efb30b4fd9d3a9fc036d7101c5df4d69d0c7",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -8957,7 +8957,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "6d4a02391f204670b98e898b264f9dd2",
+              "boot_id": "b16bf395ea004d1a99e92640a988a5ee",
               "cooldown": 0,
               "episode": 1,
               "epoch": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
@@ -8990,7 +8990,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+            "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -9132,7 +9132,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -9191,7 +9191,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "6d4a02391f204670b98e898b264f9dd2",
+              "boot_id": "b16bf395ea004d1a99e92640a988a5ee",
               "cooldown": 0,
               "episode": 1,
               "epoch": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
@@ -9224,7 +9224,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+            "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -9366,7 +9366,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -9423,20 +9423,20 @@
         ],
         "events": [
           {
-            "event_id": "b5c512ca4b717cd15793a70a06d290391aaaf791c7d2d6dfd658901d4b6dc48a",
+            "event_id": "77b67bf0050f66e5eb8b5b654387efb30b4fd9d3a9fc036d7101c5df4d69d0c7",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "b87847dc52d889eebbb7dee38b12a0bbf9a310ae11cc6f431a02e10c4be94580",
+              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
               "direction": "ABOVE",
-              "domain_event_id": "3727e42c69cde620fc3fcbede6cbfd4bfe1f41ad93703c129f488a9af6d47757",
+              "domain_event_id": "d8ff38fe6a934a8ce992efa53e7843de8f346a0c7e3427fad8aacb8b3f3f17ef",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "0e3008dd9e814090a60f3be1b8bbef24",
+                "drawing_id": "fe90536d03894a218a2779c2d256f2dd",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -9488,7 +9488,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "0e3008dd9e814090a60f3be1b8bbef24",
+                "object_id": "fe90536d03894a218a2779c2d256f2dd",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -9506,7 +9506,7 @@
     },
     {
       "id": "DR18",
-      "title": "Sequence atlaması tek başına veri boşluğu değildir",
+      "title": "Sequence atlamas\u0131 tek ba\u015f\u0131na veri bo\u015flu\u011fu de\u011fildir",
       "passed": true,
       "expected": {
         "false_gap": false,
@@ -9521,7 +9521,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "6d8e803830e936b95d20a6894915da5f931f2b321b57712b8d9c01436a7d3d2e",
+        "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "d512d9b83c31d6a5525aa4a5b260e3de054dd17102be3a222f0e1e1bc3b96be6",
         "data_proof": {
@@ -9548,7 +9548,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "1db3ec04f55c426a86ee4bb7a067c2d8",
+              "boot_id": "c1ea6b648f3444beabce3abd4f6a3b5f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -9581,7 +9581,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6d8e803830e936b95d20a6894915da5f931f2b321b57712b8d9c01436a7d3d2e",
+            "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -9723,7 +9723,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6d8e803830e936b95d20a6894915da5f931f2b321b57712b8d9c01436a7d3d2e",
+              "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -9782,7 +9782,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "1db3ec04f55c426a86ee4bb7a067c2d8",
+              "boot_id": "c1ea6b648f3444beabce3abd4f6a3b5f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -9815,7 +9815,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6d8e803830e936b95d20a6894915da5f931f2b321b57712b8d9c01436a7d3d2e",
+            "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -9957,7 +9957,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6d8e803830e936b95d20a6894915da5f931f2b321b57712b8d9c01436a7d3d2e",
+              "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -10022,7 +10022,7 @@
     },
     {
       "id": "DR19",
-      "title": "Eski/bozuk paket kural hafızasını değiştirmez",
+      "title": "Eski/bozuk paket kural haf\u0131zas\u0131n\u0131 de\u011fi\u015ftirmez",
       "passed": true,
       "expected": {
         "semantic_events": 0,
@@ -10039,7 +10039,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "ff25b84862c96b3958bb3c46ac4049a2eda3e223d10d6f28e20ef9d8944de468",
+        "definition_hash": "f084c5307147b16daa7c26c88ed074ecd073ad7cfcd432f1ee5f3f0efa05dd5e",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -10066,7 +10066,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "64fbc707c03a482db05ccbf2576bb1d7",
+              "boot_id": "2c9f47e245ca4e9cae0192b1a8abdd8b",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -10099,7 +10099,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "ff25b84862c96b3958bb3c46ac4049a2eda3e223d10d6f28e20ef9d8944de468",
+            "definition_hash": "f084c5307147b16daa7c26c88ed074ecd073ad7cfcd432f1ee5f3f0efa05dd5e",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -10241,7 +10241,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "ff25b84862c96b3958bb3c46ac4049a2eda3e223d10d6f28e20ef9d8944de468",
+              "definition_hash": "f084c5307147b16daa7c26c88ed074ecd073ad7cfcd432f1ee5f3f0efa05dd5e",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -10307,7 +10307,7 @@
     },
     {
       "id": "DR20",
-      "title": "Kaynak/sembol/fiyat türü uyuşmazlığı",
+      "title": "Kaynak/sembol/fiyat t\u00fcr\u00fc uyu\u015fmazl\u0131\u011f\u0131",
       "passed": true,
       "expected": {
         "outcome": "BLOCKED",
@@ -10322,7 +10322,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "b9d958476a569eee7048e323247c5c1c8d438286466d1cd4d9b7648fc26133bd",
+        "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "f37649745db2cfab2f124adfb3fe16b4dfb97e7ecedfd52eb4a7dd12dea59519",
         "data_proof": {
@@ -10349,7 +10349,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "1074764a20e245eda548087bafbb5e5f",
+              "boot_id": "c22c50433b4f4619880bf6a26d704f14",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -10381,7 +10381,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b9d958476a569eee7048e323247c5c1c8d438286466d1cd4d9b7648fc26133bd",
+            "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -10523,7 +10523,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b9d958476a569eee7048e323247c5c1c8d438286466d1cd4d9b7648fc26133bd",
+              "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -10586,7 +10586,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "1074764a20e245eda548087bafbb5e5f",
+              "boot_id": "c22c50433b4f4619880bf6a26d704f14",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -10618,7 +10618,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b9d958476a569eee7048e323247c5c1c8d438286466d1cd4d9b7648fc26133bd",
+            "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -10760,7 +10760,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b9d958476a569eee7048e323247c5c1c8d438286466d1cd4d9b7648fc26133bd",
+              "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -10823,7 +10823,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "1074764a20e245eda548087bafbb5e5f",
+              "boot_id": "c22c50433b4f4619880bf6a26d704f14",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -10855,7 +10855,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b9d958476a569eee7048e323247c5c1c8d438286466d1cd4d9b7648fc26133bd",
+            "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -10997,7 +10997,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b9d958476a569eee7048e323247c5c1c8d438286466d1cd4d9b7648fc26133bd",
+              "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -11067,7 +11067,7 @@
     },
     {
       "id": "DR21",
-      "title": "Taze heartbeat eski upstream veriyi canlandıramaz",
+      "title": "Taze heartbeat eski upstream veriyi canland\u0131ramaz",
       "passed": true,
       "expected": {
         "outcome": "BLOCKED",
@@ -11082,7 +11082,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "64a2e387431c68ab12b6e7242a92a367358c791724a73cbc07e1cbfd7bf5f1f5",
+        "definition_hash": "089af57df8825a0fda382b4658a6cffc0b48e253dcf1d9aea240b56919815933",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "41e815175777f256150ff45c30280ca2f9c436f2f6f1df02d70fc7e232daec3e",
         "data_proof": {
@@ -11109,7 +11109,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c5b266f2ad4f433fb4a1501f246a6a93",
+              "boot_id": "2e2e0836d2bc4f14bcf88d79387cc2d4",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -11141,7 +11141,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "64a2e387431c68ab12b6e7242a92a367358c791724a73cbc07e1cbfd7bf5f1f5",
+            "definition_hash": "089af57df8825a0fda382b4658a6cffc0b48e253dcf1d9aea240b56919815933",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -11283,7 +11283,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "64a2e387431c68ab12b6e7242a92a367358c791724a73cbc07e1cbfd7bf5f1f5",
+              "definition_hash": "089af57df8825a0fda382b4658a6cffc0b48e253dcf1d9aea240b56919815933",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -11353,7 +11353,7 @@
     },
     {
       "id": "DR22",
-      "title": "Saat kanıtı yok veya saat sıçrar",
+      "title": "Saat kan\u0131t\u0131 yok veya saat s\u0131\u00e7rar",
       "passed": true,
       "expected": {
         "outcome": "BLOCKED",
@@ -11368,7 +11368,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "b3ab343180c761d40b808e0113b1520b49602e3f22ed33a39045bde83dfa202a",
+        "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "c92fa325d8767b9579ce29bec41949cfcafa7efcf80af091a78d3bc23fd1f55f",
         "data_proof": {
@@ -11395,7 +11395,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "44036e4fb4684c0c80210ab3e8e1503e",
+              "boot_id": "c764146d91ad4a62a978220683ecda80",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -11427,7 +11427,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b3ab343180c761d40b808e0113b1520b49602e3f22ed33a39045bde83dfa202a",
+            "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -11569,7 +11569,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b3ab343180c761d40b808e0113b1520b49602e3f22ed33a39045bde83dfa202a",
+              "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -11643,7 +11643,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "44036e4fb4684c0c80210ab3e8e1503e",
+              "boot_id": "c764146d91ad4a62a978220683ecda80",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -11676,7 +11676,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b3ab343180c761d40b808e0113b1520b49602e3f22ed33a39045bde83dfa202a",
+            "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -11818,7 +11818,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b3ab343180c761d40b808e0113b1520b49602e3f22ed33a39045bde83dfa202a",
+              "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -11877,7 +11877,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "44036e4fb4684c0c80210ab3e8e1503e",
+              "boot_id": "c764146d91ad4a62a978220683ecda80",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -11910,7 +11910,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b3ab343180c761d40b808e0113b1520b49602e3f22ed33a39045bde83dfa202a",
+            "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -12052,7 +12052,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b3ab343180c761d40b808e0113b1520b49602e3f22ed33a39045bde83dfa202a",
+              "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -12122,7 +12122,7 @@
     },
     {
       "id": "DR23",
-      "title": "Kalite/gap/warmup eksikliği",
+      "title": "Kalite/gap/warmup eksikli\u011fi",
       "passed": true,
       "expected": {
         "semantic_events": 0,
@@ -12143,7 +12143,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "77836b877e802d69c55abfb0b814e386b4dbd39054840e0e84ac75bf2f609932",
+        "definition_hash": "cf072d88d322ca30aa04f895b639e11176fed1aa74b6edc1f65c955241f38719",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "aeaf7521610f6e21ba5d428421bd167497f91c2d1f61547de39f7444cb2103a9",
         "data_proof": {
@@ -12173,7 +12173,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "a4d55ff6b63f4b35a016aabc7531e15a",
+              "boot_id": "55144b276af14213891114dc4310aa4c",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -12208,7 +12208,7 @@
               "valid": true,
               "warmup_available_closed_bars": 9
             },
-            "definition_hash": "77836b877e802d69c55abfb0b814e386b4dbd39054840e0e84ac75bf2f609932",
+            "definition_hash": "cf072d88d322ca30aa04f895b639e11176fed1aa74b6edc1f65c955241f38719",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -12350,7 +12350,7 @@
                   "reason": "TARGET_OUTSIDE_VERIFIED_GRID"
                 }
               ],
-              "definition_hash": "77836b877e802d69c55abfb0b814e386b4dbd39054840e0e84ac75bf2f609932",
+              "definition_hash": "cf072d88d322ca30aa04f895b639e11176fed1aa74b6edc1f65c955241f38719",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -12424,7 +12424,7 @@
     },
     {
       "id": "DR24",
-      "title": "Float fiyat kesinlik kanıtı değildir",
+      "title": "Float fiyat kesinlik kan\u0131t\u0131 de\u011fildir",
       "passed": true,
       "expected": {
         "outcome": "BLOCKED",
@@ -12439,7 +12439,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "a44814f7b4ecb056a4439b0d594ac525ec758ae14283873748d3f78b16b3ddf7",
+        "definition_hash": "0a2f35a1a51e2da740f49bd671da0683efb8feb08ff06edcda120de77cdf0220",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "4abe34296c9ca6d2f5dca852eda0abc64d45a4f51444b04a87fef319e69af1d4",
         "data_proof": {
@@ -12468,7 +12468,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "95d6fd1d491c407da198f80bbd98c242",
+              "boot_id": "a390d28c5d5645b0bd1b9e5acecbc1bd",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -12502,7 +12502,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "a44814f7b4ecb056a4439b0d594ac525ec758ae14283873748d3f78b16b3ddf7",
+            "definition_hash": "0a2f35a1a51e2da740f49bd671da0683efb8feb08ff06edcda120de77cdf0220",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -12644,7 +12644,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "a44814f7b4ecb056a4439b0d594ac525ec758ae14283873748d3f78b16b3ddf7",
+              "definition_hash": "0a2f35a1a51e2da740f49bd671da0683efb8feb08ff06edcda120de77cdf0220",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -12717,7 +12717,7 @@
     },
     {
       "id": "DR25",
-      "title": "Çizim commit yarışı",
+      "title": "\u00c7izim commit yar\u0131\u015f\u0131",
       "passed": true,
       "expected": {
         "semantic_events": 0,
@@ -12734,7 +12734,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "76caf38a76f58b34d3f63aaa31aaf09bbe5bb249eb260dd8e017a58b9d4aeb79",
+        "definition_hash": "b1a923e20e7a848781ecae51d27c10748a372420a95e70b9df4e6a725bd64129",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -12767,7 +12767,7 @@
     },
     {
       "id": "DR26",
-      "title": "Silinme veya head okunamaması",
+      "title": "Silinme veya head okunamamas\u0131",
       "passed": true,
       "expected": {
         "outcome": "BLOCKED",
@@ -12782,7 +12782,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "ca152d6c7d36dd5db4badb58046001c095f8fb9df1db02ac18a7ec1ffdf96515",
+        "definition_hash": "32fb51ad8aef703a420afad253072da9732cdb05c03ebfbd4cc081fc2365fb70",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -12815,7 +12815,7 @@
     },
     {
       "id": "DR27",
-      "title": "Undo eski yetkiyi canlandırmaz",
+      "title": "Undo eski yetkiyi canland\u0131rmaz",
       "passed": true,
       "expected": {
         "outcome": "BLOCKED",
@@ -12832,7 +12832,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "d9e2e360eedd278e2572845a841e1622d42a36f18022f42b8f9c12e8d85fe9f6",
+        "definition_hash": "62a441bc8330431f3c28b1a9bd4d521788a1cc5d944ef05cd1e3b058e90ed77e",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -12865,7 +12865,7 @@
     },
     {
       "id": "DR28",
-      "title": "LIVE dışı durum ve renderer/fault",
+      "title": "LIVE d\u0131\u015f\u0131 durum ve renderer/fault",
       "passed": true,
       "expected": {
         "semantic_events": 0,
@@ -12880,7 +12880,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+        "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "c92fa325d8767b9579ce29bec41949cfcafa7efcf80af091a78d3bc23fd1f55f",
         "data_proof": {
@@ -12907,7 +12907,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -12939,7 +12939,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -13081,7 +13081,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -13144,7 +13144,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -13176,7 +13176,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -13318,7 +13318,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -13381,7 +13381,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -13413,7 +13413,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -13555,7 +13555,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -13618,7 +13618,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -13650,7 +13650,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -13792,7 +13792,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -13855,7 +13855,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -13887,7 +13887,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14029,7 +14029,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -14092,7 +14092,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -14124,7 +14124,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14266,7 +14266,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -14329,7 +14329,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -14361,7 +14361,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14503,7 +14503,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -14566,7 +14566,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -14598,7 +14598,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14740,7 +14740,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -14803,7 +14803,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -14835,7 +14835,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14977,7 +14977,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -15040,7 +15040,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "db1e393e08a4416f9bd4dd4f42b679ce",
+              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -15072,7 +15072,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -15214,7 +15214,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "86e64ec8df8b6a623dbfc64a032356c6c1c8afdf7256eca10bf60f3f08469af1",
+              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -15280,7 +15280,7 @@
     },
     {
       "id": "DR29",
-      "title": "Gecikmiş resync catchup fırsat değildir",
+      "title": "Gecikmi\u015f resync catchup f\u0131rsat de\u011fildir",
       "passed": true,
       "expected": {
         "new_live_events": 0,
@@ -15297,7 +15297,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "665e4d3b24c6fb52afe635c6965436b94fd5529e28ca0a15acee317609731a4d",
+        "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "50a61f3e88224f9593124f7a908aba33ca8c5ae22a531dbf5db57a3a25325a61",
         "data_proof": {
@@ -15324,7 +15324,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "d02acd9fec52455eafc6bbb120c5aa25",
+              "boot_id": "5815b13f5dcb49fc8d7c23f7c8e5b8a7",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -15357,7 +15357,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "665e4d3b24c6fb52afe635c6965436b94fd5529e28ca0a15acee317609731a4d",
+            "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -15499,7 +15499,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "665e4d3b24c6fb52afe635c6965436b94fd5529e28ca0a15acee317609731a4d",
+              "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -15558,7 +15558,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "d02acd9fec52455eafc6bbb120c5aa25",
+              "boot_id": "5815b13f5dcb49fc8d7c23f7c8e5b8a7",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -15591,7 +15591,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "665e4d3b24c6fb52afe635c6965436b94fd5529e28ca0a15acee317609731a4d",
+            "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -15733,7 +15733,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "665e4d3b24c6fb52afe635c6965436b94fd5529e28ca0a15acee317609731a4d",
+              "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -15792,7 +15792,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "d02acd9fec52455eafc6bbb120c5aa25",
+              "boot_id": "5815b13f5dcb49fc8d7c23f7c8e5b8a7",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -15825,7 +15825,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "665e4d3b24c6fb52afe635c6965436b94fd5529e28ca0a15acee317609731a4d",
+            "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -15967,7 +15967,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "665e4d3b24c6fb52afe635c6965436b94fd5529e28ca0a15acee317609731a4d",
+              "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -16032,7 +16032,7 @@
     },
     {
       "id": "DR30",
-      "title": "Replay aynı domain izi, ayrı yan etki alanı",
+      "title": "Replay ayn\u0131 domain izi, ayr\u0131 yan etki alan\u0131",
       "passed": true,
       "expected": {
         "domain_event_ids_identical": true,
@@ -16051,7 +16051,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+        "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -16078,7 +16078,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "8eb7201d97984343a42cc877679e64c7",
+              "boot_id": "e433a291a424436a810269d0a41e4045",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -16111,7 +16111,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -16253,7 +16253,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -16312,7 +16312,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "8eb7201d97984343a42cc877679e64c7",
+              "boot_id": "e433a291a424436a810269d0a41e4045",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -16345,9 +16345,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
             "distance": "1/5",
-            "domain_event_id": "141e3dc4103350e0504a8c1796a84b36ba342cc3f4d4bf6a56410b69f189c712",
+            "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -16489,7 +16489,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -16518,7 +16518,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "1af00033ef1d7f94442840c8ea97d811673ed1d7d7e6d3e9a8aa8aba1416f46b",
+            "event_id": "e5ec0291281a620077c304b14061f4a468bbd30564e28bb9c531148086eb3682",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -16548,7 +16548,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "fdbb34eb2b7c494aa6b2a1f51ea914b5",
+              "boot_id": "9a2f1b8ead414295bc1ab45478fa9f8f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -16581,7 +16581,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -16723,7 +16723,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -16782,7 +16782,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "fdbb34eb2b7c494aa6b2a1f51ea914b5",
+              "boot_id": "9a2f1b8ead414295bc1ab45478fa9f8f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -16815,9 +16815,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
             "distance": "1/5",
-            "domain_event_id": "141e3dc4103350e0504a8c1796a84b36ba342cc3f4d4bf6a56410b69f189c712",
+            "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -16959,7 +16959,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -16988,7 +16988,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "5eb16287a325425628256c8f96ce1e09f9ecf00e6ca484d34f66a0483d79675d",
+            "event_id": "518ad1b96cdd43f2d72d6d9221412dc3f7673c189541e1a446061da7c9fa07a7",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -17018,7 +17018,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "7b27d1cbd57e4703b5ddb2fc2fd34e12",
+              "boot_id": "a2bb856c86d742238cd519eecdde1fac",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -17051,7 +17051,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -17193,7 +17193,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -17252,7 +17252,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "7b27d1cbd57e4703b5ddb2fc2fd34e12",
+              "boot_id": "a2bb856c86d742238cd519eecdde1fac",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -17285,9 +17285,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
             "distance": "1/5",
-            "domain_event_id": "141e3dc4103350e0504a8c1796a84b36ba342cc3f4d4bf6a56410b69f189c712",
+            "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -17429,7 +17429,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -17458,7 +17458,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "e7b9448712e644f7bfbf788a3f07091ebf3fd1a6f459bf60c785a9e1370f34cc",
+            "event_id": "64ebb66e78aacd9da0905efdbd0b882d8abab409a87c40a39a00d210b4aa1c2b",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -17487,20 +17487,20 @@
         ],
         "events": [
           {
-            "event_id": "1af00033ef1d7f94442840c8ea97d811673ed1d7d7e6d3e9a8aa8aba1416f46b",
+            "event_id": "e5ec0291281a620077c304b14061f4a468bbd30564e28bb9c531148086eb3682",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
               "direction": "ABOVE",
-              "domain_event_id": "141e3dc4103350e0504a8c1796a84b36ba342cc3f4d4bf6a56410b69f189c712",
+              "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "132dc692f9974041a8bd7cab7ebf1246",
+                "drawing_id": "ea1063dc006547a5bd09bea8d9968b23",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -17552,7 +17552,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "132dc692f9974041a8bd7cab7ebf1246",
+                "object_id": "ea1063dc006547a5bd09bea8d9968b23",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -17561,20 +17561,20 @@
             "intent_state": "PENDING_FAKE"
           },
           {
-            "event_id": "5eb16287a325425628256c8f96ce1e09f9ecf00e6ca484d34f66a0483d79675d",
+            "event_id": "518ad1b96cdd43f2d72d6d9221412dc3f7673c189541e1a446061da7c9fa07a7",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
               "direction": "ABOVE",
-              "domain_event_id": "141e3dc4103350e0504a8c1796a84b36ba342cc3f4d4bf6a56410b69f189c712",
+              "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "132dc692f9974041a8bd7cab7ebf1246",
+                "drawing_id": "ea1063dc006547a5bd09bea8d9968b23",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -17626,7 +17626,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "132dc692f9974041a8bd7cab7ebf1246",
+                "object_id": "ea1063dc006547a5bd09bea8d9968b23",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -17635,20 +17635,20 @@
             "intent_state": "PENDING_FAKE"
           },
           {
-            "event_id": "e7b9448712e644f7bfbf788a3f07091ebf3fd1a6f459bf60c785a9e1370f34cc",
+            "event_id": "64ebb66e78aacd9da0905efdbd0b882d8abab409a87c40a39a00d210b4aa1c2b",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "08e4f1aa2235d1d047e98c3134f1bee0fb299f77bd130ddca6e2596063fcee88",
+              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
               "direction": "ABOVE",
-              "domain_event_id": "141e3dc4103350e0504a8c1796a84b36ba342cc3f4d4bf6a56410b69f189c712",
+              "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "132dc692f9974041a8bd7cab7ebf1246",
+                "drawing_id": "ea1063dc006547a5bd09bea8d9968b23",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -17700,7 +17700,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "132dc692f9974041a8bd7cab7ebf1246",
+                "object_id": "ea1063dc006547a5bd09bea8d9968b23",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -17718,7 +17718,7 @@
     },
     {
       "id": "DR31",
-      "title": "Event+intent atomik; köprü tekrarına dayanıklı",
+      "title": "Event+intent atomik; k\u00f6pr\u00fc tekrar\u0131na dayan\u0131kl\u0131",
       "passed": true,
       "expected": {
         "lost_domain_events": 0,
@@ -17735,7 +17735,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "76bd8c71012da008ceb5961e432eaaccaaaef9e9ef76f4d52c89c882fe85c5bf",
+        "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -17762,7 +17762,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "747bd6c3e94a4ad691639cffee6ab5cb",
+              "boot_id": "f4b9e49e68d14fe0b780abaf0c8e1e4e",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -17795,9 +17795,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "76bd8c71012da008ceb5961e432eaaccaaaef9e9ef76f4d52c89c882fe85c5bf",
+            "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
             "distance": "1/5",
-            "domain_event_id": "5a652a994e7b2288c96e55433ded89e1aec0d10d1bfc59b1b7d8c73542e2f9ea",
+            "domain_event_id": "f0d03d0c0ed8e2afe1d4c933f07357ad19e0ba003fba883427f89c138dcb09c4",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -17939,7 +17939,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "76bd8c71012da008ceb5961e432eaaccaaaef9e9ef76f4d52c89c882fe85c5bf",
+              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -17968,7 +17968,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "17907394716ce7b3c763a584d7d2c57d853fd52982dd378f308c16ebea2c558a",
+            "event_id": "e2a18a07f12acb1b540da9aff8d19d07f728d284397dfbb57b62cec7a912279d",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -17998,7 +17998,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "747bd6c3e94a4ad691639cffee6ab5cb",
+              "boot_id": "f4b9e49e68d14fe0b780abaf0c8e1e4e",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -18031,7 +18031,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "76bd8c71012da008ceb5961e432eaaccaaaef9e9ef76f4d52c89c882fe85c5bf",
+            "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -18173,7 +18173,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "76bd8c71012da008ceb5961e432eaaccaaaef9e9ef76f4d52c89c882fe85c5bf",
+              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -18231,18 +18231,18 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "90721a85fe2945b1b3f9e38997c9801a",
+              "boot_id": "4409f653ce3f4284a97cf70e68ce7b39",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "last_payload_hash": "780f01c7aa3d85815923141c8b676ae54b3f7d641c12753bb5660695cbc973c6",
               "last_time": 1800000900,
               "lifecycle": "DISABLED_REPLAY",
-              "mono": 84786.312,
+              "mono": 116614.406,
               "paused": false,
               "phase": "TOUCH_LATCHED",
               "sequence": 1,
-              "wall": 1794849989.7750976
+              "wall": 1794881818.403909
             },
             "created": true,
             "data_proof": {
@@ -18264,9 +18264,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "76bd8c71012da008ceb5961e432eaaccaaaef9e9ef76f4d52c89c882fe85c5bf",
+            "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
             "distance": "1/5",
-            "domain_event_id": "5a652a994e7b2288c96e55433ded89e1aec0d10d1bfc59b1b7d8c73542e2f9ea",
+            "domain_event_id": "f0d03d0c0ed8e2afe1d4c933f07357ad19e0ba003fba883427f89c138dcb09c4",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -18408,7 +18408,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "76bd8c71012da008ceb5961e432eaaccaaaef9e9ef76f4d52c89c882fe85c5bf",
+              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -18437,7 +18437,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "134edddedc4dc1aed3734a8e14cd91d6a64057addfbeba06d3db2364361ea717",
+            "event_id": "83ed14e6971fa9f1b887b2defba87f61b0630e90aa27e3cab9fa7b14d83384d5",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -18466,20 +18466,20 @@
         ],
         "events": [
           {
-            "event_id": "17907394716ce7b3c763a584d7d2c57d853fd52982dd378f308c16ebea2c558a",
+            "event_id": "e2a18a07f12acb1b540da9aff8d19d07f728d284397dfbb57b62cec7a912279d",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "76bd8c71012da008ceb5961e432eaaccaaaef9e9ef76f4d52c89c882fe85c5bf",
+              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
               "direction": "ABOVE",
-              "domain_event_id": "5a652a994e7b2288c96e55433ded89e1aec0d10d1bfc59b1b7d8c73542e2f9ea",
+              "domain_event_id": "f0d03d0c0ed8e2afe1d4c933f07357ad19e0ba003fba883427f89c138dcb09c4",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "25ee77ad9283400ca0162c9291e31798",
+                "drawing_id": "447a7d4779154e99a6e872780198af8c",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -18531,7 +18531,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "25ee77ad9283400ca0162c9291e31798",
+                "object_id": "447a7d4779154e99a6e872780198af8c",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -18540,20 +18540,20 @@
             "intent_state": "DELIVERED_FAKE"
           },
           {
-            "event_id": "134edddedc4dc1aed3734a8e14cd91d6a64057addfbeba06d3db2364361ea717",
+            "event_id": "83ed14e6971fa9f1b887b2defba87f61b0630e90aa27e3cab9fa7b14d83384d5",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "76bd8c71012da008ceb5961e432eaaccaaaef9e9ef76f4d52c89c882fe85c5bf",
+              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
               "direction": "ABOVE",
-              "domain_event_id": "5a652a994e7b2288c96e55433ded89e1aec0d10d1bfc59b1b7d8c73542e2f9ea",
+              "domain_event_id": "f0d03d0c0ed8e2afe1d4c933f07357ad19e0ba003fba883427f89c138dcb09c4",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "25ee77ad9283400ca0162c9291e31798",
+                "drawing_id": "447a7d4779154e99a6e872780198af8c",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -18605,7 +18605,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "25ee77ad9283400ca0162c9291e31798",
+                "object_id": "447a7d4779154e99a6e872780198af8c",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -18623,7 +18623,7 @@
     },
     {
       "id": "DR32",
-      "title": "Gönderim sonucu belirsiz",
+      "title": "G\u00f6nderim sonucu belirsiz",
       "passed": true,
       "expected": {
         "delivery_state": "DELIVERY_UNKNOWN",
@@ -18640,7 +18640,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "76e3166d24dc32f94d78d86a13e156d2161f1d6433bc16ebfd5d542f79441218",
+        "definition_hash": "6657d800495f0c861355f608d5eb9569ba3b458fe18a92f7a74d9db0443b5083",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -18667,7 +18667,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "e13b22931356413dbab95cf6390c20ab",
+              "boot_id": "0e892010a3704acb977163ec6fe1d787",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -18700,9 +18700,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "76e3166d24dc32f94d78d86a13e156d2161f1d6433bc16ebfd5d542f79441218",
+            "definition_hash": "6657d800495f0c861355f608d5eb9569ba3b458fe18a92f7a74d9db0443b5083",
             "distance": "1/5",
-            "domain_event_id": "ba449c31a73d6b54c3ebb5fb64385ea2be27a4b16f7c639f9e829623546eb2cc",
+            "domain_event_id": "9c4c630e43ff8b6eaa4ff68f81abe5b9193f2c05a72d990d4cc7360ce348e711",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -18844,7 +18844,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "76e3166d24dc32f94d78d86a13e156d2161f1d6433bc16ebfd5d542f79441218",
+              "definition_hash": "6657d800495f0c861355f608d5eb9569ba3b458fe18a92f7a74d9db0443b5083",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -18873,7 +18873,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "f33f9a4ce622db16c78c91fea74501fa5247f309de7e71d49e7594c04ec7e989",
+            "event_id": "19376aa887f6339b97cbe65a04bcaa059e7cc692eae95de61e38c7995352573f",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -18902,20 +18902,20 @@
         ],
         "events": [
           {
-            "event_id": "f33f9a4ce622db16c78c91fea74501fa5247f309de7e71d49e7594c04ec7e989",
+            "event_id": "19376aa887f6339b97cbe65a04bcaa059e7cc692eae95de61e38c7995352573f",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "76e3166d24dc32f94d78d86a13e156d2161f1d6433bc16ebfd5d542f79441218",
+              "definition_hash": "6657d800495f0c861355f608d5eb9569ba3b458fe18a92f7a74d9db0443b5083",
               "direction": "ABOVE",
-              "domain_event_id": "ba449c31a73d6b54c3ebb5fb64385ea2be27a4b16f7c639f9e829623546eb2cc",
+              "domain_event_id": "9c4c630e43ff8b6eaa4ff68f81abe5b9193f2c05a72d990d4cc7360ce348e711",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "32b423d8a30a4d88bb4bcec2d276f1eb",
+                "drawing_id": "4095f1a660fd48119ef248176fa9442b",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -18967,7 +18967,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "32b423d8a30a4d88bb4bcec2d276f1eb",
+                "object_id": "4095f1a660fd48119ef248176fa9442b",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -18985,7 +18985,7 @@
     },
     {
       "id": "DR33",
-      "title": "Kanal yok/429/kalıcı hata/TTL",
+      "title": "Kanal yok/429/kal\u0131c\u0131 hata/TTL",
       "passed": true,
       "expected": {
         "local_receipt_supported": true,
@@ -19012,7 +19012,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+        "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -19039,7 +19039,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2bc3d8e894ba497fb851cb9249f24192",
+              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -19072,9 +19072,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
             "distance": "1/5",
-            "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -19216,7 +19216,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -19245,7 +19245,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "5928bf8bd9ab6ec698d913ac2a69a7f135c693106e9d60d08aa581724d409724",
+            "event_id": "2671d32e5e591beb353ef4d23071a917b68dea31d80637c02a1bb310b1a1d2bc",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -19275,7 +19275,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2bc3d8e894ba497fb851cb9249f24192",
+              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -19308,9 +19308,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
             "distance": "1/5",
-            "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -19452,7 +19452,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -19481,7 +19481,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "15f663f61abdedfc8c65f9b2fb67883d28dd42e0912f6440ab91409a70c8aef2",
+            "event_id": "e24f9adae312115d3e3d8131967eb7dfa4f1b2e33d000f9f5822cac7186fbeda",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -19511,7 +19511,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2bc3d8e894ba497fb851cb9249f24192",
+              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -19544,9 +19544,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
             "distance": "1/5",
-            "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -19688,7 +19688,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -19717,7 +19717,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "42b2f2985e4563764d55e36a17a4931d866b9a4ba17ce02d67b1ca331ee87da6",
+            "event_id": "9f7b3bafa13da193e9820f7201dcd64a2da8390a99526e3a1230f499be9fe563",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -19747,7 +19747,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2bc3d8e894ba497fb851cb9249f24192",
+              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -19780,9 +19780,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
             "distance": "1/5",
-            "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -19924,7 +19924,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -19953,7 +19953,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "87a2e8df49cb93cdf4db874e67506e09614ef957f3c62ab43c8fd2a2f87bdc16",
+            "event_id": "bb98c0c50680022527875aaed105981d33a16fa53245be3ab4c6a2dd0b11b824",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -19983,7 +19983,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2bc3d8e894ba497fb851cb9249f24192",
+              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -20016,9 +20016,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
             "distance": "1/5",
-            "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -20160,7 +20160,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -20189,7 +20189,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "f3ffcaa13dde2d6c30d02c156b2703bbe958a7d326fe29ab860f5c70951c270c",
+            "event_id": "1e2ff546e209454b258acbcc402a2d5be6e6fb4dda8ee4cb4f473419f4c35761",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -20218,20 +20218,20 @@
         ],
         "events": [
           {
-            "event_id": "5928bf8bd9ab6ec698d913ac2a69a7f135c693106e9d60d08aa581724d409724",
+            "event_id": "2671d32e5e591beb353ef4d23071a917b68dea31d80637c02a1bb310b1a1d2bc",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "direction": "ABOVE",
-              "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "7707715cffab4977a5d4be13ba468897",
+                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20283,7 +20283,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "7707715cffab4977a5d4be13ba468897",
+                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20292,20 +20292,20 @@
             "intent_state": "CHANNEL_UNCONFIGURED"
           },
           {
-            "event_id": "15f663f61abdedfc8c65f9b2fb67883d28dd42e0912f6440ab91409a70c8aef2",
+            "event_id": "e24f9adae312115d3e3d8131967eb7dfa4f1b2e33d000f9f5822cac7186fbeda",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "direction": "ABOVE",
-              "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "7707715cffab4977a5d4be13ba468897",
+                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20357,7 +20357,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "7707715cffab4977a5d4be13ba468897",
+                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20366,20 +20366,20 @@
             "intent_state": "FAILED"
           },
           {
-            "event_id": "42b2f2985e4563764d55e36a17a4931d866b9a4ba17ce02d67b1ca331ee87da6",
+            "event_id": "9f7b3bafa13da193e9820f7201dcd64a2da8390a99526e3a1230f499be9fe563",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "direction": "ABOVE",
-              "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "7707715cffab4977a5d4be13ba468897",
+                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20431,7 +20431,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "7707715cffab4977a5d4be13ba468897",
+                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20440,20 +20440,20 @@
             "intent_state": "FAILED"
           },
           {
-            "event_id": "87a2e8df49cb93cdf4db874e67506e09614ef957f3c62ab43c8fd2a2f87bdc16",
+            "event_id": "bb98c0c50680022527875aaed105981d33a16fa53245be3ab4c6a2dd0b11b824",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "direction": "ABOVE",
-              "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "7707715cffab4977a5d4be13ba468897",
+                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20505,7 +20505,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "7707715cffab4977a5d4be13ba468897",
+                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20514,20 +20514,20 @@
             "intent_state": "EXPIRED"
           },
           {
-            "event_id": "f3ffcaa13dde2d6c30d02c156b2703bbe958a7d326fe29ab860f5c70951c270c",
+            "event_id": "1e2ff546e209454b258acbcc402a2d5be6e6fb4dda8ee4cb4f473419f4c35761",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "97b7472c61ec30ffc228ce0076c8fa3dc9dfbd32a234d2b97bde33e807c0076e",
+              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
               "direction": "ABOVE",
-              "domain_event_id": "779bbe1ff4172d8bf1fe8c991fe781ec8623c01ab1c9da4aa6cb04151e407353",
+              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "7707715cffab4977a5d4be13ba468897",
+                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20579,7 +20579,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "7707715cffab4977a5d4be13ba468897",
+                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20597,7 +20597,7 @@
     },
     {
       "id": "DR34",
-      "title": "Kuyrukta beklerken revision değişir",
+      "title": "Kuyrukta beklerken revision de\u011fi\u015fir",
       "passed": true,
       "expected": {
         "delivery_state": "CANCELED_SUPERSEDED",
@@ -20614,7 +20614,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "f5e5378d314ea38fe78e041671c2513178f750302e9f91725191aec15c526093",
+        "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -20641,7 +20641,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "43cb685013824a789caf6edfc01aa94c",
+              "boot_id": "78cbc3c7f8d24502924eef91285edc14",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -20674,9 +20674,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "f5e5378d314ea38fe78e041671c2513178f750302e9f91725191aec15c526093",
+            "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
             "distance": "1/5",
-            "domain_event_id": "c247e92637b38d2d6b3327d1e5ae33697e1d6def15d81ae6f8372957a1d38cd9",
+            "domain_event_id": "2afecc204e32a6152fb3aead5c696c0ccaeaadbfc73285f214438d77589f1969",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -20818,7 +20818,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "f5e5378d314ea38fe78e041671c2513178f750302e9f91725191aec15c526093",
+              "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -20847,7 +20847,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "4ae23b5902cf2f61a3fc18bd0cb77d43f305624dbe2bfce12403f5823ec86a65",
+            "event_id": "71d366dde1cc624331db6035418324064e0a42e2f64674df1b7dde41363bf74e",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -20877,7 +20877,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "43cb685013824a789caf6edfc01aa94c",
+              "boot_id": "78cbc3c7f8d24502924eef91285edc14",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -20910,9 +20910,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "f5e5378d314ea38fe78e041671c2513178f750302e9f91725191aec15c526093",
+            "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
             "distance": "1/5",
-            "domain_event_id": "c247e92637b38d2d6b3327d1e5ae33697e1d6def15d81ae6f8372957a1d38cd9",
+            "domain_event_id": "2afecc204e32a6152fb3aead5c696c0ccaeaadbfc73285f214438d77589f1969",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -21054,7 +21054,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "f5e5378d314ea38fe78e041671c2513178f750302e9f91725191aec15c526093",
+              "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -21083,7 +21083,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "8e244ed8e05988648d630ce9584485df6f8748d38347ac16dd5d67920423381a",
+            "event_id": "f2c7176a484720d88ebecac2844e4abec15c46c024a6decfb4cce5d330cf3f01",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -21112,20 +21112,20 @@
         ],
         "events": [
           {
-            "event_id": "4ae23b5902cf2f61a3fc18bd0cb77d43f305624dbe2bfce12403f5823ec86a65",
+            "event_id": "71d366dde1cc624331db6035418324064e0a42e2f64674df1b7dde41363bf74e",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "f5e5378d314ea38fe78e041671c2513178f750302e9f91725191aec15c526093",
+              "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
               "direction": "ABOVE",
-              "domain_event_id": "c247e92637b38d2d6b3327d1e5ae33697e1d6def15d81ae6f8372957a1d38cd9",
+              "domain_event_id": "2afecc204e32a6152fb3aead5c696c0ccaeaadbfc73285f214438d77589f1969",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "7bba60baa0e74a1cb418cf221a40e8c3",
+                "drawing_id": "1e4d095f89d94be0945e6e560044bdf0",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -21177,7 +21177,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "7bba60baa0e74a1cb418cf221a40e8c3",
+                "object_id": "1e4d095f89d94be0945e6e560044bdf0",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -21186,20 +21186,20 @@
             "intent_state": "DELIVERED_FAKE"
           },
           {
-            "event_id": "8e244ed8e05988648d630ce9584485df6f8748d38347ac16dd5d67920423381a",
+            "event_id": "f2c7176a484720d88ebecac2844e4abec15c46c024a6decfb4cce5d330cf3f01",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "f5e5378d314ea38fe78e041671c2513178f750302e9f91725191aec15c526093",
+              "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
               "direction": "ABOVE",
-              "domain_event_id": "c247e92637b38d2d6b3327d1e5ae33697e1d6def15d81ae6f8372957a1d38cd9",
+              "domain_event_id": "2afecc204e32a6152fb3aead5c696c0ccaeaadbfc73285f214438d77589f1969",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "7bba60baa0e74a1cb418cf221a40e8c3",
+                "drawing_id": "1e4d095f89d94be0945e6e560044bdf0",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -21251,7 +21251,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "7bba60baa0e74a1cb418cf221a40e8c3",
+                "object_id": "1e4d095f89d94be0945e6e560044bdf0",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -21269,7 +21269,7 @@
     },
     {
       "id": "DR35",
-      "title": "Ayrı kural bağı ayrı olaydır",
+      "title": "Ayr\u0131 kural ba\u011f\u0131 ayr\u0131 olayd\u0131r",
       "passed": true,
       "expected": {
         "semantic_events": 2,
@@ -21284,7 +21284,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "b28fe73c25d16970c4d38b7a02e881c1e62a2cecf5b11a33f22d48826f1f5c4b",
+        "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -21311,7 +21311,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "bf713ff2a9c94d4aaffdaa38373c6219",
+              "boot_id": "047679a43f34482b932361a29aa44148",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -21344,9 +21344,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b28fe73c25d16970c4d38b7a02e881c1e62a2cecf5b11a33f22d48826f1f5c4b",
+            "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
             "distance": "1/5",
-            "domain_event_id": "86ee4e67ebc9709754c64e38b31fadc881746cbe133660b657eee6e0738f0201",
+            "domain_event_id": "bc1e58518b780b5a9bbbcfe934f8b4fc91a997e363e2c40d558857e8f04e6c19",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -21488,7 +21488,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b28fe73c25d16970c4d38b7a02e881c1e62a2cecf5b11a33f22d48826f1f5c4b",
+              "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -21517,7 +21517,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "7c072d14d55577041897b3b9b18603233e69d1014792a1e28f3c090551564eeb",
+            "event_id": "6c5a4cef114f4c3bb845d573c00b10ec8fce3bb572300f6326058e3c24710cb4",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -21547,7 +21547,7 @@
             "binding_id": "other",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "bf713ff2a9c94d4aaffdaa38373c6219",
+              "boot_id": "047679a43f34482b932361a29aa44148",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -21580,9 +21580,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b28fe73c25d16970c4d38b7a02e881c1e62a2cecf5b11a33f22d48826f1f5c4b",
+            "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
             "distance": "1/5",
-            "domain_event_id": "852d3e59ace7c02443e492fae3353d25716704cb9a4fcb16df36934496aaf105",
+            "domain_event_id": "e9cae4f7930a073b763e1e70da8fbc2aea171caea90e0522895882f8e65af64e",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "other",
@@ -21724,7 +21724,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b28fe73c25d16970c4d38b7a02e881c1e62a2cecf5b11a33f22d48826f1f5c4b",
+              "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -21753,7 +21753,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "e14c7a40bc663f16bb284ebbbb871afb2aebcb702054bdf7cd9cf35ca5e68444",
+            "event_id": "500cdb9c415dda551a3c562bee364008dceeaf0bf72575fdd4e9c268d362d32e",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -21782,20 +21782,20 @@
         ],
         "events": [
           {
-            "event_id": "7c072d14d55577041897b3b9b18603233e69d1014792a1e28f3c090551564eeb",
+            "event_id": "6c5a4cef114f4c3bb845d573c00b10ec8fce3bb572300f6326058e3c24710cb4",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "b28fe73c25d16970c4d38b7a02e881c1e62a2cecf5b11a33f22d48826f1f5c4b",
+              "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
               "direction": "ABOVE",
-              "domain_event_id": "86ee4e67ebc9709754c64e38b31fadc881746cbe133660b657eee6e0738f0201",
+              "domain_event_id": "bc1e58518b780b5a9bbbcfe934f8b4fc91a997e363e2c40d558857e8f04e6c19",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "664d7e7d679f4cf88540a3910cb6f52e",
+                "drawing_id": "0eb9a60f919c489b9a6b86a2a4d9f94c",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -21847,7 +21847,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "664d7e7d679f4cf88540a3910cb6f52e",
+                "object_id": "0eb9a60f919c489b9a6b86a2a4d9f94c",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -21856,20 +21856,20 @@
             "intent_state": "PENDING_FAKE"
           },
           {
-            "event_id": "e14c7a40bc663f16bb284ebbbb871afb2aebcb702054bdf7cd9cf35ca5e68444",
+            "event_id": "500cdb9c415dda551a3c562bee364008dceeaf0bf72575fdd4e9c268d362d32e",
             "body": {
               "binding_id": "other",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "b28fe73c25d16970c4d38b7a02e881c1e62a2cecf5b11a33f22d48826f1f5c4b",
+              "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
               "direction": "ABOVE",
-              "domain_event_id": "852d3e59ace7c02443e492fae3353d25716704cb9a4fcb16df36934496aaf105",
+              "domain_event_id": "e9cae4f7930a073b763e1e70da8fbc2aea171caea90e0522895882f8e65af64e",
               "episode": 1,
               "identity_components": {
                 "binding_id": "other",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "664d7e7d679f4cf88540a3910cb6f52e",
+                "drawing_id": "0eb9a60f919c489b9a6b86a2a4d9f94c",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -21921,7 +21921,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "664d7e7d679f4cf88540a3910cb6f52e",
+                "object_id": "0eb9a60f919c489b9a6b86a2a4d9f94c",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -21960,7 +21960,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "e68ae8bde6372c58997bccbe28ff7ac8479b74947bf7d6add7ab9693b81f28bb",
+        "definition_hash": "1ac42c17588466bf524017128e75215fc7542e84986ba306954bb6d2e235d473",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": null,
         "data_proof": null,
@@ -22000,9 +22000,9 @@
     "agentrader/chart/chart_clock.py": "e6d4133cf15b8a0985042972f4b478fcb0e82be2b9f381142110aa0a9e67b412",
     "agentrader/chart/chart_evidence.py": "fb29d3ff4ea935f5d6fd65a18a9ab8645dda26fd5e0ca2b83e438d498881070d",
     "agentrader/chart/chart_precision.py": "c8b644b0bbb9be24c8e9defad1c1c03c4bcaf348265864415f79ab5c6863fba1",
-    "agentrader/migrations/__init__.py": "6e8ce61a8c62d7301b82b8b50b186e6a21202de6c5fe2b3c04f97a113f3beb65",
+    "agentrader/migrations/__init__.py": "3a09746e74799a28019ea880f0188ed9bbd15e7b692b1d89bc7daf99649a96af",
     "agentrader/chart/replay_report.py": "d6dc6e8f63b45b3f989c444e8af385900a9ab1367680ca766a12eb9c45b21e2d",
-    "agentrader/binding_evidence.json": "b80c973b6a4bfb910a2ac271391034a76586da89f673f2933e098bfa9ea26645",
+    "agentrader/binding_evidence.json": "bb1b9e40b1a4746fb2e5ebe611ecf9c04f2129620fa804e4c9ab67ee535300cc",
     "scripts/chart/run_chart_p7.py": "2564b985ecbc5ca3eaffb3164e80e0c157b24d2d8b276e469d55eb6ef102051f",
     "docs/chart/contracts/chart-dry-run-v1.json": "2b3100ea24f6138707db2dca39222d401ad332047efc742cd259691beb62337e",
     "docs/chart/contracts/chart-bot-input-v1.json": "af22403bdb7870ec2af7096d722f4484191033588e943e117a800747b88916d3"

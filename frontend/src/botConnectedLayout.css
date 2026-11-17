@@ -1,0 +1,36 @@
+/* Connected terminal layout. The full page owns scrolling; the chart ticket is compact. */
+.terminal .bot-connected .bot-field-error{color:var(--down);font-size:12px;line-height:1.5}
+.terminal .bot-connected .bot-validation-summary{margin:0 0 14px;padding:10px;border:1px solid var(--down);border-radius:4px}
+.terminal .bot-connected [aria-invalid=true]{border-color:var(--down)}
+.terminal>.bot-view>.bot-connected .bot-toolbar{min-height:54px}
+.terminal>.bot-view>.bot-connected .bot-metrics{padding:6px 0}
+.terminal>.bot-view>.bot-connected .bot-metrics>div{padding:6px 16px}
+.terminal>.bot-view>.bot-connected.bot-live-ticket-only .bot-workspace{padding:20px;display:block}
+.terminal>.bot-view>.bot-connected.bot-live-ticket-only .bot-ticket{width:100%;max-width:1180px;margin:0 auto;border:1px solid var(--line);border-radius:4px;padding:18px}
+.terminal .bot-connected .bot-plan-step{display:flex;flex-direction:column;gap:12px;min-width:0}
+.terminal .bot-connected .bot-plan-step>.bot-ticket-section-title{border:0;margin:0 0 4px;padding:0}
+.terminal .bot-connected .bot-plan-step>label{display:grid;gap:6px}
+.terminal .bot-connected .bot-plan-step details{margin:0}
+.terminal .bot-connected .bot-plan-step>details{padding:10px 0;border-top:1px solid var(--line)}
+.terminal .bot-connected .bot-plan-step .bot-field-grid{gap:12px}
+.terminal .bot-connected .bot-plan-step .bot-ticket-submit{margin-top:auto}
+.terminal .bot-connected .bot-plan-step .bot-ticket-submit>button{width:100%}
+.terminal .bot-connected .bot-plan-step p{overflow-wrap:anywhere}
+@media(min-width:1000px){
+ .terminal>.bot-view>.bot-connected .bot-ticket .bot-live-fieldset{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(270px,1.3fr) minmax(240px,1fr);align-items:stretch;gap:22px}
+ .terminal>.bot-view>.bot-connected .bot-plan-step+.bot-plan-step{border-left:1px solid var(--line);padding-left:22px}
+}
+@media(min-width:700px) and (max-width:999px){
+ .terminal>.bot-view>.bot-connected .bot-ticket .bot-live-fieldset{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px}
+ .terminal>.bot-view>.bot-connected .bot-plan-options{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px}
+}
+@media(max-width:699px){
+ .terminal>.bot-view>.bot-connected.bot-live-ticket-only .bot-workspace{padding:12px}
+ .terminal>.bot-view>.bot-connected.bot-live-ticket-only .bot-ticket{padding:14px}
+ .terminal>.bot-view>.bot-connected .bot-ticket .bot-live-fieldset{display:flex;flex-direction:column;gap:22px}
+ .terminal>.bot-view>.bot-connected .bot-plan-step+.bot-plan-step{border-top:1px solid var(--line);padding-top:16px}
+ .terminal>.bot-view>.bot-connected .bot-live-nav{flex-wrap:wrap;overflow:visible;padding:0 8px}
+ .terminal>.bot-view>.bot-connected .bot-live-nav button{flex:1 0 30%;padding:10px 8px}
+}
+.terminal .bot-connected-compact .bot-ticket .bot-live-fieldset{display:flex;flex-direction:column;gap:18px}
+.terminal .bot-connected-compact .bot-plan-step+.bot-plan-step{border-top:1px solid var(--line);padding-top:14px}

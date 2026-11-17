@@ -11,7 +11,7 @@
     },
     {
       "path": "agentrader/chart/drawings/service.py",
-      "sha256": "57ea6f236bcc32bf828baa8f9fdcb41ee1b75c0e39965bf8121c6337b65a6740"
+      "sha256": "ca9c3eb68e88eecc87e84eeed2897b5ae10aca7d0cc6efe501ad33cfdb84cf23"
     },
     {
       "path": "agentrader/chart/drawings/contracts.py",
@@ -67,7 +67,7 @@
     },
     {
       "path": "agentrader/shared/market_feed.py",
-      "sha256": "7eccfa19a4adfa075ded6c2384a1b1b2145443f6d957caf8df835033edb1fdac"
+      "sha256": "654e869a7c9526f402f1280d40d946966fc15888f30acdcfed742e8d680632f4"
     },
     {
       "path": "agentrader/chart/local_chart_events.py",
@@ -87,7 +87,7 @@
     },
     {
       "path": "agentrader/chart/chart_market.py",
-      "sha256": "6f78b7a4ffc5ccc441da6c5e4933f2ee48fb2a57bbc2a2b697b42153a6b12dff"
+      "sha256": "c8f8172c64e96b9a43f5a3708b1122ece5a5358a69e7fcc0bdbccae764c07daa"
     },
     {
       "path": "agentrader/chart/drawings/tool_access.py",
@@ -95,7 +95,7 @@
     },
     {
       "path": "agentrader/chart/chart_context.py",
-      "sha256": "5e80f8bd3777ff566fe11f316d7f9c3c62c5fd3557997a4cf36900eefb753d11"
+      "sha256": "26c3875760d511cfe3dc1684950087671419de3f094179fdb85bbe76adf04031"
     },
     {
       "path": "agentrader/api/chart_context.py",
@@ -115,7 +115,7 @@
     },
     {
       "path": "agentrader/chart/indicator_queries.py",
-      "sha256": "75946e60d7d9e2da75bd37cd7432d302b5ed7e2c72a6e1a569a6a5d6327f2ec3"
+      "sha256": "309e49c97cc91a68b5e2524c9ea3e52ed7cd1b4d4d9338db004a13d36cbc52b1"
     },
     {
       "path": "agentrader/api/indicator_queries.py",
@@ -147,15 +147,15 @@
     },
     {
       "path": "agentrader/migrations/__init__.py",
-      "sha256": "6e8ce61a8c62d7301b82b8b50b186e6a21202de6c5fe2b3c04f97a113f3beb65"
+      "sha256": "3a09746e74799a28019ea880f0188ed9bbd15e7b692b1d89bc7daf99649a96af"
     },
     {
       "path": "agentrader/application/settings.py",
-      "sha256": "f02f3140cf2e1156cddeb5d3c76e09c59c869ae798d674b2fd1c2b4c3063c12e"
+      "sha256": "ee97ff95c6d45812e36f62c2cb1ae8f033aa841ef5afaebbc8a8beece2eb23a7"
     },
     {
       "path": "agentrader/api/app.py",
-      "sha256": "0c9bc5d0aff8cc4c40ee666746d7308a7f8e8a47984a5c4d86115027a6a383da"
+      "sha256": "3a6f8bfb1c0cc604d8398ad391bb62636292a4e9f49620f77e3d53f8d060ecae"
     },
     {
       "path": "agentrader/integration/chart_bot.py",

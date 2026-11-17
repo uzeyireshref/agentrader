@@ -243,7 +243,15 @@ class DiscoveryStorageAndCliTests(unittest.TestCase):
         def snapshot(s):return {name:[tuple(row) for row in s.db.execute('SELECT * FROM '+name)] for name in ('intents','control','account_commands','managed_sessions')}
         before=snapshot(store)
         with store.db:store.db.execute('DROP TABLE execution_namespace')
-        store.close();store=StateStore(path)
+        store.close()
+        with self.assertRaisesRegex(ValueError, 'CONTEXT_UNVERIFIED'):
+            StateStore(path)
+        from agentrader.shared.legacy_execution import attest
+        review = attest(path, 'owner', hashlib.sha256(KEY.encode()).hexdigest(), context='usdm-demo')
+        self.assertFalse(review['applied'])
+        applied = attest(path, 'owner', hashlib.sha256(KEY.encode()).hexdigest(), context='usdm-demo', apply=True)
+        self.assertTrue(Path(applied['backup']).is_file())
+        store=StateStore(path)
         try:
             self.assertEqual(snapshot(store),before);self.assertEqual(json.loads(store.db.execute('SELECT body FROM execution_namespace').fetchone()[0]),EXECUTION_CONTEXT)
             row=AccountCommands(DemoExchange(cfg),store,'owner').row(prepared['command_id'])[0]

@@ -27,6 +27,11 @@ def execution_status(database, owner, clock=time.time):
             if not {'control', 'intents', 'managed_sessions'} <= tables:
                 return {'storage': 'INCOMPLETE_SCHEMA', 'observation': 'LOCAL_ONLY', 'exchange_access': 'NOT_CHECKED',
                         'entry_halted': None, 'active_sessions': [], 'intent_counts': {}}
+            from agentrader.shared.storage_context import execution_context_state
+            context = execution_context_state(db)
+            if context != 'VERIFIED':
+                return {'storage': context, 'observation': 'LOCAL_ONLY', 'exchange_access': 'NOT_CHECKED',
+                        'entry_halted': None, 'active_sessions': [], 'intent_counts': {}}
             owner_row = db.execute("SELECT value FROM control WHERE name='plan_owner'").fetchone() if 'control' in tables else None
             if owner_row and owner_row[0] != owner:
                 return {'storage': 'OWNER_MISMATCH', 'observation': 'LOCAL_ONLY', 'exchange_access': 'NOT_CHECKED',
@@ -50,7 +55,7 @@ def execution_status(database, owner, clock=time.time):
                             raise ValueError('Invalid health time')
                         age = clock() - stamp
                         stopped = health.get('service_stopped') is True or health.get('state') in ('CLOSED', 'MONITOR_STOPPED')
-                        item['monitor'] = {'health': 'STOPPED' if stopped else ('FRESH' if 0 <= age <= 90 else 'STALE'),
+                        item['monitor'] = {'health': 'STOPPED' if stopped else ('FRESH' if 0 <= age <= 90 and health.get('state')!='MONITOR_READ_RETRY' else 'STALE'),
                                            'observed_at': stamp}
                     else:
                         item['monitor'] = {'health': 'NOT_OBSERVED'}

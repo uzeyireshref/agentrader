@@ -1,4 +1,5 @@
 /** Transient client reports; neither a market proof nor an order permission. */
+export const chartUiVisibility=(documentVisible:boolean,chartVisible=true):'visible'|'hidden'=>documentVisible&&chartVisible?'visible':'hidden';
 export type UiPolicy={schema_version:'chart-ui-policy/1';server_instance_id:string;ttl_seconds:number;min_publish_interval_ms:number;heartbeat_seconds:number;authentication_required:boolean};
 export type UiSnapshot=Record<string,unknown>;
 export type UiEnvelope={schema_version:'chart-ui-session/1';server_instance_id:string;sequence:number;client_time_ms:number;visibility:'visible'|'hidden';client_status:'CONNECTED'|'OFFLINE'|'CLOSED';snapshot:UiSnapshot};

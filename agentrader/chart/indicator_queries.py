@@ -214,6 +214,7 @@ class IndicatorQueries:
                 states.append(status)
                 result_outputs[name] = dict(state=status, required_input_count=requirements[name],
                                             available_input_count=available_prefix, loaded_input_count=len(rows),
+                                            history_capacity=499,capacity_limited=requirements[name]>499,
                                             ready_count=sum(p['state']=='READY' for p in output),
                                             points=output, reason=output[-1].get('reason') if output else selection_reason)
         except (ValueError, OverflowError, ZeroDivisionError):

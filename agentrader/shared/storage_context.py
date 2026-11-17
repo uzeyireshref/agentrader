@@ -7,14 +7,30 @@ from agentrader.shared.product_registry import EXECUTION_CONTEXT
 def tables(db):return {r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
 
 
+def execution_context_state(db):
+    existing = tables(db)
+    if 'discovery_contexts' in existing or 'app_schema_migrations' in existing or 'candles' in existing:
+        return 'CONTEXT_MISMATCH'
+    if 'execution_namespace' not in existing:
+        return 'CONTEXT_UNVERIFIED'
+    try:
+        rows = db.execute('SELECT body FROM execution_namespace').fetchall()
+        valid = len(rows) == 1 and json.loads(rows[0][0]) == EXECUTION_CONTEXT
+    except (ValueError, TypeError):
+        valid = False
+    return 'VERIFIED' if valid else 'CONTEXT_MISMATCH'
+
+
 def check_execution(db):
-    existing=tables(db)
-    if 'discovery_contexts' in existing:raise ValueError('DISCOVERY_CACHE_IS_NOT_EXECUTION_JOURNAL')
-    if 'execution_namespace' in existing:
-        rows=db.execute('SELECT body FROM execution_namespace').fetchall()
-        try:valid=len(rows)==1 and json.loads(rows[0][0])==EXECUTION_CONTEXT
-        except (ValueError,TypeError):valid=False
-        if not valid:raise ValueError('EXECUTION_NAMESPACE_MISMATCH')
+    existing = tables(db)
+    if 'discovery_contexts' in existing:
+        raise ValueError('DISCOVERY_CACHE_IS_NOT_EXECUTION_JOURNAL')
+    # Only a genuinely empty store may be initialized implicitly.
+    if not existing - {'sqlite_sequence'}:
+        return
+    state = execution_context_state(db)
+    if state != 'VERIFIED':
+        raise ValueError('EXECUTION_' + state)
 
 
 def bind_execution(db):

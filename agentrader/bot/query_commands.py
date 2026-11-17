@@ -150,6 +150,9 @@ def _page(commands,body,attempt,page,path,params,data):
            'row_count':len(data) if isinstance(data,list) else None,'observed_at_ms':int(time.time()*1000)}
     with commands.store.db:commands.store.db.execute('INSERT INTO exchange_read_pages VALUES(?,?,?,?,?)',
         (body['command_id'],attempt,page,canonical(proof),digest(proof)))
+    checkpoint = getattr(commands, 'read_checkpoint', None)
+    if checkpoint is not None:
+        checkpoint()
 
 
 def _export(commands,body):

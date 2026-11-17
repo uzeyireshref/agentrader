@@ -152,7 +152,7 @@ class OriginNoteTests(unittest.TestCase):
             self.assertEqual(db.execute('SELECT MAX(version) FROM app_schema_migrations').fetchone()[0],12)
             self.assertEqual(json.loads(db.execute('SELECT geometry FROM app_drawing_revisions').fetchone()[0]),geometry)
         with patch.object(migrations,'MIGRATIONS',migrations.MIGRATIONS[:12]):migrations.migrate(restored)
-        self.assertEqual(migrations.migrate(old)['schema_version'],13)
+        self.assertEqual(migrations.migrate(old)['schema_version'],migrations.MIGRATIONS[-1][0])
 
     def test_failed_migration_rolls_back_and_preserves_preupgrade_geometry(self):
         old=Path(self.tmp.name)/'fail.db';original=migrations.MIGRATIONS

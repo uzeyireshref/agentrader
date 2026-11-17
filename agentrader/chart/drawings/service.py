@@ -189,6 +189,9 @@ class DrawingService:
 
     def _origin(self,db,drawing_id):
         row=db.execute('SELECT body FROM app_drawing_origins WHERE owner=? AND drawing_id=?',(self.owner,drawing_id)).fetchone()
+        return self._origin_value(row)
+
+    def _origin_value(self, row):
         return json.loads(row['body']) if row else dict(schema='drawing-origin/1',kind='manual',source='legacy',actor_id=self.owner,bot_id=None,strategy_id=None,created_at=None)
 
     def _assert_edit(self,db,row):
@@ -205,6 +208,9 @@ class DrawingService:
 
     def _note(self,db,row):
         note=db.execute('SELECT * FROM app_drawing_notes WHERE owner=? AND drawing_id=? ORDER BY revision DESC LIMIT 1',(self.owner,row['drawing_id'])).fetchone()
+        return self._note_value(row, note)
+
+    def _note_value(self, row, note):
         return dict(schema='drawing-linked-note/1',drawing_id=row['drawing_id'],workspace_id=row['workspace_id'],
                     note_id=note['note_id'] if note else None,revision=note['revision'] if note else 0,
                     text=note['text'] if note else '',deleted=bool(note['deleted']) if note else False,
@@ -232,11 +238,39 @@ class DrawingService:
                        (self.owner, request_id, digest, json.dumps(result)))
             return result | {'duplicate': False}
 
-    def _view(self,row,db=None):
+    def _metadata(self, db, rows):
+        """Batch metadata in the caller's transaction, including tombstones."""
+        result = {}
+        for start in range(0, len(rows), 400):
+            chunk = rows[start:start+400]
+            ids = [r['drawing_id'] for r in chunk]
+            marks = ','.join('?' for _ in ids)
+            params = [self.owner, *ids]
+            origins = {r['drawing_id']: r for r in db.execute(
+                f'SELECT * FROM app_drawing_origins WHERE owner=? AND drawing_id IN ({marks})', params)}
+            notes = {r['drawing_id']: r for r in db.execute(
+                f'''SELECT n.* FROM app_drawing_notes n WHERE n.owner=? AND n.drawing_id IN ({marks})
+                    AND n.revision=(SELECT MAX(x.revision) FROM app_drawing_notes x
+                        WHERE x.owner=n.owner AND x.drawing_id=n.drawing_id)''', params)}
+            audits = {(r['drawing_id'],r['revision']):r for r in db.execute(
+                f'''SELECT a.* FROM app_drawing_audit a JOIN app_drawing_heads h
+                    ON a.owner=h.owner AND a.drawing_id=h.drawing_id AND a.revision=h.revision
+                    WHERE a.owner=? AND a.drawing_id IN ({marks})''', params)}
+            for row in chunk:
+                ident = row['drawing_id']; audit = audits.get((ident,row['revision']))
+                result[ident] = dict(
+                    origin=self._origin_value(origins.get(ident)),
+                    linked_note=self._note_value(row,notes.get(ident)),
+                    change=dict(revision=row['revision'],updated_by=json.loads(audit['body']) if audit else None))
+        return result
+
+    def _view(self, row, db=None, metadata=None):
         if db is None:
-            with closing(connect(self.database)) as connection:return self._view(row,connection)
-        audit=db.execute('SELECT body FROM app_drawing_audit WHERE owner=? AND drawing_id=? AND revision=?',(self.owner,row['drawing_id'],row['revision'])).fetchone()
-        return {'origin':self._origin(db,row['drawing_id']),'change':dict(revision=row['revision'],updated_by=json.loads(audit['body']) if audit else None),'linked_note':self._note(db,row),'drawing_id': row['drawing_id'], 'revision': row['revision'],
+            with closing(connect(self.database)) as connection:
+                return self._view(row, connection)
+        if metadata is None:
+            metadata = self._metadata(db, [row])[row['drawing_id']]
+        return {**metadata, 'drawing_id': row['drawing_id'], 'revision': row['revision'],
                 'workspace_id': row['workspace_id'], 'geometry': json.loads(row['geometry']),
                 'deleted': bool(row['deleted']), 'updated_at': row['updated_at'],
                 'management': management(json.loads(row['management'])),
@@ -258,9 +292,10 @@ class DrawingService:
         with closing(connect(self.database)) as db:
             rows = db.execute('''SELECT r.* FROM app_drawing_revisions r JOIN app_drawing_heads h
                 ON r.owner=h.owner AND r.drawing_id=h.drawing_id AND r.revision=h.revision
-                WHERE r.owner=? AND r.workspace_id=? AND r.deleted=0 ORDER BY r.updated_at,r.drawing_id''',
-                (self.owner, workspace_id)).fetchall()
-            return [self._view(r,db) for r in rows if json.loads(r['geometry'])['symbol'] == symbol]
+                WHERE r.owner=? AND r.workspace_id=? AND r.deleted=0 AND json_extract(r.geometry,'$.symbol')=? ORDER BY r.updated_at,r.drawing_id''',
+                (self.owner, workspace_id, symbol)).fetchall()
+            metadata = self._metadata(db, rows)
+            return [self._view(r,db,metadata[r['drawing_id']]) for r in rows]
 
     def show(self, drawing_id):
         with closing(connect(self.database)) as db:

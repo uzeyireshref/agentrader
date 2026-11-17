@@ -8,7 +8,7 @@ import re
 import threading
 import time
 
-from agentrader.chart.chart_clock import measure_time
+from agentrader.chart.chart_clock import measure_time, StreamTiming
 from agentrader.chart.chart_precision import exact_candle, exact_tick, precision_summary, PrecisionError
 from agentrader.shared.market_data import PublicMarket, CandleStore, INTERVALS, SOURCE, bucket, fetch_candles, normalize
 
@@ -46,14 +46,35 @@ class ChartMarket:
         self._catalog = None
         self._catalog_at = 0
         self._lock = threading.RLock()
+        self._catalog_lock = threading.RLock()
+        self._history_locks = {interval: threading.RLock() for interval in INTERVALS}
+        self._clock_lock = threading.RLock()
+        self._recent_clock = None
         self._history_cache = OrderedDict()
 
     def clock_sample(self):
         """Independent public clock read; no history lock or candle mutation."""
         return measure_time(self.client_factory(),self.clock,self.monotonic)[1]
 
+    def _history_time(self, client):
+        # A burst of timeframe switches can share a recently measured clock.
+        # Re-project via the original monotonic evidence, never reset its age,
+        # uncertainty or TTL. Wall jumps invalidate reuse before any read.
+        with self._clock_lock:
+            if self._recent_clock is not None:
+                at, evidence = self._recent_clock
+                timing = StreamTiming(self.clock, self.monotonic)
+                timing.seed(evidence)
+                error, server, _ = timing.clock_state()
+                if not error and 0 <= self.monotonic()-at <= 10:
+                    return int(server), copy.deepcopy(evidence)
+            stamp, evidence = measure_time(client, self.clock, self.monotonic)
+            self._recent_clock = ((self.monotonic(), evidence)
+                                  if evidence.get('state') == 'MEASURED' else None)
+            return stamp, evidence
+
     def catalog(self):
-        with self._lock:
+        with self._catalog_lock:
             now = self.clock()
             if self._catalog is not None and 0 <= now - self._catalog_at < 300:
                 return copy.deepcopy(self._catalog)
@@ -96,17 +117,19 @@ class ChartMarket:
             raise InvalidMarket('Mum sayısı 2–499 olmalı.')
         if end_time is not None and (type(end_time) is not int or not 0 <= end_time <= 32503680000000):
             raise InvalidMarket('Geçersiz tarih aralığı.')
-        # Serialize bounded history work/cache in one API process, shared by tabs.
-        with self._lock:
+        # Same-interval reads deduplicate; another timeframe must not wait for
+        # this interval's clock/REST network round trips. Cache mutation is brief.
+        with self._history_locks[interval]:
             market = self.selection(symbol, interval)
             key = (symbol, interval, limit, end_time)
-            cached = self._history_cache.get(key)
+            with self._lock:
+                cached = self._history_cache.get(key)
             now = self.clock()
             if not force and cached and 0 <= now - cached[0] <= 2:
                 return copy.deepcopy(cached[1])
             try:
                 client = self.client_factory()
-                server_time, clock_sample = measure_time(client, self.clock, self.monotonic)
+                server_time, clock_sample = self._history_time(client)
                 if type(server_time) is not int or server_time <= 0:
                     raise ValueError()
                 cutoff = min(end_time, server_time) if end_time is not None else server_time
@@ -131,10 +154,11 @@ class ChartMarket:
                           'quality': {'state': 'EMPTY' if not rows else ('GAP' if gaps else ('STALE' if missing_tail else 'OK')), 'missing_bars': gaps,
                                       'short_history': len(rows) < limit, **normalized}}
                 result['precision'] = precision_summary(result['candles'], market)
-                self._history_cache[key] = (self.clock(), result)
-                self._history_cache.move_to_end(key)
-                while len(self._history_cache) > 24:
-                    self._history_cache.popitem(last=False)
+                with self._lock:
+                    self._history_cache[key] = (self.clock(), result)
+                    self._history_cache.move_to_end(key)
+                    while len(self._history_cache) > 24:
+                        self._history_cache.popitem(last=False)
                 return copy.deepcopy(result)
             except (InvalidMarket, MarketUnavailable):
                 raise

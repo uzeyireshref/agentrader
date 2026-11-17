@@ -1,15 +1,15 @@
 import {useEffect,useRef} from 'react';
 import type {IChartApi,ISeriesApi,MouseEventParams,Time} from 'lightweight-charts';
 import type {Candle} from './types';
-import {UiPublisher,type UiPolicy,type UiSnapshot,type UiEnvelope} from './uiSession';
+import {UiPublisher,chartUiVisibility,type UiPolicy,type UiSnapshot,type UiEnvelope} from './uiSession';
 import {emptyCrosshair,currentUiCrosshair,type UiCrosshair} from './uiCrosshair';
-export function useUiSession(policy:UiPolicy|null,options:{chart:()=>IChartApi|null;series:()=>ISeriesApi<'Candlestick'>|null;rows:Candle[];marketKey:string;collect:(hover:UiCrosshair)=>UiSnapshot}){
+export function useUiSession(policy:UiPolicy|null,options:{visible?:boolean;chart:()=>IChartApi|null;series:()=>ISeriesApi<'Candlestick'>|null;rows:Candle[];marketKey:string;collect:(hover:UiCrosshair)=>UiSnapshot}){
  const latest=useRef(options);latest.current=options;const publisher=useRef<UiPublisher|null>(null),hover=useRef(emptyCrosshair()),market=useRef(options.marketKey);
  if(market.current!==options.marketKey){market.current=options.marketKey;hover.current=emptyCrosshair();}
  useEffect(()=>{publisher.current?.markDirty();});
  useEffect(()=>{
   if(!policy)return;
-  const environment=()=>({visibility:document.visibilityState==='visible'?'visible' as const:'hidden' as const,online:navigator.onLine,clientTime:Date.now()});
+  const environment=()=>({visibility:chartUiVisibility(document.visibilityState==='visible',latest.current.visible!==false),online:navigator.onLine,clientTime:Date.now()});
   const send=async(id:string,key:string,value:UiEnvelope,keepalive:boolean)=>{
    const abort=new AbortController(),timeout=setTimeout(()=>abort.abort(),5000);
    try{const response=await fetch('/api/workspaces/main/ui-sessions/'+encodeURIComponent(id),{method:'PUT',credentials:'same-origin',headers:{'Content-Type':'application/json','X-UI-Publisher-Key':key},body:JSON.stringify(value),keepalive,signal:abort.signal});return {status:response.status,body:await response.json().catch(()=>undefined)};}
@@ -38,4 +38,5 @@ export function useUiSession(policy:UiPolicy|null,options:{chart:()=>IChartApi|n
   const timer=setInterval(()=>{void client.step(performance.now());},250);void client.step(performance.now());
   return()=>{clearInterval(timer);close();resize.disconnect();chart?.unsubscribeCrosshairMove(move);chart?.timeScale().unsubscribeVisibleLogicalRangeChange(changed);host?.removeEventListener('wheel',changed);host?.removeEventListener('pointerup',changed);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('offline',offline);window.removeEventListener('online',changed);window.removeEventListener('pagehide',close);window.removeEventListener('pageshow',reopen);if(publisher.current===client)publisher.current=null;};
  },[policy?.server_instance_id]);
+ useEffect(()=>{if(options.visible===false)void publisher.current?.restrict(performance.now());else publisher.current?.markDirty();},[options.visible,policy?.server_instance_id]);
 }
