@@ -48,6 +48,15 @@ class GridCompilerTests(unittest.TestCase):
         p=grid_plan();p['sizing']['amount']='200'
         with self.assertRaisesRegex(ValueError,'minimum'):compile_grid(p,grid_snapshot(),limits(),now=1001)
 
+    def test_grid_minimum_budget_and_account_settings_have_distinct_public_reasons(self):
+        from agentrader.bot.preflight_errors import PreflightRejection
+        p=grid_plan();p['sizing']['amount']='10'
+        with self.assertRaises(PreflightRejection) as rejected:compile_grid(p,grid_snapshot(),limits(),now=1001)
+        self.assertEqual(rejected.exception.reason,'GRID_BUDGET_TOO_SMALL')
+        p=grid_plan();p['execution'].update(leverage=10,margin_mode='ISOLATED')
+        with self.assertRaises(PreflightRejection) as rejected:compile_grid(p,grid_snapshot(),limits(),now=1001)
+        self.assertEqual(rejected.exception.reason,'ACCOUNT_SETTINGS_MISMATCH')
+
     def test_short_grid_reserves_full_gross_position(self):
         p=grid_plan();p.update(direction='SHORT',stop='79000',targets=[{'price':'72000','fraction':'1'}])
         r=compile_grid(p,grid_snapshot(),limits(),now=1001)

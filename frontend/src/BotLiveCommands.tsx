@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { BotSnapshot, CommandInput } from "./botApi";
-import {batchPlanRows,planSelectionKey,reversePlanRows} from './botPlanSelection';
+import {batchPlanRows,planSelectionKey,reversePlanRows,planTimeEligible} from './botPlanSelection';
 type Values = Record<string, string>;
 const valueLabels:Record<string,string>={ISOLATED:'İzole',CROSSED:'Çapraz',PERCENT:'Yüzde · %',QUANTITY:'Miktar · baz varlık',MARK_PRICE:'Mark fiyatı',CONTRACT_PRICE:'Sözleşme fiyatı'};
 const choices = [
@@ -545,7 +545,7 @@ export default function BotLiveCommands({
                   .filter(
                     (r) =>
                       r.plan.execution?.strategy === "SINGLE" &&
-                      r.state === "AUTHORIZED",
+                      r.state === "AUTHORIZED" && planTimeEligible(r,true),
                   )
                   .map((r) => (
                     <label className="bot-check" key={planSelectionKey(r)}>

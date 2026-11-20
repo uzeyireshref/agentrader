@@ -29,7 +29,7 @@ class ChartStartupTests(unittest.TestCase):
         if path.endswith('/time'):
             return {'serverTime': STAMP}
         step = INTERVALS[params['interval']]
-        t = bucket(params['endTime'], params['interval'])
+        t = bucket(params.get('endTime', STAMP), params['interval'])
         return [[t-step,'100','110','90','105','10',t-1,'1050',5,'5','525','0'],
                 [t,'100','110','90','105','10',t+step-1,'1050',5,'5','525','0']]
 
@@ -52,6 +52,40 @@ class ChartStartupTests(unittest.TestCase):
             finally:
                 release.set()
             self.assertEqual(slow.result(timeout=2)['interval'],'5m')
+
+    def test_cold_latest_candles_start_before_clock_completes(self):
+        self.market.catalog()
+        candles_started = threading.Event()
+        def get(path, params=None):
+            if path.endswith('/time'):
+                if not candles_started.wait(1):
+                    raise TimeoutError('Candles were serialized behind clock')
+            if path.endswith('klines'):
+                self.assertNotIn('endTime', params)
+                candles_started.set()
+            return self.get(path, params)
+        self.client.get.side_effect = get
+        result = self.market.history('BTCUSDT', '15m', limit=2, force=True)
+        self.assertEqual(result['quality']['state'], 'OK')
+        self.assertEqual(result['clock_sample']['state'], 'MEASURED')
+
+    def test_parallel_latest_rejects_future_rows_and_clock_failure(self):
+        from agentrader.chart.chart_market import MarketUnavailable
+        self.market.catalog()
+        def future(path, params=None):
+            if path.endswith('klines'):
+                return self.get(path, {**params, 'endTime': STAMP+INTERVALS['15m']})
+            return self.get(path, params)
+        self.client.get.side_effect = future
+        with self.assertRaises(MarketUnavailable):
+            self.market.history('BTCUSDT','15m',limit=2,force=True)
+        self.market._recent_clock = None
+        def broken(path, params=None):
+            if path.endswith('/time'):raise OSError('clock offline')
+            return self.get(path,params)
+        self.client.get.side_effect = broken
+        with self.assertRaises(MarketUnavailable):
+            self.market.history('BTCUSDT','15m',limit=2,force=True)
 
     def test_duplicate_concurrent_history_still_uses_one_upstream_read(self):
         self.market.catalog()

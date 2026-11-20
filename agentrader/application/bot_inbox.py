@@ -7,8 +7,8 @@ from contextlib import closing
 
 from agentrader.migrations import connect
 
-ACTIONS={'CONTEXT','SNAPSHOT','READ_COMMAND','SAVE_PLAN','PREVIEW_PLAN_AUTHORIZATION','PREVIEW_PLAN','PREVIEW_COMMAND','PREVIEW_CONTROL','CONFIRM','RECONCILE'}
-READS={'CONTEXT','SNAPSHOT','RECONCILE'}
+ACTIONS={'CONTEXT','SNAPSHOT','ANALYZE_PLAN','READ_COMMAND','SAVE_PLAN','PREVIEW_PLAN_AUTHORIZATION','PREVIEW_PLAN','PREVIEW_COMMAND','PREVIEW_CONTROL','CONFIRM','RECONCILE'}
+READS={'CONTEXT','SNAPSHOT','ANALYZE_PLAN','RECONCILE'}
 
 
 def encoded(value):
@@ -37,7 +37,8 @@ class BotInbox:
             queue=db.execute("""SELECT
                 sum(CASE WHEN state='PENDING' THEN 1 ELSE 0 END) AS pending,
                 sum(CASE WHEN state='RUNNING' THEN 1 ELSE 0 END) AS running,
-                min(CASE WHEN state='PENDING' THEN created_at END) AS oldest
+                min(CASE WHEN state='PENDING' THEN created_at END) AS oldest,
+                min(CASE WHEN state='RUNNING' THEN updated_at END) AS started
                 FROM app_bot_jobs WHERE owner=? AND state IN ('PENDING','RUNNING')""",(self.settings.owner,)).fetchone()
         fresh=bool(row and 0<=self.clock()-row['updated_at']<=30 and row['mode']!='STOPPED')
         return dict(enabled=self.settings.bot_enabled,environment='demo',product='USD-M',
@@ -45,6 +46,7 @@ class BotInbox:
                     execution_enabled=bool(self.settings.bot_enabled and fresh and row['mode']=='EXECUTE_DEMO' and not row['error_code']),
                     error_code=row['error_code'] if row else None,
                     queue=dict(pending=queue['pending'] or 0,running=queue['running'] or 0,
+                               running_age_seconds=max(0,int(self.clock()-queue['started'])) if queue['started'] is not None else None,
                                oldest_pending_age_seconds=max(0,int(self.clock()-queue['oldest'])) if queue['oldest'] is not None else None))
 
     def pulse(self,execute,error=None):
@@ -57,7 +59,7 @@ class BotInbox:
         if not isinstance(request,dict) or set(request)!={'request_id','action','payload'}:raise BotError('INVALID_BOT_JOB')
         rid,action,p=request['request_id'],request['action'],request['payload']
         if not isinstance(rid,str) or not re.fullmatch('[A-Za-z0-9_-]{1,64}',rid) or not isinstance(action,str) or action not in ACTIONS or not isinstance(p,dict):raise BotError('INVALID_BOT_JOB')
-        expected={'CONTEXT':set(),'SNAPSHOT':{'symbol'},'READ_COMMAND':{'operation','scope','parameters'},'SAVE_PLAN':{'draft'},'PREVIEW_PLAN_AUTHORIZATION':{'draft'},'PREVIEW_PLAN':{'draft'},'PREVIEW_COMMAND':{'operation','scope','parameters'},
+        expected={'CONTEXT':set(),'SNAPSHOT':{'symbol'},'ANALYZE_PLAN':{'draft'},'READ_COMMAND':{'operation','scope','parameters'},'SAVE_PLAN':{'draft'},'PREVIEW_PLAN_AUTHORIZATION':{'draft'},'PREVIEW_PLAN':{'draft'},'PREVIEW_COMMAND':{'operation','scope','parameters'},
                   'PREVIEW_CONTROL':{'session_id','kind','close_position'},'CONFIRM':{'review_id','review_digest','account_ref','execute_demo'},'RECONCILE':{'command_id'}}[action]
         if set(p)!=expected:raise BotError('INVALID_BOT_PAYLOAD')
         if action=='SNAPSHOT' and (not isinstance(p['symbol'],str) or not re.fullmatch('[A-Z0-9]{2,20}USDT',p['symbol'])):raise BotError('INVALID_SYMBOL')
@@ -77,6 +79,9 @@ class BotInbox:
                 if old['payload_hash']!=h:raise BotError('BOT_JOB_CONFLICT',409)
             else:
                 pending=db.execute("SELECT count(*) FROM app_bot_jobs WHERE owner=? AND state IN ('PENDING','RUNNING')",(self.settings.owner,)).fetchone()[0]
+                if action in ('SNAPSHOT','ANALYZE_PLAN'):
+                    reads=db.execute("SELECT count(*) FROM app_bot_jobs WHERE owner=? AND action IN ('SNAPSHOT','ANALYZE_PLAN') AND state IN ('PENDING','RUNNING')",(self.settings.owner,)).fetchone()[0]
+                    if reads>=2:raise BotError('BOT_READ_QUEUE_BUSY',429)
                 if pending>=50:raise BotError('BOT_QUEUE_FULL',429)
                 db.execute('INSERT INTO app_bot_jobs VALUES(?,?,?,?,?,?,?, ?,NULL,NULL,NULL)',
                            (jid,self.settings.owner,action,body,h,'PENDING',now,now))
@@ -108,7 +113,7 @@ class BotInbox:
         # payload/result verification; a list row cannot authorize any action.
         columns = 'j.job_id,j.action,j.state,j.created_at,j.updated_at,j.error_code,o.result_state' if summary else 'j.*'
         join = 'LEFT JOIN app_bot_job_outcomes o ON o.job_id=j.job_id' if summary else ''
-        snapshot_filter = '' if include_snapshots else "AND j.action!='SNAPSHOT'"
+        snapshot_filter = '' if include_snapshots else "AND j.action NOT IN ('SNAPSHOT','ANALYZE_PLAN')"
         with closing(connect(self.settings.application_database)) as db:
             rows = db.execute(
                 f'SELECT {columns} FROM app_bot_jobs j {join} WHERE j.owner=? {snapshot_filter} ORDER BY j.created_at DESC,j.job_id DESC LIMIT 100',
@@ -123,10 +128,27 @@ class BotInbox:
             # No blanket replay after crash; financial intent is reconciled separately.
             db.execute("UPDATE app_bot_jobs SET state='NEEDS_REVIEW',error_code='WORKER_INTERRUPTED',updated_at=? WHERE owner=? AND state='RUNNING'",(self.clock(),self.settings.owner))
 
+    def prune_readings(self, *, retention_seconds=604800, batch_size=200):
+        """Bounded cleanup of completed successful ephemeral readings."""
+        if type(retention_seconds) is not int or retention_seconds<86400:
+            raise ValueError('Retention must be at least one day')
+        if type(batch_size) is not int or not 1<=batch_size<=1000:
+            raise ValueError('Invalid cleanup batch size')
+        with closing(connect(self.settings.application_database)) as db,db:
+            db.execute('BEGIN IMMEDIATE')
+            rows=db.execute("""SELECT job_id FROM app_bot_jobs WHERE owner=?
+                AND action IN ('SNAPSHOT','ANALYZE_PLAN') AND state='SUCCEEDED'
+                AND updated_at<? ORDER BY updated_at,job_id LIMIT ?""",
+                (self.settings.owner,self.clock()-retention_seconds,batch_size)).fetchall()
+            ids=[(r[0],) for r in rows]
+            db.executemany('DELETE FROM app_bot_job_outcomes WHERE job_id=?',ids)
+            db.executemany('DELETE FROM app_bot_jobs WHERE job_id=?',ids)
+        return len(ids)
+
     def claim(self):
         with closing(connect(self.settings.application_database)) as db,db:
             db.execute('BEGIN IMMEDIATE')
-            r=db.execute("SELECT job_id FROM app_bot_jobs WHERE owner=? AND state='PENDING' ORDER BY created_at,job_id LIMIT 1",(self.settings.owner,)).fetchone()
+            r=db.execute("SELECT job_id FROM app_bot_jobs WHERE owner=? AND state='PENDING' ORDER BY CASE WHEN action IN ('SNAPSHOT','ANALYZE_PLAN') THEN 1 ELSE 0 END,created_at,job_id LIMIT 1",(self.settings.owner,)).fetchone()
             if r is None:return None
             db.execute("UPDATE app_bot_jobs SET state='RUNNING',updated_at=? WHERE job_id=?",(self.clock(),r[0]))
         return self.row(r[0])

@@ -27,12 +27,14 @@ export type CommandInput = {
 };
 export type PlanRow = {
   state: string;
+  approval_until?: number | null;
   digest: string;
   plan: {
     plan_id: string;
     version: number;
     symbol: string;
     direction: string;
+    expires_at?: string;
     execution?: { strategy: string };
   };
 };
@@ -52,6 +54,11 @@ export type ExchangePosition = {
   positionSide: string;
   entryPrice?: string;
   markPrice?: string;
+  liquidationPrice?: string;
+  initialMargin?: string;
+  positionInitialMargin?: string;
+  analytics?:{roe_percent:string|null;liquidation_distance_percent:string|null};
+  maintMargin?: string;
   unRealizedProfit?: string;
   unrealizedProfit?: string;
 };
@@ -79,6 +86,7 @@ export type CommandResult = {
   result?: unknown;
 };
 export type BotSnapshot = {
+  mark?: {symbol:string;price:string;time:number;observed_at:number}|null;
   account_ref: string;
   observed_at: number;
   account: {
@@ -95,6 +103,7 @@ export type BotSnapshot = {
   risk_limits: Record<string, string | number>;
   entry_halted: boolean;
 };
+export type BotAnalytics={estimate_unavailable?:boolean;constraints?:string[];theoretical?:boolean;requested_budget?:string;theoretical_quantity?:string;rounded_quantity?:string;state:string;symbol:string;observed_at:number;calculated_at?:number;mark_price:string;mark_time:number;mark_local_time?:number;strategy?:string;margin_mode?:string;collateral?:string;initial_margin?:string;fee_reserve?:string;stop_risk?:string;notional_ceiling?:string;quantity?:string;entry_price?:string;pnl_at_mark?:string;target_gross?:string;target_after_fee_reserve?:string;stop_after_fee_reserve?:string;target_roe_percent?:string|null;target_return_percent?:string|null;pnl_unavailable?:string;reward_risk?:string|null;liquidation?:{direction:string;estimated_liquidation:string}[];execution_authorized:false;order_sent:false};
 type ReviewBase = {
   account_ref: string;
   expires_at: number;
@@ -159,8 +168,33 @@ const messages: Record<string, string> = {
 };
 export class BotApiError extends Error {
   constructor(public code: string,diagnostic?:unknown) {
-    super(exchangeDiagnosticMessage(diagnostic) ?? messages[code] ?? "İşlem tamamlanamadı: " + code);
+    super((code==='BOT_VALIDATION_OR_PREFLIGHT_REJECTED'?preflightDiagnosticMessage(diagnostic):null) ?? exchangeDiagnosticMessage(diagnostic) ?? messages[code] ?? "İşlem tamamlanamadı: " + code);
   }
+}
+export function preflightDiagnosticMessage(value:unknown):string|null{
+ if(!value||typeof value!=='object')return null;
+ const d=value as Record<string,unknown>;
+ if(d.category!=='PREFLIGHT'||typeof d.reason!=='string')return null;
+ const reasons:Record<string,string>={
+  ACCOUNT_NOT_ELIGIBLE:'Hesabın işlem yetkisi doğrulanamadı. Demo hesap ve API işlem izinlerini kontrol edin.',
+  ACCOUNT_MODE_MISMATCH:'Planın Tek yön / Hedge seçimi hesapla uyuşmuyor. Hesap modunu kontrol edip plan ayarını düzeltin; hesap modu otomatik değiştirilmez.',
+  ACCOUNT_SETTINGS_MISMATCH:'Planın kaldıraç veya teminat modu hesap ayarıyla uyuşmuyor. Hesap ve başlatma ayarlarını kontrol edip yeniden önizleyin.',
+  ACCOUNT_NOT_FLAT:'Bu giriş için hesapta açık pozisyon veya emir bulunmamalı. Hesap ve Emirler sekmelerini inceleyin; mevcut işlemler otomatik kapatılmaz.',
+  SNAPSHOT_STALE:'Hesap verisi ön kontrol sırasında eskidi. Hesabı yenileyip yeniden önizleyin.',
+  COLLATERAL_INSUFFICIENT:'Doğrulanmış kullanılabilir USDT teminatı, işlem ve masraf rezervini karşılamıyor. Bütçeyi ve açık işlemlerin teminatını inceleyin.',
+  BUDGET_TOO_SMALL:'Bütçe, sözleşmenin miktar adımına uygun pozitif miktar üretmiyor. Bütçeyi ve sözleşme limitlerini inceleyin.',
+  GRID_BUDGET_TOO_SMALL:'Toplam grid bütçesi, her hücrenin asgari emir tutarı veya miktar adımını karşılamıyor. Grid bütçesini, aralık sayısını ve sözleşme limitlerini kontrol edin; bütçe otomatik artırılmaz.',
+  GRID_PRICE_OUTSIDE_BAND:'Güncel Mark fiyatı grid bandının dışında. Alt/üst bandı ve referans fiyatını kontrol edin.',
+  PRICE_OUTSIDE_PROTECTION:'Güncel fiyat stop ve hedef aralığında değil. Giriş referansını, stopu ve hedefleri inceleyin.',
+  PRICE_DRIFT_EXCEEDED:'Güncel fiyat, onaylanan referansa göre sapma toleransını aşıyor. Referans fiyatını ve toleransı inceleyip yeniden önizleyin.',
+  NOTIONAL_LIMIT:'Plan toplam nominal risk sınırını aşıyor. Bütçeyi ve mevcut maruziyeti inceleyin.',
+  POSITION_COUNT_LIMIT:'İzin verilen pozisyon sayısı sınırı aşılıyor. Mevcut oturumları inceleyin.',
+  TRADE_RISK_LIMIT:'İşlem başına stop kaybı ve masraf toplamı risk sınırını aşıyor. Bütçeyi ve stop mesafesini inceleyin.',
+  TOTAL_RISK_LIMIT:'Toplam açık risk ve masraf rezervi sınırı aşılıyor. Mevcut pozisyonlarla birlikte plan bütçesini inceleyin.',
+  DAILY_LOSS_LIMIT:'Günlük kayıp ve planlanan risk toplamı günlük sınırı aşıyor. Günlük sonuçları ve açık riski inceleyin.',
+  LIQUIDATION_BUFFER:'Stop ile tahmini likidasyon arasında gerekli güvenlik mesafesi yok. Kaldıraç, teminat ve stop ayarlarını inceleyin.',
+ };
+ return Object.hasOwn(reasons,d.reason)?reasons[d.reason]:null;
 }
 export function exchangeDiagnosticMessage(value:unknown):string|null{
  if(!value||typeof value!=='object')return null;

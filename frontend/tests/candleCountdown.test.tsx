@@ -14,6 +14,16 @@ function live(interval:Interval='1m',remaining=10000):ChartState {
   timing:{schema:'chart-time-proof/1',policy:{schema:'chart-time-policy/1'},state:'FRESH',reason:null,data_age_ms:100,upstream_age_upper_ms:600,uncertainty_ms:200,upstream_event_time:close-remaining}};
 }
 const clock={mono:1000,wall:5000};
+test('initial connection waits without claiming that the clock is broken',()=>{
+ for(const status of ['CONNECTING','SYNCING']){
+  const state=live();state.status=status;
+  const result=candleCountdown(state,clock);
+  assert.equal(result.state,'UNAVAILABLE');assert.equal(result.reason,'WAITING_FOR_MARKET');
+  assert.equal(result.minRemainingMs,null);assert.equal(result.label,'Kapanış süresi bekleniyor');
+  state.consumer_clock_untrusted=true;
+  assert.notEqual(candleCountdown(state,clock).reason,'WAITING_FOR_MARKET');
+ }
+});
 test('producer age upper bound yields an explicit approximate range, never an exact server timestamp',()=>{
  const result=candleCountdown(live(),clock);assert.equal(result.state,'APPROXIMATE');assert.equal(result.minRemainingMs,9400);assert.equal(result.maxRemainingMs,9800);assert.match(result.label,/Yaklaşık kapanış/);
  const later=candleCountdown(live(),{mono:1500,wall:5500});assert.equal(later.minRemainingMs,8900);assert.equal(later.maxRemainingMs,9300);

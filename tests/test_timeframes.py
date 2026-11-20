@@ -26,7 +26,7 @@ class Source:
         if path.endswith('exchangeInfo'):return {'symbols':[dict(symbol='BTCUSDT',baseAsset='BTC',quoteAsset='USDT',status='TRADING',contractType='PERPETUAL',filters=[dict(filterType='PRICE_FILTER',tickSize='0.25')])]}
         assert path=='/fapi/v1/klines'
         step=INTERVALS[params['interval']];current=bucket(self.clock.stamp,params['interval']);rows=[raw(current-i*step,step) for i in range(800,-1,-1)]
-        return [r for r in rows if r[0]<=params['endTime']][-params['limit']:]
+        return [r for r in rows if r[0]<=params.get('endTime',self.clock.stamp)][-params['limit']:]
 
 class TimeframeTests(unittest.TestCase):
     def test_interval_contract_and_utc_boundaries_include_new_three(self):

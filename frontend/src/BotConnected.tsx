@@ -1,3 +1,4 @@
+import BotPlanAnalytics from './BotPlanAnalytics';
 import { useVisiblePolling } from "./useVisiblePolling";
 import { useEffect, useRef, useState } from "react";
 import BotPlanForm from "./BotPlanForm";
@@ -70,9 +71,11 @@ export default function BotConnected({
     } | null>(null),
     [now, setNow] = useState(Date.now());
   const gate = useRef(false);
+  const noticeRef = useRef<HTMLParagraphElement>(null);
   const live = useRef(true);
   const refreshSerial = useRef(0);
   const accountReading = useRef(false);
+  const analyticsReading = useRef(false);
   const nextAccountRead = useRef(0);
   const accountSerial = useRef(0);
   const fail = (e: unknown) => {
@@ -149,7 +152,7 @@ export default function BotConnected({
     const st = await statusRefresh();
     if (workerCanRead(st) && !review &&
         !gate.current && Date.now() >= nextAccountRead.current) {
-      await refreshAccount();
+      if (!analyticsReading.current) await refreshAccount();
     }
   }, fail, 5000, active);
 
@@ -182,7 +185,7 @@ export default function BotConnected({
     payload: Record<string, unknown>,
     done?: (j: BotJob<T> & { result: T }) => void,
   ) {
-    if (gate.current || accountReading.current) return;
+    if (gate.current) return;
     gate.current = true;
     setBusy(true);
     setError("");
@@ -204,6 +207,7 @@ export default function BotConnected({
       await statusRefresh();
     } catch (e) {
       fail(e);
+      setTimeout(() => noticeRef.current?.focus(), 0);
     } finally {
       gate.current = false;
       if (live.current) setBusy(false);
@@ -310,7 +314,7 @@ export default function BotConnected({
       </header>
       {session?.authenticated&&status?.queue&&status.queue.pending+status.queue.running>0&&<p className="bot-queue-status" role="status">Kuyrukta {status.queue.pending} talep · İşleniyor {status.queue.running}{(status.queue.oldest_pending_age_seconds??0)>30&&<> · En eski talep {status.queue.oldest_pending_age_seconds} saniyedir bekliyor</>}</p>}
       {error && (
-        <p role="alert" className="bot-live-notice">
+        <p ref={noticeRef} tabIndex={-1} role="alert" className="bot-live-notice">
           {error}
           <button onClick={() => setError("")}>Kapat</button>
         </p>
@@ -505,7 +509,7 @@ export default function BotConnected({
                           <th>Miktar</th>
                           <th>Giriş</th>
                           <th>Mark</th>
-                          <th>Açık kâr / zarar</th>
+                          <th>Açık kâr / zarar</th><th>ROE · %</th><th>Likidasyon · borsa</th><th>Likidasyon mesafesi · %</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -523,8 +527,8 @@ export default function BotConnected({
                               <td>{p.entryPrice}</td>
                               <td>{p.markPrice}</td>
                               <td>
-                                {p.unRealizedProfit ?? p.unrealizedProfit}
-                              </td>
+                                {stale?'—':p.unRealizedProfit ?? p.unrealizedProfit}
+                              </td><td>{stale?'—':p.analytics?.roe_percent??'—'}</td><td>{stale||!p.liquidationPrice||Number(p.liquidationPrice)<=0?'—':p.liquidationPrice}</td><td>{stale?'—':p.analytics?.liquidation_distance_percent??'—'}</td>
                             </tr>
                           ))}
                       </tbody>
@@ -768,7 +772,7 @@ export default function BotConnected({
                     talebin borsa sonucu ayrıntılardadır; belirsiz sonuçlar
                     otomatik yeniden gönderilmez.
                   </p>
-                  <label className="bot-check"><input type="checkbox" checked={showReadings} onChange={e=>{setShowReadings(e.target.checked);void statusRefresh(e.target.checked).catch(fail);}}/>Otomatik hesap okumalarını da göster</label><p className="bot-note">{showReadings?'Son 100 talep gösteriliyor.':'Son 100 işlem talebi gösteriliyor; otomatik hesap okumaları gizli.'}</p>
+                  <label className="bot-check"><input type="checkbox" checked={showReadings} onChange={e=>{setShowReadings(e.target.checked);void statusRefresh(e.target.checked).catch(fail);}}/>Otomatik okumaları ve hesaplamaları da göster</label><p className="bot-note">{showReadings?'Son 100 talep gösteriliyor.':'Son 100 işlem talebi gösteriliyor; otomatik okumalar ve hesaplamalar gizli.'}</p>
                   {jobs.length===0&&<p className="bot-empty">Bu filtrede henüz işlem kaydı yok.</p>}
                   {jobs.map((j) => (
                     <article className="bot-live-session" key={j.job_id}>
@@ -837,8 +841,9 @@ export default function BotConnected({
                 onDraft={onDraft}
                 symbols={symbols}
                 pending={busy}
-                canSave={workerReady && !refreshing}
-                canPreview={!controlsDisabled && !sourceChanged}
+                marketPrice={snapshot?.mark?.symbol===draft.symbol&&now/1000-snapshot.mark.observed_at<=15?snapshot.mark.price:undefined}
+                canSave={workerReady && !busy}
+                canPreview={!busy && workerReady && !queued && !sourceChanged}
                 onPreview={(mode) => {
                   const invalid = draftError(draft);
                   if (invalid) {
@@ -856,7 +861,7 @@ export default function BotConnected({
                     },
                   );
                 }}
-              />
+              ><BotPlanAnalytics draft={draft} active={active&&(compact||tab==='Yeni işlem')} enabled={workerReady&&!busy&&!review} readGate={accountReading} onPending={pending => { analyticsReading.current = pending; }}/></BotPlanForm>
             )}
           </div>
           {sourceChanged && (

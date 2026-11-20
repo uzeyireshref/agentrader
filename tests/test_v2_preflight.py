@@ -43,6 +43,35 @@ class SnapshotExchange:
 
 
 class V2PreflightTests(unittest.TestCase):
+    def test_real_transport_read_groups_are_bounded_and_share_only_the_governor(self):
+        import threading
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        from agentrader.shared.exchange import DemoExchange
+        from agentrader.bot.v2_preflight import read_many
+        exchange=DemoExchange(SimpleNamespace());exchange.offset_ms=123
+        guard=threading.Lock();release=threading.Event();counts={'active':0,'maximum':0};readers=[]
+        def get(reader,path,params=None):
+            with guard:
+                counts['active']+=1;counts['maximum']=max(counts['maximum'],counts['active']);readers.append(reader)
+                if counts['active']==4:release.set()
+            self.assertTrue(release.wait(2),'GET reads did not overlap')
+            with guard:counts['active']-=1
+            return path
+        with patch.object(DemoExchange,'get',get):
+            result=read_many(exchange,tuple(('/read-'+str(i),None) for i in range(6)))
+        self.assertEqual(result,tuple('/read-'+str(i) for i in range(6)))
+        self.assertEqual(counts['maximum'],4)
+        self.assertTrue(all(r is not exchange and r.transport is not exchange.transport and r.transport.governor is exchange.transport.governor and r.offset_ms==123 and r.store is None for r in readers))
+
+    def test_parallel_collection_does_not_extend_or_reset_the_freshness_window(self):
+        from agentrader.bot.preflight_errors import PreflightRejection
+        x=SnapshotExchange()
+        for path in ('/fapi/v1/premiumIndex','/fapi/v1/assetIndex'):x.data[path]['time']=1016000
+        times=iter([1000,1016])
+        with self.assertRaises(PreflightRejection) as caught:collect_flat_snapshot(x,'BTCUSDT',RiskLimits(),clock=lambda:next(times))
+        self.assertEqual(caught.exception.reason,'SNAPSHOT_STALE')
+
     def setUp(self):
         self.plan = plan_v2()
         self.plan['entry'].update(condition='IMMEDIATE', trigger_price=None)

@@ -2,6 +2,7 @@
 import json
 import sqlite3
 import time
+import threading
 from contextlib import contextmanager,closing
 
 from .bot_inbox import BotInbox,BotError
@@ -9,6 +10,7 @@ from .bot_engine import BotEngine,verified_store
 from agentrader.migrations import connect
 from agentrader.shared.locking import execution_lock,ExecutionBusy
 from agentrader.shared.exchange import ExchangeError
+from agentrader.bot.preflight_errors import PreflightRejection
 
 
 @contextmanager
@@ -42,6 +44,12 @@ def process_bot_once(inbox,*,execute=False,factory=engine_for,checkpoint=None,ad
             'diagnostic': {'category':'EXCHANGE','correlation_id':job['job_id'],
                            'code':exc.code if type(exc.code) is int else None,
                            'delivery_status':exc.delivery_status if exc.delivery_status in ('NOT_SENT','REJECTED','UNKNOWN','READ_FAILED') else 'UNKNOWN'}})
+    except PreflightRejection as exc:
+        # A failed confirmation may follow earlier mutations. Only preview jobs
+        # get this non-executing diagnostic; never infer delivery from an error.
+        result = ({'diagnostic': {'category':'PREFLIGHT','reason':exc.reason,'correlation_id':job['job_id']}}
+                  if job['action'] in ('ANALYZE_PLAN','PREVIEW_PLAN','PREVIEW_PLAN_AUTHORIZATION','PREVIEW_COMMAND') else None)
+        return inbox.finish(job['job_id'],error='BOT_VALIDATION_OR_PREFLIGHT_REJECTED',result=result)
     except (ValueError,KeyError,TypeError,ArithmeticError):return inbox.finish(job['job_id'],error='BOT_VALIDATION_OR_PREFLIGHT_REJECTED')
     except (OSError,sqlite3.Error):return inbox.finish(job['job_id'],error='BOT_STORAGE_UNAVAILABLE')
     return inbox.finish(job['job_id'],result=result)
@@ -138,19 +146,44 @@ def monitor(engine,timers):
         engine.store.runtime_health(sid,report,time.time())
 
 
+@contextmanager
+def worker_heartbeat(inbox, execute):
+    stopped=threading.Event()
+    def beat():
+        while not stopped.wait(5):
+            try:
+                with closing(connect(inbox.settings.application_database)) as db,db:
+                    db.execute("UPDATE app_bot_worker SET updated_at=? WHERE owner=? AND mode!='STOPPED'",
+                               (time.time(),inbox.settings.owner))
+            except (OSError,sqlite3.Error):
+                return
+    thread=threading.Thread(target=beat,name='bot-heartbeat',daemon=True)
+    inbox.pulse(execute)
+    thread.start()
+    try:
+        yield
+    finally:
+        stopped.set()
+        thread.join()
+
+
 def run_bot_worker(settings,*,execute=False,once=False,interval=1,sleep=time.sleep,factory=engine_for,emit=None):
     from .service import ApplicationService
     if not settings.bot_enabled or not settings.token:raise BotError('BOT_ENABLED_AND_WEB_TOKEN_REQUIRED')
     if type(interval)is not int or not 1<=interval<=10:raise BotError('INVALID_WORKER_INTERVAL')
     ApplicationService(settings).initialize();inbox=BotInbox(settings)
     path=settings.application_database.with_suffix(settings.application_database.suffix+'.bot-worker.lock')
+    next_cleanup=0
     timers={}  # Only leases explicitly armed in THIS process; never reload on restart.
-    with execution_lock(path):
+    with execution_lock(path), worker_heartbeat(inbox,execute):
         inbox.recover()
         try:
             while True:
                 result=None
                 inbox.pulse(execute)
+                if time.monotonic()>=next_cleanup:
+                    inbox.prune_readings()
+                    next_cleanup=time.monotonic()+3600
                 try:
                     with execution_lock():
                         if execute:

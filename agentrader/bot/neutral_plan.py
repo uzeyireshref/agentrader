@@ -8,6 +8,7 @@ from agentrader.bot.brackets import select_bracket
 from agentrader.bot.grid import arithmetic_levels
 from agentrader.bot.plans import exact_fields,positive,digest
 from agentrader.bot.portfolio import Exposure,evaluate_portfolio
+from agentrader.bot.preflight_errors import PreflightRejection
 from agentrader.bot.risk import number
 from agentrader.bot.v2_preflight import joint_step
 
@@ -54,10 +55,10 @@ def compile_neutral(plan,snapshot,limits,now=None):
             snapshot.get('target_flat_verified') is True and snapshot.get('ownership_verified') is True):
         raise ValueError('Neutral için sembolün boş ve hesabın sahipliğinin doğrulanmış olması gerekli.')
     if not 0<=now-snapshot['observed_at']<=limits.max_age_seconds or snapshot['position_mode']!='hedge':
-        raise ValueError('Taze hedge hesap görünümü gerekli; hesap modu otomatik değiştirilmez.')
+        raise PreflightRejection('ACCOUNT_MODE_MISMATCH','Taze hedge hesap görünümü gerekli; hesap modu otomatik değiştirilmez.')
     settings=snapshot['settings'];execution=plan['execution']
     if int(settings['leverage'])!=execution['leverage'] or settings['marginType']!=execution['margin_mode']:
-        raise ValueError('Neutral kaldıraç/teminat ayarı planla uyuşmuyor.')
+        raise PreflightRejection('ACCOUNT_SETTINGS_MISMATCH','Neutral kaldıraç/teminat ayarı planla uyuşmuyor.')
     info=snapshot['symbol_info'];mark=snapshot['mark'];price=number(mark['markPrice'])
     if (info['symbol']!=plan['symbol'] or mark['symbol']!=plan['symbol'] or info['status']!='TRADING' or
             info.get('quoteAsset')!='USDT' or info.get('contractType','PERPETUAL')!='PERPETUAL'):

@@ -2,12 +2,17 @@ import type {LiveSession,PlanRow} from './botApi';
 
 /** A plan id alone is not an executable reference: every selection pins a version. */
 export const planSelectionKey=(row:PlanRow)=>`${row.plan.plan_id}@${row.plan.version}`;
+export function planTimeEligible(row:PlanRow,authorized=false,now=Date.now()):boolean{
+ if(row.plan.expires_at!==undefined){const expiry=Date.parse(row.plan.expires_at);if(!Number.isFinite(expiry)||expiry<=now)return false;}
+ if(authorized&&row.approval_until!==undefined&&row.approval_until!==null&&(!Number.isFinite(row.approval_until)||row.approval_until*1000<=now))return false;
+ return true;
+}
 
 export function batchPlanRows(plans:PlanRow[],selected:string[]):PlanRow[]{
  if(!selected.length||selected.length>5||new Set(selected).size!==selected.length)
   throw Error('1–5 farklı plan sürümü seçin.');
  const rows=selected.map(key=>plans.find(row=>planSelectionKey(row)===key));
- if(rows.some(row=>!row||row.state!=='AUTHORIZED'))
+ if(rows.some(row=>!row||row.state!=='AUTHORIZED'||!planTimeEligible(row,true)))
   throw Error('Seçili plan sürümü artık yetkili değil veya bulunamadı. Hesabı yenileyip planları yeniden seçin.');
  const found=rows as PlanRow[];
  if(found.some(row=>row.plan.execution?.strategy!=='SINGLE'))throw Error('Toplu giriş yalnız tek işlem planlarını destekler.');
@@ -18,6 +23,7 @@ export function batchPlanRows(plans:PlanRow[],selected:string[]):PlanRow[]{
 
 export function reversePlanRows(plans:PlanRow[],session?:LiveSession):PlanRow[]{
  return plans.filter(row=>row.plan.execution?.strategy==='SINGLE'&&
+  planTimeEligible(row)&&
   ['PENDING_APPROVAL','PENDING_ACTIVATION'].includes(row.state)&&
   (!session||(row.plan.symbol===session.symbol&&row.plan.direction!==session.plan.direction)));
 }

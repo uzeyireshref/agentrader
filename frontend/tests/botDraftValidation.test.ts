@@ -18,3 +18,9 @@ test('grid bounds, intervals and blank budget receive distinct field errors',()=
  const result=draftValidation({...initialBotDraft,kind:'GRID',grid:{...defaultGrid,lower:'91000',upper:'89000',intervals:'1',budget:''}});
  for(const field of ['grid.upper','grid.intervals','grid.budget'])assert.ok(result.fields[field]);
 });
+test('directional grid accepts a stop inside its band and a target exactly at the exit boundary',()=>{
+ const valid={...initialBotDraft,kind:'GRID' as const,stop:'89500',target:'91000',grid:{...defaultGrid}};
+ assert.equal(draftValidation(valid).message,'');
+ assert.ok(draftValidation({...valid,stop:'90001'}).fields.stop);
+ assert.ok(draftValidation({...valid,target:'90999'}).fields.target);
+});

@@ -86,3 +86,39 @@ Uygulanan düzenlemeler:
 Tarayıcı kanıtı: 1440×900 masaüstü, 768×1024 orta ekran ve 390×844 mobil emülasyonu. Mobilde altı sekmede sayfa yatay taşması yok. SINGLE/GRID/NEUTRAL geçişlerinde örnek fiyat oluşmadı; ileri bölümler açıldığında ve en alta kaydırıldığında ön kontrol düğmesine erişildi. Tam Bot'ta kaydırma sahibi `.bot-view`; başlık sayfayla kayar. Grafikte 1440 px genişlikte panelin sol sınırı grafik alanının sağ sınırıyla aynı (1070 px); 390 px panelde yatay taşma yok ve alt düğme erişilebilir. Tab ile sözleşme alanına geçiş ve görünür odak çerçevesi doğrulandı. Son yeniden yüklemede konsolda hata/uyarı yok.
 
 **490/490 frontend testi**, TypeScript kontrolü ve üretim derlemesi başarılı. Bu tur backend veya finansal yürütme davranışı değiştirilmedi; finansal emir gönderilmedi. Görsel kabulün bağlantı engeli kalktı; dolu listeler, tüm review türleri, bütün klavye senaryoları ve gerçek Demo emir kabul matrisi hâlâ ayrı kabul işleridir. B05, snapshot saklama/büyümesi ve kapsamlı stil/bileşen sadeleştirmesi sonraki önceliklerdir.
+
+## 18 Kasım: doğrulama ve uygunluk turu
+
+- SINGLE fiyat/bütçe alanlarında, GRID bant/bütçe/aralık alanlarında ve yön/global stop ilişkilerinde alan bazlı hata gösterimi var. Hata metinleri `aria-describedby` ile alana bağlı; ilk hatalı alan odaklanır. Ayrıntılı hedef, trailing ve hesap ayarlarının mevcut doğrulaması özet mesajla korunur. Hatalı taslak; ön kontrol, kayıt ve toplu giriş yetkisi isteği göndermez.
+- Kesin EXCHANGE/REJECTED tanısında -2019, -2027, -4061, -1111 ve -4164 için anlaşılır açıklamalar gösterilir. Kaynak: [Binance USD-M hata kodları](https://developers.binance.com/en/docs/products/derivatives-trading-usds-futures/error-code). Genel ValueError/preflight reddi için neden uydurulmaz; backend'in yapılandırılmış alan bazlı ret sözleşmesi hâlâ açık iştir. UNKNOWN/NOT_SENT/READ_FAILED bu açıklamalarla kesin ret diye sunulmaz; otomatik yeniden gönderim eklenmedi.
+- Planın `expires_at` ve toplu giriş yetkisinin `approval_until` sınırları seçimde ve gönderim hazırlığında kontrol edilir. Seçim yetkiyi yenilemez. Yönetimde kapanmış veya SINGLE olmayan oturumlar gösterilmez; tüm ayrıntılı operasyon uygunluğu son olarak sunucuda doğrulanır.
+- Dolu tablo deneyi gerçek hesaba yazmayan, ayrı browser context içindeki açıkça işaretli örnek veriyle yapıldı. 390 px ekranda içerik genişliğinin tabloyla büyüyüp kesilmesi bulundu ve düzeltildi: tablo kapsayıcıları 357 px içinde 624/654 px içeriği yatay kaydırabiliyor. Gerçek hesap ekranına örnek veri karıştırılmadı.
+- Örnek veriyle PLAN review açıldı: mobilde pencere 358 px, ekran 390 px; onay kutusu metinle aynı satırda 16 px; salt okunur worker onayı kapalı tutuyor. Fixture yalnız SNAPSHOT ve PREVIEW_PLAN istekleri gördü, finansal CONFIRM yapılmadı. Gerçek sayfada boş formun dört alanı işaretlemesi ve giriş fiyatına odaklanması Chrome'da doğrulandı.
+
+Sonuç: **497/497 frontend testi**, TypeScript ve üretim derlemesi başarılı; `git diff --check` temiz. Son iki değişiklik CSS kapsamındaydı ve yeniden derlenip Chrome'da doğrulandı. Bu aşamada backend yürütme davranışı değiştirilmedi. Gerçek Demo emir kabulü, dolu bot oturumu senaryoları ve COMMAND/CONTROL review türlerinin tüm görsel varyantları henüz tamamlanmış sayılmaz.
+
+## 18 Kasım: yapılandırılmış backend ret nedenleri
+
+`PreflightRejection(ValueError)` mevcut doğrulama koşullarına sabit, izinli bir neden kodu ekler. SINGLE hesap modu/kaldıraç/teminat uyumsuzluğu, uygun olmayan/dolu hesap, eski görünüm, yetersiz teminat, küçük bütçe, stop/hedef dışındaki fiyat ve fiyat sapması ayrı nedenlerle raporlanır. Ortak portföy değerlendirmesinde nominal, pozisyon sayısı, işlem/toplam/günlük risk ve likidasyon tamponu retleri de kodlanır. Mevcut hata metinleri, Decimal hesaplamaları, eşikler ve kontrol sırası korunur.
+
+Kuyruk sonucu örneği:
+
+```json
+{"state":"FAILED","error_code":"BOT_VALIDATION_OR_PREFLIGHT_REJECTED","result":{"diagnostic":{"category":"PREFLIGHT","reason":"ACCOUNT_SETTINGS_MISMATCH","correlation_id":"job-..."}}}
+```
+
+Tanı yalnız PREVIEW_PLAN, PREVIEW_PLAN_AUTHORIZATION ve PREVIEW_COMMAND için iletilir. CONFIRM, READ_COMMAND veya RECONCILE aynı istisnayı alırsa mevcut genel tanı korunur; geçmiş finansal adımların teslim durumu hakkında çıkarım yapılmaz. Ham exception metni/bakiye/anahtar aktarılmaz. Genel ValueError, bilinmeyen nedenler ve henüz kodlanmamış kontroller genel reddi kullanmaya devam eder. Arayüz 15 izinli neden için açıklama sunar; hata mesajı kullanıcı talebi sonrasında odaklanır. Otomatik yeniden gönderim eklenmedi.
+
+Doğrulama:
+
+- 498/498 frontend testi, TypeScript ve üretim derlemesi başarılı.
+- Gerçek preflight fixture'larıyla hesap modu, hesap ayarı, veri yaşı, teminat ve risk retleri kuyruk sonucuna kadar test edildi; POST ve oturum oluşmadığı doğrulandı. Özel istisna metni sızıntısı ve CONFIRM'in yanlış etiketlenmemesi ayrıca test edildi. Bot terminalindeki 25 test geçti.
+- Tam Python taraması 1704 test çalıştırdı: 1700 geçti, çalışan worker kilidiyle çakışan 2 test ve eski replay raporuna bağlı 2 test başarısızdı. Worker kontrollü durduruldu; replay 36/36 izole senaryo ile yeniden üretilerek `replay_validation.json` yenilendi. İlgili batch, product discovery ve chart replay dosyalarındaki 117 test tekrarında tümü geçti. Tam paket ikinci kez çalıştırılmadı.
+- 390 px Chrome emülasyonunda, gerçek hesaba yazmayan ayrı context içindeki örnek ret açıklaması ve hata odağı doğrulandı. Fixture yazımları yalnız SNAPSHOT/PREVIEW_PLAN oldu; CONFIRM yok. Test context'i kapatıldı. Gerçek yerel sayfada konsol hatası/uyarısı yok.
+- Yerel worker güncel kodla yeniden başlatıldı: FRESH, hata yok, yürütme kapalı. Gerçek emir gönderilmedi.
+
+Kalan kapsam: bütün grid/komut/filtre retlerinin ayrı kodlarla kapsanması, sunucu tanılarının doğrudan ilgili form alanlarına bağlanması, COMMAND/CONTROL görsel kabul varyantları, snapshot saklama politikası ve gerçek Demo emir kabul matrisi.
+
+## Canlı finansal hesaplama teslimi
+
+Mark, derlenmiş plan miktarı/teminatı, hedef kârı, fiyat getirisi, ROE, stop sonucu, getiri/risk ve model likidasyonu için salt okunur ANALYZE_PLAN yolu eklendi. Açık pozisyonlarda borsa likidasyonu ve teminat getirisi gösteriliyor. İşlev sınırları, gerçek Demo denemesi, doğrulama ve istek ağırlığı kaynakları [LIVE-CALCULATIONS.md](LIVE-CALCULATIONS.md) belgesinde. 499 frontend testi, ilgili backend/transport/kota testleri ve üretim derlemesi başarılı; gerçek emir gönderilmedi.

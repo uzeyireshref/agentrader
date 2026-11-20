@@ -14,6 +14,7 @@ export function countdownDuration(ms:number):string {
 const unavailable=(reason:string,label='Saat doğrulanamadı'):CandleCountdownResult=>({state:'UNAVAILABLE',label,reason,minRemainingMs:null,maxRemainingMs:null});
 /** Approximation anchored to producer evidence; never substitute the browser wall epoch for exchange time. */
 export function candleCountdown(state:ChartState,clock:CountdownClock):CandleCountdownResult {
+ if((state.status==='CONNECTING'||state.status==='SYNCING')&&!state.consumer_clock_untrusted)return unavailable('WAITING_FOR_MARKET','Kapanış süresi bekleniyor');
  if(state.status!=='LIVE'||state.consumer_clock_untrusted||state.snapshot_required||state.data_proof?.state!=='VERIFIED'||state.quality!=='OK')return unavailable('MARKET_NOT_READY');
  const candle=state.candles.at(-1),step=steps[state.interval]*1000,anchor=state.interval==='1w'?345600000:0;
  if(!candle||!validCandle(candle)||candle.closed)return unavailable('NO_OPEN_CANDLE','Açık mum bekleniyor');

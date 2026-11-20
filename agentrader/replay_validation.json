@@ -29,7 +29,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "c5141aac131abc150809e657b26d73585aa5dd214d78f1c94ed6ae78a154e4b4",
+        "definition_hash": "f6b2c5ab4ff484ae1fda567d4d2d1d6fa8a22e4fde0ecda7f03119326a65fab8",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "63678ba60ab2fdc5438f36175f97a28d47cd64da3b2f88b144b792662b8e577d",
         "data_proof": null,
@@ -63,7 +63,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
+        "definition_hash": "a4b9bcce614db247613b2c9d60765799e9262165a8057ed5cd367428c2cec7f7",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "633c724976a7573be61049ce9783f92b939fea2514499071c97215f1cf5041ac",
         "data_proof": {
@@ -90,7 +90,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "4c5ae9679a564010b288ea77bfdb8c81",
+              "boot_id": "0d65e927c6354545a459f87ddf87983d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -123,7 +123,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
+            "definition_hash": "a4b9bcce614db247613b2c9d60765799e9262165a8057ed5cd367428c2cec7f7",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -265,7 +265,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
+              "definition_hash": "a4b9bcce614db247613b2c9d60765799e9262165a8057ed5cd367428c2cec7f7",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -324,7 +324,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "4c5ae9679a564010b288ea77bfdb8c81",
+              "boot_id": "0d65e927c6354545a459f87ddf87983d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -357,9 +357,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
+            "definition_hash": "a4b9bcce614db247613b2c9d60765799e9262165a8057ed5cd367428c2cec7f7",
             "distance": "9/10",
-            "domain_event_id": "e37c06d1ec1be319ef7c49c4d1e6d24307e4473daddd37c7f66ae87d05396254",
+            "domain_event_id": "35538643d8eac34f6f11dcd9bf82cd0af639816342266b88f420e829545c2994",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -501,7 +501,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
+              "definition_hash": "a4b9bcce614db247613b2c9d60765799e9262165a8057ed5cd367428c2cec7f7",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -530,7 +530,7 @@
             },
             "episode": 1,
             "event": "APPROACH",
-            "event_id": "bd049bf0e27fb5a4bced81108bb923c38cd5be8e5b213b3a1a9ddfe6567d7b45",
+            "event_id": "97f547e734781844ae1c01ee2ae8ae506b36352779f16e501ed0734a0501a180",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -559,20 +559,20 @@
         ],
         "events": [
           {
-            "event_id": "bd049bf0e27fb5a4bced81108bb923c38cd5be8e5b213b3a1a9ddfe6567d7b45",
+            "event_id": "97f547e734781844ae1c01ee2ae8ae506b36352779f16e501ed0734a0501a180",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "3c76ec3710b7475576edcef2fc6f08157d3f230289549c8be6b1f49eb3e8f199",
+              "definition_hash": "a4b9bcce614db247613b2c9d60765799e9262165a8057ed5cd367428c2cec7f7",
               "direction": "ABOVE",
-              "domain_event_id": "e37c06d1ec1be319ef7c49c4d1e6d24307e4473daddd37c7f66ae87d05396254",
+              "domain_event_id": "35538643d8eac34f6f11dcd9bf82cd0af639816342266b88f420e829545c2994",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "00b8591d62ad4e8ea639da4818f77c56",
+                "drawing_id": "db1f729b13804346983f04e85774e5bf",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "APPROACH",
@@ -624,7 +624,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "00b8591d62ad4e8ea639da4818f77c56",
+                "object_id": "db1f729b13804346983f04e85774e5bf",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -659,7 +659,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
+        "definition_hash": "dc8a7597b727d99ebae72d49786827bf5ac0efa406128eeac5b177509b18e715",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "ce8379788e504735b064f6ec77e58f17676c7a06bad86b437249215ac3028a7c",
         "data_proof": {
@@ -686,7 +686,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "0b594d6095814b019e3a2903efcf9bcc",
+              "boot_id": "73f43674092841c8a5d7963f6ebc6ad0",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -719,7 +719,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
+            "definition_hash": "dc8a7597b727d99ebae72d49786827bf5ac0efa406128eeac5b177509b18e715",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -861,7 +861,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
+              "definition_hash": "dc8a7597b727d99ebae72d49786827bf5ac0efa406128eeac5b177509b18e715",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -920,7 +920,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "0b594d6095814b019e3a2903efcf9bcc",
+              "boot_id": "73f43674092841c8a5d7963f6ebc6ad0",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -953,9 +953,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
+            "definition_hash": "dc8a7597b727d99ebae72d49786827bf5ac0efa406128eeac5b177509b18e715",
             "distance": "1",
-            "domain_event_id": "110b92918fa6a7fd8d9ea31cf9376e5c151c9164d30b8a7e8bd18a23695b102b",
+            "domain_event_id": "31064fcef1c5cf575354d9a1e999355e4f622ae241da32cb64a07c26a6751c14",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -1097,7 +1097,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
+              "definition_hash": "dc8a7597b727d99ebae72d49786827bf5ac0efa406128eeac5b177509b18e715",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -1126,7 +1126,7 @@
             },
             "episode": 1,
             "event": "APPROACH",
-            "event_id": "332c584d4fa1f2851a469dde949a8fb844791d8f6df03a8d2222d38513f7c91d",
+            "event_id": "eeb7701c1316722c68cf199a46af6897c15da460d6afa140a2b98cb48623d63a",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -1155,20 +1155,20 @@
         ],
         "events": [
           {
-            "event_id": "332c584d4fa1f2851a469dde949a8fb844791d8f6df03a8d2222d38513f7c91d",
+            "event_id": "eeb7701c1316722c68cf199a46af6897c15da460d6afa140a2b98cb48623d63a",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "973d7baf026a2112f486d81a7c09c085e8b6ed38f6a056f43724e4921d7fe295",
+              "definition_hash": "dc8a7597b727d99ebae72d49786827bf5ac0efa406128eeac5b177509b18e715",
               "direction": "ABOVE",
-              "domain_event_id": "110b92918fa6a7fd8d9ea31cf9376e5c151c9164d30b8a7e8bd18a23695b102b",
+              "domain_event_id": "31064fcef1c5cf575354d9a1e999355e4f622ae241da32cb64a07c26a6751c14",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "e094001d16ef43a3a02e6e2a50241906",
+                "drawing_id": "e4bfd5bc7f0e46109b0849ebedafc0d4",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "APPROACH",
@@ -1220,7 +1220,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "e094001d16ef43a3a02e6e2a50241906",
+                "object_id": "e4bfd5bc7f0e46109b0849ebedafc0d4",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -1253,7 +1253,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
+        "definition_hash": "019f1491b06202bdb786822edf62bdad2eb02ce58fef68f288fce825afc8dbc3",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "ef59a8aee87ce1aadb55b27de368bff94ee7c3fd80901699fb5858f2d26649de",
         "data_proof": {
@@ -1280,7 +1280,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "02ef1f36f440463286e1a59cbfb90836",
+              "boot_id": "3cadbe03c4384ec88217b6021ea24c97",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -1313,7 +1313,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
+            "definition_hash": "019f1491b06202bdb786822edf62bdad2eb02ce58fef68f288fce825afc8dbc3",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -1455,7 +1455,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
+              "definition_hash": "019f1491b06202bdb786822edf62bdad2eb02ce58fef68f288fce825afc8dbc3",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -1514,7 +1514,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "02ef1f36f440463286e1a59cbfb90836",
+              "boot_id": "3cadbe03c4384ec88217b6021ea24c97",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -1547,7 +1547,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
+            "definition_hash": "019f1491b06202bdb786822edf62bdad2eb02ce58fef68f288fce825afc8dbc3",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -1689,7 +1689,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c82f0d0581e2bacf4a009ba0abf8ac805199b49afb4039cc14bdc80affe2b768",
+              "definition_hash": "019f1491b06202bdb786822edf62bdad2eb02ce58fef68f288fce825afc8dbc3",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -1773,7 +1773,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
+        "definition_hash": "e2bb7644215fe36e60b91842112e361727b474012b6ba4d8c2d72442f7ef2ff5",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -1800,7 +1800,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "d992c704b3b0496995b579137ce0423b",
+              "boot_id": "c3c52a8b6fb5435daf33641e26fdffdb",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -1833,7 +1833,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
+            "definition_hash": "e2bb7644215fe36e60b91842112e361727b474012b6ba4d8c2d72442f7ef2ff5",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -1975,7 +1975,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
+              "definition_hash": "e2bb7644215fe36e60b91842112e361727b474012b6ba4d8c2d72442f7ef2ff5",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -2034,7 +2034,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "d992c704b3b0496995b579137ce0423b",
+              "boot_id": "c3c52a8b6fb5435daf33641e26fdffdb",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -2067,9 +2067,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
+            "definition_hash": "e2bb7644215fe36e60b91842112e361727b474012b6ba4d8c2d72442f7ef2ff5",
             "distance": "1/5",
-            "domain_event_id": "537a08d7439af1b5ed0030c01630198f38cb821f1f48861ce85c6ea3104a8ab2",
+            "domain_event_id": "9d7310be276658475319a039149d09914f38c344c519ca16d550632b0dc03347",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -2211,7 +2211,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
+              "definition_hash": "e2bb7644215fe36e60b91842112e361727b474012b6ba4d8c2d72442f7ef2ff5",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -2240,7 +2240,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "e4c6d4486f783ec866b54ce90c9cb6f5941d0fc4695298e7a2d048d517b9f4da",
+            "event_id": "47a2dad60b5b9c7c725d98bd0e1ef3e7d78fd985fcad1c328976c87171316273",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -2269,20 +2269,20 @@
         ],
         "events": [
           {
-            "event_id": "e4c6d4486f783ec866b54ce90c9cb6f5941d0fc4695298e7a2d048d517b9f4da",
+            "event_id": "47a2dad60b5b9c7c725d98bd0e1ef3e7d78fd985fcad1c328976c87171316273",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "e7592f658b270ad61129c8c601a9ab134eea7d3f2d567ec8d4ec53c0a97e5b1c",
+              "definition_hash": "e2bb7644215fe36e60b91842112e361727b474012b6ba4d8c2d72442f7ef2ff5",
               "direction": "ABOVE",
-              "domain_event_id": "537a08d7439af1b5ed0030c01630198f38cb821f1f48861ce85c6ea3104a8ab2",
+              "domain_event_id": "9d7310be276658475319a039149d09914f38c344c519ca16d550632b0dc03347",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "42f79a63f9c748eb878b49548fcc0184",
+                "drawing_id": "28eea7beef424ebc95cc52f5cc96607a",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -2334,7 +2334,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "42f79a63f9c748eb878b49548fcc0184",
+                "object_id": "28eea7beef424ebc95cc52f5cc96607a",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -2369,7 +2369,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
+        "definition_hash": "2db37b6f445ec8ae7235492453f94707dd762368bf8f7f314b3f22623b573800",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -2396,7 +2396,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "b3377f08b654459381ad3d4524d5afbd",
+              "boot_id": "f066f4de546d4b4a93cb0dcbed1f97f3",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -2429,7 +2429,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
+            "definition_hash": "2db37b6f445ec8ae7235492453f94707dd762368bf8f7f314b3f22623b573800",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -2571,7 +2571,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
+              "definition_hash": "2db37b6f445ec8ae7235492453f94707dd762368bf8f7f314b3f22623b573800",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -2630,7 +2630,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "b3377f08b654459381ad3d4524d5afbd",
+              "boot_id": "f066f4de546d4b4a93cb0dcbed1f97f3",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -2663,9 +2663,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
+            "definition_hash": "2db37b6f445ec8ae7235492453f94707dd762368bf8f7f314b3f22623b573800",
             "distance": "1/5",
-            "domain_event_id": "9b1cf04404ab34ef75afaca95ec6cd85cf886000569bd85f96b50d654791ceed",
+            "domain_event_id": "bd8be55e08cf1aef3699692185e1700f557b379a2399c6e97786924a725df621",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -2807,7 +2807,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
+              "definition_hash": "2db37b6f445ec8ae7235492453f94707dd762368bf8f7f314b3f22623b573800",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -2836,7 +2836,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "59c3244ed91155f1b46cb8be8138fd6798582d79ac78ee38c71f95d03b505ce0",
+            "event_id": "89e43d9b44ed8b3cdf3421ff2cab25ddc2aad9cd6b606a69f59f56e0b44f5966",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -2865,20 +2865,20 @@
         ],
         "events": [
           {
-            "event_id": "59c3244ed91155f1b46cb8be8138fd6798582d79ac78ee38c71f95d03b505ce0",
+            "event_id": "89e43d9b44ed8b3cdf3421ff2cab25ddc2aad9cd6b606a69f59f56e0b44f5966",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "6cb75596a508048ff81d7f39a3f1dd13b6849fdedf28318a954c10ccf40ebb1d",
+              "definition_hash": "2db37b6f445ec8ae7235492453f94707dd762368bf8f7f314b3f22623b573800",
               "direction": "ABOVE",
-              "domain_event_id": "9b1cf04404ab34ef75afaca95ec6cd85cf886000569bd85f96b50d654791ceed",
+              "domain_event_id": "bd8be55e08cf1aef3699692185e1700f557b379a2399c6e97786924a725df621",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "d94ff852526c4797b279e362f7d8f0fc",
+                "drawing_id": "5dba89d2802d4b2c95062cbbb15455c7",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -2930,7 +2930,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "d94ff852526c4797b279e362f7d8f0fc",
+                "object_id": "5dba89d2802d4b2c95062cbbb15455c7",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -2965,7 +2965,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+        "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "6e675f035497483efeddde0c543b93c7823031864543a20d9162b8bbd1104f26",
         "data_proof": {
@@ -2992,7 +2992,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "602d3c4905934bc4adb2ceff4357f30c",
+              "boot_id": "ad33d593d14d4d7580cb3981e0523d48",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -3025,7 +3025,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+            "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -3167,7 +3167,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+              "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -3226,7 +3226,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "602d3c4905934bc4adb2ceff4357f30c",
+              "boot_id": "ad33d593d14d4d7580cb3981e0523d48",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -3259,9 +3259,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+            "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
             "distance": "1/5",
-            "domain_event_id": "570b6b7b465408cf58e6f645e855b58484dcc788367d1d691e0a3c94ed6db62c",
+            "domain_event_id": "039e3c817249c3c7098ccea51f70c5e34cd3493464f7eba73e5534bd3fdaf976",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -3403,7 +3403,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+              "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -3432,7 +3432,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "8fd416b825572f0631b5478ff8448acff2ceed0190540b3df74097c093b5db50",
+            "event_id": "a5b4931f726146a3e13f5df3daf5f59bbd8f834af90be3d16e05387ec23f6018",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -3462,7 +3462,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "602d3c4905934bc4adb2ceff4357f30c",
+              "boot_id": "ad33d593d14d4d7580cb3981e0523d48",
               "cooldown": 1,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -3495,7 +3495,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+            "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -3637,7 +3637,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+              "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
               "evaluated_data": {
                 "data_revision": 3,
                 "generation": 1,
@@ -3695,7 +3695,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "602d3c4905934bc4adb2ceff4357f30c",
+              "boot_id": "ad33d593d14d4d7580cb3981e0523d48",
               "cooldown": 2,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -3728,7 +3728,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+            "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -3870,7 +3870,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+              "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -3927,20 +3927,20 @@
         ],
         "events": [
           {
-            "event_id": "8fd416b825572f0631b5478ff8448acff2ceed0190540b3df74097c093b5db50",
+            "event_id": "a5b4931f726146a3e13f5df3daf5f59bbd8f834af90be3d16e05387ec23f6018",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "cedf7805d413e92b712d69dc4827eab8eb0cf3c1e5a73ab5634d304238d33ef1",
+              "definition_hash": "2c302fc62c47d14ce158f96f34c46914fdf343430d34dcaf69c5f74865feb9d9",
               "direction": "ABOVE",
-              "domain_event_id": "570b6b7b465408cf58e6f645e855b58484dcc788367d1d691e0a3c94ed6db62c",
+              "domain_event_id": "039e3c817249c3c7098ccea51f70c5e34cd3493464f7eba73e5534bd3fdaf976",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "5c85567c54d74ef6aee4cafe7965ad11",
+                "drawing_id": "05925fbf9ab04621af479e55b76091db",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -3992,7 +3992,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "5c85567c54d74ef6aee4cafe7965ad11",
+                "object_id": "05925fbf9ab04621af479e55b76091db",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -4027,7 +4027,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+        "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "834110d795c622dfebb4aa2cc9bde21fe4bdd43d28be988c196745269f4510e7",
         "data_proof": {
@@ -4054,7 +4054,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
+              "boot_id": "c9545a2c201a4c2d91c9c7f8255d8bb6",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -4087,7 +4087,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+            "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -4229,7 +4229,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+              "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -4288,7 +4288,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
+              "boot_id": "c9545a2c201a4c2d91c9c7f8255d8bb6",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -4321,9 +4321,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+            "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
             "distance": "1/5",
-            "domain_event_id": "b3c30c0b505342a1008a9f1fdd98b36cfd790a90e8b005e74ff99d7a61dc3a76",
+            "domain_event_id": "36e2724c894b170313526a8c91f39deb9542cb3c963609efc17132198641da88",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -4465,7 +4465,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+              "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -4494,7 +4494,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "24a2a84de483b2a9c5b478098a60489ebb587ec6f968674c7a1d4b9af1005427",
+            "event_id": "1a932a58d09e63f8e3718dfb0aea17059e695948264050d3ec2d6d2973b3e484",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -4524,7 +4524,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
+              "boot_id": "c9545a2c201a4c2d91c9c7f8255d8bb6",
               "cooldown": 1,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -4557,7 +4557,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+            "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -4699,7 +4699,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+              "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
               "evaluated_data": {
                 "data_revision": 3,
                 "generation": 1,
@@ -4757,7 +4757,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
+              "boot_id": "c9545a2c201a4c2d91c9c7f8255d8bb6",
               "cooldown": 0,
               "episode": 2,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -4790,7 +4790,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+            "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -4932,7 +4932,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+              "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -4990,7 +4990,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "afc8e0b98d594c6da89c914aa5c55149",
+              "boot_id": "c9545a2c201a4c2d91c9c7f8255d8bb6",
               "cooldown": 0,
               "episode": 2,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -5023,9 +5023,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+            "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
             "distance": "9/10",
-            "domain_event_id": "bfc2b83e7e33e1a2e2d2594f7047397a9f45f6b1d27a4a7eed0bc24b50cab30c",
+            "domain_event_id": "336f285ff481b407f849ef12358547b0e418b75e4076a1916ce8082d63c59130",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -5167,7 +5167,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+              "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
               "evaluated_data": {
                 "data_revision": 5,
                 "generation": 1,
@@ -5196,7 +5196,7 @@
             },
             "episode": 2,
             "event": "APPROACH",
-            "event_id": "cae4f35045c337573017f67b62e769b6b8265084c59bb620861ec9d51e7f72c9",
+            "event_id": "74cb8d5b34ce0469f84161c0224d3a4c12c0a74c5a55bb1f4eacbd2f174f3117",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -5225,20 +5225,20 @@
         ],
         "events": [
           {
-            "event_id": "24a2a84de483b2a9c5b478098a60489ebb587ec6f968674c7a1d4b9af1005427",
+            "event_id": "1a932a58d09e63f8e3718dfb0aea17059e695948264050d3ec2d6d2973b3e484",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+              "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
               "direction": "ABOVE",
-              "domain_event_id": "b3c30c0b505342a1008a9f1fdd98b36cfd790a90e8b005e74ff99d7a61dc3a76",
+              "domain_event_id": "36e2724c894b170313526a8c91f39deb9542cb3c963609efc17132198641da88",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "089c915a52874d86aff8ec1e2608fe80",
+                "drawing_id": "19f82515002d4906bba184ed135e803d",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -5290,7 +5290,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "089c915a52874d86aff8ec1e2608fe80",
+                "object_id": "19f82515002d4906bba184ed135e803d",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -5299,20 +5299,20 @@
             "intent_state": "PENDING_FAKE"
           },
           {
-            "event_id": "cae4f35045c337573017f67b62e769b6b8265084c59bb620861ec9d51e7f72c9",
+            "event_id": "74cb8d5b34ce0469f84161c0224d3a4c12c0a74c5a55bb1f4eacbd2f174f3117",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800003600,
-              "definition_hash": "c6ed4b74da95968f7ec9b1008147c0b22ee6658cacdcca39b4d4a56d6c8e4e16",
+              "definition_hash": "88d9bffd974fced0b27d1f38387c1dd78fd54ccd0ffe31d56983e6e496f08306",
               "direction": "ABOVE",
-              "domain_event_id": "bfc2b83e7e33e1a2e2d2594f7047397a9f45f6b1d27a4a7eed0bc24b50cab30c",
+              "domain_event_id": "336f285ff481b407f849ef12358547b0e418b75e4076a1916ce8082d63c59130",
               "episode": 2,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800003600",
-                "drawing_id": "089c915a52874d86aff8ec1e2608fe80",
+                "drawing_id": "19f82515002d4906bba184ed135e803d",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "APPROACH",
@@ -5364,7 +5364,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "089c915a52874d86aff8ec1e2608fe80",
+                "object_id": "19f82515002d4906bba184ed135e803d",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -5397,7 +5397,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
+        "definition_hash": "fa434374c66c4d3971b8f788e4d5eedef9bf213faf35ec519b212ebbe8563fd3",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "2b3fce7530d2880cb6de7af48ff3d72456f6bff9c58a6415544ed583aace1c82",
         "data_proof": {
@@ -5424,7 +5424,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "a68d2f8f4a594b6bac86703de7b11277",
+              "boot_id": "2eebf0656c784f52a956d73d9df6f06b",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -5457,7 +5457,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
+            "definition_hash": "fa434374c66c4d3971b8f788e4d5eedef9bf213faf35ec519b212ebbe8563fd3",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -5599,7 +5599,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
+              "definition_hash": "fa434374c66c4d3971b8f788e4d5eedef9bf213faf35ec519b212ebbe8563fd3",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -5658,7 +5658,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "a68d2f8f4a594b6bac86703de7b11277",
+              "boot_id": "2eebf0656c784f52a956d73d9df6f06b",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -5691,7 +5691,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
+            "definition_hash": "fa434374c66c4d3971b8f788e4d5eedef9bf213faf35ec519b212ebbe8563fd3",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -5833,7 +5833,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "9f0005dee3cc2f2c833f873c32204149ca99722a4a5733d11b5c1ebf8b60a7e6",
+              "definition_hash": "fa434374c66c4d3971b8f788e4d5eedef9bf213faf35ec519b212ebbe8563fd3",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -5915,7 +5915,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
+        "definition_hash": "2e9a12fb347bf95a2a427a7339b980ea7426c0ad754700d67c854d64b2884b08",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "6a6a63ec636ae3a6941a09f6d7a7cfb8b93643b170c484f25b050d5fca388204",
         "data_proof": {
@@ -5942,7 +5942,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "1370e044a24141caaefa571fcf90016c",
+              "boot_id": "44a424cdf8c14cb087f057d268296312",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -5975,7 +5975,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
+            "definition_hash": "2e9a12fb347bf95a2a427a7339b980ea7426c0ad754700d67c854d64b2884b08",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -6117,7 +6117,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
+              "definition_hash": "2e9a12fb347bf95a2a427a7339b980ea7426c0ad754700d67c854d64b2884b08",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -6175,7 +6175,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "1370e044a24141caaefa571fcf90016c",
+              "boot_id": "44a424cdf8c14cb087f057d268296312",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -6208,9 +6208,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
+            "definition_hash": "2e9a12fb347bf95a2a427a7339b980ea7426c0ad754700d67c854d64b2884b08",
             "distance": "1/5",
-            "domain_event_id": "5adcc235255059b2ec94f4f7c8da9fa993df4c9e3e6ab01e80361c66ad73669d",
+            "domain_event_id": "36cda613ee80572bc3f0d26428bfcf02eac0df929aa81b636923f825a2832b7b",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -6352,7 +6352,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
+              "definition_hash": "2e9a12fb347bf95a2a427a7339b980ea7426c0ad754700d67c854d64b2884b08",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -6381,7 +6381,7 @@
             },
             "episode": 1,
             "event": "CLOSE_CROSS",
-            "event_id": "44d5a3ac8bba923abac6c86c7392295dba4d5bc675f17535faf80aff5b7b8231",
+            "event_id": "a94e74aed4842968cd5d319a25bc354602227b61cdd2531dd189778027303779",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -6410,20 +6410,20 @@
         ],
         "events": [
           {
-            "event_id": "44d5a3ac8bba923abac6c86c7392295dba4d5bc675f17535faf80aff5b7b8231",
+            "event_id": "a94e74aed4842968cd5d319a25bc354602227b61cdd2531dd189778027303779",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "01f921cb1a3b140c0b7b52f8eb56467b7047b02212d759699dc198a5595fdf3b",
+              "definition_hash": "2e9a12fb347bf95a2a427a7339b980ea7426c0ad754700d67c854d64b2884b08",
               "direction": "ABOVE",
-              "domain_event_id": "5adcc235255059b2ec94f4f7c8da9fa993df4c9e3e6ab01e80361c66ad73669d",
+              "domain_event_id": "36cda613ee80572bc3f0d26428bfcf02eac0df929aa81b636923f825a2832b7b",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "f14461b73ddd407d9a048d75bf62a752",
+                "drawing_id": "e05ebc6ba4a94aee8affb277d919225c",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "CLOSE_CROSS",
@@ -6475,7 +6475,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "f14461b73ddd407d9a048d75bf62a752",
+                "object_id": "e05ebc6ba4a94aee8affb277d919225c",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -6508,7 +6508,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "affa55efcbd6fdc93691f568702fb3164b2e717568572a1f0e1007d71b74b233",
+        "definition_hash": "46c669815fc4872afe60487ad78c8ecc238dd9d43901285baad215adb9a0dbd4",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "2f195bb37473732e01b2e9243e8614af320b7d6dbd8e25aed3d6f712f3584a4e",
         "data_proof": {
@@ -6535,7 +6535,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "81c22dadf5f949c5a6da75f1ebbf0434",
+              "boot_id": "34d0085a3aba48e095874aba78bf2383",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -6567,7 +6567,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "affa55efcbd6fdc93691f568702fb3164b2e717568572a1f0e1007d71b74b233",
+            "definition_hash": "46c669815fc4872afe60487ad78c8ecc238dd9d43901285baad215adb9a0dbd4",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -6709,7 +6709,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "affa55efcbd6fdc93691f568702fb3164b2e717568572a1f0e1007d71b74b233",
+              "definition_hash": "46c669815fc4872afe60487ad78c8ecc238dd9d43901285baad215adb9a0dbd4",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -6789,7 +6789,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "fb91df272098616d67eaf8c64cd6df5d27702cd22954ea7b19755e8cf1745bdd",
+        "definition_hash": "86f0aa37aaece32fedad1742b2c01f1d09427c4111909c97c36129113551033c",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": null,
         "data_proof": null,
@@ -6819,7 +6819,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "b08eadbbd520e0218f300f2c23d73134e134116f7e01299da3488060e5096db5",
+        "definition_hash": "68d9875a741408d9b9dc39ffb738d823a1012f2fa61401cc83b0c0aae279ba75",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": null,
         "data_proof": null,
@@ -6849,7 +6849,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "06c890b719545f4995c4ca51ab179aa4f800f3571f5247fc60e5b5fe0b888967",
+        "definition_hash": "3eeefc7261dc7913976ba9a8edea5622467aae2aefd6da3b686f51cfa8958a0f",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": null,
         "data_proof": null,
@@ -6879,7 +6879,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
+        "definition_hash": "96c5f4ff343bb0784c85d036cd92a070e07be7d6fb50e15df833774bfd47af35",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "50a61f3e88224f9593124f7a908aba33ca8c5ae22a531dbf5db57a3a25325a61",
         "data_proof": {
@@ -6906,7 +6906,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "0fa10884defc4f2c80860089f3fc3a3f",
+              "boot_id": "f89112ad00a34c2ab34e41a2990ae67d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -6939,7 +6939,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
+            "definition_hash": "96c5f4ff343bb0784c85d036cd92a070e07be7d6fb50e15df833774bfd47af35",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -7081,7 +7081,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
+              "definition_hash": "96c5f4ff343bb0784c85d036cd92a070e07be7d6fb50e15df833774bfd47af35",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -7140,7 +7140,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "0fa10884defc4f2c80860089f3fc3a3f",
+              "boot_id": "f89112ad00a34c2ab34e41a2990ae67d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -7173,7 +7173,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
+            "definition_hash": "96c5f4ff343bb0784c85d036cd92a070e07be7d6fb50e15df833774bfd47af35",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -7315,7 +7315,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
+              "definition_hash": "96c5f4ff343bb0784c85d036cd92a070e07be7d6fb50e15df833774bfd47af35",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -7374,7 +7374,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "0fa10884defc4f2c80860089f3fc3a3f",
+              "boot_id": "f89112ad00a34c2ab34e41a2990ae67d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -7407,7 +7407,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
+            "definition_hash": "96c5f4ff343bb0784c85d036cd92a070e07be7d6fb50e15df833774bfd47af35",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -7549,7 +7549,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "9469907719501ff42ec822dc7644b62179aeef3e2576f848411d9344226cede8",
+              "definition_hash": "96c5f4ff343bb0784c85d036cd92a070e07be7d6fb50e15df833774bfd47af35",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -7631,7 +7631,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
+        "definition_hash": "52d7d1fa33cce169bea47f52d222da7f6451640e2f5eba8eae4c061307d731be",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -7658,7 +7658,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2995945884ec49a499f29a6c605c4886",
+              "boot_id": "bc797361a43a406fac8289644bc7dd97",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -7691,7 +7691,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
+            "definition_hash": "52d7d1fa33cce169bea47f52d222da7f6451640e2f5eba8eae4c061307d731be",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -7833,7 +7833,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
+              "definition_hash": "52d7d1fa33cce169bea47f52d222da7f6451640e2f5eba8eae4c061307d731be",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -7892,7 +7892,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2995945884ec49a499f29a6c605c4886",
+              "boot_id": "bc797361a43a406fac8289644bc7dd97",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -7925,9 +7925,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
+            "definition_hash": "52d7d1fa33cce169bea47f52d222da7f6451640e2f5eba8eae4c061307d731be",
             "distance": "1/5",
-            "domain_event_id": "cbeb7c860d879fe7dc6a284dd2c4c545bd9913a1260d454363a40539e6bfc09c",
+            "domain_event_id": "1cd3a4cd7faea4f24040779a35bc3001718bd8e10ad736be94692a5af04aa5fc",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -8069,7 +8069,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
+              "definition_hash": "52d7d1fa33cce169bea47f52d222da7f6451640e2f5eba8eae4c061307d731be",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -8098,7 +8098,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "e5fc2f8f7025cc2a5db0fb84746cc68b330143393c9dc4661e4477d1d34d1162",
+            "event_id": "fa3554c0892f7690b9916cd72ec3aae03c67f9160758ff95605d9b66cff3b3e0",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -8128,7 +8128,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2995945884ec49a499f29a6c605c4886",
+              "boot_id": "bc797361a43a406fac8289644bc7dd97",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -8161,7 +8161,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
+            "definition_hash": "52d7d1fa33cce169bea47f52d222da7f6451640e2f5eba8eae4c061307d731be",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -8303,7 +8303,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
+              "definition_hash": "52d7d1fa33cce169bea47f52d222da7f6451640e2f5eba8eae4c061307d731be",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -8360,20 +8360,20 @@
         ],
         "events": [
           {
-            "event_id": "e5fc2f8f7025cc2a5db0fb84746cc68b330143393c9dc4661e4477d1d34d1162",
+            "event_id": "fa3554c0892f7690b9916cd72ec3aae03c67f9160758ff95605d9b66cff3b3e0",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "d86f4ed4c5f054e4b19d78333c5281f3957fcc906431c032f7ae5d7728304b1d",
+              "definition_hash": "52d7d1fa33cce169bea47f52d222da7f6451640e2f5eba8eae4c061307d731be",
               "direction": "ABOVE",
-              "domain_event_id": "cbeb7c860d879fe7dc6a284dd2c4c545bd9913a1260d454363a40539e6bfc09c",
+              "domain_event_id": "1cd3a4cd7faea4f24040779a35bc3001718bd8e10ad736be94692a5af04aa5fc",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "3d073eeb26074027a4f97284d1034beb",
+                "drawing_id": "65f86d69e15b4c068b21090cff63441c",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -8425,7 +8425,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "3d073eeb26074027a4f97284d1034beb",
+                "object_id": "65f86d69e15b4c068b21090cff63441c",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -8460,7 +8460,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+        "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "932cdc535067f32765fae8e7548507978d5dab9b1d9346fa93c351120f27646b",
         "data_proof": {
@@ -8487,7 +8487,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "263d181c5c45463a932db8f4e784926f",
+              "boot_id": "7d42cd79e5d74cc98d26fbd451b3ba7d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -8520,7 +8520,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+            "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -8662,7 +8662,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+              "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -8721,7 +8721,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "263d181c5c45463a932db8f4e784926f",
+              "boot_id": "7d42cd79e5d74cc98d26fbd451b3ba7d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -8754,9 +8754,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+            "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
             "distance": "1/5",
-            "domain_event_id": "d8ff38fe6a934a8ce992efa53e7843de8f346a0c7e3427fad8aacb8b3f3f17ef",
+            "domain_event_id": "3d24a6b463f5b38eb2f38b4d74fb660ef6e21b344bee90dd7dfaaf393cee0979",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -8898,7 +8898,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+              "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -8927,7 +8927,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "77b67bf0050f66e5eb8b5b654387efb30b4fd9d3a9fc036d7101c5df4d69d0c7",
+            "event_id": "805e14a0a48f4e456421ebc623ab226ba68591ed1bb4856493a02535093851e8",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -8957,7 +8957,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "b16bf395ea004d1a99e92640a988a5ee",
+              "boot_id": "5c059312ca304c20ad1a8ec9f3979a49",
               "cooldown": 0,
               "episode": 1,
               "epoch": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
@@ -8990,7 +8990,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+            "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -9132,7 +9132,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+              "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -9191,7 +9191,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "b16bf395ea004d1a99e92640a988a5ee",
+              "boot_id": "5c059312ca304c20ad1a8ec9f3979a49",
               "cooldown": 0,
               "episode": 1,
               "epoch": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
@@ -9224,7 +9224,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+            "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -9366,7 +9366,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+              "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -9423,20 +9423,20 @@
         ],
         "events": [
           {
-            "event_id": "77b67bf0050f66e5eb8b5b654387efb30b4fd9d3a9fc036d7101c5df4d69d0c7",
+            "event_id": "805e14a0a48f4e456421ebc623ab226ba68591ed1bb4856493a02535093851e8",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "cd9cd1afde054b982451817fa3fabedbfd55f934a726119ebe623f24a082a0ce",
+              "definition_hash": "38422fac3dbecdf60b55a6dcc299297cc2dbe0b938af65519ee3aa60e3a96627",
               "direction": "ABOVE",
-              "domain_event_id": "d8ff38fe6a934a8ce992efa53e7843de8f346a0c7e3427fad8aacb8b3f3f17ef",
+              "domain_event_id": "3d24a6b463f5b38eb2f38b4d74fb660ef6e21b344bee90dd7dfaaf393cee0979",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "fe90536d03894a218a2779c2d256f2dd",
+                "drawing_id": "fc2c16248b68448ab8e35bfe2aa78062",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -9488,7 +9488,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "fe90536d03894a218a2779c2d256f2dd",
+                "object_id": "fc2c16248b68448ab8e35bfe2aa78062",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -9521,7 +9521,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
+        "definition_hash": "b9c2cdb0bdcce636125b63a5db6b49932a2e4789dfdc5a979d575e2589219f6b",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "d512d9b83c31d6a5525aa4a5b260e3de054dd17102be3a222f0e1e1bc3b96be6",
         "data_proof": {
@@ -9548,7 +9548,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c1ea6b648f3444beabce3abd4f6a3b5f",
+              "boot_id": "705cf992873e4c55872893290cc9354e",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -9581,7 +9581,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
+            "definition_hash": "b9c2cdb0bdcce636125b63a5db6b49932a2e4789dfdc5a979d575e2589219f6b",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -9723,7 +9723,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
+              "definition_hash": "b9c2cdb0bdcce636125b63a5db6b49932a2e4789dfdc5a979d575e2589219f6b",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -9782,7 +9782,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c1ea6b648f3444beabce3abd4f6a3b5f",
+              "boot_id": "705cf992873e4c55872893290cc9354e",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -9815,7 +9815,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
+            "definition_hash": "b9c2cdb0bdcce636125b63a5db6b49932a2e4789dfdc5a979d575e2589219f6b",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -9957,7 +9957,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "3d6f417a2421319e378b2095c3adae6714dc5af1e1f3ac661be42647b83fc733",
+              "definition_hash": "b9c2cdb0bdcce636125b63a5db6b49932a2e4789dfdc5a979d575e2589219f6b",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -10039,7 +10039,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "f084c5307147b16daa7c26c88ed074ecd073ad7cfcd432f1ee5f3f0efa05dd5e",
+        "definition_hash": "e478d8b4473890dd7bee53ab86dcc82b9cac4ccd336796591385c8e3e387da11",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -10066,7 +10066,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2c9f47e245ca4e9cae0192b1a8abdd8b",
+              "boot_id": "790455a08937458680ddcfdddaee002d",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -10099,7 +10099,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "f084c5307147b16daa7c26c88ed074ecd073ad7cfcd432f1ee5f3f0efa05dd5e",
+            "definition_hash": "e478d8b4473890dd7bee53ab86dcc82b9cac4ccd336796591385c8e3e387da11",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -10241,7 +10241,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "f084c5307147b16daa7c26c88ed074ecd073ad7cfcd432f1ee5f3f0efa05dd5e",
+              "definition_hash": "e478d8b4473890dd7bee53ab86dcc82b9cac4ccd336796591385c8e3e387da11",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -10322,7 +10322,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
+        "definition_hash": "ba9d626341709653afc4c44251e58f8c2c837842d0a92b2d6c710f4c0b1b1810",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "f37649745db2cfab2f124adfb3fe16b4dfb97e7ecedfd52eb4a7dd12dea59519",
         "data_proof": {
@@ -10349,7 +10349,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c22c50433b4f4619880bf6a26d704f14",
+              "boot_id": "7b881d471a674d12917e0be8ba89a788",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -10381,7 +10381,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
+            "definition_hash": "ba9d626341709653afc4c44251e58f8c2c837842d0a92b2d6c710f4c0b1b1810",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -10523,7 +10523,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
+              "definition_hash": "ba9d626341709653afc4c44251e58f8c2c837842d0a92b2d6c710f4c0b1b1810",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -10586,7 +10586,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c22c50433b4f4619880bf6a26d704f14",
+              "boot_id": "7b881d471a674d12917e0be8ba89a788",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -10618,7 +10618,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
+            "definition_hash": "ba9d626341709653afc4c44251e58f8c2c837842d0a92b2d6c710f4c0b1b1810",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -10760,7 +10760,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
+              "definition_hash": "ba9d626341709653afc4c44251e58f8c2c837842d0a92b2d6c710f4c0b1b1810",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -10823,7 +10823,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c22c50433b4f4619880bf6a26d704f14",
+              "boot_id": "7b881d471a674d12917e0be8ba89a788",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -10855,7 +10855,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
+            "definition_hash": "ba9d626341709653afc4c44251e58f8c2c837842d0a92b2d6c710f4c0b1b1810",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -10997,7 +10997,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "ce8867ba0b064fe7779abf09fa3f9fcb6e2adcbc5d402f635b372e5f70507364",
+              "definition_hash": "ba9d626341709653afc4c44251e58f8c2c837842d0a92b2d6c710f4c0b1b1810",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -11082,7 +11082,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "089af57df8825a0fda382b4658a6cffc0b48e253dcf1d9aea240b56919815933",
+        "definition_hash": "edeb7e846d113aed90b0bbed1381c3d6686d038f8e0d5999ee962176e59e4b1b",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "41e815175777f256150ff45c30280ca2f9c436f2f6f1df02d70fc7e232daec3e",
         "data_proof": {
@@ -11109,7 +11109,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "2e2e0836d2bc4f14bcf88d79387cc2d4",
+              "boot_id": "b2622d09173142d19d9411cc3ad742b9",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -11141,7 +11141,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "089af57df8825a0fda382b4658a6cffc0b48e253dcf1d9aea240b56919815933",
+            "definition_hash": "edeb7e846d113aed90b0bbed1381c3d6686d038f8e0d5999ee962176e59e4b1b",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -11283,7 +11283,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "089af57df8825a0fda382b4658a6cffc0b48e253dcf1d9aea240b56919815933",
+              "definition_hash": "edeb7e846d113aed90b0bbed1381c3d6686d038f8e0d5999ee962176e59e4b1b",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -11368,7 +11368,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
+        "definition_hash": "961a801dbc7e67d6f4214a9fb7c98730d82817a22bd0be850a34a9302e98c161",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "c92fa325d8767b9579ce29bec41949cfcafa7efcf80af091a78d3bc23fd1f55f",
         "data_proof": {
@@ -11395,7 +11395,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c764146d91ad4a62a978220683ecda80",
+              "boot_id": "5be2bedd1bec425baf8335dca938a90b",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -11427,7 +11427,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
+            "definition_hash": "961a801dbc7e67d6f4214a9fb7c98730d82817a22bd0be850a34a9302e98c161",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -11569,7 +11569,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
+              "definition_hash": "961a801dbc7e67d6f4214a9fb7c98730d82817a22bd0be850a34a9302e98c161",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -11643,7 +11643,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c764146d91ad4a62a978220683ecda80",
+              "boot_id": "5be2bedd1bec425baf8335dca938a90b",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -11676,7 +11676,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
+            "definition_hash": "961a801dbc7e67d6f4214a9fb7c98730d82817a22bd0be850a34a9302e98c161",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -11818,7 +11818,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
+              "definition_hash": "961a801dbc7e67d6f4214a9fb7c98730d82817a22bd0be850a34a9302e98c161",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -11877,7 +11877,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c764146d91ad4a62a978220683ecda80",
+              "boot_id": "5be2bedd1bec425baf8335dca938a90b",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -11910,7 +11910,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
+            "definition_hash": "961a801dbc7e67d6f4214a9fb7c98730d82817a22bd0be850a34a9302e98c161",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -12052,7 +12052,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "b4f7ff57073f325e1fd8cc135866dc00c5f19f0cb4db66459d4ffebf49c23592",
+              "definition_hash": "961a801dbc7e67d6f4214a9fb7c98730d82817a22bd0be850a34a9302e98c161",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -12143,7 +12143,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "cf072d88d322ca30aa04f895b639e11176fed1aa74b6edc1f65c955241f38719",
+        "definition_hash": "dd404d1e715d2c19b1d12f87cfc3504d5e22a357b449ea8037cb5f35779d8a38",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "aeaf7521610f6e21ba5d428421bd167497f91c2d1f61547de39f7444cb2103a9",
         "data_proof": {
@@ -12173,7 +12173,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "55144b276af14213891114dc4310aa4c",
+              "boot_id": "ca9a590c0524493bac4c4e28b1f619a5",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -12208,7 +12208,7 @@
               "valid": true,
               "warmup_available_closed_bars": 9
             },
-            "definition_hash": "cf072d88d322ca30aa04f895b639e11176fed1aa74b6edc1f65c955241f38719",
+            "definition_hash": "dd404d1e715d2c19b1d12f87cfc3504d5e22a357b449ea8037cb5f35779d8a38",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -12350,7 +12350,7 @@
                   "reason": "TARGET_OUTSIDE_VERIFIED_GRID"
                 }
               ],
-              "definition_hash": "cf072d88d322ca30aa04f895b639e11176fed1aa74b6edc1f65c955241f38719",
+              "definition_hash": "dd404d1e715d2c19b1d12f87cfc3504d5e22a357b449ea8037cb5f35779d8a38",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -12439,7 +12439,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "0a2f35a1a51e2da740f49bd671da0683efb8feb08ff06edcda120de77cdf0220",
+        "definition_hash": "988a7e8eff295203ebea16269ace248672f024107a890924d926e3263d3f8634",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "4abe34296c9ca6d2f5dca852eda0abc64d45a4f51444b04a87fef319e69af1d4",
         "data_proof": {
@@ -12468,7 +12468,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "a390d28c5d5645b0bd1b9e5acecbc1bd",
+              "boot_id": "ed1ec0aef51a40668db6908e44d20bf9",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -12502,7 +12502,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "0a2f35a1a51e2da740f49bd671da0683efb8feb08ff06edcda120de77cdf0220",
+            "definition_hash": "988a7e8eff295203ebea16269ace248672f024107a890924d926e3263d3f8634",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -12644,7 +12644,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "0a2f35a1a51e2da740f49bd671da0683efb8feb08ff06edcda120de77cdf0220",
+              "definition_hash": "988a7e8eff295203ebea16269ace248672f024107a890924d926e3263d3f8634",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -12734,7 +12734,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "b1a923e20e7a848781ecae51d27c10748a372420a95e70b9df4e6a725bd64129",
+        "definition_hash": "16a6fcf47a6c590d00d156bf02666c796d27176ce73d3f4ac29192432c61e7a1",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -12782,7 +12782,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "32fb51ad8aef703a420afad253072da9732cdb05c03ebfbd4cc081fc2365fb70",
+        "definition_hash": "6e6b7924cdf93a256517735a4cd566aeb4506d23f17c9183e270fe659d93af5c",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -12832,7 +12832,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "62a441bc8330431f3c28b1a9bd4d521788a1cc5d944ef05cd1e3b058e90ed77e",
+        "definition_hash": "3aab282a12b4590af3790aff2cc84735c6d2e724dd1fd2342545f37bb74c1a61",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -12880,7 +12880,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+        "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "c92fa325d8767b9579ce29bec41949cfcafa7efcf80af091a78d3bc23fd1f55f",
         "data_proof": {
@@ -12907,7 +12907,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -12939,7 +12939,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -13081,7 +13081,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -13144,7 +13144,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -13176,7 +13176,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -13318,7 +13318,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -13381,7 +13381,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -13413,7 +13413,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -13555,7 +13555,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -13618,7 +13618,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -13650,7 +13650,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -13792,7 +13792,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -13855,7 +13855,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -13887,7 +13887,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14029,7 +14029,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -14092,7 +14092,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -14124,7 +14124,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14266,7 +14266,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -14329,7 +14329,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -14361,7 +14361,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14503,7 +14503,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -14566,7 +14566,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -14598,7 +14598,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14740,7 +14740,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -14803,7 +14803,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -14835,7 +14835,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -14977,7 +14977,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -15040,7 +15040,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f37c19705e8b4c8a8ca9a6052040073d",
+              "boot_id": "125ce1231635486fb56a2db227583af3",
               "cooldown": 0,
               "episode": 1,
               "epoch": null,
@@ -15072,7 +15072,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+            "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -15214,7 +15214,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "c64edfb7ed35ef722d92b386c2eacd88c86f23a76ee92f3f6cdfedd09ba49880",
+              "definition_hash": "9f1bb324eef9ff5d3b5643fce88bd6b99a659a7992479af0ed6eea551c880fe9",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -15297,7 +15297,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
+        "definition_hash": "b4087db30998bdb5199cecff847ae4ae63708cae1cc3ac0d561c82d8e7e70243",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "50a61f3e88224f9593124f7a908aba33ca8c5ae22a531dbf5db57a3a25325a61",
         "data_proof": {
@@ -15324,7 +15324,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "5815b13f5dcb49fc8d7c23f7c8e5b8a7",
+              "boot_id": "504bafa6c2f445b2806fc6ab77ece27a",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -15357,7 +15357,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
+            "definition_hash": "b4087db30998bdb5199cecff847ae4ae63708cae1cc3ac0d561c82d8e7e70243",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -15499,7 +15499,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
+              "definition_hash": "b4087db30998bdb5199cecff847ae4ae63708cae1cc3ac0d561c82d8e7e70243",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -15558,7 +15558,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "5815b13f5dcb49fc8d7c23f7c8e5b8a7",
+              "boot_id": "504bafa6c2f445b2806fc6ab77ece27a",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -15591,7 +15591,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
+            "definition_hash": "b4087db30998bdb5199cecff847ae4ae63708cae1cc3ac0d561c82d8e7e70243",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -15733,7 +15733,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
+              "definition_hash": "b4087db30998bdb5199cecff847ae4ae63708cae1cc3ac0d561c82d8e7e70243",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -15792,7 +15792,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "5815b13f5dcb49fc8d7c23f7c8e5b8a7",
+              "boot_id": "504bafa6c2f445b2806fc6ab77ece27a",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -15825,7 +15825,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
+            "definition_hash": "b4087db30998bdb5199cecff847ae4ae63708cae1cc3ac0d561c82d8e7e70243",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -15967,7 +15967,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6b350bd9acb8527a703289a95157d651bbd8562d1068c15b7f8a38a1bd0454ec",
+              "definition_hash": "b4087db30998bdb5199cecff847ae4ae63708cae1cc3ac0d561c82d8e7e70243",
               "evaluated_data": {
                 "data_revision": 4,
                 "generation": 1,
@@ -16051,7 +16051,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+        "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -16078,7 +16078,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "e433a291a424436a810269d0a41e4045",
+              "boot_id": "a34f4f2cf9e8487cb081b08540cc6d38",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -16111,7 +16111,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+            "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -16253,7 +16253,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+              "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -16312,7 +16312,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "e433a291a424436a810269d0a41e4045",
+              "boot_id": "a34f4f2cf9e8487cb081b08540cc6d38",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -16345,9 +16345,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+            "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
             "distance": "1/5",
-            "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
+            "domain_event_id": "ec0b5e1246ccd1848a9cd2867dfe32ccca981a4672a1d09291743d68c43056bd",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -16489,7 +16489,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+              "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -16518,7 +16518,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "e5ec0291281a620077c304b14061f4a468bbd30564e28bb9c531148086eb3682",
+            "event_id": "0f0d3737c6ac98148f8855743a38ca5866fa90b92b9ec84d80a5b22f5c8c01ba",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -16548,7 +16548,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "9a2f1b8ead414295bc1ab45478fa9f8f",
+              "boot_id": "9de3096586e54f31b9b585cdb88d884b",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -16581,7 +16581,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+            "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -16723,7 +16723,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+              "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -16782,7 +16782,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "9a2f1b8ead414295bc1ab45478fa9f8f",
+              "boot_id": "9de3096586e54f31b9b585cdb88d884b",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -16815,9 +16815,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+            "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
             "distance": "1/5",
-            "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
+            "domain_event_id": "ec0b5e1246ccd1848a9cd2867dfe32ccca981a4672a1d09291743d68c43056bd",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -16959,7 +16959,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+              "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -16988,7 +16988,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "518ad1b96cdd43f2d72d6d9221412dc3f7673c189541e1a446061da7c9fa07a7",
+            "event_id": "0b07a1e27c5af1dd69941c7fff4e300af23bd96577ea820c1bba15145bc92b5a",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -17018,7 +17018,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "a2bb856c86d742238cd519eecdde1fac",
+              "boot_id": "9c60799bc4ba4cec981901912f3b5543",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -17051,7 +17051,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+            "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -17193,7 +17193,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+              "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
               "evaluated_data": {
                 "data_revision": 1,
                 "generation": 1,
@@ -17252,7 +17252,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "a2bb856c86d742238cd519eecdde1fac",
+              "boot_id": "9c60799bc4ba4cec981901912f3b5543",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -17285,9 +17285,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+            "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
             "distance": "1/5",
-            "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
+            "domain_event_id": "ec0b5e1246ccd1848a9cd2867dfe32ccca981a4672a1d09291743d68c43056bd",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -17429,7 +17429,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+              "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -17458,7 +17458,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "64ebb66e78aacd9da0905efdbd0b882d8abab409a87c40a39a00d210b4aa1c2b",
+            "event_id": "38c89c8456b57e4d650ce1898d8417e9b0587ef76c27b44765ddf8843d5af7df",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -17487,20 +17487,20 @@
         ],
         "events": [
           {
-            "event_id": "e5ec0291281a620077c304b14061f4a468bbd30564e28bb9c531148086eb3682",
+            "event_id": "0f0d3737c6ac98148f8855743a38ca5866fa90b92b9ec84d80a5b22f5c8c01ba",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+              "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
               "direction": "ABOVE",
-              "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
+              "domain_event_id": "ec0b5e1246ccd1848a9cd2867dfe32ccca981a4672a1d09291743d68c43056bd",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "ea1063dc006547a5bd09bea8d9968b23",
+                "drawing_id": "339e67d84093440c9c5782a4fbde85ae",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -17552,7 +17552,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "ea1063dc006547a5bd09bea8d9968b23",
+                "object_id": "339e67d84093440c9c5782a4fbde85ae",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -17561,20 +17561,20 @@
             "intent_state": "PENDING_FAKE"
           },
           {
-            "event_id": "518ad1b96cdd43f2d72d6d9221412dc3f7673c189541e1a446061da7c9fa07a7",
+            "event_id": "0b07a1e27c5af1dd69941c7fff4e300af23bd96577ea820c1bba15145bc92b5a",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+              "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
               "direction": "ABOVE",
-              "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
+              "domain_event_id": "ec0b5e1246ccd1848a9cd2867dfe32ccca981a4672a1d09291743d68c43056bd",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "ea1063dc006547a5bd09bea8d9968b23",
+                "drawing_id": "339e67d84093440c9c5782a4fbde85ae",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -17626,7 +17626,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "ea1063dc006547a5bd09bea8d9968b23",
+                "object_id": "339e67d84093440c9c5782a4fbde85ae",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -17635,20 +17635,20 @@
             "intent_state": "PENDING_FAKE"
           },
           {
-            "event_id": "64ebb66e78aacd9da0905efdbd0b882d8abab409a87c40a39a00d210b4aa1c2b",
+            "event_id": "38c89c8456b57e4d650ce1898d8417e9b0587ef76c27b44765ddf8843d5af7df",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "242d52bfeb7fcbea060dfc991f6d0aad475dc348164d6cf518dc3e0c4fffec96",
+              "definition_hash": "d43a28ae5b27613e2fda327b931de36be266193f0139629db7d0bf83684793f8",
               "direction": "ABOVE",
-              "domain_event_id": "94064b823e751d2d42665728f3c183d3c1791ec5c351f2941b0a5c84189adf32",
+              "domain_event_id": "ec0b5e1246ccd1848a9cd2867dfe32ccca981a4672a1d09291743d68c43056bd",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "ea1063dc006547a5bd09bea8d9968b23",
+                "drawing_id": "339e67d84093440c9c5782a4fbde85ae",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -17700,7 +17700,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "ea1063dc006547a5bd09bea8d9968b23",
+                "object_id": "339e67d84093440c9c5782a4fbde85ae",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -17735,7 +17735,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
+        "definition_hash": "f57868f8d8530132fd3a45ab137520fc96b6443c54e1c9c95780c95844f44771",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -17762,7 +17762,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f4b9e49e68d14fe0b780abaf0c8e1e4e",
+              "boot_id": "e469cc883ced4bf3ae870baff82261d7",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -17795,9 +17795,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
+            "definition_hash": "f57868f8d8530132fd3a45ab137520fc96b6443c54e1c9c95780c95844f44771",
             "distance": "1/5",
-            "domain_event_id": "f0d03d0c0ed8e2afe1d4c933f07357ad19e0ba003fba883427f89c138dcb09c4",
+            "domain_event_id": "b51e939ff392cb4ec888feed2ff376a4657a666c04878422c19593444623a64d",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -17939,7 +17939,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
+              "definition_hash": "f57868f8d8530132fd3a45ab137520fc96b6443c54e1c9c95780c95844f44771",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -17968,7 +17968,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "e2a18a07f12acb1b540da9aff8d19d07f728d284397dfbb57b62cec7a912279d",
+            "event_id": "8093398a973e05ca5af153ec1fcd54658a218ccce7f5d5f4c0345c5a67e4c57a",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -17998,7 +17998,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "f4b9e49e68d14fe0b780abaf0c8e1e4e",
+              "boot_id": "e469cc883ced4bf3ae870baff82261d7",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -18031,7 +18031,7 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
+            "definition_hash": "f57868f8d8530132fd3a45ab137520fc96b6443c54e1c9c95780c95844f44771",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -18173,7 +18173,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
+              "definition_hash": "f57868f8d8530132fd3a45ab137520fc96b6443c54e1c9c95780c95844f44771",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -18231,18 +18231,18 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "4409f653ce3f4284a97cf70e68ce7b39",
+              "boot_id": "788c961fe64e48ccada8ecc4210e218f",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
               "last_payload_hash": "780f01c7aa3d85815923141c8b676ae54b3f7d641c12753bb5660695cbc973c6",
               "last_time": 1800000900,
               "lifecycle": "DISABLED_REPLAY",
-              "mono": 116614.406,
+              "mono": 3029.531,
               "paused": false,
               "phase": "TOUCH_LATCHED",
               "sequence": 1,
-              "wall": 1794881818.403909
+              "wall": 1795187799.7734654
             },
             "created": true,
             "data_proof": {
@@ -18264,9 +18264,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
+            "definition_hash": "f57868f8d8530132fd3a45ab137520fc96b6443c54e1c9c95780c95844f44771",
             "distance": "1/5",
-            "domain_event_id": "f0d03d0c0ed8e2afe1d4c933f07357ad19e0ba003fba883427f89c138dcb09c4",
+            "domain_event_id": "b51e939ff392cb4ec888feed2ff376a4657a666c04878422c19593444623a64d",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -18408,7 +18408,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
+              "definition_hash": "f57868f8d8530132fd3a45ab137520fc96b6443c54e1c9c95780c95844f44771",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -18437,7 +18437,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "83ed14e6971fa9f1b887b2defba87f61b0630e90aa27e3cab9fa7b14d83384d5",
+            "event_id": "99d50636ae51722c444792297dd1ee6c838e828929dd805fa57b4c86fe627032",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -18466,20 +18466,20 @@
         ],
         "events": [
           {
-            "event_id": "e2a18a07f12acb1b540da9aff8d19d07f728d284397dfbb57b62cec7a912279d",
+            "event_id": "8093398a973e05ca5af153ec1fcd54658a218ccce7f5d5f4c0345c5a67e4c57a",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
+              "definition_hash": "f57868f8d8530132fd3a45ab137520fc96b6443c54e1c9c95780c95844f44771",
               "direction": "ABOVE",
-              "domain_event_id": "f0d03d0c0ed8e2afe1d4c933f07357ad19e0ba003fba883427f89c138dcb09c4",
+              "domain_event_id": "b51e939ff392cb4ec888feed2ff376a4657a666c04878422c19593444623a64d",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "447a7d4779154e99a6e872780198af8c",
+                "drawing_id": "6d7f48bffa7540dd9bb7eda4041ea8d5",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -18531,7 +18531,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "447a7d4779154e99a6e872780198af8c",
+                "object_id": "6d7f48bffa7540dd9bb7eda4041ea8d5",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -18540,20 +18540,20 @@
             "intent_state": "DELIVERED_FAKE"
           },
           {
-            "event_id": "83ed14e6971fa9f1b887b2defba87f61b0630e90aa27e3cab9fa7b14d83384d5",
+            "event_id": "99d50636ae51722c444792297dd1ee6c838e828929dd805fa57b4c86fe627032",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "d24399a4c9e51c54c9d4587bb0cb0c786b620bb0e94ae8a662c33bad08ea2624",
+              "definition_hash": "f57868f8d8530132fd3a45ab137520fc96b6443c54e1c9c95780c95844f44771",
               "direction": "ABOVE",
-              "domain_event_id": "f0d03d0c0ed8e2afe1d4c933f07357ad19e0ba003fba883427f89c138dcb09c4",
+              "domain_event_id": "b51e939ff392cb4ec888feed2ff376a4657a666c04878422c19593444623a64d",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "447a7d4779154e99a6e872780198af8c",
+                "drawing_id": "6d7f48bffa7540dd9bb7eda4041ea8d5",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -18605,7 +18605,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "447a7d4779154e99a6e872780198af8c",
+                "object_id": "6d7f48bffa7540dd9bb7eda4041ea8d5",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -18640,7 +18640,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "6657d800495f0c861355f608d5eb9569ba3b458fe18a92f7a74d9db0443b5083",
+        "definition_hash": "8b8aa59fab512c6dfe3f699348ff086945b00e49b20d79da97e5c348695e9395",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -18667,7 +18667,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "0e892010a3704acb977163ec6fe1d787",
+              "boot_id": "e7f8f5012a7f44b88e935506515e4bbd",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -18700,9 +18700,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "6657d800495f0c861355f608d5eb9569ba3b458fe18a92f7a74d9db0443b5083",
+            "definition_hash": "8b8aa59fab512c6dfe3f699348ff086945b00e49b20d79da97e5c348695e9395",
             "distance": "1/5",
-            "domain_event_id": "9c4c630e43ff8b6eaa4ff68f81abe5b9193f2c05a72d990d4cc7360ce348e711",
+            "domain_event_id": "e0056f868cbda624b84031bf06bb970cc83ebfb331b6321281be398a704b79db",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -18844,7 +18844,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "6657d800495f0c861355f608d5eb9569ba3b458fe18a92f7a74d9db0443b5083",
+              "definition_hash": "8b8aa59fab512c6dfe3f699348ff086945b00e49b20d79da97e5c348695e9395",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -18873,7 +18873,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "19376aa887f6339b97cbe65a04bcaa059e7cc692eae95de61e38c7995352573f",
+            "event_id": "7681e0cc8113298d180f4b11acb876ce3a2faedb363fbe183781d74a776c5a1e",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -18902,20 +18902,20 @@
         ],
         "events": [
           {
-            "event_id": "19376aa887f6339b97cbe65a04bcaa059e7cc692eae95de61e38c7995352573f",
+            "event_id": "7681e0cc8113298d180f4b11acb876ce3a2faedb363fbe183781d74a776c5a1e",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "6657d800495f0c861355f608d5eb9569ba3b458fe18a92f7a74d9db0443b5083",
+              "definition_hash": "8b8aa59fab512c6dfe3f699348ff086945b00e49b20d79da97e5c348695e9395",
               "direction": "ABOVE",
-              "domain_event_id": "9c4c630e43ff8b6eaa4ff68f81abe5b9193f2c05a72d990d4cc7360ce348e711",
+              "domain_event_id": "e0056f868cbda624b84031bf06bb970cc83ebfb331b6321281be398a704b79db",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "4095f1a660fd48119ef248176fa9442b",
+                "drawing_id": "231c252229074ce28d58b642278a7a0c",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -18967,7 +18967,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "4095f1a660fd48119ef248176fa9442b",
+                "object_id": "231c252229074ce28d58b642278a7a0c",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -19012,7 +19012,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+        "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -19039,7 +19039,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
+              "boot_id": "babfdb6737fe4934b48ef9f2c0106725",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -19072,9 +19072,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+            "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
             "distance": "1/5",
-            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+            "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -19216,7 +19216,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -19245,7 +19245,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "2671d32e5e591beb353ef4d23071a917b68dea31d80637c02a1bb310b1a1d2bc",
+            "event_id": "b48313dd8d3cc1529858462f0c72240727e48749fd9c7af9b64b42a5c430989d",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -19275,7 +19275,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
+              "boot_id": "babfdb6737fe4934b48ef9f2c0106725",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -19308,9 +19308,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+            "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
             "distance": "1/5",
-            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+            "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -19452,7 +19452,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -19481,7 +19481,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "e24f9adae312115d3e3d8131967eb7dfa4f1b2e33d000f9f5822cac7186fbeda",
+            "event_id": "d18dcad8fd04110663a03bff46808c5607e8092b9eb541ba7d4b76b41556def4",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -19511,7 +19511,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
+              "boot_id": "babfdb6737fe4934b48ef9f2c0106725",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -19544,9 +19544,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+            "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
             "distance": "1/5",
-            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+            "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -19688,7 +19688,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -19717,7 +19717,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "9f7b3bafa13da193e9820f7201dcd64a2da8390a99526e3a1230f499be9fe563",
+            "event_id": "25ffbeafc21c56ed1e13fe17d4947465e24dc71c7320cb92c1d12b0a37418a8e",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -19747,7 +19747,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
+              "boot_id": "babfdb6737fe4934b48ef9f2c0106725",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -19780,9 +19780,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+            "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
             "distance": "1/5",
-            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+            "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -19924,7 +19924,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -19953,7 +19953,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "bb98c0c50680022527875aaed105981d33a16fa53245be3ab4c6a2dd0b11b824",
+            "event_id": "d65d15f2cec0feb9e5ab0331c29fbd6f0eb6d72b045f9ee1533726bdf6574571",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -19983,7 +19983,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "c1ad2f2c0ff140b3ba8be9337a9ae30d",
+              "boot_id": "babfdb6737fe4934b48ef9f2c0106725",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -20016,9 +20016,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+            "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
             "distance": "1/5",
-            "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+            "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -20160,7 +20160,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -20189,7 +20189,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "1e2ff546e209454b258acbcc402a2d5be6e6fb4dda8ee4cb4f473419f4c35761",
+            "event_id": "f1b8b9e12b6f2fa9e6edff1f861bed1b68058c02a303833c34060764efab7a11",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -20218,20 +20218,20 @@
         ],
         "events": [
           {
-            "event_id": "2671d32e5e591beb353ef4d23071a917b68dea31d80637c02a1bb310b1a1d2bc",
+            "event_id": "b48313dd8d3cc1529858462f0c72240727e48749fd9c7af9b64b42a5c430989d",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "direction": "ABOVE",
-              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+              "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "drawing_id": "4afb961425994cb6a5633ca0008c58e5",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20283,7 +20283,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "object_id": "4afb961425994cb6a5633ca0008c58e5",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20292,20 +20292,20 @@
             "intent_state": "CHANNEL_UNCONFIGURED"
           },
           {
-            "event_id": "e24f9adae312115d3e3d8131967eb7dfa4f1b2e33d000f9f5822cac7186fbeda",
+            "event_id": "d18dcad8fd04110663a03bff46808c5607e8092b9eb541ba7d4b76b41556def4",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "direction": "ABOVE",
-              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+              "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "drawing_id": "4afb961425994cb6a5633ca0008c58e5",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20357,7 +20357,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "object_id": "4afb961425994cb6a5633ca0008c58e5",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20366,20 +20366,20 @@
             "intent_state": "FAILED"
           },
           {
-            "event_id": "9f7b3bafa13da193e9820f7201dcd64a2da8390a99526e3a1230f499be9fe563",
+            "event_id": "25ffbeafc21c56ed1e13fe17d4947465e24dc71c7320cb92c1d12b0a37418a8e",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "direction": "ABOVE",
-              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+              "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "drawing_id": "4afb961425994cb6a5633ca0008c58e5",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20431,7 +20431,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "object_id": "4afb961425994cb6a5633ca0008c58e5",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20440,20 +20440,20 @@
             "intent_state": "FAILED"
           },
           {
-            "event_id": "bb98c0c50680022527875aaed105981d33a16fa53245be3ab4c6a2dd0b11b824",
+            "event_id": "d65d15f2cec0feb9e5ab0331c29fbd6f0eb6d72b045f9ee1533726bdf6574571",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "direction": "ABOVE",
-              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+              "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "drawing_id": "4afb961425994cb6a5633ca0008c58e5",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20505,7 +20505,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "object_id": "4afb961425994cb6a5633ca0008c58e5",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20514,20 +20514,20 @@
             "intent_state": "EXPIRED"
           },
           {
-            "event_id": "1e2ff546e209454b258acbcc402a2d5be6e6fb4dda8ee4cb4f473419f4c35761",
+            "event_id": "f1b8b9e12b6f2fa9e6edff1f861bed1b68058c02a303833c34060764efab7a11",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "224ad13e3e5de18598001d7aae8607b1a613220b1c1256ba67cef8ea829cbffe",
+              "definition_hash": "146d1755f9fe579c7f789eb1779489a1b79169d5aaa32239f104707f9c90d947",
               "direction": "ABOVE",
-              "domain_event_id": "aeb3c81ab87bb3d48c081e8e3294160a9f4c45c74331f3721352925fced53494",
+              "domain_event_id": "7a88ad2e69235107c284c6c9c83d71b942f68e6dbb5195cd24b66da15a1693a0",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "drawing_id": "4afb961425994cb6a5633ca0008c58e5",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -20579,7 +20579,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "525bcbc797be45a1a611153b3f3b51b8",
+                "object_id": "4afb961425994cb6a5633ca0008c58e5",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -20614,7 +20614,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
+        "definition_hash": "4a025f5d6071b77a6645e9371a399fddae3005986a31c119d6e00c8c3aa96a0c",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -20641,7 +20641,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "78cbc3c7f8d24502924eef91285edc14",
+              "boot_id": "a15cbc38877945f8aab86909525e77df",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -20674,9 +20674,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
+            "definition_hash": "4a025f5d6071b77a6645e9371a399fddae3005986a31c119d6e00c8c3aa96a0c",
             "distance": "1/5",
-            "domain_event_id": "2afecc204e32a6152fb3aead5c696c0ccaeaadbfc73285f214438d77589f1969",
+            "domain_event_id": "2add9ba248fb5629fdd900a897e71d9d9fcad4bda931d7b8da49414079a9a267",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -20818,7 +20818,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
+              "definition_hash": "4a025f5d6071b77a6645e9371a399fddae3005986a31c119d6e00c8c3aa96a0c",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -20847,7 +20847,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "71d366dde1cc624331db6035418324064e0a42e2f64674df1b7dde41363bf74e",
+            "event_id": "f8b2091b58029caa1a8452a1fae1b55f50ce2abf4bc6610bd624a55be95cdc99",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -20877,7 +20877,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "78cbc3c7f8d24502924eef91285edc14",
+              "boot_id": "a15cbc38877945f8aab86909525e77df",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -20910,9 +20910,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
+            "definition_hash": "4a025f5d6071b77a6645e9371a399fddae3005986a31c119d6e00c8c3aa96a0c",
             "distance": "1/5",
-            "domain_event_id": "2afecc204e32a6152fb3aead5c696c0ccaeaadbfc73285f214438d77589f1969",
+            "domain_event_id": "2add9ba248fb5629fdd900a897e71d9d9fcad4bda931d7b8da49414079a9a267",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -21054,7 +21054,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
+              "definition_hash": "4a025f5d6071b77a6645e9371a399fddae3005986a31c119d6e00c8c3aa96a0c",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -21083,7 +21083,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "f2c7176a484720d88ebecac2844e4abec15c46c024a6decfb4cce5d330cf3f01",
+            "event_id": "bca830bcede9ead9b9cb42736e2e8b686978021664019e369f82722fe0563ab4",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -21112,20 +21112,20 @@
         ],
         "events": [
           {
-            "event_id": "71d366dde1cc624331db6035418324064e0a42e2f64674df1b7dde41363bf74e",
+            "event_id": "f8b2091b58029caa1a8452a1fae1b55f50ce2abf4bc6610bd624a55be95cdc99",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
+              "definition_hash": "4a025f5d6071b77a6645e9371a399fddae3005986a31c119d6e00c8c3aa96a0c",
               "direction": "ABOVE",
-              "domain_event_id": "2afecc204e32a6152fb3aead5c696c0ccaeaadbfc73285f214438d77589f1969",
+              "domain_event_id": "2add9ba248fb5629fdd900a897e71d9d9fcad4bda931d7b8da49414079a9a267",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "1e4d095f89d94be0945e6e560044bdf0",
+                "drawing_id": "29cfc34425ff4de6a3a38e5b200ed620",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -21177,7 +21177,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "1e4d095f89d94be0945e6e560044bdf0",
+                "object_id": "29cfc34425ff4de6a3a38e5b200ed620",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -21186,20 +21186,20 @@
             "intent_state": "DELIVERED_FAKE"
           },
           {
-            "event_id": "f2c7176a484720d88ebecac2844e4abec15c46c024a6decfb4cce5d330cf3f01",
+            "event_id": "bca830bcede9ead9b9cb42736e2e8b686978021664019e369f82722fe0563ab4",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "f160cdae6e715ceeb932f03544d8b94a55a87932fc99137476b97736aae365fb",
+              "definition_hash": "4a025f5d6071b77a6645e9371a399fddae3005986a31c119d6e00c8c3aa96a0c",
               "direction": "ABOVE",
-              "domain_event_id": "2afecc204e32a6152fb3aead5c696c0ccaeaadbfc73285f214438d77589f1969",
+              "domain_event_id": "2add9ba248fb5629fdd900a897e71d9d9fcad4bda931d7b8da49414079a9a267",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "1e4d095f89d94be0945e6e560044bdf0",
+                "drawing_id": "29cfc34425ff4de6a3a38e5b200ed620",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -21251,7 +21251,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "1e4d095f89d94be0945e6e560044bdf0",
+                "object_id": "29cfc34425ff4de6a3a38e5b200ed620",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -21284,7 +21284,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
+        "definition_hash": "dc67d2e90b2a7d52812c01f79cc04049ef3a18af72edfc2a16835eb1978dc707",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": "53ca8543664a8919fadfaa3367ab8373d92edb5b50c132e2790a6aaee0ae8e47",
         "data_proof": {
@@ -21311,7 +21311,7 @@
             "binding_id": "binding",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "047679a43f34482b932361a29aa44148",
+              "boot_id": "5af1091d6fa3466b9753e6db427a9735",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -21344,9 +21344,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
+            "definition_hash": "dc67d2e90b2a7d52812c01f79cc04049ef3a18af72edfc2a16835eb1978dc707",
             "distance": "1/5",
-            "domain_event_id": "bc1e58518b780b5a9bbbcfe934f8b4fc91a997e363e2c40d558857e8f04e6c19",
+            "domain_event_id": "d35933e836efab985aa3f394028a3cdb0cc07aa0d94c7f47345e3f1777eeaa4c",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "binding",
@@ -21488,7 +21488,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
+              "definition_hash": "dc67d2e90b2a7d52812c01f79cc04049ef3a18af72edfc2a16835eb1978dc707",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -21517,7 +21517,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "6c5a4cef114f4c3bb845d573c00b10ec8fce3bb572300f6326058e3c24710cb4",
+            "event_id": "1ec38f4e776450bddbf6e9b11e08a426f6748320a92af3364b698d5b3c3ea592",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -21547,7 +21547,7 @@
             "binding_id": "other",
             "binding_revision": 1,
             "checkpoint": {
-              "boot_id": "047679a43f34482b932361a29aa44148",
+              "boot_id": "5af1091d6fa3466b9753e6db427a9735",
               "cooldown": 0,
               "episode": 1,
               "epoch": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -21580,9 +21580,9 @@
               "valid": true,
               "warmup_available_closed_bars": 13
             },
-            "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
+            "definition_hash": "dc67d2e90b2a7d52812c01f79cc04049ef3a18af72edfc2a16835eb1978dc707",
             "distance": "1/5",
-            "domain_event_id": "e9cae4f7930a073b763e1e70da8fbc2aea171caea90e0522895882f8e65af64e",
+            "domain_event_id": "0bf29e37cbd81cfbf53da80ad047727abb8bc151af7fa692baf65a10526ab51b",
             "eligibility": {
               "activation": "DISABLED",
               "binding_id": "other",
@@ -21724,7 +21724,7 @@
                   "reason": null
                 }
               ],
-              "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
+              "definition_hash": "dc67d2e90b2a7d52812c01f79cc04049ef3a18af72edfc2a16835eb1978dc707",
               "evaluated_data": {
                 "data_revision": 2,
                 "generation": 1,
@@ -21753,7 +21753,7 @@
             },
             "episode": 1,
             "event": "TOUCH",
-            "event_id": "500cdb9c415dda551a3c562bee364008dceeaf0bf72575fdd4e9c268d362d32e",
+            "event_id": "bc978c52cf556723f644dba6df795f2f17f6898c6a14763e89f97f6b6e0bcff8",
             "market": {
               "environment": "demo_public",
               "interval": "15m",
@@ -21782,20 +21782,20 @@
         ],
         "events": [
           {
-            "event_id": "6c5a4cef114f4c3bb845d573c00b10ec8fce3bb572300f6326058e3c24710cb4",
+            "event_id": "1ec38f4e776450bddbf6e9b11e08a426f6748320a92af3364b698d5b3c3ea592",
             "body": {
               "binding_id": "binding",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
+              "definition_hash": "dc67d2e90b2a7d52812c01f79cc04049ef3a18af72edfc2a16835eb1978dc707",
               "direction": "ABOVE",
-              "domain_event_id": "bc1e58518b780b5a9bbbcfe934f8b4fc91a997e363e2c40d558857e8f04e6c19",
+              "domain_event_id": "d35933e836efab985aa3f394028a3cdb0cc07aa0d94c7f47345e3f1777eeaa4c",
               "episode": 1,
               "identity_components": {
                 "binding_id": "binding",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "0eb9a60f919c489b9a6b86a2a4d9f94c",
+                "drawing_id": "6064f3fab70c44ddb1a1c94ce2579af4",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -21847,7 +21847,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "0eb9a60f919c489b9a6b86a2a4d9f94c",
+                "object_id": "6064f3fab70c44ddb1a1c94ce2579af4",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -21856,20 +21856,20 @@
             "intent_state": "PENDING_FAKE"
           },
           {
-            "event_id": "500cdb9c415dda551a3c562bee364008dceeaf0bf72575fdd4e9c268d362d32e",
+            "event_id": "bc978c52cf556723f644dba6df795f2f17f6898c6a14763e89f97f6b6e0bcff8",
             "body": {
               "binding_id": "other",
               "binding_revision": 1,
               "candle_time": 1800000900,
-              "definition_hash": "aad97b527234444ce9167b5e373db19f038d5b114a4c0ebd364461554a3e98a6",
+              "definition_hash": "dc67d2e90b2a7d52812c01f79cc04049ef3a18af72edfc2a16835eb1978dc707",
               "direction": "ABOVE",
-              "domain_event_id": "e9cae4f7930a073b763e1e70da8fbc2aea171caea90e0522895882f8e65af64e",
+              "domain_event_id": "0bf29e37cbd81cfbf53da80ad047727abb8bc151af7fa692baf65a10526ab51b",
               "episode": 1,
               "identity_components": {
                 "binding_id": "other",
                 "binding_version": "1",
                 "candle_open_time": "1800000900",
-                "drawing_id": "0eb9a60f919c489b9a6b86a2a4d9f94c",
+                "drawing_id": "6064f3fab70c44ddb1a1c94ce2579af4",
                 "drawing_revision": "1",
                 "environment": "demo_public",
                 "event_kind": "TOUCH",
@@ -21921,7 +21921,7 @@
               "target": {
                 "content_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
                 "kind": "horizontal",
-                "object_id": "0eb9a60f919c489b9a6b86a2a4d9f94c",
+                "object_id": "6064f3fab70c44ddb1a1c94ce2579af4",
                 "revision": 1,
                 "snapshot": null,
                 "type": "drawing"
@@ -21960,7 +21960,7 @@
       "evidence": {
         "binding_revision": 1,
         "target_revision": 1,
-        "definition_hash": "1ac42c17588466bf524017128e75215fc7542e84986ba306954bb6d2e235d473",
+        "definition_hash": "d36982201e7e39f34b68f52a062e40124a7828c0eefc8981eb75ebf2b9b09ea9",
         "geometry_hash": "76d1ca000e62727b31fd6299be3a1cfbdd0e20d7b674676c46a3091457fbe1f9",
         "context_hash": null,
         "data_proof": null,
@@ -22002,7 +22002,7 @@
     "agentrader/chart/chart_precision.py": "c8b644b0bbb9be24c8e9defad1c1c03c4bcaf348265864415f79ab5c6863fba1",
     "agentrader/migrations/__init__.py": "3a09746e74799a28019ea880f0188ed9bbd15e7b692b1d89bc7daf99649a96af",
     "agentrader/chart/replay_report.py": "d6dc6e8f63b45b3f989c444e8af385900a9ab1367680ca766a12eb9c45b21e2d",
-    "agentrader/binding_evidence.json": "bb1b9e40b1a4746fb2e5ebe611ecf9c04f2129620fa804e4c9ab67ee535300cc",
+    "agentrader/binding_evidence.json": "5bb08e4a25bd5e60194a59b151660ab10e13250117d5ec27fe775105e71496e3",
     "scripts/chart/run_chart_p7.py": "2564b985ecbc5ca3eaffb3164e80e0c157b24d2d8b276e469d55eb6ef102051f",
     "docs/chart/contracts/chart-dry-run-v1.json": "2b3100ea24f6138707db2dca39222d401ad332047efc742cd259691beb62337e",
     "docs/chart/contracts/chart-bot-input-v1.json": "af22403bdb7870ec2af7096d722f4484191033588e943e117a800747b88916d3"

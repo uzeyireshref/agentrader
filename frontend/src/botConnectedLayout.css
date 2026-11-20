@@ -1,4 +1,19 @@
 /* Connected terminal layout. The full page owns scrolling; the chart ticket is compact. */
+.terminal .bot-connected .bot-plan-analytics{padding:12px;border:1px solid var(--line);border-radius:4px;background:var(--canvas)}
+.terminal .bot-connected .bot-plan-analytics header{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+.terminal .bot-connected .bot-plan-analytics h3{font-size:13px;margin:0}
+.terminal .bot-connected .bot-plan-analytics small{font-size:11px;color:var(--muted)}
+.terminal .bot-connected .bot-plan-analytics dl{display:grid;gap:0;margin:0}
+.terminal .bot-connected .bot-plan-analytics dl>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}
+.terminal .bot-connected .bot-plan-analytics dt{color:var(--muted);font-size:11px;line-height:1.5}
+.terminal .bot-connected .bot-plan-analytics dd{margin:0;font-size:12px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;text-align:right;max-width:160px}
+.terminal .bot-connected .bot-plan-analytics p{font-size:11px;line-height:1.6;margin:8px 0 0}
+.terminal .bot-connected .bot-mark-reference{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.terminal .bot-connected .bot-mark-reference button{padding:4px 8px;min-height:28px;font-size:11px}
+.terminal>.bot-view>.bot-connected .bot-content{width:100%;max-width:100%;align-self:stretch}
+.terminal>.bot-view>.bot-connected .bot-content>div{min-width:0;max-width:100%}
+.terminal .bot-position-dialog label.bot-check{display:flex;flex-direction:row;align-items:flex-start;gap:10px}
+.terminal .bot-position-dialog label.bot-check input{width:16px;min-width:16px;height:16px;min-height:16px;margin-top:2px;flex:none}
 .terminal .bot-connected .bot-field-error{color:var(--down);font-size:12px;line-height:1.5}
 .terminal .bot-connected .bot-validation-summary{margin:0 0 14px;padding:10px;border:1px solid var(--down);border-radius:4px}
 .terminal .bot-connected [aria-invalid=true]{border-color:var(--down)}

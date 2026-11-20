@@ -1,9 +1,19 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {planSelectionKey,batchPlanRows,reversePlanRows} from '../src/botPlanSelection';
+import {planSelectionKey,batchPlanRows,reversePlanRows,planTimeEligible} from '../src/botPlanSelection';
 import {liveCommand} from '../src/BotLiveCommands';
 import type {PlanRow,BotSnapshot,LiveSession} from '../src/botApi';
 const row=(id:string,version:number,state='AUTHORIZED',symbol='BTCUSDT',direction='LONG'):PlanRow=>({state,digest:String(version).repeat(64),plan:{plan_id:id,version,symbol,direction,execution:{strategy:'SINGLE'}}});
+test('expired plans and expired approval leases are excluded without renewing authority',()=>{
+ const now=Date.now(),expired=row('expired',1),lease=row('lease',1),pending=row('pending',1,'PENDING_APPROVAL');
+ expired.plan.expires_at=new Date(now-1000).toISOString();
+ lease.plan.expires_at=new Date(now+60000).toISOString();lease.approval_until=(now-1000)/1000;
+ pending.plan.expires_at=new Date(now-1000).toISOString();
+ assert.equal(planTimeEligible(expired),false);assert.equal(planTimeEligible(lease,true),false);
+ assert.throws(()=>batchPlanRows([expired],['expired@1']));assert.throws(()=>batchPlanRows([lease],['lease@1']));
+ assert.deepEqual(reversePlanRows([pending]),[]);
+ assert.equal(lease.approval_until,(now-1000)/1000);
+});
 test('batch selection pins the selected version even when the same id has newer versions',()=>{
  const old=row('plan-a',1),next=row('plan-a',2),eth=row('plan-b',1,'AUTHORIZED','ETHUSDT');
  const result=batchPlanRows([next,old,eth],[planSelectionKey(old),planSelectionKey(eth)]);

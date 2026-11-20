@@ -110,6 +110,17 @@ class BotEngine:
     def snapshot(self,symbol):
         started=self.clock()
         self.x.sync_time();account=self.read('ACCOUNT_V3');positions=self.read('POSITIONS_V3');orders=self.read('OPEN_ORDERS');algos=self.read('OPEN_ALGO_ORDERS')
+        from .bot_analytics import position_metrics
+        positions=[dict(p,analytics=position_metrics(p)) for p in positions]
+        mark=None
+        try:
+            from agentrader.bot.v2_preflight import fresh
+            from agentrader.shared.exchange import ExchangeError
+            quote=self.read('MARK_PRICE',symbol)
+            fresh(quote,symbol,int(self.clock()*1000)+getattr(self.x,'offset_ms',0),15)
+            if number(quote['markPrice'])<=0:raise ValueError('Invalid mark')
+            mark=dict(symbol=symbol,price=quote['markPrice'],time=quote['time'],observed_at=self.clock())
+        except (ValueError,KeyError,TypeError,ExchangeError):pass
         if not 0<=self.clock()-started<=15:raise BotError('ACCOUNT_SNAPSHOT_STALE')
         sessions=[]
         for s in self.store.sessions():
@@ -121,7 +132,7 @@ class BotEngine:
         plan_rows=self.store.db.execute('SELECT plan_id,version FROM plan_versions WHERE owner=? ORDER BY rowid DESC LIMIT 100',(self.settings.owner,)).fetchall()
         plans=[self.plans.show(r[0],r[1]) for r in plan_rows]
         return dict(environment='demo',product='USD-M',account_ref=self.account_ref,observed_at=started,atomic_snapshot=False,symbol=symbol,
-                    account=account,positions=positions,orders=orders,algo_orders=algos,sessions=sessions,plans=plans,
+                    account=account,positions=positions,orders=orders,algo_orders=algos,sessions=sessions,plans=plans,mark=mark,
                     commands=self.commands.list()['commands'],entry_halted=bool(self.store.halt_reason()),risk_limits=self.risk())
 
     def review(self,kind,payload,data):
@@ -138,6 +149,13 @@ class BotEngine:
         runner=plan_runner(self.plans,self.x,self.limits,plan);compiled=compile_plan(plan,runner._snapshot(plan['symbol']),self.limits)
         self.plans.create(plan,self.settings.owner)  # plaintext local approval token is intentionally discarded
         return self.review('PLAN',dict(plan_id=plan['plan_id'],version=1,plan_digest=digest(plan),draft=draft,authorize_only=authorize_only),dict(plan=plan,preflight=compiled,fingerprint=fingerprint(compiled)))
+
+    def analyze_plan(self,draft,jid):
+        from .bot_analytics import scenario,collect_snapshot
+        self.check_source(draft)
+        plan=make_plan(draft,jid,self.clock())
+        snapshot=collect_snapshot(self.x,plan['symbol'],self.limits,self.clock)
+        return scenario(plan,snapshot,self.limits)
 
     def prepare_command(self,p,jid):
         op=p['operation']
@@ -206,6 +224,7 @@ class BotEngine:
         if action=='CONTEXT':
             return dict(account_ref=self.account_ref,environment='demo',product='USD-M',risk_limits=self.risk(),operations=[op for op in OPERATIONS if op not in ('EXECUTE_V1_PLAN','RUN_SINGLE_PLAN')])
         if action=='SNAPSHOT':return self.snapshot(p['symbol'])
+        if action=='ANALYZE_PLAN':return self.analyze_plan(p['draft'],job['job_id'])
         if action=='SAVE_PLAN':return self.save_plan(p['draft'],job['job_id'])
         if action=='PREVIEW_PLAN_AUTHORIZATION':return self.prepare_plan(p['draft'],job['job_id'],authorize_only=True)
         if action=='PREVIEW_PLAN':return self.prepare_plan(p['draft'],job['job_id'])

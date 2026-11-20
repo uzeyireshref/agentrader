@@ -1,6 +1,7 @@
 """Bounded public USD-M chart history; no credentials or execution access."""
 from agentrader.shared.market_environment import ENVIRONMENT
 from collections import OrderedDict
+from concurrent.futures import ThreadPoolExecutor
 import copy
 import math
 from pathlib import Path
@@ -129,11 +130,29 @@ class ChartMarket:
                 return copy.deepcopy(cached[1])
             try:
                 client = self.client_factory()
-                server_time, clock_sample = self._history_time(client)
+                if force and end_time is None:
+                    # Latest klines do not depend on a clock request. Keep clients
+                    # separate and join both before validating/publishing anything.
+                    with ThreadPoolExecutor(max_workers=1, thread_name_prefix='chart-clock') as startup:
+                        clock_job = startup.submit(self._history_time, self.client_factory())
+                        raw = client.get('/fapi/v1/klines', {'symbol': symbol, 'interval': interval, 'limit': limit})
+                        rows, normalized = normalize(raw, interval)
+                        server_time, clock_sample = clock_job.result()
+                    timing = StreamTiming(self.clock, self.monotonic)
+                    timing.seed(clock_sample)
+                    error, projected, _ = timing.clock_state()
+                    if error:
+                        raise MarketUnavailable('Borsa saati doğrulanamadı.')
+                    server_time = int(projected)
+                    if any(r[0] > server_time for r in rows):
+                        raise MarketUnavailable('Mum zamanı doğrulanmış saatin ilerisinde.')
+                else:
+                    server_time, clock_sample = self._history_time(client)
                 if type(server_time) is not int or server_time <= 0:
                     raise ValueError()
                 cutoff = min(end_time, server_time) if end_time is not None else server_time
-                rows, normalized = fetch_candles(client, symbol, interval, cutoff, bars=limit - 1)
+                if not (force and end_time is None):
+                    rows, normalized = fetch_candles(client, symbol, interval, cutoff, bars=limit - 1)
                 rows = [r for r in rows if r[0] <= cutoff][-limit:]
                 # A valid empty older page means listing/history boundary, not an outage.
                 # Initial feed snapshots still require real candles.

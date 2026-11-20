@@ -933,11 +933,13 @@ export default function App() {
     surface?.addEventListener("pointermove", pointerNavigation, true);
     surface?.addEventListener("pointerup", pointerNavigation, true);
     surface?.addEventListener("pointercancel", pointerNavigation, true);
+    const manualPriceRange = saved?.symbol === symbol && !series.current.priceScale().options().autoScale
+      ? series.current.priceScale().getVisibleRange() : null;
     fit.current = false;
     layersRef.current.write(initialState(symbol, interval), true);
     series.current.setData([]);
     histogram.current.setData([]);
-    series.current.priceScale().applyOptions({ autoScale: true });
+    series.current.priceScale().applyOptions({ autoScale: manualPriceRange === null });
     const writer = new ChartSeriesWriter(
       {
         setData: (rows) =>
@@ -968,6 +970,11 @@ export default function App() {
       const previous = scale && paintedRows.length ? captureTimeViewport(paintedRows, steps[interval], scale) : null;
       const previousTail = paintedRows.at(-1)?.time;
       const result = writer.write(next.candles, full);
+      // setData([]) may reset the engine's range. Restore the user's bounds
+      // once after replacement, only within the same symbol.
+      if (!fit.current && manualPriceRange && next.candles.length) {
+        series.current.priceScale().setVisibleRange(manualPriceRange);
+      }
       if (!indicatorRecovery.current.run(full, (reset) => layersRef.current.write(next, reset))) throw Error("Indicator render failed");
       paintedRows = next.candles;
       if (!scale || !next.candles.length) return;

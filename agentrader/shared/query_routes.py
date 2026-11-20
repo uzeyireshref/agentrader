@@ -26,7 +26,7 @@ for name,path,shape,args,fields in [
     ('SYMBOL_CONFIG','/fapi/v1/symbolConfig','list','','symbol marginType isAutoAddMargin leverage maxNotionalValue'),
     ('LEVERAGE_BRACKETS','/fapi/v1/leverageBracket','either','','symbol notionalCoef brackets'),
     ('POSITIONS_V2','/fapi/v2/positionRisk','list','','symbol positionSide positionAmt entryPrice breakEvenPrice markPrice liquidationPrice leverage marginType isolatedMargin isolatedWallet unRealizedProfit updateTime'),
-    ('POSITIONS_V3','/fapi/v3/positionRisk','list','','symbol positionSide positionAmt entryPrice breakEvenPrice markPrice liquidationPrice isolatedWallet notional initialMargin maintMargin unrealizedProfit marginAsset updateTime'),
+    ('POSITIONS_V3','/fapi/v3/positionRisk','list','','symbol positionSide positionAmt entryPrice breakEvenPrice markPrice liquidationPrice isolatedWallet notional initialMargin positionInitialMargin maintMargin unrealizedProfit unRealizedProfit marginAsset updateTime'),
     ('OPEN_ORDERS','/fapi/v1/openOrders','list','',''),
     ('OPEN_ALGO_ORDERS','/fapi/v1/openAlgoOrders','list','',''),
     ('ADL_QUANTILE','/fapi/v1/adlQuantile','list','','symbol adlQuantile'),

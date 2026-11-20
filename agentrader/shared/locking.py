@@ -9,7 +9,10 @@ class ExecutionBusy(ValueError):
 
 
 @contextmanager
-def execution_lock(path=Path('data/runtime.lock')):
+def execution_lock(path=None):
+    if path is None:
+        path = Path(__file__).resolve().parents[2] / 'data' / 'runtime.lock'
+    path = Path(path).resolve()
     path.parent.mkdir(parents=True, exist_ok=True)
     stream = path.open('a+b')
     if path.stat().st_size == 0:

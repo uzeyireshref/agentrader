@@ -291,6 +291,26 @@ class GridRunnerTests(unittest.TestCase):
         self.assertEqual(self.runner.manage(sid,True)['state'],'CLOSED')
         self.assertEqual(len([c for c in self.x.calls if c[0]=='POST'and c[1]=='/fapi/v1/order'and c[2]['type']=='MARKET']),before)
 
+    def test_restart_after_native_stop_and_offline_entry_fill(self):
+        sid=self.start()
+        entry=self.cell(0,'OPEN')
+        self.native_stop('.0009','FINISHED')
+        self.assertEqual(self.x.amount,0)
+        self.x.fill(entry)
+        residual=self.x.amount
+        self.assertGreater(residual,0)
+        self.store.close()
+        self.store=StateStore(self.path)
+        self.runner=GridRunner(PlanService(self.store,'local:test'),self.x,limits())
+        self.assertEqual(self.runner.manage(sid,True)['state'],'GRID_CLOSE_SUBMITTED')
+        close=self.x.calls[-1][2]
+        self.assertEqual(close['reduceOnly'],'true')
+        self.assertEqual(number(close['quantity']),residual)
+        self.assertEqual(self.runner.manage(sid,True)['state'],'CLOSED')
+        self.assertEqual(self.x.amount,0)
+        self.assertEqual(self.x.get('/fapi/v1/openOrders'),[])
+        self.assertEqual(self.x.get('/fapi/v1/openAlgoOrders'),[])
+
     def test_partial_native_child_is_canceled_before_residual_close(self):
         sid=self.start();self.native_stop('.0004','TRIGGERED')
         self.assertEqual(self.runner.manage(sid,True)['state'],'GRID_CLOSE_SUBMITTED')

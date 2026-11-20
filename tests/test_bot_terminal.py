@@ -42,6 +42,44 @@ class BotTerminalTests(unittest.TestCase):
         r=p['result'];payload=dict(review_id=p['job_id'],review_digest=r['review_digest'],account_ref=r['account_ref'],execute_demo=True);payload.update(changes)
         return self.job('CONFIRM',payload,rid)
 
+    def test_user_jobs_precede_background_reads_and_keep_submission_order(self):
+        self.inbox.clock=lambda:100
+        reading=self.job('SNAPSHOT',{'symbol':'BTCUSDT'},'reading')
+        self.inbox.clock=lambda:101
+        first=self.job('SAVE_PLAN',{'draft':{}},'first')
+        self.inbox.clock=lambda:102
+        second=self.job('PREVIEW_PLAN',{'draft':{}},'second')
+        self.assertEqual(self.inbox.claim()['job_id'],first['job_id'])
+        self.assertEqual(self.inbox.claim()['job_id'],second['job_id'])
+        self.assertEqual(self.inbox.claim()['job_id'],reading['job_id'])
+
+    def test_read_capacity_reserves_space_for_user_jobs(self):
+        self.job('SNAPSHOT',{'symbol':'BTCUSDT'},'read1')
+        self.job('ANALYZE_PLAN',{'draft':{}},'read2')
+        with self.assertRaisesRegex(BotError,'BOT_READ_QUEUE_BUSY'):
+            self.job('SNAPSHOT',{'symbol':'ETHUSDT'},'read3')
+        self.assertEqual(self.job('SAVE_PLAN',{'draft':{}},'save')['state'],'PENDING')
+
+    def test_retention_keeps_failures_pending_and_user_records(self):
+        self.inbox.clock=lambda:100
+        old=self.job('SNAPSHOT',{'symbol':'BTCUSDT'},'old')
+        self.inbox.claim()
+        self.inbox.finish(old['job_id'],result={'state':'READY'})
+        failed=self.job('ANALYZE_PLAN',{'draft':{}},'failed')
+        self.inbox.claim()
+        self.inbox.finish(failed['job_id'],error='BAD_INPUT')
+        saved=self.job('SAVE_PLAN',{'draft':{}},'saved')
+        self.inbox.claim()
+        self.inbox.finish(saved['job_id'],result={'state':'SAVED'})
+        pending=self.job('SNAPSHOT',{'symbol':'ETHUSDT'},'pending')
+        self.inbox.clock=lambda:700000
+        self.assertEqual(self.inbox.prune_readings(),1)
+        for job in (failed,saved,pending):
+            self.assertEqual(self.inbox.show(job['job_id'])['job_id'],job['job_id'])
+        with self.assertRaisesRegex(BotError,'BOT_JOB_NOT_FOUND'):
+            self.inbox.show(old['job_id'])
+        self.assertEqual(self.inbox.prune_readings(),0)
+
     def test_prepare_and_context_never_mutate_exchange(self):
         self.preview();self.assertEqual(self.x.calls,[])
         self.job('CONTEXT',{},'context');result=self.process()['result'];self.assertEqual(result['environment'],'demo');self.assertNotIn('EXECUTE_V1_PLAN',result['operations'])
@@ -79,6 +117,7 @@ class BotTerminalTests(unittest.TestCase):
         self.x=ExecutionExchange();self.engine=BotEngine(self.settings,self.x,self.store,RiskLimits())
         snap=snapshot();snap.update(observed_at=time.time(),finished_at=time.time(),now_ms=int(time.time()*1000))
         mock=patch('agentrader.bot.v2_runner.collect_flat_snapshot',side_effect=lambda *a,**kw:copy.deepcopy(snap));mock.start();self.addCleanup(mock.stop)
+        analytics_mock=patch('agentrader.application.bot_analytics.collect_snapshot',side_effect=lambda *a,**kw:copy.deepcopy(snap));analytics_mock.start();self.addCleanup(analytics_mock.stop)
         return dict(symbol='BTCUSDT',kind='SINGLE',side='Long',entry='80000',stop='78000',target='84000',amount='80',orderType='MARKET',execution=dict(leverage='20',margin='CROSSED',positionMode='one-way',condition='IMMEDIATE',trigger='80000',driftBps='50')),snap
 
     def test_plan_preview_consent_opens_existing_runner_once(self):
@@ -89,10 +128,84 @@ class BotTerminalTests(unittest.TestCase):
         self.assertTrue(self.store.sessions());count=len(self.x.calls)
         self.consent(p,'other-tab');self.assertIsNone(self.process(True));self.assertEqual(len(self.x.calls),count)
 
+    def test_live_analysis_uses_actual_compiler_and_cannot_authorize_or_create_a_plan(self):
+        draft,snap=self.plan_fixture();before=copy.deepcopy(draft)
+        self.job('ANALYZE_PLAN',{'draft':draft},'analytics');first=self.process()
+        self.assertEqual(first['state'],'SUCCEEDED',first)
+        r=first['result'];self.assertEqual(r['mark_price'],'80000')
+        self.assertFalse(r['execution_authorized']);self.assertFalse(r['order_sent'])
+        self.assertNotIn('review_digest',r)
+        self.assertEqual(self.store.db.execute('SELECT count(*) FROM plan_versions').fetchone()[0],0)
+        snap['mark']['markPrice']='80100'
+        self.job('ANALYZE_PLAN',{'draft':draft},'analytics-changed');second=self.process()['result']
+        self.assertEqual(second['mark_price'],'80100')
+        self.assertNotEqual(r['target_gross'],second['target_gross'])
+        self.assertEqual(draft,before);self.assertEqual(self.x.calls,[]);self.assertEqual(self.store.sessions(),[])
+        self.job('CONFIRM',dict(review_id=first['job_id'],review_digest='a'*64,account_ref=self.engine.account_ref,execute_demo=True),'analytics-consent')
+        self.assertEqual(self.process(True)['error_code'],'REVIEW_NOT_READY')
+        self.assertEqual(self.x.calls,[])
+
+    def test_calculator_keeps_numbers_for_reported_small_grid_and_warns_about_execution(self):
+        from decimal import Decimal
+        draft,snap=self.plan_fixture()
+        draft.update(kind='GRID',entry='63500',stop='61000',target='140000',grid=dict(lower='63000',upper='74000',intervals='4',spacing='GEOMETRIC',budget='10',sizing='NOTIONAL',upperStop='',longPercent='50'))
+        draft['execution'].update(leverage='10',margin='ISOLATED')
+        snap['mark']['markPrice']='65000'
+        before=copy.deepcopy(snap)
+        self.job('ANALYZE_PLAN',{'draft':draft},'small-grid-scenario');job=self.process()
+        self.assertEqual(job['state'],'SUCCEEDED',job)
+        result=job['result'];self.assertEqual(result['state'],'SCENARIO')
+        self.assertTrue(result['theoretical']);self.assertEqual(Decimal(result['initial_margin']),1)
+        self.assertEqual(Decimal(result['rounded_quantity']),0)
+        self.assertGreater(Decimal(result['theoretical_quantity']),0)
+        self.assertIn('GRID_BUDGET_TOO_SMALL',result['constraints']);self.assertIn('ACCOUNT_SETTINGS_MISMATCH',result['constraints'])
+        self.assertIn('PRICE_DRIFT_EXCEEDED',result['constraints'])
+        self.assertFalse(result['execution_authorized']);self.assertEqual(snap,before)
+        self.job('PREVIEW_PLAN',{'draft':draft},'small-grid-actual-preflight')
+        with patch('agentrader.bot.grid_runner.collect_flat_snapshot',return_value=copy.deepcopy(snap)):
+            self.assertEqual(self.process()['state'],'FAILED')
+        self.assertEqual(self.x.calls,[]);self.assertEqual(self.store.sessions(),[])
+
     def test_plan_price_change_invalidates_review_before_any_post(self):
         draft,snap=self.plan_fixture();self.job('PREVIEW_PLAN',{'draft':draft});p=self.process();self.assertEqual(p['state'],'SUCCEEDED',p)
         snap['mark']['markPrice']='80100';self.consent(p)
         self.assertEqual(self.process(True)['error_code'],'PLAN_PREFLIGHT_CHANGED');self.assertEqual(self.x.calls,[])
+
+    def test_preflight_reasons_follow_real_account_and_risk_rejections_without_posts(self):
+        from dataclasses import replace
+        from decimal import Decimal
+        cases = [
+            ('ACCOUNT_MODE_MISMATCH', lambda s: s.update(position_mode='hedge'), None),
+            ('ACCOUNT_SETTINGS_MISMATCH', lambda s: s['settings'].update(leverage=5), None),
+            ('SNAPSHOT_STALE', lambda s: s.update(observed_at=1), None),
+            ('COLLATERAL_INSUFFICIENT', lambda s: s.update(collateral='0.001'), None),
+            ('DAILY_LOSS_LIMIT', lambda s: s.update(daily_loss='99999'), None),
+            ('NOTIONAL_LIMIT', lambda s: None, replace(RiskLimits(),max_notional=Decimal('1'))),
+        ]
+        for index,(reason,change,limits) in enumerate(cases):
+            with self.subTest(reason=reason):
+                draft,snap=self.plan_fixture();change(snap)
+                if limits:self.engine.limits=limits
+                self.job('PREVIEW_PLAN',{'draft':draft},'rejection-'+str(index))
+                result=self.process()
+                self.assertEqual(result['state'],'FAILED',result)
+                self.assertEqual(result['error_code'],'BOT_VALIDATION_OR_PREFLIGHT_REJECTED')
+                self.assertEqual(result['result']['diagnostic'],dict(category='PREFLIGHT',reason=reason,correlation_id=result['job_id']))
+                self.assertEqual(self.x.calls,[])
+                self.assertEqual(self.store.sessions(),[])
+
+    def test_rejection_diagnostics_never_expose_exception_text_or_relabel_confirmations(self):
+        from agentrader.bot.preflight_errors import PreflightRejection
+        draft,_=self.plan_fixture()
+        for index,exc in enumerate((ValueError('secret-account-details'),PreflightRejection('ACCOUNT_MODE_MISMATCH','secret-account-details'))):
+            self.job('PREVIEW_PLAN',{'draft':draft},'private-'+str(index))
+            with patch.object(self.engine,'perform',side_effect=exc):result=self.process()
+            self.assertNotIn('secret-account-details',json.dumps(result))
+            if type(exc) is ValueError:self.assertNotIn('reason',result['result']['diagnostic'])
+        review=self.preview();self.consent(review,'confirm-private')
+        with patch.object(self.engine,'perform',side_effect=PreflightRejection('DAILY_LOSS_LIMIT','private')):result=self.process(True)
+        self.assertNotIn('reason',result['result']['diagnostic'])
+        self.assertEqual(self.x.calls,[])
 
     def test_saved_plan_is_pending_without_account_reads_or_authority(self):
         draft,_=self.plan_fixture();self.job('SAVE_PLAN',{'draft':draft});r=self.process()
@@ -124,6 +237,21 @@ class BotTerminalTests(unittest.TestCase):
         self.job('SNAPSHOT',{'symbol':'BTCUSDT'});r=self.process()
         self.assertEqual(r['state'],'SUCCEEDED',r);self.assertNotIn('must-not-leak',json.dumps(r))
         self.assertEqual(r['result']['positions'],[]);self.assertFalse(r['result']['atomic_snapshot'])
+
+    def test_snapshot_mark_and_position_metrics_use_verified_exchange_fields(self):
+        from test_v2_preflight import SnapshotExchange
+        x=SnapshotExchange();x.config=self.x.config
+        x.data['/fapi/v3/positionRisk']=[dict(symbol='BTCUSDT',positionAmt='1',positionSide='LONG',markPrice='100',liquidationPrice='80',positionInitialMargin='50',unRealizedProfit='20')]
+        self.engine=BotEngine(self.settings,x,self.store,RiskLimits(),clock=lambda:1000)
+        self.job('SNAPSHOT',{'symbol':'BTCUSDT'},'fresh-mark');r=self.process()['result']
+        self.assertEqual(r['mark']['price'],'80000')
+        p=r['positions'][0]
+        self.assertEqual(p['liquidationPrice'],'80');self.assertEqual(p['analytics']['roe_percent'],'40.0')
+        self.assertEqual(p['analytics']['liquidation_distance_percent'],'20.0')
+        x.data['/fapi/v1/premiumIndex']['time']=1
+        self.job('SNAPSHOT',{'symbol':'BTCUSDT'},'old-mark');r=self.process()['result']
+        self.assertIsNone(r['mark'])
+        self.assertEqual(r['positions'][0]['liquidationPrice'],'80')
 
     def test_inbox_rejects_bad_schema_or_non_explicit_consent(self):
         for action,p in [('POST',{}),('SNAPSHOT',{'symbol':'BTCUSDT','url':'https://bad'}),('CONFIRM',{'review_id':'job-'+'a'*40,'review_digest':'b'*64,'account_ref':'c'*64,'execute_demo':False})]:

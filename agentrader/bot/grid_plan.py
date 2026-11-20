@@ -9,6 +9,7 @@ from agentrader.bot.plans import digest
 from agentrader.bot.portfolio import Exposure, evaluate_portfolio
 from agentrader.bot.brackets import select_bracket
 from agentrader.bot.risk import number
+from agentrader.bot.preflight_errors import PreflightRejection
 from agentrader.bot.order_rules import symbol_filters
 from agentrader.bot.v2_preflight import joint_step
 
@@ -23,11 +24,11 @@ def compile_grid(plan, snapshot, limits, now=None):
     if not empty or not 0 <= now-snapshot['observed_at'] <= limits.max_age_seconds:
         raise ValueError('Grid için taze ve boş hesap görünümü gerekli.')
     if snapshot['position_mode'] != plan['position_mode']:
-        raise ValueError('Grid pozisyon modu planla uyuşmuyor.')
+        raise PreflightRejection('ACCOUNT_MODE_MISMATCH','Grid pozisyon modu planla uyuşmuyor.')
     settings = snapshot['settings']
     leverage = plan['execution']['leverage']
     if int(settings['leverage']) != leverage or settings['marginType'] != plan['execution']['margin_mode']:
-        raise ValueError('Grid kaldıraç/teminat ayarı planla uyuşmuyor.')
+        raise PreflightRejection('ACCOUNT_SETTINGS_MISMATCH','Grid kaldıraç/teminat ayarı planla uyuşmuyor.')
     info = snapshot['symbol_info']
     if info['symbol'] != plan['symbol'] or info['status'] != 'TRADING' or info.get('quoteAsset') != 'USDT' or info.get('contractType', 'PERPETUAL') != 'PERPETUAL':
         raise ValueError('Grid için USDT perpetual filtreleri gerekli.')
@@ -41,12 +42,12 @@ def compile_grid(plan, snapshot, limits, now=None):
         return {'state': 'WAITING_CONDITION', 'execution_authorized': False}
     sign = 1 if plan['direction'] == 'LONG' else -1
     if sign*(price-stop) <= 0 or sign*(number(plan['targets'][0]['price'])-price) <= 0:
-        raise ValueError('Grid başlangıç fiyatı stop/son hedef aralığı dışında.')
+        raise PreflightRejection('PRICE_OUTSIDE_PROTECTION','Grid başlangıç fiyatı stop/son hedef aralığı dışında.')
     if abs(price-ref)/ref*10000 > number(plan['entry']['max_drift_bps']):
-        raise ValueError('Grid başlangıç fiyatı onaylanan tolerans dışında.')
+        raise PreflightRejection('PRICE_DRIFT_EXCEEDED','Grid başlangıç fiyatı onaylanan tolerans dışında.')
     g = plan['grid'];lo,hi = number(g['lower']),number(g['upper']);count=g['intervals']
     if not lo <= price < hi:
-        raise ValueError('Grid başlangıç fiyatı bandın dışında.')
+        raise PreflightRejection('GRID_PRICE_OUTSIDE_BAND','Grid başlangıç fiyatı bandın dışında.')
     target = number(plan['targets'][0]['price'])
     if sign == 1 and target < hi or sign == -1 and target > lo:
         raise ValueError('Son hedef gridin çıkış sınırının dışında veya üzerinde olmalı.')
@@ -75,9 +76,9 @@ def compile_grid(plan, snapshot, limits, now=None):
     minimum=number(filters['MIN_NOTIONAL']['notional'])
     minimum_entry=min(levels[:-1] if sign==1 else levels[1:])
     if q<=0 or q*minimum_entry<minimum or not number(lot['minQty'])<=q<=number(lot['maxQty']):
-        raise ValueError('Grid bütçesi hücre başına minimum nominal/lot tutarını karşılamıyor.')
+        raise PreflightRejection('GRID_BUDGET_TOO_SMALL','Grid bütçesi hücre başına minimum nominal/lot tutarını karşılamıyor.')
     notional=q*peak_unit
-    if notional>limits.max_notional:raise ValueError('Grid toplam nominal sınırı aşılıyor.')
+    if notional>limits.max_notional:raise PreflightRejection('NOTIONAL_LIMIT','Grid toplam nominal sınırı aşılıyor.')
     tier=select_bracket(snapshot['brackets'],notional,leverage)
     exposure=Exposure(plan['symbol'],plan['direction'],str(q*count),str(adverse_entry),plan['stop'],
                       leverage,plan['execution']['margin_mode'],str(tier['maintMarginRatio']),'0',
@@ -85,7 +86,7 @@ def compile_grid(plan, snapshot, limits, now=None):
     risk=evaluate_portfolio([exposure],snapshot['collateral'],snapshot['daily_loss'],snapshot['observed_at'],
                             now,limits,collateral_valuation_verified=True)
     if notional/leverage+notional*fee*2>number(snapshot['collateral']):
-        raise ValueError('Grid teminat/masraf rezervi yetersiz.')
+        raise PreflightRejection('COLLATERAL_INSUFFICIENT','Grid teminat/masraf rezervi yetersiz.')
     slots=[{'index':i,'lower':str(a),'upper':str(b),'quantity':str(q),
             'seed':a>=price if sign==1 else b<=price} for i,(a,b) in enumerate(zip(levels,levels[1:]))]
     seed=q*sum(c['seed'] for c in slots)

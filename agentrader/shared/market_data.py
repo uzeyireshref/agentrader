@@ -43,7 +43,7 @@ class PublicMarket:
                 raise ValueError('Piyasa sembolü veya zaman dilimi geçersiz.')
             if type(params.get('limit')) is not int or not 1 <= params['limit'] <= 499:
                 raise ValueError('Piyasa sayfa boyutu 1–499 olmalı.')
-            if type(params.get('endTime')) is not int or params['endTime'] < 0:
+            if 'endTime' in params and (type(params['endTime']) is not int or params['endTime'] < 0):
                 raise ValueError('Mum bitiş sorgusu geçersiz.')
         return self._request(path,params)
 

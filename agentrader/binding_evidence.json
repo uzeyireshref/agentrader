@@ -87,7 +87,7 @@
     },
     {
       "path": "agentrader/chart/chart_market.py",
-      "sha256": "c8f8172c64e96b9a43f5a3708b1122ece5a5358a69e7fcc0bdbccae764c07daa"
+      "sha256": "13abf1f288b649260fd40f9f28297b91fec717cf812a6a7b320913be707511d5"
     },
     {
       "path": "agentrader/chart/drawings/tool_access.py",

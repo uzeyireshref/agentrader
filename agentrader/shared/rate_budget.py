@@ -58,6 +58,14 @@ def rest_charges(request):
               'markPriceKlines': 10, 'premiumIndexKlines': 10,
               'ticker': 40}.get(name, 100)
     if name in ('openOrders', 'openAlgoOrders') and params.get('symbol'): weight = 1
+    # USD-M GET costs pinned to official Account / Market Data docs, 2026-11-18.
+    # Exact paths only: other products and mutations keep their existing cost.
+    if method=='GET':
+        known={'/fapi/v1/accountConfig':5,'/fapi/v1/positionSide/dual':30,
+               '/fapi/v1/symbolConfig':5,'/fapi/v1/leverageBracket':1}
+        if path in known:weight=known[path]
+        elif path in ('/fapi/v1/premiumIndex','/fapi/v1/assetIndex'):
+            weight=1 if params.get('symbol') else 10
     orders = 0; overlap = 0
     if name in ('order', 'algoOrder', 'batchOrders'):
         weight = 1

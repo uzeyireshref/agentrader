@@ -7,6 +7,7 @@ No settings or orders are changed here.
 from agentrader.bot.history import income_history
 from agentrader.bot.brackets import select_bracket
 import time
+from agentrader.bot.preflight_errors import PreflightRejection
 from dataclasses import asdict
 from datetime import datetime, timezone
 from decimal import Decimal, ROUND_FLOOR
@@ -62,7 +63,7 @@ def collateral_usdt(account, config, index=None, *, asset_eligibility=None):
         ceiling = number(account['availableBalance'])
     value = min(available, ceiling)
     if value <= 0:
-        raise ValueError('Doğrulanmış kullanılabilir USDT teminatı yok.')
+        raise PreflightRejection('COLLATERAL_INSUFFICIENT','Doğrulanmış kullanılabilir USDT teminatı yok.')
     return value
 
 
@@ -73,42 +74,44 @@ def current_collateral(exchange,account,config,index=None):
     return collateral_usdt(account,config,index,asset_eligibility=eligibility)
 
 
-def symbol_metadata(exchange,symbol):
-    """Three fixed GETs; independent transports retain clock and host governor."""
+def read_many(exchange, requests):
+    """Bounded concurrent GETs, each with independent transport and no DB writer."""
     from agentrader.shared.exchange import DemoExchange
     from agentrader.shared.transport import JsonTransport
     if type(exchange) is DemoExchange and type(exchange.transport) is JsonTransport:
         from concurrent.futures import ThreadPoolExecutor
-        def read(path,params=None):
+        def read(item):
+            path,params=item
             reader=DemoExchange(exchange.config,transport=JsonTransport(governor=exchange.transport.governor,
                 read_attempts=exchange.transport.read_attempts,sleep=exchange.transport.sleep))
             reader.offset_ms=exchange.offset_ms
             return reader.get(path,params)
-        with ThreadPoolExecutor(max_workers=3) as pool:
-            jobs=[pool.submit(read,path,params) for path,params in (
-                ('/fapi/v1/symbolConfig',{'symbol':symbol}),('/fapi/v1/leverageBracket',{'symbol':symbol}),('/fapi/v1/exchangeInfo',None))]
-            return tuple(j.result() for j in jobs)
-    return (exchange.get('/fapi/v1/symbolConfig',{'symbol':symbol}),
-            exchange.get('/fapi/v1/leverageBracket',{'symbol':symbol}),exchange.get('/fapi/v1/exchangeInfo'))
+        with ThreadPoolExecutor(max_workers=min(4,len(requests))) as pool:
+            return tuple(pool.map(read,requests))
+    return tuple(exchange.get(path,params) for path,params in requests)
+
+
+def symbol_metadata(exchange,symbol):
+    return read_many(exchange,(
+        ('/fapi/v1/symbolConfig',{'symbol':symbol}),
+        ('/fapi/v1/leverageBracket',{'symbol':symbol}),('/fapi/v1/exchangeInfo',None)))
 
 
 def collect_flat_snapshot(exchange, symbol, limits, clock=time.time, *, ownership=None,allow_target_owned=False):
     start = clock()
     exchange.sync_time()
-    config = exchange.get('/fapi/v1/accountConfig')
+    config,mode=read_many(exchange,(('/fapi/v1/accountConfig',None),('/fapi/v1/positionSide/dual',None)))
     if config.get('canTrade') is not True:
-        raise ValueError('Hesap işlem uygunluğu doğrulanamadı.')
-    mode = exchange.get('/fapi/v1/positionSide/dual')
+        raise PreflightRejection('ACCOUNT_NOT_ELIGIBLE','Hesap işlem uygunluğu doğrulanamadı.')
     if type(mode.get('dualSidePosition')) is not bool:
         raise ValueError('Pozisyon modu doğrulanamadı.')
-    account = exchange.get('/fapi/v3/account')
-    positions = exchange.get('/fapi/v3/positionRisk')
-    normal = exchange.get('/fapi/v1/openOrders')
-    algos = exchange.get('/fapi/v1/openAlgoOrders')
+    account,positions,normal,algos=read_many(exchange,((
+        '/fapi/v3/account',None),('/fapi/v3/positionRisk',None),
+        ('/fapi/v1/openOrders',None),('/fapi/v1/openAlgoOrders',None)))
     flat=not (any(number(p['positionAmt']) for p in account['positions']+positions) or normal or algos)
     proof=None
     if ownership is None:
-        if not flat:raise ValueError('İlk v2 yürütmesi için hesap pozisyonsuz ve emirsiz olmalı.')
+        if not flat:raise PreflightRejection('ACCOUNT_NOT_FLAT','İlk v2 yürütmesi için hesap pozisyonsuz ve emirsiz olmalı.')
     else:
         proof=ownership.verify(positions=positions,normal=normal,algos=algos,account_positions=account['positions'])
         if not allow_target_owned and (any(s['symbol']==symbol for s in proof['sessions']) or
@@ -146,19 +149,20 @@ def collect_flat_snapshot(exchange, symbol, limits, clock=time.time, *, ownershi
         if len(usdt)!=1 or 'unrealizedProfit' not in usdt[0]:
             raise ValueError('Çoklu oturum günlük riski için USDT gerçekleşmemiş sonuç gerekli.')
         pnl+=min(number(usdt[0]['unrealizedProfit']),Decimal(0))
-    index = exchange.get('/fapi/v1/assetIndex', {'symbol': 'USDTUSD'}) if config['multiAssetsMargin'] else None
+    quotes=read_many(exchange,((('/fapi/v1/assetIndex', {'symbol':'USDTUSD'}),) if config['multiAssetsMargin'] else ()) + (('/fapi/v1/premiumIndex',{'symbol':symbol}),))
+    index=quotes[0] if config['multiAssetsMargin'] else None
+    mark=quotes[-1]
     if index is not None and not isinstance(index, dict):
         raise ValueError('Tek USDTUSD endeksi bekleniyor.')
-    mark = exchange.get('/fapi/v1/premiumIndex', {'symbol': symbol})
     end = clock()
     now_ms = int(end*1000) + getattr(exchange, 'offset_ms', 0)
     fresh(mark, symbol, now_ms, limits.max_age_seconds)
     if index is not None:
         fresh(index, 'USDTUSD', now_ms, limits.max_age_seconds)
     if not 0 <= end-start <= limits.max_age_seconds:
-        raise ValueError('Hesap görünümü toplanırken eskidi.')
+        raise PreflightRejection('SNAPSHOT_STALE','Hesap görünümü toplanırken eskidi.')
     if datetime.fromtimestamp(end+server_offset, timezone.utc).date() != midnight.date():
-        raise ValueError('Gün değişti; günlük kayıp görünümü yenilenmeli.')
+        raise PreflightRejection('SNAPSHOT_STALE','Gün değişti; günlük kayıp görünümü yenilenmeli.')
     return {'symbol_info': symbols[0], 'mark': mark, 'settings': selected[0],
             'position_mode': 'hedge' if mode['dualSidePosition'] else 'one-way',
             'multi_assets': config['multiAssetsMargin'],
@@ -186,13 +190,13 @@ def prepare_single(plan, snapshot, limits, now=None):
         raise ValueError('Boş hesap kanıtı gerekli.')
     now = time.time() if now is None else now
     if not 0 <= now-snapshot['observed_at'] <= limits.max_age_seconds:
-        raise ValueError('Hesap görünümü eskidi.')
+        raise PreflightRejection('SNAPSHOT_STALE','Hesap görünümü eskidi.')
     if snapshot['position_mode'] != plan['position_mode']:
-        raise ValueError('Hesap pozisyon modu planla uyuşmuyor.')
+        raise PreflightRejection('ACCOUNT_MODE_MISMATCH','Hesap pozisyon modu planla uyuşmuyor.')
     settings = snapshot['settings']
     if (int(settings['leverage']) != plan['execution']['leverage']
             or settings['marginType'] != plan['execution']['margin_mode']):
-        raise ValueError('Kaldıraç/teminat ayarı planla uyuşmuyor; otomatik değiştirilmedi.')
+        raise PreflightRejection('ACCOUNT_SETTINGS_MISMATCH','Kaldıraç/teminat ayarı planla uyuşmuyor; otomatik değiştirilmedi.')
     info, mark = snapshot['symbol_info'], snapshot['mark']
     if info.get('quoteAsset') != 'USDT' or info.get('contractType', 'PERPETUAL') != 'PERPETUAL':
         raise ValueError('USDT perpetual sözleşmesi gerekli.')
@@ -208,9 +212,9 @@ def prepare_single(plan, snapshot, limits, now=None):
     entry = trigger if condition == 'LIMIT' else price
     for value in (price, entry):
         if direction*(value-stop) <= 0 or direction*(number(plan['targets'][0]['price'])-value) <= 0:
-            raise ValueError('Fiyat stop ve hedef aralığı dışında.')
+            raise PreflightRejection('PRICE_OUTSIDE_PROTECTION','Fiyat stop ve hedef aralığı dışında.')
         if abs(value-number(plan['entry']['reference_price']))/number(plan['entry']['reference_price'])*10000 > number(plan['entry']['max_drift_bps']):
-            raise ValueError('Fiyat onaylı tolerans dışında.')
+            raise PreflightRejection('PRICE_DRIFT_EXCEEDED','Fiyat onaylı tolerans dışında.')
     filters = {f['filterType']: f for f in info['filters']}
     lot = filters['LOT_SIZE']
     market_lot = filters.get('MARKET_LOT_SIZE', lot)
@@ -227,7 +231,7 @@ def prepare_single(plan, snapshot, limits, now=None):
                  abs(min(entry, price)*(1-number(plan['entry']['max_drift_bps'])/10000)-stop)) + worst_price*fee*2)
     quantity = (amount/unit_cost/step).to_integral_value(rounding=ROUND_FLOOR)*step
     if quantity <= 0:
-        raise ValueError('Bütçe geçerli miktara yetmiyor.')
+        raise PreflightRejection('BUDGET_TOO_SMALL','Bütçe geçerli miktara yetmiyor.')
     notional = quantity*worst_price
     tier = select_bracket(snapshot['brackets'],notional,leverage)
     # Evaluate adverse LONG and SHORT entry separately; SHORT loss grows when entry falls.
@@ -241,12 +245,12 @@ def prepare_single(plan, snapshot, limits, now=None):
     worst_margin = notional/leverage + notional*fee*2
     worst_loss = quantity*abs(risk_entry-stop) + notional*fee*2
     if worst_margin > number(snapshot['collateral']):
-        raise ValueError('En yüksek nominalde teminat ve masraf rezervi yetersiz.')
+        raise PreflightRejection('COLLATERAL_INSUFFICIENT','En yüksek nominalde teminat ve masraf rezervi yetersiz.')
     if kind == 'MAX_LOSS' and worst_loss > amount or kind == 'MARGIN' and worst_margin > amount:
         raise ValueError('Güncel fiyat rezervi onaylanan bütçeyi aşıyor.')
     # SHORT adverse entry reduces nominal; enforce the high-price ceiling separately.
     if notional > limits.max_notional:
-        raise ValueError('Nominal üst sınırı aşılıyor.')
+        raise PreflightRejection('NOTIONAL_LIMIT','Nominal üst sınırı aşılıyor.')
     side = 'BUY' if direction == 1 else 'SELL'
     ps = 'BOTH' if plan['position_mode'] == 'one-way' else plan['direction']
     order = {'symbol': plan['symbol'], 'side': side, 'positionSide': ps,
